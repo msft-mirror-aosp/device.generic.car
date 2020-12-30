@@ -27,6 +27,8 @@ $(call inherit-product, device/generic/car/emulator/audio/car_emulator_audio.mk)
 $(call inherit-product, device/generic/car/emulator/rotary/car_rotary.mk)
 
 ifeq (true,$(BUILD_EMULATOR_CLUSTER_DISPLAY))
+DEVICE_PACKAGE_OVERLAYS += \
+    device/generic/car/emulator/cluster/overlay
 PRODUCT_PRODUCT_PROPERTIES += \
     hwservicemanager.external.displays=1,400,600,120,0 \
     persist.service.bootanim.displays=8140900251843329
