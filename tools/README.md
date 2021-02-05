@@ -15,12 +15,15 @@ This builds AOSP car x86_64 userdebug AVD.
 ```
 
 ## Pack an AVD image
-If you plan to share the AVD with others or run on other host via Android Emulator directly, you can pack necessary image files to $HOME/Downloads/x86_64
+The standard way to pack an AVD image is to build emu_img_zip target. Whereas this script is just for a quick validation on other host via Android Emulator during development. Which can pack necessary image files to $HOME/Downloads/x86_64
 ```
 device/generic/car/tools/test_pack_avd_img.sh
 ```
 * You can use it as an example to create your own script for an AVD target by pack_avd_img.sh.
 * pack_avd_img.sh contains brief descriptions of each file needed.
+* AVD device profile example: x86_64/devices.xml
+* SDK addon xml example: aaos-sys-img2-1.xml
+  * You should edit the xml, e.g. ZIP_FILE_SIZE, SHASUM, zip url & etc. accordingly.
 
 ## Start an AVD
 
