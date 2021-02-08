@@ -27,6 +27,8 @@ $(call inherit-product, device/generic/car/emulator/audio/car_emulator_audio.mk)
 $(call inherit-product, device/generic/car/emulator/rotary/car_rotary.mk)
 
 ifeq (true,$(BUILD_EMULATOR_CLUSTER_DISPLAY))
+PRODUCT_COPY_FILES += \
+    device/generic/car/emulator/cluster/display_settings.xml:system/etc/display_settings.xml
 DEVICE_PACKAGE_OVERLAYS += \
     device/generic/car/emulator/cluster/overlay
 PRODUCT_PRODUCT_PROPERTIES += \
