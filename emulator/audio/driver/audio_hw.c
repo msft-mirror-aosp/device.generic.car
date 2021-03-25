@@ -19,7 +19,7 @@
  * Changes made to adding support of AUDIO_DEVICE_OUT_BUS
  */
 
-#define LOG_TAG "audio_hw_generic"
+#define LOG_TAG "audio_hw_generic_caremu"
 
 #include <assert.h>
 #include <errno.h>
