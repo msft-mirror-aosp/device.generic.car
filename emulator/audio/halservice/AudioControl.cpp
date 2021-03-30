@@ -18,6 +18,7 @@
 // #define LOG_NDEBUG 0
 
 #include "AudioControl.h"
+#include "AudioControlUtils.h"
 
 #include <aidl/android/hardware/automotive/audiocontrol/AudioFocusChange.h>
 #include <aidl/android/hardware/automotive/audiocontrol/DuckingInfo.h>
@@ -109,20 +110,23 @@ ndk::ScopedAStatus AudioControl::onAudioFocusChange(const string& in_usage, int3
 
 ndk::ScopedAStatus AudioControl::onDevicesToDuckChange(
         const std::vector<DuckingInfo>& in_duckingInfos) {
-    LOG(INFO) << "AudioControl::onDevicesToDuckChange";
+    LOG(DEBUG) << "AudioControl::onDevicesToDuckChange";
     for (const DuckingInfo& duckingInfo : in_duckingInfos) {
-        LOG(INFO) << "zone: " << duckingInfo.zoneId;
-        LOG(INFO) << "Devices to duck:";
+        LOG(DEBUG) << "zone: " << duckingInfo.zoneId;
+        LOG(DEBUG) << "Devices to duck:";
         for (const auto& addressToDuck : duckingInfo.deviceAddressesToDuck) {
-            LOG(INFO) << addressToDuck;
+            LOG(DEBUG) << addressToDuck;
+            set_is_ducked(addressToDuck.c_str(), true);
         }
-        LOG(INFO) << "Devices to unduck:";
+
+        LOG(DEBUG) << "Devices to unduck:";
         for (const auto& addressToUnduck : duckingInfo.deviceAddressesToUnduck) {
-            LOG(INFO) << addressToUnduck;
+            LOG(DEBUG) << addressToUnduck;
+            set_is_ducked(addressToUnduck.c_str(), false);
         }
-        LOG(INFO) << "Usages holding focus:";
+        LOG(DEBUG) << "Usages holding focus:";
         for (const auto& usage : duckingInfo.usagesHoldingFocus) {
-            LOG(INFO) << usage;
+            LOG(DEBUG) << usage;
         }
     }
     return ndk::ScopedAStatus::ok();

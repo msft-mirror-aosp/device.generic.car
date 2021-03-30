@@ -73,9 +73,14 @@ cc_library {
         "libbinder_ndk",
         "libcutils",
         "liblog",
+        "audio.primary.caremu",
     ],
 
     srcs: [
         "AudioControl.cpp",
+    ],
+
+    include_dirs: [
+        "device/generic/car/emulator/audio/driver/include"
     ],
 }

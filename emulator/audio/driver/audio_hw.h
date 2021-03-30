@@ -25,6 +25,8 @@
 
 #include "audio_vbuffer.h"
 
+void set_device_ducked(const char *address, bool is_ducked);
+
 struct generic_audio_device {
   struct audio_hw_device device;  // Constant after init
   pthread_mutex_t lock;
@@ -38,6 +40,8 @@ struct generic_audio_device {
   // Play on Speaker zone selection
   int last_zone_selected_to_play; // Protected by this->lock
 };
+
+static struct generic_audio_device *device_handle;
 
 enum output_channel_enable {
   LEFT_CHANNEL = 1,
@@ -57,6 +61,7 @@ struct generic_stream_out {
   struct audio_gain gain_stage;      // Constant after init
   float amplitude_ratio;             // Protected by this->lock
   enum output_channel_enable enabled_channels;  // Constant after init
+  bool is_ducked;                    // Protected by this->lock
 
   // Time & Position Keeping
   bool standby;                    // Protected by this->lock
