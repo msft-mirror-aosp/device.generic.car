@@ -18,7 +18,7 @@
 // #define LOG_NDEBUG 0
 
 #include "AudioControl.h"
-#include "AudioControlUtils.h"
+#include "audio_hw_control.h"
 
 #include <aidl/android/hardware/automotive/audiocontrol/AudioFocusChange.h>
 #include <aidl/android/hardware/automotive/audiocontrol/DuckingInfo.h>
@@ -116,13 +116,13 @@ ndk::ScopedAStatus AudioControl::onDevicesToDuckChange(
         LOG(DEBUG) << "Devices to duck:";
         for (const auto& addressToDuck : duckingInfo.deviceAddressesToDuck) {
             LOG(DEBUG) << addressToDuck;
-            set_is_ducked(addressToDuck.c_str(), true);
+            set_device_address_is_ducked(addressToDuck.c_str(), true);
         }
 
         LOG(DEBUG) << "Devices to unduck:";
         for (const auto& addressToUnduck : duckingInfo.deviceAddressesToUnduck) {
             LOG(DEBUG) << addressToUnduck;
-            set_is_ducked(addressToUnduck.c_str(), false);
+            set_device_address_is_ducked(addressToUnduck.c_str(), false);
         }
         LOG(DEBUG) << "Usages holding focus:";
         for (const auto& usage : duckingInfo.usagesHoldingFocus) {
@@ -134,16 +134,18 @@ ndk::ScopedAStatus AudioControl::onDevicesToDuckChange(
 
 ndk::ScopedAStatus AudioControl::onDevicesToMuteChange(
         const std::vector<MutingInfo>& in_mutingInfos) {
-    LOG(INFO) << "AudioControl::onDevicesToMuteChange";
+    LOG(DEBUG) << "AudioControl::onDevicesToMuteChange";
     for (const MutingInfo& mutingInfo : in_mutingInfos) {
-        LOG(INFO) << "zone: " << mutingInfo.zoneId;
-        LOG(INFO) << "Devices to mute:";
+        LOG(DEBUG) << "zone: " << mutingInfo.zoneId;
+        LOG(DEBUG) << "Devices to mute:";
         for (const auto& addressToMute : mutingInfo.deviceAddressesToMute) {
-            LOG(INFO) << addressToMute;
+            LOG(DEBUG) << addressToMute;
+            set_device_address_is_muted(addressToMute.c_str(), true);
         }
-        LOG(INFO) << "Devices to unmute:";
+        LOG(DEBUG) << "Devices to unmute:";
         for (const auto& addressToUnmute : mutingInfo.deviceAddressesToUnmute) {
-            LOG(INFO) << addressToUnmute;
+            LOG(DEBUG) << addressToUnmute;
+            set_device_address_is_muted(addressToUnmute.c_str(), false);
         }
     }
     return ndk::ScopedAStatus::ok();
