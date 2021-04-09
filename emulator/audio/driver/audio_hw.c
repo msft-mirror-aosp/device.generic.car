@@ -23,7 +23,7 @@
 // #define LOG_NDEBUG 0
 
 #include "audio_hw.h"
-#include "include/AudioControlUtils.h"
+#include "include/audio_hw_control.h"
 
 #include <assert.h>
 #include <cutils/hashmap.h>
@@ -85,24 +85,43 @@ static pthread_mutex_t adev_lock = PTHREAD_MUTEX_INITIALIZER;
 
 static int adev_get_mic_mute(const struct audio_hw_device *dev, bool *state);
 
-void set_is_ducked(const char *address, bool is_ducked) {
+static struct generic_stream_out * get_audio_device(const char *address, const char *caller) {
     pthread_mutex_lock(&adev_lock);
     if(device_handle == 0) {
-        ALOGE("%s no device handle available", __func__);
+        ALOGE("%s no device handle available", caller);
         pthread_mutex_unlock(&adev_lock);
-        return;
+        return NULL;
     }
 
     struct generic_stream_out *out = hashmapGet(device_handle->out_bus_stream_map, address);
     pthread_mutex_unlock(&adev_lock);
 
+    return out;
+}
+
+void set_device_address_is_ducked(const char *device_address, bool is_ducked) {
+    struct generic_stream_out *out = get_audio_device(device_address, __func__);
+
     if (!out) {
-        ALOGW("%s no device found with address %s", __func__, address);
+        ALOGW("%s no device found with address %s", __func__, device_address);
         return;
     }
 
     pthread_mutex_lock(&out->lock);
     out->is_ducked = is_ducked;
+    pthread_mutex_unlock(&out->lock);
+}
+
+void set_device_address_is_muted(const char *device_address, bool is_muted){
+    struct generic_stream_out *out = get_audio_device(device_address, __func__);
+
+    if (!out) {
+        ALOGW("%s no device found with address %s", __func__, device_address);
+        return;
+    }
+
+    pthread_mutex_lock(&out->lock);
+    out->is_muted = is_muted;
     pthread_mutex_unlock(&out->lock);
 }
 
@@ -199,6 +218,7 @@ static int out_dump(const struct audio_stream *stream, int fd) {
                 "\t\tamplitude ratio: %f\n"
                 "\t\tenabled channels: %d\n"
                 "\t\tis ducked: %s\n"
+                "\t\tis muted: %s\n"
                 "\t\taudio dev: %p\n\n",
                 out->bus_address,
                 out_get_sample_rate(stream),
@@ -209,6 +229,7 @@ static int out_dump(const struct audio_stream *stream, int fd) {
                 out->amplitude_ratio,
                 out->enabled_channels,
                 _bool_str(out->is_ducked),
+                _bool_str(out->is_muted),
                 out->dev);
     pthread_mutex_unlock(&out->lock);
     return 0;
@@ -464,8 +485,8 @@ static ssize_t out_write(struct audio_stream_out *stream, const void *buffer, si
     }
 
     size_t frames_written = frames;
-    if (out->dev->master_mute) {
-        ALOGV("%s: ignored due to master mute", __func__);
+    if (out->dev->master_mute || out->is_muted) {
+        ALOGV("%s: ignored due to mute", __func__);
     } else {
         out_apply_gain(out, buffer, bytes);
         frames_written = audio_vbuffer_write(&out->buffer, buffer, frames);
@@ -1125,9 +1146,11 @@ static int adev_open_output_stream(struct audio_hw_device *dev,
     }
 
     out->enabled_channels = BOTH_CHANNELS;
-    // For targets where output streams are closed regularly, currently ducked addresses should be
-    // tracked so that the address of new streams can be checked to determine the default state
+    // For targets where output streams are closed regularly, currently ducked/muted addresses
+    // should be tracked so that the address of new streams can be checked to determine the
+    // default state
     out->is_ducked = 0;
+    out->is_muted = 0;
     if (address) {
         out->bus_address = calloc(strlen(address) + 1, sizeof(char));
         strncpy(out->bus_address, address, strlen(address));

@@ -25,8 +25,6 @@
 
 #include "audio_vbuffer.h"
 
-void set_device_ducked(const char *address, bool is_ducked);
-
 struct generic_audio_device {
   struct audio_hw_device device;  // Constant after init
   pthread_mutex_t lock;
@@ -62,6 +60,7 @@ struct generic_stream_out {
   float amplitude_ratio;             // Protected by this->lock
   enum output_channel_enable enabled_channels;  // Constant after init
   bool is_ducked;                    // Protected by this->lock
+  bool is_muted;                     // Protected by this->lock
 
   // Time & Position Keeping
   bool standby;                    // Protected by this->lock
