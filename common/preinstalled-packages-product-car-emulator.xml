@@ -216,9 +216,6 @@
         <install-in user-type="FULL" />
         <install-in user-type="SYSTEM" />
     </install-in-user-type>
-    <install-in-user-type package="com.android.car.secondaryhome">
-        <install-in user-type="FULL" />
-    </install-in-user-type>
     <install-in-user-type package="com.android.car.multidisplay">
         <install-in user-type="FULL" />
     </install-in-user-type>
