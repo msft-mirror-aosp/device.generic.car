@@ -130,12 +130,6 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/priv-app/NetworkPreferenceApp/NetworkPreferenceApp.apk \
     system/lib64/libcarservicejni.so \
     system/priv-app/CarService/lib/arm64/libcarservicejni.so \
-    system/priv-app/CarService/lib/x86_64/libcarservicejni.so \
-    system/bin/android.automotive.telemetryd@1.0 \
-    system/etc/init/android.automotive.telemetryd@1.0.rc \
-    system/etc/vintf/manifest/android.automotive.telemetryd@1.0.xml \
-    system/lib64/android.automotive.telemetryd@1.0-impl.so \
-    system/lib64/android.frameworks.automotive.telemetry-V1-cpp.so \
 
 PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += %.odex %.vdex %.art
 
