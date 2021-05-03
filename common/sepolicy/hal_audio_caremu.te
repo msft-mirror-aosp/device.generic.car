@@ -9,3 +9,5 @@ init_daemon_domain(hal_audio_caremu)
 carwatchdog_client_domain(hal_audio_caremu)
 binder_use(hal_audio_caremu)
 
+# Enable audiocontrol to listen to power policy daemon.
+carpowerpolicy_callback_domain(hal_audio_caremu)

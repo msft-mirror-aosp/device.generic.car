@@ -79,22 +79,24 @@ static const char * const AAE_PARAMETER_KEY_FOR_SELECTED_ZONE = "com.android.car
 static const char * const TONE_ADDRESS_KEYWORD = "_tone_";
 static const char * const AUDIO_ZONE_KEYWORD = "_audio_zone_";
 
-static pthread_mutex_t adev_lock = PTHREAD_MUTEX_INITIALIZER;
+static pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
+
+static bool is_audio_enabled = 1; // Protected by lock
 
 #define SIZE_OF_PARSE_BUFFER 32
 
 static int adev_get_mic_mute(const struct audio_hw_device *dev, bool *state);
 
 static struct generic_stream_out * get_audio_device(const char *address, const char *caller) {
-    pthread_mutex_lock(&adev_lock);
+    pthread_mutex_lock(&lock);
     if(device_handle == 0) {
         ALOGE("%s no device handle available", caller);
-        pthread_mutex_unlock(&adev_lock);
+        pthread_mutex_unlock(&lock);
         return NULL;
     }
 
     struct generic_stream_out *out = hashmapGet(device_handle->out_bus_stream_map, address);
-    pthread_mutex_unlock(&adev_lock);
+    pthread_mutex_unlock(&lock);
 
     return out;
 }
@@ -123,6 +125,19 @@ void set_device_address_is_muted(const char *device_address, bool is_muted){
     pthread_mutex_lock(&out->lock);
     out->is_muted = is_muted;
     pthread_mutex_unlock(&out->lock);
+}
+
+void set_audio_enabled(bool is_enabled) {
+    pthread_mutex_lock(&lock);
+    is_audio_enabled = is_enabled;
+    pthread_mutex_unlock(&lock);
+}
+
+bool get_is_audio_enabled() {
+    pthread_mutex_lock(&lock);
+    bool is_enabled = is_audio_enabled;
+    pthread_mutex_unlock(&lock);
+    return is_enabled;
 }
 
 static struct pcm_config pcm_config_out = {
@@ -207,6 +222,8 @@ static int out_set_format(struct audio_stream *stream, audio_format_t format) {
 
 static int out_dump(const struct audio_stream *stream, int fd) {
     struct generic_stream_out *out = (struct generic_stream_out *)stream;
+    bool is_enabled = get_is_audio_enabled();
+
     pthread_mutex_lock(&out->lock);
     dprintf(fd, "\tout_dump:\n"
                 "\t\taddress: %s\n"
@@ -219,6 +236,7 @@ static int out_dump(const struct audio_stream *stream, int fd) {
                 "\t\tenabled channels: %d\n"
                 "\t\tis ducked: %s\n"
                 "\t\tis muted: %s\n"
+                "\t\tis audio enabled: %s\n"
                 "\t\taudio dev: %p\n\n",
                 out->bus_address,
                 out_get_sample_rate(stream),
@@ -230,6 +248,7 @@ static int out_dump(const struct audio_stream *stream, int fd) {
                 out->enabled_channels,
                 _bool_str(out->is_ducked),
                 _bool_str(out->is_muted),
+                _bool_str(is_enabled),
                 out->dev);
     pthread_mutex_unlock(&out->lock);
     return 0;
@@ -465,6 +484,8 @@ static ssize_t out_write(struct audio_stream_out *stream, const void *buffer, si
     ALOGV("%s: to device %s", __func__, out->bus_address);
     const size_t frames =  bytes / audio_stream_out_frame_size(stream);
 
+    bool is_enabled = get_is_audio_enabled();
+
     pthread_mutex_lock(&out->lock);
 
     if (out->worker_standby) {
@@ -485,7 +506,7 @@ static ssize_t out_write(struct audio_stream_out *stream, const void *buffer, si
     }
 
     size_t frames_written = frames;
-    if (out->dev->master_mute || out->is_muted) {
+    if (out->dev->master_mute || out->is_muted || !is_enabled) {
         ALOGV("%s: ignored due to mute", __func__);
     } else {
         out_apply_gain(out, buffer, bytes);
@@ -1485,7 +1506,7 @@ static int adev_close(hw_device_t *dev) {
     if (!adev)
         return 0;
 
-    pthread_mutex_lock(&adev_lock);
+    pthread_mutex_lock(&lock);
 
     if (audio_device_ref_count == 0) {
         ALOGE("adev_close called when ref_count 0");
@@ -1509,7 +1530,7 @@ static int adev_close(hw_device_t *dev) {
     }
 
 error:
-    pthread_mutex_unlock(&adev_lock);
+    pthread_mutex_unlock(&lock);
     return ret;
 }
 
@@ -1541,7 +1562,7 @@ static int adev_open(const hw_module_t *module,
     if (strcmp(name, AUDIO_HARDWARE_INTERFACE) != 0)
         return -EINVAL;
 
-    pthread_mutex_lock(&adev_lock);
+    pthread_mutex_lock(&lock);
     if (audio_device_ref_count != 0) {
         *device = &adev->device.common;
         audio_device_ref_count++;
@@ -1626,7 +1647,7 @@ static int adev_open(const hw_module_t *module,
     audio_device_ref_count++;
 
 unlock:
-    pthread_mutex_unlock(&adev_lock);
+    pthread_mutex_unlock(&lock);
     return 0;
 }
 

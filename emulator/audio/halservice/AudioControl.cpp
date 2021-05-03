@@ -33,7 +33,11 @@
 
 #include <stdio.h>
 
-namespace aidl::android::hardware::automotive::audiocontrol {
+namespace aidl {
+namespace android {
+namespace hardware {
+namespace automotive {
+namespace audiocontrol {
 
 using ::android::base::EqualsIgnoreCase;
 using ::android::base::ParseInt;
@@ -169,6 +173,11 @@ binder_status_t AudioControl::dump(int fd, const char** args, uint32_t numArgs) 
     }
 }
 
+void AudioControl::setAudioEnabled(bool isEnabled) {
+    LOG(DEBUG) << "setAudioEnabled called with value: " << isEnabled;
+    set_audio_enabled(isEnabled);
+}
+
 binder_status_t AudioControl::dumpsys(int fd) {
     dprintf(fd, "*%s*\n", LOG_TAG);
     std::shared_ptr<IFocusListener> focusListener = std::atomic_load(&mFocusListener);
@@ -274,4 +283,8 @@ binder_status_t AudioControl::cmdAbandonFocus(int fd, const char** args, uint32_
     return STATUS_OK;
 }
 
-}  // namespace aidl::android::hardware::automotive::audiocontrol
+}  // namespace audiocontrol
+}  // namespace automotive
+}  // namespace hardware
+}  // namespace android
+}  // namespace aidl

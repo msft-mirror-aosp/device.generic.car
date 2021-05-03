@@ -17,6 +17,7 @@
 #define LOG_TAG "audiohalservice"
 
 #include "AudioControl.h"
+#include "PowerPolicyClient.h"
 
 #include <string>
 #include <vector>
@@ -36,6 +37,7 @@
 using namespace android::hardware;
 using android::OK;
 using aidl::android::hardware::automotive::audiocontrol::AudioControl;
+using aidl::android::hardware::automotive::audiocontrol::PowerPolicyClient;
 
 using android::hardware::configureRpcThreadpool;
 using android::hardware::joinRpcThreadpool;
@@ -62,6 +64,9 @@ int main(int /* argc */, char* /* argv */ []) {
     binder_status_t aidlStatus =
             AServiceManager_addService(audioControl->asBinder().get(), instance.c_str());
     CHECK(aidlStatus == STATUS_OK);
+
+    PowerPolicyClient powerPolicyClient = PowerPolicyClient(audioControl);
+    powerPolicyClient.init();
 
     ABinderProcess_joinThreadPool();
     return EXIT_FAILURE;  // should not reach
