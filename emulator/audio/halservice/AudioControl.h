@@ -21,7 +21,11 @@
 #include <aidl/android/hardware/automotive/audiocontrol/DuckingInfo.h>
 #include <aidl/android/hardware/automotive/audiocontrol/MutingInfo.h>
 
-namespace aidl::android::hardware::automotive::audiocontrol {
+namespace aidl {
+namespace android {
+namespace hardware {
+namespace automotive {
+namespace audiocontrol {
 
 class AudioControl : public BnAudioControl {
   public:
@@ -37,6 +41,8 @@ class AudioControl : public BnAudioControl {
     ndk::ScopedAStatus setFadeTowardFront(float in_value) override;
     binder_status_t dump(int fd, const char** args, uint32_t numArgs) override;
 
+    void setAudioEnabled(bool isEnabled);
+
   private:
     // This focus listener will only be used by this HAL instance to communicate with
     // a single instance of CarAudioService. As such, it doesn't have explicit serialization.
@@ -50,6 +56,10 @@ class AudioControl : public BnAudioControl {
     binder_status_t dumpsys(int fd);
 };
 
-}  // namespace aidl::android::hardware::automotive::audiocontrol
+}  // namespace audiocontrol
+}  // namespace automotive
+}  // namespace hardware
+}  // namespace android
+}  // namespace aidl
 
 #endif  // ANDROID_HARDWARE_AUTOMOTIVE_AUDIOCONTROL_AUDIOCONTROL_H
