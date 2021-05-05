@@ -21,6 +21,7 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/app/CarFrameworkPackageStubs/CarFrameworkPackageStubs.apk \
     system/app/CarFrameworkPackageStubs/oat/arm64/CarFrameworkPackageStubs.odex \
     system/app/CarFrameworkPackageStubs/oat/arm64/CarFrameworkPackageStubs.vdex \
+    system/app/CarHTMLViewer/CarHTMLViewer.apk \
     system/app/CarLatinIME/CarLatinIME.apk \
     system/app/CarMapsPlaceholder/CarMapsPlaceholder.apk \
     system/app/CarPermissionControllerRRO/CarPermissionControllerRRO.apk \
