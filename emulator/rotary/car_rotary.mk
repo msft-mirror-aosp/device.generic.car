@@ -19,4 +19,5 @@ PRODUCT_PACKAGES += \
     CarRotaryController \
     RotaryPlayground \
     RotaryIME \
-    CarRotaryImeRRO \
+
+DEVICE_PACKAGE_OVERLAYS += device/generic/car/emulator/rotary/overlay
