@@ -28,6 +28,7 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/app/RotaryIME/RotaryIME.apk \
     system/app/RotaryIME/oat/arm64/RotaryIME.odex \
     system/app/RotaryIME/oat/arm64/RotaryIME.vdex \
+    system/app/CarRotaryImeRRO/CarRotaryImeRRO.apk \
     system/app/RotaryPlayground/RotaryPlayground.apk \
     system/app/SampleCustomInputService/SampleCustomInputService.apk \
     system/app/SampleRearViewCamera/SampleRearViewCamera.apk \
