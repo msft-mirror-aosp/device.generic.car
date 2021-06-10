@@ -29,12 +29,15 @@ $(call inherit-product, device/generic/car/emulator/rotary/car_rotary.mk)
 ifeq (true,$(BUILD_EMULATOR_CLUSTER_DISPLAY))
 PRODUCT_COPY_FILES += \
     device/generic/car/emulator/cluster/display_settings.xml:system/etc/display_settings.xml
-DEVICE_PACKAGE_OVERLAYS += \
-    device/generic/car/emulator/cluster/overlay
 PRODUCT_PRODUCT_PROPERTIES += \
     hwservicemanager.external.displays=1,400,600,120,0 \
     persist.service.bootanim.displays=8140900251843329
-endif
+ifeq (true,$(ENABLE_CLUSTER_OS_DOUBLE))
+DEVICE_PACKAGE_OVERLAYS += device/generic/car/emulator/cluster/osdouble_overlay
+else
+DEVICE_PACKAGE_OVERLAYS += device/generic/car/emulator/cluster/overlay
+endif  # ENABLE_CLUSTER_OS_DOUBLE
+endif  # BUILD_EMULATOR_CLUSTER_DISPLAY
 
 # Define the host tools and libs that are parts of the SDK.
 $(call inherit-product, sdk/build/product_sdk.mk)
