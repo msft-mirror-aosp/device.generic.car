@@ -140,6 +140,8 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/lib64/android.frameworks.automotive.telemetry-V1-cpp.so \
     system/lib64/android.automotive.telemetry.internal-ndk_platform.so \
     system/lib64/android.frameworks.automotive.telemetry-V1-ndk_platform.so \
+    system/etc/automotive/watchdog/system_resource_overuse_configuration.xml \
+    system/etc/automotive/watchdog/third_party_resource_overuse_configuration.xml \
 
 PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += %.odex %.vdex %.art
 
