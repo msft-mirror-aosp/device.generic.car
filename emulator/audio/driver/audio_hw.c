@@ -433,6 +433,7 @@ static void *out_write_worker(void *args) {
             }
         }
         int frames = audio_vbuffer_read(&out->buffer, buffer, buffer_frames);
+        pthread_cond_signal(&out->write_wake);
         pthread_mutex_unlock(&out->lock);
 
         if (is_zone_selected_to_play(out->dev, zone_id)) {
@@ -454,7 +455,7 @@ static void *out_write_worker(void *args) {
     return NULL;
 }
 
-// Call with in->lock held
+// Call with out->lock held
 static void get_current_output_position(struct generic_stream_out *out,
         uint64_t *position, struct timespec * timestamp) {
     struct timespec curtime = { .tv_sec = 0, .tv_nsec = 0 };
@@ -517,7 +518,8 @@ static void out_apply_gain(struct generic_stream_out *out, const void *buffer, s
 static ssize_t out_write(struct audio_stream_out *stream, const void *buffer, size_t bytes) {
     struct generic_stream_out *out = (struct generic_stream_out *)stream;
     ALOGV("%s: to device %s", __func__, out->bus_address);
-    const size_t frames =  bytes / audio_stream_out_frame_size(stream);
+    const size_t frame_size = audio_stream_out_frame_size(stream);
+    const size_t frames =  bytes / frame_size;
 
     bool is_enabled = get_is_audio_enabled();
 
@@ -531,8 +533,6 @@ static ssize_t out_write(struct audio_stream_out *stream, const void *buffer, si
     struct timespec current_time;
 
     get_current_output_position(out, &current_position, &current_time);
-    const uint64_t now_us = (current_time.tv_sec * 1000000000LL +
-                             current_time.tv_nsec) / 1000;
     if (out->standby) {
         out->standby = false;
         out->underrun_time = current_time;
@@ -541,12 +541,38 @@ static ssize_t out_write(struct audio_stream_out *stream, const void *buffer, si
     }
 
     size_t frames_written = frames;
+
+    const int available_frames_in_buffer = audio_vbuffer_dead(&out->buffer);
+    const int frames_sleep =
+        available_frames_in_buffer > frames ? 0 : frames - available_frames_in_buffer;
+    const uint64_t sleep_time_us =
+        frames_sleep * 1000000LL / out_get_sample_rate(&stream->common);
+
+    if (sleep_time_us > 0) {
+        pthread_mutex_unlock(&out->lock);
+        usleep(sleep_time_us);
+        pthread_mutex_lock(&out->lock);
+    }
+
     if (out->dev->master_mute || out->is_muted || !is_enabled) {
         ALOGV("%s: ignored due to mute", __func__);
     } else {
         out_apply_gain(out, buffer, bytes);
-        frames_written = audio_vbuffer_write(&out->buffer, buffer, frames);
-        pthread_cond_signal(&out->worker_wake);
+        frames_written = 0;
+
+        bool write_incomplete = true;
+        do {
+            frames_written += audio_vbuffer_write(
+                    &out->buffer,
+                    (const char *)buffer + frames_written * frame_size,
+                    frames - frames_written);
+            pthread_cond_signal(&out->worker_wake);
+            write_incomplete = frames_written < frames;
+            if (write_incomplete) {
+                // Wait for write worker to consume the buffer
+                pthread_cond_wait(&out->write_wake, &out->lock);
+            }
+        } while (write_incomplete);
     }
 
     /* Implementation just consumes bytes if we start getting backed up */
@@ -554,31 +580,7 @@ static ssize_t out_write(struct audio_stream_out *stream, const void *buffer, si
     out->frames_rendered += frames;
     out->frames_total_buffered += frames;
 
-    // We simulate the audio device blocking when it's write buffers become
-    // full.
-
-    // At the beginning or after an underrun, try to fill up the vbuffer.
-    // This will be throttled by the PlaybackThread
-    int frames_sleep = out->frames_total_buffered < out->buffer.frame_count ? 0 : frames;
-
-    uint64_t sleep_time_us = frames_sleep * 1000000LL /
-                            out_get_sample_rate(&stream->common);
-
-    // If the write calls are delayed, subtract time off of the sleep to
-    // compensate
-    uint64_t time_since_last_write_us = now_us - out->last_write_time_us;
-    if (time_since_last_write_us < sleep_time_us) {
-        sleep_time_us -= time_since_last_write_us;
-    } else {
-        sleep_time_us = 0;
-    }
-    out->last_write_time_us = now_us + sleep_time_us;
-
     pthread_mutex_unlock(&out->lock);
-
-    if (sleep_time_us > 0) {
-        usleep(sleep_time_us);
-    }
 
     if (frames_written < frames) {
         ALOGW("%s Hardware backing HAL too slow, could only write %zu of %zu frames",
