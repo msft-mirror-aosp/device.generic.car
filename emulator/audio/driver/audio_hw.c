@@ -48,11 +48,16 @@
 #define PCM_CARD 0
 #define PCM_DEVICE 0
 
-#define OUT_PERIOD_MS 15
-#define OUT_PERIOD_COUNT 4
+#define DEFAULT_OUT_PERIOD_MS 15
+#define DEFAULT_OUT_PERIOD_COUNT 4
 
-#define IN_PERIOD_MS 15
-#define IN_PERIOD_COUNT 4
+#define DEFAULT_IN_PERIOD_MS 15
+#define DEFAULT_IN_PERIOD_COUNT 4
+
+static const char* PROP_KEY_OUT_PERIOD_MS = "ro.vendor.caremu.audiohal.out_period_ms";
+static const char* PROP_KEY_OUT_PERIOD_COUNT = "ro.vendor.caremu.audiohal.out_period_count";
+static const char* PROP_KEY_IN_PERIOD_MS = "ro.vendor.caremu.audiohal.in_period_ms";
+static const char* PROP_KEY_IN_PERIOD_COUNT = "ro.vendor.caremu.audiohal.in_period_count";
 
 #define PI 3.14159265
 #define TWO_PI  (2*PI)
@@ -86,6 +91,38 @@ static bool is_audio_enabled = 1; // Protected by lock
 #define SIZE_OF_PARSE_BUFFER 32
 
 static int adev_get_mic_mute(const struct audio_hw_device *dev, bool *state);
+
+static int get_out_period_ms() {
+    static int out_period_ms = -1;
+    if (out_period_ms == -1) {
+        out_period_ms = property_get_int32(PROP_KEY_OUT_PERIOD_MS, DEFAULT_OUT_PERIOD_MS);
+    }
+    return out_period_ms;
+}
+
+static int get_out_period_count() {
+    static int out_period_count = -1;
+    if (out_period_count == -1) {
+        out_period_count = property_get_int32(PROP_KEY_OUT_PERIOD_COUNT, DEFAULT_OUT_PERIOD_COUNT);
+    }
+    return out_period_count;
+}
+
+static int get_in_period_ms() {
+    static int in_period_ms = -1;
+    if (in_period_ms == -1) {
+        in_period_ms = property_get_int32(PROP_KEY_IN_PERIOD_MS, DEFAULT_IN_PERIOD_MS);
+    }
+    return in_period_ms;
+}
+
+static int get_in_period_count() {
+    static int in_period_count = -1;
+    if (in_period_count == -1) {
+        in_period_count = property_get_int32(PROP_KEY_IN_PERIOD_COUNT, DEFAULT_IN_PERIOD_COUNT);
+    }
+    return in_period_count;
+}
 
 static struct generic_stream_out * get_audio_device(const char *address, const char *caller) {
     pthread_mutex_lock(&lock);
@@ -144,7 +181,6 @@ static struct pcm_config pcm_config_out = {
     .channels = 2,
     .rate = 0,
     .period_size = 0,
-    .period_count = OUT_PERIOD_COUNT,
     .format = PCM_FORMAT_S16_LE,
     .start_threshold = 0,
 };
@@ -169,7 +205,6 @@ static struct pcm_config pcm_config_in = {
     .channels = 2,
     .rate = 0,
     .period_size = 0,
-    .period_count = IN_PERIOD_COUNT,
     .format = PCM_FORMAT_S16_LE,
     .start_threshold = 0,
     .stop_threshold = INT_MAX,
@@ -730,7 +765,7 @@ static size_t get_input_buffer_size(uint32_t sample_rate, audio_format_t format,
     if (refine_input_parameters(&sample_rate, &format, &channel_mask) != 0)
         return 0;
 
-    size = sample_rate*IN_PERIOD_MS/1000;
+    size = sample_rate * get_in_period_ms() / 1000;
     // Audioflinger expects audio buffers to be multiple of 16 frames
     size = ((size + 15) / 16) * 16;
     size *= sizeof(short) * channel_count;
@@ -1144,7 +1179,7 @@ static int adev_open_output_stream(struct audio_hw_device *dev,
     memcpy(&out->req_config, config, sizeof(struct audio_config));
     memcpy(&out->pcm_config, &pcm_config_out, sizeof(struct pcm_config));
     out->pcm_config.rate = config->sample_rate;
-    out->pcm_config.period_size = out->pcm_config.rate*OUT_PERIOD_MS/1000;
+    out->pcm_config.period_size = out->pcm_config.rate * get_out_period_ms() / 1000;
 
     out->standby = true;
     out->underrun_position = 0;
@@ -1389,7 +1424,7 @@ static int adev_open_input_stream(struct audio_hw_device *dev,
     memcpy(&in->req_config, config, sizeof(struct audio_config));
     memcpy(&in->pcm_config, &pcm_config_in, sizeof(struct pcm_config));
     in->pcm_config.rate = config->sample_rate;
-    in->pcm_config.period_size = in->pcm_config.rate*IN_PERIOD_MS/1000;
+    in->pcm_config.period_size = in->pcm_config.rate * get_in_period_ms() / 1000;
 
     in->stereo_to_mono_buf = NULL;
     in->stereo_to_mono_buf_size = 0;
@@ -1570,6 +1605,10 @@ static int adev_open(const hw_module_t *module,
         ALOGV("%s: exit", __func__);
         goto unlock;
     }
+
+    pcm_config_in.period_count = get_in_period_count();
+    pcm_config_out.period_count = get_out_period_count();
+
     adev = calloc(1, sizeof(struct generic_audio_device));
 
     pthread_mutex_init(&adev->lock, (const pthread_mutexattr_t *) NULL);
