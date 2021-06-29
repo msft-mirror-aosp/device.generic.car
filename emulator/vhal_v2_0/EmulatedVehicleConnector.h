@@ -44,7 +44,7 @@ class EmulatedVehicleConnector
     // Methods from EmulatedVehicleHalServer
     StatusCode onSetProperty(const VehiclePropValue& value, bool updateStatus) override;
 
-    bool onDump(const hidl_handle& fd, const hidl_vec<hidl_string>& options) override;
+    DumpResult onDump(const std::vector<std::string>& options) override;
 
     void triggerSendAllValues() { this->sendAllValuesToClient(); }
 

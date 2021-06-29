@@ -61,32 +61,34 @@ StatusCode EmulatedVehicleConnector::onSetProperty(const VehiclePropValue& value
     return this->EmulatedVehicleHalServer::onSetProperty(value, updateStatus);
 }
 
-bool EmulatedVehicleConnector::onDump(const hidl_handle& handle,
-                                      const hidl_vec<hidl_string>& options) {
-    int fd = handle->data[0];
-
+IVehicleServer::DumpResult EmulatedVehicleConnector::onDump(
+        const std::vector<std::string>& options) {
+    DumpResult result;
     if (options.size() > 0) {
         if (options[0] == "--help") {
-            dprintf(fd, "Emulator-specific usage:\n");
-            mEmulatedUserHal.showDumpHelp(fd);
-            dprintf(fd, "\n");
+            result.buffer += "Emulator-specific usage:\n";
+            result.buffer += mEmulatedUserHal.showDumpHelp();
+            result.buffer += "\n";
             // Include caller's help options
-            return true;
+            result.callerShouldDumpState = true;
+            return result;
         } else if (options[0] == kUserHalDumpOption) {
-            mEmulatedUserHal.dump(fd, "");
-            return false;
+            result.buffer += mEmulatedUserHal.dump("");
+            result.callerShouldDumpState = false;
+            return result;
 
         } else {
             // Let caller handle the options...
-            return true;
+            result.callerShouldDumpState = true;
+            return result;
         }
     }
 
-    dprintf(fd, "Emulator-specific state:\n");
-    mEmulatedUserHal.dump(fd, "  ");
-    dprintf(fd, "\n");
-
-    return true;
+    result.buffer += "Emulator-specific state:\n";
+    result.buffer += mEmulatedUserHal.dump("  ");
+    result.buffer += "\n";
+    result.callerShouldDumpState = true;
+    return result;
 }
 
 }  // namespace impl
