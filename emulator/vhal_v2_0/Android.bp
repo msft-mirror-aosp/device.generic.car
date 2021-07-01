@@ -1,0 +1,60 @@
+// Copyright (C) 2021 The Android Open Source Project
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//       http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+// Library used to emulate User HAL behavior through lshal debug requests.
+cc_library_static {
+    name: "android.hardware.automotive.vehicle@2.0-emulated-user-hal-lib",
+    vendor: true,
+    defaults: ["//hardware/interfaces/automotive/vehicle/2.0/default:vhal_v2_0_target_defaults"],
+    srcs: [
+        "EmulatedUserHal.cpp",
+    ],
+    whole_static_libs: [
+        "android.hardware.automotive.vehicle@2.0-user-hal-helper-lib",
+    ],
+}
+
+
+// Emulator VehicleHAL implementation
+cc_library_static {
+    name: "android.hardware.automotive.vehicle@2.0-emulator-impl-lib",
+    visibility: ["//hardware/interfaces/automotive/vehicle/2.0:__subpackages__"],
+    vendor: true,
+    defaults: ["//hardware/interfaces/automotive/vehicle/2.0/default:vhal_v2_0_target_defaults"],
+    cflags: ["-DENABLE_VENDOR_CLUSTER_PROPERTY_FOR_TESTING"],
+    srcs: [
+        "CommConn.cpp",
+        "EmulatedVehicleConnector.cpp",
+        "EmulatedVehicleHal.cpp",
+        "EmulatedVehicleHalServer.cpp",
+        "VehicleEmulator.cpp",
+        "qemu_pipe.cpp",
+        "SocketComm.cpp",
+        "PipeComm.cpp",
+    ],
+    header_libs: ["//hardware/interfaces/automotive/vehicle/2.0/default:vhal_v2_0_common_headers"],
+    whole_static_libs: [
+        "//hardware/interfaces/automotive/vehicle/2.0/default:android.hardware.automotive.vehicle@2.0-default-impl-lib",
+        "//hardware/interfaces/automotive/vehicle/2.0/default:android.hardware.automotive.vehicle@2.0-emulated-user-hal-lib",
+    ],
+    shared_libs: [
+        "libbase",
+        "libjsoncpp",
+        "//hardware/interfaces/automotive/vehicle/2.0/default/impl/vhal_v2_0/proto:libprotobuf-cpp-lite",
+    ],
+    export_include_dirs: ["."],
+    static_libs: [
+        "android.hardware.automotive.vehicle@2.0-libproto-native",
+    ],
+}
