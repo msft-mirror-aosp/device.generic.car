@@ -17,6 +17,7 @@
 #ifndef android_hardware_automotive_vehicle_V2_0_impl_EmulatedUserHal_H_
 #define android_hardware_automotive_vehicle_V2_0_impl_EmulatedUserHal_H_
 
+#include <android-base/format.h>
 #include <android-base/result.h>
 
 #include <android/hardware/automotive/vehicle/2.0/types.h>
@@ -64,12 +65,12 @@ class EmulatedUserHal {
     /**
      * Shows the User HAL emulation help.
      */
-    void showDumpHelp(int fd);
+    std::string showDumpHelp();
 
     /**
      * Dump its contents.
      */
-    void dump(int fd, std::string indent);
+    std::string dump(std::string indent);
 
   private:
     /**
