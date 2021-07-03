@@ -311,35 +311,37 @@ Result<std::unique_ptr<VehiclePropValue>> EmulatedUserHal::sendUserHalResponse(
     return response;
 }
 
-void EmulatedUserHal::showDumpHelp(int fd) {
-    dprintf(fd, "%s: dumps state used for user management\n", kUserHalDumpOption);
+std::string EmulatedUserHal::showDumpHelp() {
+    return fmt::format("{}: dumps state used for user management\n", kUserHalDumpOption);
 }
 
-void EmulatedUserHal::dump(int fd, std::string indent) {
+std::string EmulatedUserHal::dump(std::string indent) {
+    std::string info;
     if (mInitialUserResponseFromCmd != nullptr) {
-        dprintf(fd, "%sInitialUserInfo response: %s\n", indent.c_str(),
+        info += fmt::format("{}InitialUserInfo response: {}\n", indent.c_str(),
                 toString(*mInitialUserResponseFromCmd).c_str());
     } else {
-        dprintf(fd, "%sNo InitialUserInfo response\n", indent.c_str());
+        info += fmt::format("{}No InitialUserInfo response\n", indent.c_str());
     }
     if (mSwitchUserResponseFromCmd != nullptr) {
-        dprintf(fd, "%sSwitchUser response: %s\n", indent.c_str(),
+        info += fmt::format("{}SwitchUser response: {}\n", indent.c_str(),
                 toString(*mSwitchUserResponseFromCmd).c_str());
     } else {
-        dprintf(fd, "%sNo SwitchUser response\n", indent.c_str());
+        info += fmt::format("{}No SwitchUser response\n", indent.c_str());
     }
     if (mCreateUserResponseFromCmd != nullptr) {
-        dprintf(fd, "%sCreateUser response: %s\n", indent.c_str(),
+        info += fmt::format("{}CreateUser response: {}\n", indent.c_str(),
                 toString(*mCreateUserResponseFromCmd).c_str());
     } else {
-        dprintf(fd, "%sNo CreateUser response\n", indent.c_str());
+        info += fmt::format("{}No CreateUser response\n", indent.c_str());
     }
     if (mSetUserIdentificationAssociationResponseFromCmd != nullptr) {
-        dprintf(fd, "%sSetUserIdentificationAssociation response: %s\n", indent.c_str(),
+        info += fmt::format("{}SetUserIdentificationAssociation response: {}\n", indent.c_str(),
                 toString(*mSetUserIdentificationAssociationResponseFromCmd).c_str());
     } else {
-        dprintf(fd, "%sNo SetUserIdentificationAssociation response\n", indent.c_str());
+        info += fmt::format("{}No SetUserIdentificationAssociation response\n", indent.c_str());
     }
+    return info;
 }
 
 }  // namespace impl
