@@ -16,6 +16,8 @@
 PRODUCT_ENFORCE_ARTIFACT_PATH_REQUIREMENTS := relaxed
 PRODUCT_PACKAGES += android.frameworks.automotive.display@1.0-service
 
+# TODO(b/193056430): Improve this temp fix for "artifact path requirement"
+#                    errors.
 PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     root/init.bootstat.rc \
     root/init.car.rc \
