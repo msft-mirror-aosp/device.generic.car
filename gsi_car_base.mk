@@ -142,6 +142,7 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/lib64/libscriptexecutor.so \
     system/lib64/libscriptexecutorjni.so \
     system/priv-app/CarService/lib/arm64/libscriptexecutorjni.so \
+    system/priv-app/CarService/lib/x86_64/libscriptexecutorjni.so \
     system/bin/android.automotive.telemetryd@1.0 \
     system/etc/init/android.automotive.telemetryd@1.0.rc \
     system/etc/vintf/manifest/android.automotive.telemetryd@1.0.xml \
