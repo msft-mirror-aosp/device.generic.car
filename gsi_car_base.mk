@@ -91,6 +91,8 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/lib64/android.hardware.automotive.evs@1.1.so \
     system/lib64/android.hardware.automotive.vehicle@2.0.so \
     system/lib64/libcar-framework-service-jni.so \
+    system/lib64/libscriptexecutor.so \
+    system/lib64/libscriptexecutorjni.so \
     system/lib64/libsuspend.so \
     system/lib64/libwatchdog_binder_mediator.so \
     system/lib64/libwatchdog_package_info_resolver.so \
@@ -109,6 +111,8 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/priv-app/CarRadioApp/CarRadioApp.apk \
     system/priv-app/CarRotaryController/CarRotaryController.apk \
     system/priv-app/CarService/CarService.apk \
+    system/priv-app/CarService/lib/arm64/libscriptexecutorjni.so \
+    system/priv-app/CarService/lib/x86_64/libscriptexecutorjni.so \
     system/priv-app/CarService/oat/arm64/CarService.odex \
     system/priv-app/CarService/oat/arm64/CarService.vdex \
     system/priv-app/CarSettings/CarSettings.apk \
@@ -138,6 +142,7 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/lib64/libscriptexecutor.so \
     system/lib64/libscriptexecutorjni.so \
     system/priv-app/CarService/lib/arm64/libscriptexecutorjni.so \
+    system/priv-app/CarService/lib/x86_64/libscriptexecutorjni.so \
     system/bin/android.automotive.telemetryd@1.0 \
     system/etc/init/android.automotive.telemetryd@1.0.rc \
     system/etc/vintf/manifest/android.automotive.telemetryd@1.0.xml \
