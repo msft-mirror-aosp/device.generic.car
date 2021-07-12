@@ -133,6 +133,7 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/priv-app/ExperimentalCarService/ExperimentalCarService.apk \
     system/priv-app/ExperimentalCarService/oat/arm64/ExperimentalCarService.odex \
     system/priv-app/ExperimentalCarService/oat/arm64/ExperimentalCarService.vdex \
+    system/priv-app/GarageModeTestApp/AdasLocationTestApp.apk \
     system/priv-app/GarageModeTestApp/GarageModeTestApp.apk \
     system/priv-app/LocalMediaPlayer/LocalMediaPlayer.apk \
     system/priv-app/NetworkPreferenceApp/NetworkPreferenceApp.apk \
