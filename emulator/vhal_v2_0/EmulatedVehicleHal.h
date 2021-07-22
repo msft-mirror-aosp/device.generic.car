@@ -54,9 +54,6 @@ class EmulatedVehicleHal : public DefaultVehicleHal {
     StatusCode set(const VehiclePropValue& propValue) override;
     void getAllPropertiesOverride();
 
-  protected:
-    void onContinuousPropertyTimer(const std::vector<int32_t>& properties) override;
-
   private:
     StatusCode handleGenerateFakeDataRequest(const VehiclePropValue& request);
 
@@ -66,8 +63,6 @@ class EmulatedVehicleHal : public DefaultVehicleHal {
                                    VehiclePropValue* outValue);
     StatusCode fillObd2DtcInfo(VehiclePropValue* outValue);
     StatusCode clearObd2FreezeFrames(const VehiclePropValue& propValue);
-    VehicleHal::VehiclePropValuePtr doInternalHealthCheck();
-    VehicleHal::VehiclePropValuePtr createVhalHeartBeatProp();
 
     /* Private members */
     std::unordered_set<int32_t> mHvacPowerProps;
