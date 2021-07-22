@@ -41,6 +41,7 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/bin/carpowerpolicyd \
     system/bin/carwatchdogd \
     system/bin/com.android.car.procfsinspector \
+    system/bin/vehicle_binding_util \
     system/etc/apns-conf.xml \
     system/etc/init/android.automotive.evs.manager@1.1.rc \
     system/etc/init/carbugreportd.rc \
@@ -49,6 +50,7 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/etc/init/com.android.car.procfsinspector.rc \
     system/etc/init/init.bootstat.car.rc \
     system/etc/init/init.car.rc \
+    system/etc/init/vehicle_binding_util.rc \
     system/etc/old-apns-conf.xml \
     system/etc/permissions/android.car.cluster.xml \
     system/etc/permissions/android.car.usb.handler.xml \
