@@ -19,8 +19,7 @@ PRODUCT_COPY_FILES += \
     packages/services/Car/car_product/car_ui_portrait/car_ui_portrait.ini:config.ini
 
 PRODUCT_PACKAGE_OVERLAYS := \
-    device/generic/car/common/overlay \
-    packages/services/Car/car_product/car_ui_portrait/overlay
+    device/generic/car/common/overlay
 
 # only log privapp-permissions allow list
 PRODUCT_PROPERTY_OVERRIDES += \
