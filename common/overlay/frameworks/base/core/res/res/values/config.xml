@@ -25,4 +25,9 @@
     <!-- AAOS doesn't support fingerprint and face -->
     <string-array name="config_biometric_sensors" translatable="false" >
     </string-array>
+    <!-- Regex of wired ethernet ifaces -->
+    <!-- To avoid having Ethernet running and taking over Wi-Fi as the default network,
+         force the builtin EthernetTracker to use a pattern that will never match anything.
+    -->
+    <string translatable="false" name="config_ethernet_iface_regex">do_not_match</string>
 </resources>
