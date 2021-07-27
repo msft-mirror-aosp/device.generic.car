@@ -20,7 +20,6 @@
 #include <vhal_v2_0/VehicleConnector.h>
 #include <vhal_v2_0/VehicleHalClient.h>
 
-#include "EmulatedUserHal.h"
 #include "EmulatedVehicleHalServer.h"
 #include "VehicleEmulator.h"
 
@@ -37,19 +36,9 @@ class EmulatedVehicleConnector
   public:
     EmulatedVehicleConnector() = default;
 
-    EmulatedUserHal* getEmulatedUserHal();
-
     std::unique_ptr<VehicleEmulator> getEmulator();
 
-    // Methods from EmulatedVehicleHalServer
-    StatusCode onSetProperty(const VehiclePropValue& value, bool updateStatus) override;
-
-    DumpResult onDump(const std::vector<std::string>& options) override;
-
     void triggerSendAllValues() { this->sendAllValuesToClient(); }
-
-  private:
-    EmulatedUserHal mEmulatedUserHal;
 };
 
 }  // namespace impl

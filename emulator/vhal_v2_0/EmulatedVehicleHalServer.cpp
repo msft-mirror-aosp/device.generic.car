@@ -29,30 +29,9 @@ namespace V2_0 {
 
 namespace impl {
 
-static bool isDiagnosticProperty(VehiclePropConfig propConfig) {
-    switch (propConfig.prop) {
-        case OBD2_LIVE_FRAME:
-        case OBD2_FREEZE_FRAME:
-        case OBD2_FREEZE_FRAME_CLEAR:
-        case OBD2_FREEZE_FRAME_INFO:
-            return true;
-    }
-    return false;
-}
-
-EmulatedVehicleHalServer::EmulatedVehicleHalServer() {
+EmulatedVehicleHalServer::EmulatedVehicleHalServer(): DefaultVehicleHalServer() {
     mInQEMU = isInQEMU();
     ALOGD("mInQEMU=%s", mInQEMU ? "true" : "false");
-
-    for (auto& it : kVehicleProperties) {
-        VehiclePropConfig cfg = it.config;
-        mServerSidePropStore.registerProperty(cfg);
-        // Skip diagnostic properties since EmulatedVehicleHal has special logic to handle those.
-        if (isDiagnosticProperty(cfg)) {
-            continue;
-        }
-        storePropInitialValue(it);
-    }
 }
 
 StatusCode EmulatedVehicleHalServer::onSetProperty(const VehiclePropValue& value,
