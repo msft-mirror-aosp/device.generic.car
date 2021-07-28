@@ -82,7 +82,6 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/etc/vintf/manifest/manifest_android.automotive.evs.manager@1.1.xml \
     system/framework/android.car.jar \
     system/framework/android.car.builtin.jar \
-    system/framework/android.car.module.jar \
     system/framework/car-frameworks-service.jar \
     system/framework/oat/arm64/car-frameworks-service.odex \
     system/framework/oat/arm64/car-frameworks-service.vdex \
@@ -117,7 +116,6 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/priv-app/CarRadioApp/CarRadioApp.apk \
     system/priv-app/CarRotaryController/CarRotaryController.apk \
     system/priv-app/CarService/CarService.apk \
-    system/priv-app/CarService/CarServiceModule.apk \
     system/priv-app/CarService/lib/arm64/libscriptexecutorjni.so \
     system/priv-app/CarService/lib/x86_64/libscriptexecutorjni.so \
     system/priv-app/CarService/oat/arm64/CarService.odex \
