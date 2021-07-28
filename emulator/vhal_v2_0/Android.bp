@@ -12,7 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// Library used to emulate User HAL behavior through lshal debug requests.
 package {
     // See: http://go/android-license-faq
     // A large-scale-change added 'default_applicable_licenses' to import
@@ -21,19 +20,6 @@ package {
     //   SPDX-license-identifier-Apache-2.0
     default_applicable_licenses: ["device_generic_car_license"],
 }
-
-cc_library_static {
-    name: "android.hardware.automotive.vehicle@2.0-emulated-user-hal-lib",
-    vendor: true,
-    defaults: ["//hardware/interfaces/automotive/vehicle/2.0/default:vhal_v2_0_target_defaults"],
-    srcs: [
-        "EmulatedUserHal.cpp",
-    ],
-    whole_static_libs: [
-        "android.hardware.automotive.vehicle@2.0-user-hal-helper-lib",
-    ],
-}
-
 
 // Emulator VehicleHAL implementation
 cc_library_static {
@@ -55,7 +41,6 @@ cc_library_static {
     header_libs: ["//hardware/interfaces/automotive/vehicle/2.0/default:vhal_v2_0_common_headers"],
     whole_static_libs: [
         "//hardware/interfaces/automotive/vehicle/2.0/default:android.hardware.automotive.vehicle@2.0-default-impl-lib",
-        "//hardware/interfaces/automotive/vehicle/2.0/default:android.hardware.automotive.vehicle@2.0-emulated-user-hal-lib",
     ],
     shared_libs: [
         "libbase",
