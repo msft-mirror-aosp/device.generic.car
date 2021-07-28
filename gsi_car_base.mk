@@ -18,6 +18,7 @@ PRODUCT_PACKAGES += android.frameworks.automotive.display@1.0-service
 
 # TODO(b/193056430): Improve this temp fix for "artifact path requirement"
 #                    errors.
+# TODO(b/194941497): SHIPSTOP - remove CarServiceModule & android.car.module
 PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     root/init.bootstat.rc \
     root/init.car.rc \
@@ -82,6 +83,7 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/etc/vintf/manifest/manifest_android.automotive.evs.manager@1.1.xml \
     system/framework/android.car.jar \
     system/framework/android.car.builtin.jar \
+    system/framework/android.car.module.jar \
     system/framework/car-frameworks-service.jar \
     system/framework/oat/arm64/car-frameworks-service.odex \
     system/framework/oat/arm64/car-frameworks-service.vdex \
@@ -120,6 +122,9 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/priv-app/CarService/lib/x86_64/libscriptexecutorjni.so \
     system/priv-app/CarService/oat/arm64/CarService.odex \
     system/priv-app/CarService/oat/arm64/CarService.vdex \
+    system/app/CarServiceModule/CarServiceModule.apk \
+    system/app/CarServiceModule/oat/arm64/CarServiceModule.odex \
+    system/app/CarServiceModule/oat/arm64/CarServiceModule.vdex \
     system/priv-app/CarSettings/CarSettings.apk \
     system/priv-app/CarShell/CarShell.apk \
     system/priv-app/CarShell/oat/arm64/CarShell.odex \
