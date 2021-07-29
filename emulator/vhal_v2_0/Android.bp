@@ -26,7 +26,7 @@ cc_library_static {
     name: "android.hardware.automotive.vehicle@2.0-emulator-impl-lib",
     visibility: ["//hardware/interfaces/automotive/vehicle/2.0:__subpackages__"],
     vendor: true,
-    defaults: ["//hardware/interfaces/automotive/vehicle/2.0/default:vhal_v2_0_target_defaults"],
+    defaults: ["vhal_v2_0_target_defaults"],
     cflags: ["-DENABLE_VENDOR_CLUSTER_PROPERTY_FOR_TESTING"],
     srcs: [
         "CommConn.cpp",
@@ -38,17 +38,39 @@ cc_library_static {
         "SocketComm.cpp",
         "PipeComm.cpp",
     ],
-    header_libs: ["//hardware/interfaces/automotive/vehicle/2.0/default:vhal_v2_0_common_headers"],
+    header_libs: ["vhal_v2_0_common_headers"],
     whole_static_libs: [
-        "//hardware/interfaces/automotive/vehicle/2.0/default:android.hardware.automotive.vehicle@2.0-default-impl-lib",
+        "android.hardware.automotive.vehicle@2.0-default-impl-lib",
     ],
     shared_libs: [
         "libbase",
         "libjsoncpp",
-        "//hardware/interfaces/automotive/vehicle/2.0/default/impl/vhal_v2_0/proto:libprotobuf-cpp-lite",
+        "libprotobuf-cpp-lite",
     ],
     export_include_dirs: ["."],
     static_libs: [
         "android.hardware.automotive.vehicle@2.0-libproto-native",
+    ],
+}
+
+cc_binary {
+    name: "android.hardware.automotive.vehicle@2.0-emulator-service",
+    defaults: ["vhal_v2_0_target_defaults"],
+    vintf_fragments: [
+        "android.hardware.automotive.vehicle@2.0-emulator-service.xml",
+    ],
+    init_rc: ["android.hardware.automotive.vehicle@2.0-emulator-service.rc"],
+    vendor: true,
+    relative_install_path: "hw",
+    srcs: ["VehicleService.cpp"],
+    shared_libs: [
+        "libbase",
+        "libjsoncpp",
+        "libprotobuf-cpp-lite",
+    ],
+    static_libs: [
+        "android.hardware.automotive.vehicle@2.0-manager-lib",
+        "android.hardware.automotive.vehicle@2.0-libproto-native",
+        "android.hardware.automotive.vehicle@2.0-emulator-impl-lib",
     ],
 }
