@@ -118,8 +118,8 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/priv-app/CarRadioApp/CarRadioApp.apk \
     system/priv-app/CarRotaryController/CarRotaryController.apk \
     system/priv-app/CarService/CarService.apk \
-    system/priv-app/CarService/lib/arm64/libscriptexecutorjni.so \
-    system/priv-app/CarService/lib/x86_64/libscriptexecutorjni.so \
+    system/app/CarServiceUpdatable/lib/arm64/libscriptexecutorjni.so \
+    system/app/CarServiceUpdatable/lib/x86_64/libscriptexecutorjni.so \
     system/priv-app/CarService/oat/arm64/CarService.odex \
     system/priv-app/CarService/oat/arm64/CarService.vdex \
     system/app/CarServiceModule/CarServiceModule.apk \
@@ -151,12 +151,12 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/priv-app/LocalMediaPlayer/LocalMediaPlayer.apk \
     system/priv-app/NetworkPreferenceApp/NetworkPreferenceApp.apk \
     system/lib64/libcarservicejni.so \
-    system/priv-app/CarService/lib/arm64/libcarservicejni.so \
-    system/priv-app/CarService/lib/x86_64/libcarservicejni.so \
+    system/app/CarServiceUpdatable/lib/arm64/libcarservicejni.so \
+    system/app/CarServiceUpdatable/lib/x86_64/libcarservicejni.so \
     system/lib64/libscriptexecutor.so \
     system/lib64/libscriptexecutorjni.so \
-    system/priv-app/CarService/lib/arm64/libscriptexecutorjni.so \
-    system/priv-app/CarService/lib/x86_64/libscriptexecutorjni.so \
+    system/app/CarServiceUpdatable/lib/arm64/libscriptexecutorjni.so \
+    system/app/CarServiceUpdatable/lib/x86_64/libscriptexecutorjni.so \
     system/bin/android.automotive.telemetryd@1.0 \
     system/etc/init/android.automotive.telemetryd@1.0.rc \
     system/etc/vintf/manifest/android.automotive.telemetryd@1.0.xml \
