@@ -125,6 +125,9 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/app/CarServiceModule/CarServiceModule.apk \
     system/app/CarServiceModule/oat/arm64/CarServiceModule.odex \
     system/app/CarServiceModule/oat/arm64/CarServiceModule.vdex \
+    system/app/CarServiceUpdatable/CarServiceUpdatable.apk \
+    system/app/CarServiceUpdatable/oat/arm64/CarServiceUpdatable.odex \
+    system/app/CarServiceUpdatable/oat/arm64/CarServiceUpdatable.vdex \
     system/priv-app/CarSettings/CarSettings.apk \
     system/priv-app/CarShell/CarShell.apk \
     system/priv-app/CarShell/oat/arm64/CarShell.odex \
