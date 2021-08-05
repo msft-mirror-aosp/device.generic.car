@@ -192,6 +192,17 @@ void VehicleEmulator::doSetProperty(VehicleEmulator::EmulatorMessage const& rxMs
     respMsg.set_status(halRes ? vhal_proto::RESULT_OK : vhal_proto::ERROR_INVALID_PROPERTY);
 }
 
+void VehicleEmulator::doDebug(vhal_proto::EmulatorMessage const& rxMsg,
+                              vhal_proto::EmulatorMessage& respMsg) {
+    auto protoCommands = rxMsg.debug_commands();
+    std::vector<std::string> commands = std::vector<std::string>(
+            protoCommands.begin(), protoCommands.end());
+    IVehicleServer::DumpResult result = mHal->debug(commands);
+    respMsg.set_status(vhal_proto::RESULT_OK);
+    respMsg.set_msg_type(vhal_proto::DEBUG_RESP);
+    respMsg.set_debug_result(result.buffer);
+}
+
 void VehicleEmulator::processMessage(vhal_proto::EmulatorMessage const& rxMsg,
                                      vhal_proto::EmulatorMessage& respMsg) {
     switch (rxMsg.msg_type()) {
@@ -209,6 +220,9 @@ void VehicleEmulator::processMessage(vhal_proto::EmulatorMessage const& rxMsg,
             break;
         case vhal_proto::SET_PROPERTY_CMD:
             doSetProperty(rxMsg, respMsg);
+            break;
+        case vhal_proto::DEBUG_CMD:
+            doDebug(rxMsg, respMsg);
             break;
         default:
             ALOGW("%s: Unknown message received, type = %d", __func__, rxMsg.msg_type());
