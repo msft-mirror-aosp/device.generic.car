@@ -44,6 +44,8 @@ class EmulatedVehicleHalServer : public DefaultVehicleHalServer, public Emulated
 
     VehiclePropValuePtr get(const VehiclePropValue& requestedPropValue, StatusCode* outStatus);
 
+    IVehicleServer::DumpResult debug(const std::vector<std::string>& options);
+
   private:
     bool mInQEMU;
 };

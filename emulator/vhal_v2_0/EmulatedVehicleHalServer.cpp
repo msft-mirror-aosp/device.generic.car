@@ -85,6 +85,10 @@ EmulatedVehicleHalServer::VehiclePropValuePtr EmulatedVehicleHalServer::get(
     return v;
 }
 
+IVehicleServer::DumpResult EmulatedVehicleHalServer::debug(const std::vector<std::string>& options){
+    return DefaultVehicleHalServer::onDump(options);
+}
+
 }  // namespace impl
 
 }  // namespace V2_0

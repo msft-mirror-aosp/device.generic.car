@@ -23,6 +23,7 @@
 #include <vector>
 
 #include <vhal_v2_0/VehicleHal.h>
+#include <vhal_v2_0/VehicleServer.h>
 
 #include "CommConn.h"
 #include "PipeComm.h"
@@ -49,6 +50,7 @@ class EmulatedServerIface {
     virtual std::vector<VehiclePropConfig> listProperties() = 0;
     virtual VehiclePropValuePtr get(const VehiclePropValue& requestedPropValue,
                                     StatusCode* outStatus) = 0;
+    virtual IVehicleServer::DumpResult debug(const std::vector<std::string>& options) = 0;
 
     void registerEmulator(VehicleEmulator* emulator) {
         ALOGI("%s, emulator: %p", __func__, emulator);
@@ -89,6 +91,7 @@ class VehicleEmulator : public MessageProcessor {
     void doGetProperty(EmulatorMessage const& rxMsg, EmulatorMessage& respMsg);
     void doGetPropertyAll(EmulatorMessage const& rxMsg, EmulatorMessage& respMsg);
     void doSetProperty(EmulatorMessage const& rxMsg, EmulatorMessage& respMsg);
+    void doDebug(EmulatorMessage const& rxMsg, EmulatorMessage& respMsg);
     void populateProtoVehicleConfig(vhal_proto::VehiclePropConfig* protoCfg,
                                     const VehiclePropConfig& cfg);
     void populateProtoVehiclePropValue(vhal_proto::VehiclePropValue* protoVal,
