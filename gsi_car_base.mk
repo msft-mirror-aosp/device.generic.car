@@ -38,6 +38,9 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/app/SampleRearViewCamera/SampleRearViewCamera.apk \
     system/app/SampleRearViewCamera/oat/arm64/SampleRearViewCamera.odex \
     system/app/SampleRearViewCamera/oat/arm64/SampleRearViewCamera.vdex \
+    system/app/ScriptExecutor/ScriptExecutor.apk \
+    system/app/ScriptExecutor/lib/arm64/libscriptexecutorjni.so \
+    system/app/ScriptExecutor/lib/x86_64/libscriptexecutorjni.so \
     system/app/SystemUpdater/SystemUpdater.apk \
     system/bin/android.automotive.evs.manager@1.1 \
     system/bin/carbugreportd \
