@@ -89,6 +89,9 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/framework/car-frameworks-service.jar \
     system/framework/oat/arm64/car-frameworks-service.odex \
     system/framework/oat/arm64/car-frameworks-service.vdex \
+    system/framework/car-frameworks-service-module.jar \
+    system/framework/oat/arm64/car-frameworks-service-module.odex \
+    system/framework/oat/arm64/car-frameworks-service-module.vdex \
     system/lib/libcar-framework-service-jni.so \
     system/lib/libsuspend.so \
     system/lib64/android.automotive.watchdog-V3-cpp.so \
