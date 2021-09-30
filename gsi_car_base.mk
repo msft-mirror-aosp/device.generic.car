@@ -62,6 +62,7 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/etc/permissions/android.car.usb.handler.xml \
     system/etc/permissions/android.hardware.broadcastradio.xml \
     system/etc/permissions/android.hardware.type.automotive.xml \
+    system/etc/permissions/car-frameworks-service.xml \
     system/etc/permissions/com.android.car.activityresolver.xml \
     system/etc/permissions/com.android.car.bugreport.xml \
     system/etc/permissions/com.android.car.carlauncher.xml \
