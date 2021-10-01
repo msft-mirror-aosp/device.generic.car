@@ -62,6 +62,7 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/etc/permissions/android.car.usb.handler.xml \
     system/etc/permissions/android.hardware.broadcastradio.xml \
     system/etc/permissions/android.hardware.type.automotive.xml \
+    system/etc/permissions/car-frameworks-service.xml \
     system/etc/permissions/com.android.car.activityresolver.xml \
     system/etc/permissions/com.android.car.bugreport.xml \
     system/etc/permissions/com.android.car.carlauncher.xml \
@@ -89,6 +90,9 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/framework/car-frameworks-service.jar \
     system/framework/oat/arm64/car-frameworks-service.odex \
     system/framework/oat/arm64/car-frameworks-service.vdex \
+    system/framework/car-frameworks-service-module.jar \
+    system/framework/oat/arm64/car-frameworks-service-module.odex \
+    system/framework/oat/arm64/car-frameworks-service-module.vdex \
     system/lib/libcar-framework-service-jni.so \
     system/lib/libsuspend.so \
     system/lib64/android.automotive.watchdog-V3-cpp.so \
