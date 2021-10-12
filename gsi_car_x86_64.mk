@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2020 Google Inc.
+# Copyright (C) 2021 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,11 +12,15 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-##
-# Car Rotary Controller for Android Automotive.
 
-PRODUCT_PACKAGES += \
-    CarRotaryController \
-    RotaryPlayground \
-    RotaryIME \
-    CarRotaryImeRRO \
+$(call inherit-product, device/generic/car/gsi_car_base.mk)
+$(call inherit-product, device/generic/common/gsi_x86_64.mk)
+
+# This option is specific to the phone GSI, so clear this option after
+# gsi_x86_64.mk is inherited.
+PRODUCT_INSTALL_DEBUG_POLICY_TO_SYSTEM_EXT :=
+
+PRODUCT_NAME := gsi_car_x86_64
+PRODUCT_DEVICE := generic_x86_64
+PRODUCT_BRAND := Android
+PRODUCT_MODEL := Car GSI on x86_64
