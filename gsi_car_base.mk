@@ -111,6 +111,7 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/priv-app/CarDialerApp/CarDialerApp.apk \
     system/priv-app/CarHvacApp/CarHvacApp.apk \
     system/priv-app/CarLauncher/CarLauncher.apk \
+    system/priv-app/CarManagedProvisioning/CarManagedProvisioning.apk \
     system/priv-app/CarMediaApp/CarMediaApp.apk \
     system/priv-app/CarMessengerApp/CarMessengerApp.apk \
     system/priv-app/CarRadioApp/CarRadioApp.apk \
