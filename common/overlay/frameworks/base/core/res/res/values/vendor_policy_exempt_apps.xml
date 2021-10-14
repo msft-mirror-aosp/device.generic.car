@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  ~ Copyright (C) 2020 The Android Open Source Project
+  ~ Copyright (C) 2021 The Android Open Source Project
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~ you may not use this file except in compliance with the License.
@@ -15,6 +15,17 @@
   ~ limitations under the License.
   -->
 <resources>
-    <!-- Component name of rotary IME. Empty if none. Overlaid to use demo rotary IME. -->
-    <string name="rotary_input_method" translatable="false">com.android.car.rotaryime/.RotaryIme</string>
+    <!--
+    A collection of apps that are critical for the device and hence will never be disabled by
+    device policies or APIs.
+    -->
+    <string-array translatable="false" name="vendor_policy_exempt_apps">
+        <!-- This is just an example; on real products this list would
+             contain apps like:
+             - Rear-view camera
+             - Driver assistance
+             - Vehicle warnings
+        -->
+        <item>com.google.android.car.netdbug</item>
+    </string-array>
 </resources>

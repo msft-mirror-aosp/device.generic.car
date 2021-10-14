@@ -18,8 +18,7 @@
 # TODO: Add broadcastradio@.2.0 back once it's stable b/145694104
 PRODUCT_PACKAGES += \
     android.hardware.automotive.vehicle@2.0-service \
-    android.hardware.automotive.audiocontrol@2.0-service \
-    android.frameworks.automotive.display@1.0-service \
+    android.hardware.audio.service-caremu
 
 # Emulator configuration
 PRODUCT_COPY_FILES += \
@@ -45,10 +44,6 @@ PRODUCT_COPY_FILES += \
     device/generic/car/common/android.hardware.disable.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.raw.xml \
     device/generic/car/common/android.hardware.disable.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.fingerprint.xml \
     device/generic/car/common/android.hardware.disable.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.direct.xml \
-
-# Overwrite goldfish fstab.ranchu to turn off adoptable_storage
-PRODUCT_COPY_FILES += \
-    device/generic/car/common/fstab.ranchu.car:$(TARGET_COPY_OUT_VENDOR)/etc/fstab.ranchu
 
 # Enable landscape
 PRODUCT_COPY_FILES += \
@@ -83,12 +78,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
   device/generic/car/common/preinstalled-packages-product-car-emulator.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/sysconfig/preinstalled-packages-product-car-emulator.xml
 
-# Multi-user properties
-PRODUCT_SYSTEM_DEFAULT_PROPERTIES := \
-    android.car.number_pre_created_users=1 \
-    android.car.number_pre_created_guests=1 \
-    android.car.user_hal_enabled=true
-
 # Additional selinux policy
 BOARD_SEPOLICY_DIRS += device/generic/car/common/sepolicy
 
@@ -99,5 +88,4 @@ ifneq (,$(filter aosp_car_x86_64 aosp_car_arm64,$(TARGET_PRODUCT)))
 $(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_release.mk)
 endif
 
-$(call inherit-product, packages/services/Car/evs/sepolicy/evs.mk)
 $(call inherit-product, packages/services/Car/car_product/build/car.mk)
