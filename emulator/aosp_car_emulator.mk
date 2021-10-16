@@ -41,7 +41,3 @@ else
 DEVICE_PACKAGE_OVERLAYS += device/generic/car/emulator/cluster/overlay
 endif  # ENABLE_CLUSTER_OS_DOUBLE
 endif  # BUILD_EMULATOR_CLUSTER_DISPLAY
-
-# Define the host tools and libs that are parts of the SDK.
-$(call inherit-product, sdk/build/product_sdk.mk)
-$(call inherit-product, development/build/product_sdk.mk)
