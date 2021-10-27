@@ -34,7 +34,8 @@ PRODUCT_COPY_FILES += \
     device/generic/car/emulator/cluster/display_settings.xml:system/etc/display_settings.xml
 PRODUCT_PRODUCT_PROPERTIES += \
     hwservicemanager.external.displays=1,400,600,120,0 \
-    persist.service.bootanim.displays=8140900251843329
+    persist.service.bootanim.displays=8140900251843329 \
+    ro.carwatchdog.vhal_healthcheck.interval=10
 ifeq (true,$(ENABLE_CLUSTER_OS_DOUBLE))
 DEVICE_PACKAGE_OVERLAYS += device/generic/car/emulator/cluster/osdouble_overlay
 else
