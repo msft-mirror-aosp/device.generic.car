@@ -24,21 +24,15 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     root/init.car.rc \
     system/apex/com.android.car.framework.apex \
     system/app/CarFrameworkPackageStubs/CarFrameworkPackageStubs.apk \
-    system/app/CarFrameworkPackageStubs/oat/arm64/CarFrameworkPackageStubs.odex \
-    system/app/CarFrameworkPackageStubs/oat/arm64/CarFrameworkPackageStubs.vdex \
     system/app/CarHTMLViewer/CarHTMLViewer.apk \
     system/app/CarLatinIME/CarLatinIME.apk \
     system/app/CarMapsPlaceholder/CarMapsPlaceholder.apk \
     system/app/CarPermissionControllerRRO/CarPermissionControllerRRO.apk \
     system/app/RotaryIME/RotaryIME.apk \
-    system/app/RotaryIME/oat/arm64/RotaryIME.odex \
-    system/app/RotaryIME/oat/arm64/RotaryIME.vdex \
     system/app/CarRotaryImeRRO/CarRotaryImeRRO.apk \
     system/app/RotaryPlayground/RotaryPlayground.apk \
     system/app/SampleCustomInputService/SampleCustomInputService.apk \
     system/app/SampleRearViewCamera/SampleRearViewCamera.apk \
-    system/app/SampleRearViewCamera/oat/arm64/SampleRearViewCamera.odex \
-    system/app/SampleRearViewCamera/oat/arm64/SampleRearViewCamera.vdex \
     system/app/ScriptExecutor/ScriptExecutor.apk \
     system/app/ScriptExecutor/lib/arm64/libscriptexecutorjni.so \
     system/app/ScriptExecutor/lib/x86_64/libscriptexecutorjni.so \
@@ -89,11 +83,7 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/framework/android.car.jar \
     system/framework/android.car.builtin.jar \
     system/framework/car-frameworks-service.jar \
-    system/framework/oat/arm64/car-frameworks-service.odex \
-    system/framework/oat/arm64/car-frameworks-service.vdex \
     system/framework/car-frameworks-service-module.jar \
-    system/framework/oat/arm64/car-frameworks-service-module.odex \
-    system/framework/oat/arm64/car-frameworks-service-module.vdex \
     system/lib/libcar-framework-service-jni.so \
     system/lib/libsuspend.so \
     system/lib64/android.automotive.watchdog-V3-cpp.so \
@@ -115,8 +105,6 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/media/bootanimation.zip \
     system/priv-app/BugReportApp/BugReportApp.apk \
     system/priv-app/CarActivityResolver/CarActivityResolver.apk \
-    system/priv-app/CarActivityResolver/oat/arm64/CarActivityResolver.odex \
-    system/priv-app/CarActivityResolver/oat/arm64/CarActivityResolver.vdex \
     system/priv-app/CarDialerApp/CarDialerApp.apk \
     system/priv-app/CarHvacApp/CarHvacApp.apk \
     system/priv-app/CarLauncher/CarLauncher.apk \
@@ -128,29 +116,15 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/priv-app/CarService/CarService.apk \
     system/app/CarServiceUpdatable/lib/arm64/libscriptexecutorjni.so \
     system/app/CarServiceUpdatable/lib/x86_64/libscriptexecutorjni.so \
-    system/priv-app/CarService/oat/arm64/CarService.odex \
-    system/priv-app/CarService/oat/arm64/CarService.vdex \
     system/app/CarServiceUpdatable/CarServiceUpdatable.apk \
-    system/app/CarServiceUpdatable/oat/arm64/CarServiceUpdatable.odex \
-    system/app/CarServiceUpdatable/oat/arm64/CarServiceUpdatable.vdex \
     system/priv-app/CarSettings/CarSettings.apk \
     system/priv-app/CarShell/CarShell.apk \
-    system/priv-app/CarShell/oat/arm64/CarShell.odex \
-    system/priv-app/CarShell/oat/arm64/CarShell.vdex \
     system/priv-app/CarUsbHandler/CarUsbHandler.apk \
-    system/priv-app/CarUsbHandler/oat/arm64/CarUsbHandler.odex \
-    system/priv-app/CarUsbHandler/oat/arm64/CarUsbHandler.vdex \
     system/priv-app/ClusterHomeSample/ClusterHomeSample.apk \
-    system/priv-app/ClusterHomeSample/oat/arm64/ClusterHomeSample.odex \
-    system/priv-app/ClusterHomeSample/oat/arm64/ClusterHomeSample.vdex \
     system/priv-app/DefaultStorageMonitoringCompanionApp/DefaultStorageMonitoringCompanionApp.apk \
     system/priv-app/DirectRenderingCluster/DirectRenderingCluster.apk \
-    system/priv-app/DirectRenderingCluster/oat/arm64/DirectRenderingCluster.odex \
-    system/priv-app/DirectRenderingCluster/oat/arm64/DirectRenderingCluster.vdex \
     system/priv-app/EmbeddedKitchenSinkApp/EmbeddedKitchenSinkApp.apk \
     system/priv-app/ExperimentalCarService/ExperimentalCarService.apk \
-    system/priv-app/ExperimentalCarService/oat/arm64/ExperimentalCarService.odex \
-    system/priv-app/ExperimentalCarService/oat/arm64/ExperimentalCarService.vdex \
     system/priv-app/AdasLocationTestApp/AdasLocationTestApp.apk \
     system/priv-app/GarageModeTestApp/GarageModeTestApp.apk \
     system/priv-app/LocalMediaPlayer/LocalMediaPlayer.apk \
