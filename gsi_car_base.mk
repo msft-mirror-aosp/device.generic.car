@@ -84,7 +84,6 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/framework/android.car.builtin.jar \
     system/framework/car-frameworks-service.jar \
     system/framework/car-frameworks-service-module.jar \
-    system/lib/libcar-framework-service-jni.so \
     system/lib/libsuspend.so \
     system/lib64/android.automotive.watchdog-V3-cpp.so \
     system/lib64/android.automotive.watchdog.internal-cpp.so \
@@ -94,7 +93,6 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/lib64/android.hardware.automotive.evs@1.0.so \
     system/lib64/android.hardware.automotive.evs@1.1.so \
     system/lib64/android.hardware.automotive.vehicle@2.0.so \
-    system/lib64/libcar-framework-service-jni.so \
     system/lib64/libscriptexecutor.so \
     system/lib64/libscriptexecutorjni.so \
     system/lib64/libsuspend.so \
