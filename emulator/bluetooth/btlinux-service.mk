@@ -19,8 +19,11 @@
 PRODUCT_PACKAGES += \
     android.hardware.bluetooth@1.1-service.btlinux \
 
+# Allow sepolicies to be excluded in GSI targets.
+ifeq ($(DO_NOT_INCLUDE_BT_SEPOLICY),)
 BOARD_SEPOLICY_DIRS += \
-    device/generic/car/emulator/bluetooth/sepolicy \
+    device/generic/car/emulator/bluetooth/sepolicy
+endif
 
 PRODUCT_COPY_FILES += \
     device/generic/car/emulator/bluetooth/vendor.qemu.preferred.bt.service.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/vendor.qemu.preferred.bt.service.rc \
