@@ -16,34 +16,43 @@
 
 #pragma once
 
-#include <android/hardware/automotive/vehicle/2.0/types.h>
+#include <aidl/device/generic/car/emulator/BnVehicleBus.h>
+#include <aidl/device/generic/car/emulator/IVehicleBusCallback.h>
 
-namespace android::hardware::automotive::vehicle::V2_0::utils {
+#include <android-base/thread_annotations.h>
 
-class Vehicle;
+namespace aidl::android::hardware::automotive::vehicle {
 
-class VehicleBus : public virtual RefBase {
+class VehicleBus : public device::generic::car::emulator::BnVehicleBus {
 public:
-    using PropertyCallback = std::function<void(const hidl_vec<vehicle::V2_0::VehiclePropValue>&)>;
+    using IVehicleBusCallback = aidl::device::generic::car::emulator::IVehicleBusCallback;
 
+    enum {
+        ERROR_INVALID_OPERATION = 1,
+    };
+
+    VehicleBus();
     virtual ~VehicleBus();
 
-    virtual const std::vector<vehicle::V2_0::VehicleProperty>& getSupportedProperties() const = 0;
-    virtual vehicle::V2_0::StatusCode set(const vehicle::V2_0::VehiclePropValue& propValue) = 0;
+    virtual ::ndk::ScopedAStatus setOnNewPropValuesCallback(
+        const std::shared_ptr<IVehicleBusCallback>& callback);
+    virtual ::ndk::ScopedAStatus unsetOnNewPropValuesCallback(
+        const std::shared_ptr<IVehicleBusCallback>& callback);
+    virtual ::ndk::ScopedAStatus start();
 
 protected:
-    virtual void start();
-    void sendPropertyEvent(const hidl_vec<vehicle::V2_0::VehiclePropValue>& propValues);
-
-    static void updateTimestamps(std::vector<VehiclePropValue>& propValues, uint64_t timestamp);
+    void sendPropertyEvent(const std::vector<VehiclePropValue>& propValues);
+    static void updateTimestamps(std::vector<VehiclePropValue>& propValues,
+                                 uint64_t timestamp);
 
   private:
-    std::atomic<bool> mIsStarted = false;
-    PropertyCallback mPropertyCallback;
+    std::mutex mLock;
+    std::shared_ptr<IVehicleBusCallback> mVehicleBusCallback GUARDED_BY(mLock);
+    ::ndk::ScopedAIBinder_DeathRecipient mDeathRecipient;
 
-    void setPropertyCallback(PropertyCallback propertyCb);
+    void handleBinderDied();
+    static void onBinderDied(void* cookie);
 
-    friend class Vehicle;  // calling setPropertyCallback() and start()
 };
 
-}  // namespace android::hardware::automotive::vehicle::V2_0::utils
+};  // namespace aidl::android::hardware::automotive::vehicle

@@ -4,25 +4,27 @@
 
 #include "ExtraCanClient.h"
 
-#include "VendorProperties.h"
+#include <VehicleUtils.h>
+#include <VehicleHalTypes.h>
 
-#include <android-base/logging.h>
 #include <android/hardware/automotive/vehicle/2.0/types.h>
+#include <android-base/logging.h>
 #include <android/keycodes.h>
 #include <libprotocan/MessageDef.h>
-#include <libvehiclehal/VehicleUtils.h>
 
 #include <cmath>
 #include <set>
 
-namespace android::hardware::automotive::vehicle::V2_0::implementation {
+namespace android::hardware::automotive::vehicle::V2_0::impl {
 
 using can::V1_0::CanMessage;
 using can::V1_0::CanMessageId;
 using can::V1_0::ICanBus;
 using protocan::MessageDef;
 using protocan::Signal;
-using utils::toInt;
+using ::aidl::android::hardware::automotive::vehicle::VehicleArea;
+using ::aidl::android::hardware::automotive::vehicle::VehiclePropertyStatus;
+using ::aidl::android::hardware::automotive::vehicle::VehicleProperty;
 
 namespace can {
 // clang-format off
@@ -49,14 +51,7 @@ void ExtraCanClient::onReady(const sp<ICanBus>& canBus) {
     canBus->send(msg);
 }
 
-const std::vector<VehicleProperty>& ExtraCanClient::getSupportedProperties() const {
-    static std::vector<VehicleProperty> properties = {
-            VehicleProperty::HW_KEY_INPUT,
-    };
-    return properties;
-}
-
-static void appendKeyInput(std::vector<VehiclePropValue>& props, int32_t keyCode, bool keyDown) {
+void ExtraCanClient::appendKeyInput(std::vector<VehiclePropValue>& props, int32_t keyCode, bool keyDown) {
     VehiclePropValue prop = {};
 
     prop.areaId = toInt(VehicleArea::GLOBAL);
@@ -72,7 +67,7 @@ static void appendKeyInput(std::vector<VehiclePropValue>& props, int32_t keyCode
     props.push_back(prop);
 }
 
-static void appendRepeatedKeyInput(std::vector<VehiclePropValue>& props, int32_t keyCode,
+void ExtraCanClient::appendRepeatedKeyInput(std::vector<VehiclePropValue>& props, int32_t keyCode,
                                    unsigned repeat) {
     for (unsigned i = 0; i < repeat; i++) {
         appendKeyInput(props, keyCode, true);
@@ -97,7 +92,7 @@ std::set<int> decodeButtons(uint16_t val) {
     return buttons;
 }
 
-Return<void> ExtraCanClient::onReceive(const CanMessage& message) {
+::android::hardware::Return<void> ExtraCanClient::onReceive(const CanMessage& message) {
     std::vector<VehiclePropValue> props;
 
     if (message.id == can::EncEvent.id) {
@@ -138,9 +133,4 @@ Return<void> ExtraCanClient::onReceive(const CanMessage& message) {
     return {};
 }
 
-StatusCode ExtraCanClient::set(const VehiclePropValue& propValue) {
-    LOG(ERROR) << "Received set request for unexpected property: " << toString(propValue);
-    return StatusCode::INTERNAL_ERROR;
-}
-
-}  // namespace android::hardware::automotive::vehicle::V2_0::implementation
+}  // namespace aidl::android::hardware::automotive::vehicle

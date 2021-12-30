@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#include <libcanhal/CanClient.h>
+#include "CanClient.h"
 
 #include <android-base/logging.h>
 #include <android/hardware/automotive/can/1.0/ICanMessageListener.h>
@@ -30,14 +30,14 @@ namespace utils {
 
 using hidl::manager::V1_1::IServiceManager;
 using hidl::manager::V1_0::IServiceNotification;
-using vehicle::V2_0::VehiclePropValue;
 
 CanClient::CanClient(const std::string& busName) : mBusName(busName) {}
 
-void CanClient::start() {
+::ndk::ScopedAStatus CanClient::start() {
     VehicleBus::start();
     LOG(VERBOSE) << "Waiting for ICanBus/" << mBusName;
     ICanBus::registerForNotifications(mBusName, static_cast<IServiceNotification*>(this));
+    return ::ndk::ScopedAStatus::ok();
 }
 
 CanClient::~CanClient() {

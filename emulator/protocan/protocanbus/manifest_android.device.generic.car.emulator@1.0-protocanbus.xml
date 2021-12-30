@@ -11,9 +11,8 @@
      limitations under the License.
 -->
 <manifest version="1.0" type="device">
-    <hal format="hidl">
-        <name>android.hardware.automotive.vehicle</name>
-        <transport>hwbinder</transport>
-        <fqname>@2.0::IVehicle/protocan</fqname>
+    <hal format="aidl">
+        <name>device.generic.car.emulator</name>
+        <fqname>IVehicleBus/protocanbus</fqname>
     </hal>
 </manifest>

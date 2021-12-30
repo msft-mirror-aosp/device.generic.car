@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#include <libcanhal/CloseHandleWrapper.h>
+#include "CloseHandleWrapper.h"
 
 #include <android-base/logging.h>
 

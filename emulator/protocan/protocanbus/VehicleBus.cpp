@@ -14,35 +14,83 @@
  * limitations under the License.
  */
 
-#include <libvehiclehal/VehicleBus.h>
+#include <VehicleBus.h>
+
+#include <android/binder_auto_utils.h>
 
 #include <android-base/logging.h>
 
-namespace android::hardware::automotive::vehicle::V2_0::utils {
+namespace aidl::android::hardware::automotive::vehicle {
+
+VehicleBus::VehicleBus() {
+    mDeathRecipient = ::ndk::ScopedAIBinder_DeathRecipient(
+            AIBinder_DeathRecipient_new(&VehicleBus::onBinderDied));
+}
 
 VehicleBus::~VehicleBus() {}
 
-void VehicleBus::start() {
-    bool wasStarted = mIsStarted.exchange(true);
-    CHECK(!wasStarted) << "CanClient was already started";
+::ndk::ScopedAStatus VehicleBus::start() {
+    return ::ndk::ScopedAStatus::ok();
 }
 
-void VehicleBus::setPropertyCallback(PropertyCallback propertyCb) {
-    CHECK(!mIsStarted) << "Can't set callback when VehicleBus is started";
-    CHECK(mPropertyCallback == nullptr) << "Can't set callback twice";
-    mPropertyCallback = propertyCb;
-    CHECK(!mIsStarted) << "Can't set callback when VehicleBus is started";
+::ndk::ScopedAStatus VehicleBus::setOnNewPropValuesCallback(
+    const std::shared_ptr<IVehicleBusCallback>& callback) {
+    std::lock_guard<std::mutex> g(mLock);
+
+    if (mVehicleBusCallback) {
+        return ::ndk::ScopedAStatus::fromServiceSpecificErrorWithMessage(
+            ERROR_INVALID_OPERATION, "Can't set callback twice!");
+
+    }
+
+    AIBinder_linkToDeath(callback->asBinder().get(), mDeathRecipient.get(),
+                         static_cast<void*>(this));
+    mVehicleBusCallback = callback;
+    return ::ndk::ScopedAStatus::ok();
 }
 
-void VehicleBus::sendPropertyEvent(const hidl_vec<VehiclePropValue>& propValues) {
-    CHECK(mPropertyCallback != nullptr) << "Callback isn't set";
-    mPropertyCallback(propValues);
+::ndk::ScopedAStatus VehicleBus::unsetOnNewPropValuesCallback(
+        const std::shared_ptr<IVehicleBusCallback>& callback) {
+    std::lock_guard<std::mutex> g(mLock);
+
+    if (mVehicleBusCallback != callback) {
+        return ::ndk::ScopedAStatus::fromServiceSpecificErrorWithMessage(
+            ERROR_INVALID_OPERATION, "Invalid callback argument");
+    }
+
+    AIBinder_unlinkToDeath(callback->asBinder().get(), mDeathRecipient.get(),
+                           static_cast<void*>(this));
+    mVehicleBusCallback = nullptr;
+    return ::ndk::ScopedAStatus::ok();
 }
 
-void VehicleBus::updateTimestamps(std::vector<VehiclePropValue>& propValues, uint64_t timestamp) {
+void VehicleBus::sendPropertyEvent(
+    const std::vector<VehiclePropValue>& propValues) {
+    std::lock_guard<std::mutex> g(mLock);
+
+    if (mVehicleBusCallback == nullptr) {
+        LOG(ERROR) << "Callback isn't set";
+        return;
+    }
+    mVehicleBusCallback->onNewPropValues(propValues);
+}
+
+void VehicleBus::updateTimestamps(std::vector<VehiclePropValue>& propValues,
+                                  uint64_t timestamp) {
     for (auto&& pv : propValues) {
         pv.timestamp = timestamp;
     }
 }
 
-}  // namespace android::hardware::automotive::vehicle::V2_0::utils
+void VehicleBus::onBinderDied(void* cookie) {
+    VehicleBus* server = reinterpret_cast<VehicleBus*>(cookie);
+    server->handleBinderDied();
+}
+
+void VehicleBus::handleBinderDied() {
+    std::lock_guard<std::mutex> g(mLock);
+    mVehicleBusCallback = nullptr;
+    LOG(ERROR) << "Received onBinderDied on registered VehicleBusCallback";
+}
+
+};  // namespace aidl::android::hardware::automotive::vehicle

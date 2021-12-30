@@ -19,10 +19,9 @@
 #include "CloseHandleWrapper.h"
 
 #include <android/hardware/automotive/can/1.0/ICanBus.h>
-#include <android/hardware/automotive/vehicle/2.0/types.h>
 #include <android/hidl/manager/1.0/IServiceNotification.h>
-#include <libvehiclehal/VehicleBus.h>
 #include <utils/Mutex.h>
+#include <VehicleBus.h>
 
 namespace android {
 namespace hardware {
@@ -31,25 +30,22 @@ namespace can {
 namespace V1_0 {
 namespace utils {
 
-class CanClient : public vehicle::V2_0::utils::VehicleBus,
-                  private hidl::manager::V1_0::IServiceNotification,
+class CanClient : public ::aidl::android::hardware::automotive::vehicle::VehicleBus,
+                  public hidl::manager::V1_0::IServiceNotification,
                   private ICanErrorListener,
                   private ICanMessageListener,
                   private hidl_death_recipient {
 public:
     virtual ~CanClient();
 
-    virtual void start();
-
-    virtual const std::vector<vehicle::V2_0::VehicleProperty>& getSupportedProperties() const = 0;
-    virtual vehicle::V2_0::StatusCode set(const vehicle::V2_0::VehiclePropValue& propValue) = 0;
+    virtual ::ndk::ScopedAStatus start();
 
 protected:
     CanClient(const std::string& busName);
 
     virtual void onReady(const sp<ICanBus>& canBus);
 
-  private:
+private:
     const std::string mBusName;
 
     CloseHandleWrapper mListenerCloseHandle;
