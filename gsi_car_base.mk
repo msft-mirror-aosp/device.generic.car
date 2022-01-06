@@ -90,7 +90,7 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/lib64/android.frameworks.automotive.display@1.0.so \
     system/lib64/android.frameworks.automotive.powerpolicy-V1-cpp.so \
     system/lib64/android.frameworks.automotive.powerpolicy-V1-ndk.so \
-    system/lib64/android.frameworks.automotive.powerpolicy.internal-cpp.so \
+    system/lib64/android.frameworks.automotive.powerpolicy.internal-V1-cpp.so \
     system/lib64/android.hardware.automotive.evs@1.0.so \
     system/lib64/android.hardware.automotive.evs@1.1.so \
     system/lib64/android.hardware.automotive.vehicle@2.0.so \
