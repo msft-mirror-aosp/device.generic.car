@@ -13,8 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#ifndef ANDROID_CORE_INCLUDE_QEMU_PIPE_H
-#define ANDROID_CORE_INCLUDE_QEMU_PIPE_H
+
+#ifndef ANDROID_EMULATORPIPECOMM_QEMU_PIPE_H
+#define ANDROID_EMULATORPIPECOMM_QEMU_PIPE_H
 
 #include <stddef.h>
 
@@ -61,4 +62,4 @@ int qemu_pipe_frame_recv(int fd, void* buff, size_t len);
 }
 #endif
 
-#endif /* ANDROID_CORE_INCLUDE_QEMU_PIPE_H */
+#endif  // ANDROID_EMULATORPIPECOMM_QEMU_PIPE_H
