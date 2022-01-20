@@ -92,6 +92,9 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/lib64/android.hardware.automotive.evs@1.0.so \
     system/lib64/android.hardware.automotive.evs@1.1.so \
     system/lib64/android.hardware.automotive.vehicle@2.0.so \
+    system/lib64/android.os.statsbootstrap_aidl-cpp.so \
+    system/lib64/libstatsbootstrap.so \
+    system/lib64/libstatslog_evs.so \
     system/lib64/libsuspend.so \
     system/lib64/libwatchdog_binder_mediator.so \
     system/lib64/libwatchdog_package_info_resolver.so \
