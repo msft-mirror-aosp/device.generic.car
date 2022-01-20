@@ -46,6 +46,7 @@ cc_library_static {
         "libbase",
         "libjsoncpp",
         "libprotobuf-cpp-lite",
+        "device.generic.car.emulator-aidl-V1-ndk",
     ],
     export_include_dirs: ["."],
     static_libs: [
@@ -67,6 +68,7 @@ cc_binary {
         "libbase",
         "libjsoncpp",
         "libprotobuf-cpp-lite",
+        "device.generic.car.emulator-aidl-V1-ndk",
     ],
     static_libs: [
         "android.hardware.automotive.vehicle@2.0-manager-lib",

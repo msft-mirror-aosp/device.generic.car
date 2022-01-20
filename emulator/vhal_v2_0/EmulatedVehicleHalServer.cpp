@@ -16,6 +16,7 @@
 
 #define LOG_TAG "EmulatedVehicleHalServer"
 
+#include <android/binder_manager.h>
 #include <utils/SystemClock.h>
 #include <vhal_v2_0/VehicleUtils.h>
 
@@ -32,6 +33,13 @@ namespace impl {
 EmulatedVehicleHalServer::EmulatedVehicleHalServer(): DefaultVehicleHalServer() {
     mInQEMU = isInQEMU();
     ALOGD("mInQEMU=%s", mInQEMU ? "true" : "false");
+
+    mVehicleBusCallback = ::ndk::SharedRefBase::make<VehicleBusCallback>(this);
+    startVehicleBuses();
+}
+
+EmulatedVehicleHalServer::~EmulatedVehicleHalServer() {
+    stopVehicleBuses();
 }
 
 StatusCode EmulatedVehicleHalServer::onSetProperty(const VehiclePropValue& value,
@@ -83,6 +91,61 @@ EmulatedVehicleHalServer::VehiclePropValuePtr EmulatedVehicleHalServer::get(
         v->timestamp = elapsedRealtimeNano();
     }
     return v;
+}
+
+void EmulatedVehicleHalServer::startVehicleBuses() {
+    std::vector<std::string> names;
+    AServiceManager_forEachDeclaredInstance(IVehicleBus::descriptor, static_cast<void*>(&names),
+        [](const char* instance, void* context) {
+            auto fullName = std::string(IVehicleBus::descriptor) + "/" + instance;
+            static_cast<std::vector<std::string>*>(context)->emplace_back(fullName);
+        });
+
+    for (const auto& fullName : names) {
+        ::ndk::SpAIBinder binder(AServiceManager_waitForService(fullName.c_str()));
+        if (binder.get() == nullptr) {
+            ALOGE("%s binder returned null", fullName.c_str());
+            continue;
+        }
+        std::shared_ptr<IVehicleBus> vehicleBus = IVehicleBus::fromBinder(binder);
+        if (vehicleBus == nullptr) {
+            ALOGE("Couldn't open %s", fullName.c_str());
+            continue;
+        }
+
+        vehicleBus->setOnNewPropValuesCallback(mVehicleBusCallback);
+        mVehicleBuses.push_back(vehicleBus);
+    }
+}
+
+void EmulatedVehicleHalServer::stopVehicleBuses() {
+    for (const auto& vehicleBus : mVehicleBuses) {
+        vehicleBus->unsetOnNewPropValuesCallback(mVehicleBusCallback);
+    }
+}
+
+VehiclePropValue EmulatedVehicleHalServer::VehicleBusCallback::makeHidlVehiclePropValue(
+    const AidlVehiclePropValue& aidlPropValue) {
+    VehiclePropValue hidlPropValue;
+    hidlPropValue.timestamp = aidlPropValue.timestamp;
+    hidlPropValue.areaId = aidlPropValue.areaId;
+    hidlPropValue.prop = aidlPropValue.prop;
+    hidlPropValue.status = static_cast<VehiclePropertyStatus>(aidlPropValue.status);
+    hidlPropValue.value.int32Values = aidlPropValue.value.int32Values;
+    hidlPropValue.value.floatValues = aidlPropValue.value.floatValues;
+    hidlPropValue.value.int64Values = aidlPropValue.value.int64Values;
+    hidlPropValue.value.bytes = aidlPropValue.value.byteValues;
+    hidlPropValue.value.stringValue = aidlPropValue.value.stringValue;
+    return hidlPropValue;
+}
+
+::ndk::ScopedAStatus EmulatedVehicleHalServer::VehicleBusCallback::onNewPropValues(
+     const std::vector<AidlVehiclePropValue>& aidlPropValues) {
+    for (const auto& aidlPropValue : aidlPropValues) {
+        mVehicleHalServer->onPropertyValueFromCar(
+            makeHidlVehiclePropValue(aidlPropValue), true);
+    }
+    return ::ndk::ScopedAStatus::ok();
 }
 
 IVehicleServer::DumpResult EmulatedVehicleHalServer::debug(const std::vector<std::string>& options){

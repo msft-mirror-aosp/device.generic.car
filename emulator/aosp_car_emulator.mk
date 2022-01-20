@@ -28,6 +28,8 @@ $(call inherit-product, device/generic/car/emulator/rotary/car_rotary.mk)
 # Enables USB and BT-USB passthrough
 $(call inherit-product, device/generic/car/emulator/btusb-passthrough/btusb.mk)
 $(call inherit-product, device/generic/car/emulator/usbip-service/usbip-service.mk)
+# Enables CAN-USB passthrough
+$(call inherit-product, device/generic/car/emulator/protocan/car_protocan.mk)
 
 ifeq (true,$(BUILD_EMULATOR_CLUSTER_DISPLAY))
 PRODUCT_COPY_FILES += \
