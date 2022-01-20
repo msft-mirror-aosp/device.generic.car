@@ -33,9 +33,6 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/app/RotaryPlayground/RotaryPlayground.apk \
     system/app/SampleCustomInputService/SampleCustomInputService.apk \
     system/app/SampleRearViewCamera/SampleRearViewCamera.apk \
-    system/app/ScriptExecutor/ScriptExecutor.apk \
-    system/app/ScriptExecutor/lib/arm64/libscriptexecutorjni.so \
-    system/app/ScriptExecutor/lib/x86_64/libscriptexecutorjni.so \
     system/app/SystemUpdater/SystemUpdater.apk \
     system/bin/android.automotive.evs.manager@1.1 \
     system/bin/carbugreportd \
@@ -95,8 +92,6 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/lib64/android.hardware.automotive.evs@1.0.so \
     system/lib64/android.hardware.automotive.evs@1.1.so \
     system/lib64/android.hardware.automotive.vehicle@2.0.so \
-    system/lib64/libscriptexecutor.so \
-    system/lib64/libscriptexecutorjni.so \
     system/lib64/libsuspend.so \
     system/lib64/libwatchdog_binder_mediator.so \
     system/lib64/libwatchdog_package_info_resolver.so \
@@ -129,8 +124,6 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/priv-app/LocalMediaPlayer/LocalMediaPlayer.apk \
     system/priv-app/NetworkPreferenceApp/NetworkPreferenceApp.apk \
     system/lib64/libcarservicejni.so \
-    system/lib64/libscriptexecutor.so \
-    system/lib64/libscriptexecutorjni.so \
     system/bin/android.automotive.telemetryd@1.0 \
     system/etc/init/android.automotive.telemetryd@1.0.rc \
     system/etc/vintf/manifest/android.automotive.telemetryd@1.0.xml \
