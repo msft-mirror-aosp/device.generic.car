@@ -16,6 +16,9 @@
 
 #pragma once
 
+#include <aidl/device/generic/car/emulator/IVehicleBus.h>
+#include <aidl/device/generic/car/emulator/BnVehicleBusCallback.h>
+
 #include <vhal_v2_0/DefaultVehicleHalServer.h>
 
 #include "VehicleEmulator.h"
@@ -31,7 +34,12 @@ namespace impl {
 // This contains the server operation for VHAL running in emulator.
 class EmulatedVehicleHalServer : public DefaultVehicleHalServer, public EmulatedServerIface {
   public:
+    using AidlVehiclePropValue = ::aidl::android::hardware::automotive::vehicle::VehiclePropValue;
+    using IVehicleBus = ::aidl::device::generic::car::emulator::IVehicleBus;
+    using BnVehicleBusCallback = ::aidl::device::generic::car::emulator::BnVehicleBusCallback;
+
     EmulatedVehicleHalServer();
+    ~EmulatedVehicleHalServer();
 
     StatusCode onSetProperty(const VehiclePropValue& value, bool updateStatus) override;
 
@@ -48,6 +56,25 @@ class EmulatedVehicleHalServer : public DefaultVehicleHalServer, public Emulated
 
   private:
     bool mInQEMU;
+
+    class VehicleBusCallback : public BnVehicleBusCallback {
+      public:
+        VehicleBusCallback(EmulatedVehicleHalServer* vehicleHalServer) :
+            mVehicleHalServer(vehicleHalServer) {}
+
+        ::ndk::ScopedAStatus onNewPropValues(
+            const std::vector<AidlVehiclePropValue>& propValues) override;
+
+      private:
+        EmulatedVehicleHalServer* mVehicleHalServer;
+
+        VehiclePropValue makeHidlVehiclePropValue(const AidlVehiclePropValue& aidlPropValue);
+    };
+    std::shared_ptr<BnVehicleBusCallback> mVehicleBusCallback;
+    std::vector<std::shared_ptr<IVehicleBus>> mVehicleBuses;
+
+    void startVehicleBuses();
+    void stopVehicleBuses();
 };
 
 }  // namespace impl

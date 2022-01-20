@@ -15,6 +15,7 @@
  */
 
 #define LOG_TAG "automotive.vehicle@2.0-emulator-service"
+#include <android/binder_process.h>
 #include <android/log.h>
 #include <hidl/HidlTransportSupport.h>
 
@@ -37,6 +38,7 @@ int main(int /* argc */, char* /* argv */ []) {
     auto service = std::make_unique<VehicleHalManager>(hal.get());
     connector->setValuePool(hal->getValuePool());
 
+    ABinderProcess_startThreadPool();
     android::hardware::configureRpcThreadpool(4, true /* callerWillJoin */);
 
     ALOGI("Registering as service...");
