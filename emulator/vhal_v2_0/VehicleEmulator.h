@@ -79,19 +79,19 @@ class VehicleEmulator : public MessageProcessor {
      virtual ~VehicleEmulator();
 
      void doSetValueFromClient(const VehiclePropValue& propValue);
-     void processMessage(vhal_proto::EmulatorMessage const& rxMsg,
-                         vhal_proto::EmulatorMessage& respMsg) override;
+     void processMessage(const vhal_proto::EmulatorMessage& rxMsg,
+                         vhal_proto::EmulatorMessage* respMsg) override;
 
    private:
     friend class ConnectionThread;
     using EmulatorMessage = vhal_proto::EmulatorMessage;
 
-    void doGetConfig(EmulatorMessage const& rxMsg, EmulatorMessage& respMsg);
-    void doGetConfigAll(EmulatorMessage const& rxMsg, EmulatorMessage& respMsg);
-    void doGetProperty(EmulatorMessage const& rxMsg, EmulatorMessage& respMsg);
-    void doGetPropertyAll(EmulatorMessage const& rxMsg, EmulatorMessage& respMsg);
-    void doSetProperty(EmulatorMessage const& rxMsg, EmulatorMessage& respMsg);
-    void doDebug(EmulatorMessage const& rxMsg, EmulatorMessage& respMsg);
+    void doGetConfig(const EmulatorMessage& rxMsg, EmulatorMessage* respMsg);
+    void doGetConfigAll(const EmulatorMessage& rxMsg, EmulatorMessage* respMsg);
+    void doGetProperty(const EmulatorMessage& rxMsg, EmulatorMessage* respMsg);
+    void doGetPropertyAll(const EmulatorMessage& rxMsg, EmulatorMessage* respMsg);
+    void doSetProperty(const EmulatorMessage& rxMsg, EmulatorMessage* respMsg);
+    void doDebug(const EmulatorMessage& rxMsg, EmulatorMessage* respMsg);
     void populateProtoVehicleConfig(vhal_proto::VehiclePropConfig* protoCfg,
                                     const VehiclePropConfig& cfg);
     void populateProtoVehiclePropValue(vhal_proto::VehiclePropValue* protoVal,

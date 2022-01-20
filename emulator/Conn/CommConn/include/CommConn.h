@@ -43,16 +43,40 @@ class MessageProcessor {
      * Process a single message received over a CommConn. Populate the given respMsg with the reply
      * message we should send.
      */
-    virtual void processMessage(vhal_proto::EmulatorMessage const& rxMsg,
-                                vhal_proto::EmulatorMessage& respMsg) = 0;
+    virtual void processMessage(const vhal_proto::EmulatorMessage& rxMsg,
+                                vhal_proto::EmulatorMessage* respMsg) = 0;
+};
+
+/**
+ * This is a pure virtual interface that could start/stop and send message.
+ * This is implemented by CommConn and SocketComm.
+ */
+class MessageSender {
+  public:
+    virtual ~MessageSender() {}
+
+    /**
+     * Starts the read thread reading messages from this connection.
+     */
+    virtual void start() = 0;
+
+    /**
+     * Closes a connection if it is open.
+     */
+    virtual void stop() = 0;
+
+    /**
+     * Serializes and sends the given message to the other side.
+     */
+    virtual void sendMessage(const vhal_proto::EmulatorMessage& msg) = 0;
 };
 
 /**
  * This is the interface that both PipeComm and SocketComm use to represent a connection. The
  * connection will listen for commands on a separate 'read' thread.
  */
-class CommConn {
-   public:
+class CommConn : public MessageSender {
+  public:
     CommConn(MessageProcessor* messageProcessor) : mMessageProcessor(messageProcessor) {}
 
     virtual ~CommConn() {}
@@ -60,12 +84,12 @@ class CommConn {
     /**
      * Start the read thread reading messages from this connection.
      */
-    virtual void start();
+    void start() override;
 
     /**
      * Closes a connection if it is open.
      */
-    virtual void stop();
+    void stop() override;
 
     /**
      * Returns true if the connection is open and available to send/receive.
@@ -92,9 +116,9 @@ class CommConn {
     /**
      * Serialized and send the given message to the other side.
      */
-    void sendMessage(vhal_proto::EmulatorMessage const& msg);
+    void sendMessage(const vhal_proto::EmulatorMessage& msg);
 
-   protected:
+  protected:
     std::unique_ptr<std::thread> mReadThread;
     MessageProcessor* mMessageProcessor;
 
