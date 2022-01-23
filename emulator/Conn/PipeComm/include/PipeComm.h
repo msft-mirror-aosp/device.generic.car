@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-#ifndef android_hardware_automotive_vehicle_V2_0_impl_PipeComm_H_
-#define android_hardware_automotive_vehicle_V2_0_impl_PipeComm_H_
+#ifndef ANDROID_EMULATORPIPECOMM_PIPECOMM_H
+#define ANDROID_EMULATORPIPECOMM_PIPECOMM_H
 
 #include <mutex>
 #include <vector>
@@ -61,5 +61,4 @@ class PipeComm : public CommConn {
 }  // namespace hardware
 }  // namespace android
 
-
-#endif  // android_hardware_automotive_vehicle_V2_0_impl_PipeComm_H_
+#endif  // ANDROID_EMULATORPIPECOMM_PIPECOMM_H
