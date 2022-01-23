@@ -14,10 +14,9 @@
  * limitations under the License.
  */
 
-#ifndef android_hardware_automotive_vehicle_V2_0_impl_CommBase_H_
-#define android_hardware_automotive_vehicle_V2_0_impl_CommBase_H_
+#ifndef ANDROID_EMULATORCOMMCONN_COMMCONN_H
+#define ANDROID_EMULATORCOMMCONN_COMMCONN_H
 
-#include <android/hardware/automotive/vehicle/2.0/IVehicle.h>
 #include <string>
 #include <thread>
 #include <vector>
@@ -114,4 +113,4 @@ class CommConn {
 }  // namespace hardware
 }  // namespace android
 
-#endif  // android_hardware_automotive_vehicle_V2_0_impl_CommBase_H_
+#endif  // ANDROID_EMULATORCOMMCONN_COMMCONN_H

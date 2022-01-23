@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-#ifndef android_hardware_automotive_vehicle_V2_0_impl_SocketComm_H_
-#define android_hardware_automotive_vehicle_V2_0_impl_SocketComm_H_
+#ifndef ANDROID_EMULATORSOCKETCOMM_SOCKETCOMM_H
+#define ANDROID_EMULATORSOCKETCOMM_SOCKETCOMM_H
 
 #include <mutex>
 #include <thread>
@@ -121,5 +121,4 @@ class SocketConn : public CommConn {
 }  // namespace hardware
 }  // namespace android
 
-
-#endif  // android_hardware_automotive_vehicle_V2_0_impl_SocketComm_H_
+#endif  // ANDROID_EMULATORSOCKETCOMM_SOCKETCOMM_H

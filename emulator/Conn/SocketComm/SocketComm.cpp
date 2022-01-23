@@ -16,7 +16,6 @@
 
 #define LOG_TAG "SocketComm"
 
-#include <android/hardware/automotive/vehicle/2.0/IVehicle.h>
 #include <android/log.h>
 #include <arpa/inet.h>
 #include <log/log.h>
