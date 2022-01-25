@@ -35,7 +35,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PRODUCT_PROPERTIES += \
     hwservicemanager.external.displays=1,400,600,120,0 \
     persist.service.bootanim.displays=8140900251843329 \
-    ro.carwatchdog.vhal_healthcheck.interval=10 \
 
 ifeq (true,$(ENABLE_CLUSTER_OS_DOUBLE))
 DEVICE_PACKAGE_OVERLAYS += device/generic/car/emulator/cluster/osdouble_overlay
@@ -43,3 +42,10 @@ else
 DEVICE_PACKAGE_OVERLAYS += device/generic/car/emulator/cluster/overlay
 endif  # ENABLE_CLUSTER_OS_DOUBLE
 endif  # BUILD_EMULATOR_CLUSTER_DISPLAY
+
+PRODUCT_PRODUCT_PROPERTIES += \
+    ro.carwatchdog.vhal_healthcheck.interval=10 \
+
+# Define the host tools and libs that are parts of the SDK.
+$(call inherit-product, sdk/build/product_sdk.mk)
+$(call inherit-product, development/build/product_sdk.mk)
