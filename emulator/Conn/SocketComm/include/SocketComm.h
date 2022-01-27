@@ -36,18 +36,18 @@ class SocketConn;
  * SocketComm opens a socket, and listens for connections from clients. Typically the client will be
  * adb's TCP port-forwarding to enable a host PC to connect to the VehicleHAL.
  */
-class SocketComm {
+class SocketComm : public MessageSender {
    public:
     SocketComm(MessageProcessor* messageProcessor);
     virtual ~SocketComm();
 
-    void start();
-    void stop();
+    void start() override;
+    void stop() override ;
 
     /**
      * Serialized and send the given message to all connected clients.
      */
-    void sendMessage(vhal_proto::EmulatorMessage const& msg);
+    void sendMessage(vhal_proto::EmulatorMessage const& msg) override;
 
    private:
     int mListenFd;

@@ -63,7 +63,7 @@ void CommConn::readThread() {
         vhal_proto::EmulatorMessage rxMsg;
         if (rxMsg.ParseFromArray(buffer.data(), static_cast<int32_t>(buffer.size()))) {
             vhal_proto::EmulatorMessage respMsg;
-            mMessageProcessor->processMessage(rxMsg, respMsg);
+            mMessageProcessor->processMessage(rxMsg, &respMsg);
 
             sendMessage(respMsg);
         }
