@@ -35,13 +35,19 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/app/SampleRearViewCamera/SampleRearViewCamera.apk \
     system/app/SystemUpdater/SystemUpdater.apk \
     system/bin/android.automotive.evs.manager@1.1 \
+    system/bin/canhalconfigurator \
+    system/bin/canhalctrl \
+    system/bin/canhaldump \
+    system/bin/canhalsend \
     system/bin/carbugreportd \
     system/bin/carpowerpolicyd \
     system/bin/carwatchdogd \
     system/bin/com.android.car.procfsinspector \
     system/bin/vehicle_binding_util \
     system/etc/apns-conf.xml \
+    system/etc/canbus_config.pb \
     system/etc/init/android.automotive.evs.manager@1.1.rc \
+    system/etc/init/canhalconfigurator.rc \
     system/etc/init/carbugreportd.rc \
     system/etc/init/carpowerpolicyd.rc \
     system/etc/init/carwatchdogd.rc \
@@ -89,6 +95,7 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/lib64/android.frameworks.automotive.powerpolicy-V1-ndk.so \
     system/lib64/android.frameworks.automotive.powerpolicy.internal-V1-cpp.so \
     system/lib64/android.frameworks.automotive.powerpolicy.internal-V1-ndk.so \
+    system/lib64/android.hardware.automotive.can@1.0.so \
     system/lib64/android.hardware.automotive.evs@1.0.so \
     system/lib64/android.hardware.automotive.evs@1.1.so \
     system/lib64/android.hardware.automotive.vehicle@2.0.so \
