@@ -48,7 +48,3 @@ endif  # BUILD_EMULATOR_CLUSTER_DISPLAY
 
 PRODUCT_PRODUCT_PROPERTIES += \
     ro.carwatchdog.vhal_healthcheck.interval=10 \
-
-# Define the host tools and libs that are parts of the SDK.
-$(call inherit-product, sdk/build/product_sdk.mk)
-$(call inherit-product, development/build/product_sdk.mk)
