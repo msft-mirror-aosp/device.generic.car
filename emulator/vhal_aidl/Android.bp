@@ -34,7 +34,7 @@ cc_binary {
     static_libs: [
         "DefaultVehicleHal",
         "VehicleEmulator",
-        "VehicleHalUtils",
+        "VehicleHalUtilsVendor",
         "EmulatorCommConn",
         "EmulatorPipeComm",
         "EmulatorSocketComm",
