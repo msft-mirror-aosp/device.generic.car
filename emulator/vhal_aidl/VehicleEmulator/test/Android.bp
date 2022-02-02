@@ -27,7 +27,7 @@ cc_test {
         "libgtest",
         "libgmock",
         "VehicleEmulator",
-        "VehicleHalUtils",
+        "VehicleHalUtilsVendor",
         "EmulatorCommConn",
         "FakeVehicleHardware",
         "VehicleHalProtos",
