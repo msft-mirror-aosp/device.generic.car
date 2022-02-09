@@ -24,7 +24,7 @@ cc_library {
     cflags: ["-DENABLE_VENDOR_CLUSTER_PROPERTY_FOR_TESTING"],
     srcs: ["*.cpp"],
     static_libs: [
-        "VehicleHalUtilsVendor",
+        "VehicleHalUtils",
         "EmulatorCommConn",
         "EmulatorPipeComm",
         "EmulatorSocketComm",
