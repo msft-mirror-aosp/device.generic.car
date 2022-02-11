@@ -34,14 +34,14 @@ cc_binary {
     static_libs: [
         "DefaultVehicleHal",
         "VehicleEmulator",
-        "VehicleHalUtilsVendor",
+        "VehicleHalUtils",
         "EmulatorCommConn",
         "EmulatorPipeComm",
         "EmulatorSocketComm",
         "FakeVehicleHardware",
         "VehicleHalProtos",
         "android.hardware.automotive.vehicle@2.0-libproto-native",
-        "android-automotive-large-parcelable-vendor-lib",
+        "android-automotive-large-parcelable-lib",
     ],
     header_libs: [
         "IVehicleHardware",
