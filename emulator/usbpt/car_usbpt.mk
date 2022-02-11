@@ -1,4 +1,5 @@
-# Copyright (C) 2020 The Android Open Source Project
+#
+# Copyright (C) 2019 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -11,14 +12,11 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#
 
-# Use generic_x86_64 BoardConfig as base
-include build/make/target/board/emulator_x86_64/BoardConfig.mk
-include device/generic/car/emulator/usbpt/BoardConfig.mk
+$(call inherit-product, device/generic/car/emulator/usbpt/bluetooth/bluetooth.mk)
+$(call inherit-product, device/generic/car/emulator/usbpt/protocan/protocan.mk)
+$(call inherit-product, device/generic/car/emulator/usbpt/usbip-service/usbip-service.mk)
 
-# Override BOARD_SUPER_PARTITION_SIZE to inclease the mounted system partition.
-BOARD_SUPER_PARTITION_SIZE := 5856296960
-
-BOARD_EMULATOR_DYNAMIC_PARTITIONS_SIZE = 3489660928
-
+# Required for USB passthrough
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.usb.host.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.usb.host.xml
