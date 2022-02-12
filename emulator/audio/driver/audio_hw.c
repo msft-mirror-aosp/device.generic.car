@@ -22,6 +22,7 @@
 #define LOG_TAG "audio_hw_generic_caremu"
 // #define LOG_NDEBUG 0
 
+#include "audio_extn.h"
 #include "audio_hw.h"
 #include "include/audio_hw_control.h"
 
@@ -1250,6 +1251,7 @@ static int adev_set_parameters(struct audio_hw_device *dev, const char *kvpairs)
         results = 0;
         ALOGD("%s Changed play zone id to %d", __func__, adev->last_zone_selected_to_play);
     }
+    results = audio_extn_hfp_set_parameters(adev, parms);
     str_parms_destroy(parms);
     pthread_mutex_unlock(&adev->lock);
     return results;
@@ -1664,6 +1666,8 @@ static int adev_open(const hw_module_t *module,
     adev->next_tone_frequency_to_assign = DEFAULT_FREQUENCY;
 
     adev->last_zone_selected_to_play = DEFAULT_ZONE_TO_LEFT_SPEAKER;
+
+    adev->hfp_running = false;
 
     device_handle = adev;
 
