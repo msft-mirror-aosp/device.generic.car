@@ -29,14 +29,10 @@ cc_library_static {
     defaults: ["vhal_v2_0_target_defaults"],
     cflags: ["-DENABLE_VENDOR_CLUSTER_PROPERTY_FOR_TESTING"],
     srcs: [
-        "CommConn.cpp",
         "EmulatedVehicleConnector.cpp",
         "EmulatedVehicleHal.cpp",
         "EmulatedVehicleHalServer.cpp",
         "VehicleEmulator.cpp",
-        "qemu_pipe.cpp",
-        "SocketComm.cpp",
-        "PipeComm.cpp",
     ],
     header_libs: ["vhal_v2_0_common_headers"],
     whole_static_libs: [
@@ -46,10 +42,14 @@ cc_library_static {
         "libbase",
         "libjsoncpp",
         "libprotobuf-cpp-lite",
+        "device.generic.car.emulator-aidl-V1-ndk",
     ],
     export_include_dirs: ["."],
     static_libs: [
         "android.hardware.automotive.vehicle@2.0-libproto-native",
+        "EmulatorCommConn",
+        "EmulatorPipeComm",
+        "EmulatorSocketComm",
     ],
 }
 
@@ -67,10 +67,14 @@ cc_binary {
         "libbase",
         "libjsoncpp",
         "libprotobuf-cpp-lite",
+        "device.generic.car.emulator-aidl-V1-ndk",
     ],
     static_libs: [
         "android.hardware.automotive.vehicle@2.0-manager-lib",
         "android.hardware.automotive.vehicle@2.0-libproto-native",
         "android.hardware.automotive.vehicle@2.0-emulator-impl-lib",
+        "EmulatorCommConn",
+        "EmulatorPipeComm",
+        "EmulatorSocketComm",
     ],
 }

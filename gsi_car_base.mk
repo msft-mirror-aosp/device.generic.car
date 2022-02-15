@@ -33,18 +33,21 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/app/RotaryPlayground/RotaryPlayground.apk \
     system/app/SampleCustomInputService/SampleCustomInputService.apk \
     system/app/SampleRearViewCamera/SampleRearViewCamera.apk \
-    system/app/ScriptExecutor/ScriptExecutor.apk \
-    system/app/ScriptExecutor/lib/arm64/libscriptexecutorjni.so \
-    system/app/ScriptExecutor/lib/x86_64/libscriptexecutorjni.so \
     system/app/SystemUpdater/SystemUpdater.apk \
     system/bin/android.automotive.evs.manager@1.1 \
+    system/bin/canhalconfigurator \
+    system/bin/canhalctrl \
+    system/bin/canhaldump \
+    system/bin/canhalsend \
     system/bin/carbugreportd \
     system/bin/carpowerpolicyd \
     system/bin/carwatchdogd \
     system/bin/com.android.car.procfsinspector \
     system/bin/vehicle_binding_util \
     system/etc/apns-conf.xml \
+    system/etc/canbus_config.pb \
     system/etc/init/android.automotive.evs.manager@1.1.rc \
+    system/etc/init/canhalconfigurator.rc \
     system/etc/init/carbugreportd.rc \
     system/etc/init/carpowerpolicyd.rc \
     system/etc/init/carwatchdogd.rc \
@@ -89,12 +92,16 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/lib64/android.automotive.watchdog.internal-cpp.so \
     system/lib64/android.frameworks.automotive.display@1.0.so \
     system/lib64/android.frameworks.automotive.powerpolicy-V1-cpp.so \
-    system/lib64/android.frameworks.automotive.powerpolicy.internal-cpp.so \
+    system/lib64/android.frameworks.automotive.powerpolicy-V1-ndk.so \
+    system/lib64/android.frameworks.automotive.powerpolicy.internal-V1-cpp.so \
+    system/lib64/android.frameworks.automotive.powerpolicy.internal-V1-ndk.so \
+    system/lib64/android.hardware.automotive.can@1.0.so \
     system/lib64/android.hardware.automotive.evs@1.0.so \
     system/lib64/android.hardware.automotive.evs@1.1.so \
     system/lib64/android.hardware.automotive.vehicle@2.0.so \
-    system/lib64/libscriptexecutor.so \
-    system/lib64/libscriptexecutorjni.so \
+    system/lib64/android.os.statsbootstrap_aidl-cpp.so \
+    system/lib64/libstatsbootstrap.so \
+    system/lib64/libstatslog_evs.so \
     system/lib64/libsuspend.so \
     system/lib64/libwatchdog_binder_mediator.so \
     system/lib64/libwatchdog_package_info_resolver.so \
@@ -112,9 +119,8 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/priv-app/CarRadioApp/CarRadioApp.apk \
     system/priv-app/CarRotaryController/CarRotaryController.apk \
     system/priv-app/CarService/CarService.apk \
-    system/app/CarServiceUpdatable/lib/arm64/libscriptexecutorjni.so \
-    system/app/CarServiceUpdatable/lib/x86_64/libscriptexecutorjni.so \
-    system/app/CarServiceUpdatable/CarServiceUpdatable.apk \
+    system/priv-app/CarService/lib/arm64/libcarservicejni.so \
+    system/priv-app/CarService/lib/x86_64/libcarservicejni.so \
     system/priv-app/CarSettings/CarSettings.apk \
     system/priv-app/CarShell/CarShell.apk \
     system/priv-app/CarUsbHandler/CarUsbHandler.apk \
@@ -128,12 +134,6 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/priv-app/LocalMediaPlayer/LocalMediaPlayer.apk \
     system/priv-app/NetworkPreferenceApp/NetworkPreferenceApp.apk \
     system/lib64/libcarservicejni.so \
-    system/app/CarServiceUpdatable/lib/arm64/libcarservicejni.so \
-    system/app/CarServiceUpdatable/lib/x86_64/libcarservicejni.so \
-    system/lib64/libscriptexecutor.so \
-    system/lib64/libscriptexecutorjni.so \
-    system/app/CarServiceUpdatable/lib/arm64/libscriptexecutorjni.so \
-    system/app/CarServiceUpdatable/lib/x86_64/libscriptexecutorjni.so \
     system/bin/android.automotive.telemetryd@1.0 \
     system/etc/init/android.automotive.telemetryd@1.0.rc \
     system/etc/vintf/manifest/android.automotive.telemetryd@1.0.xml \
