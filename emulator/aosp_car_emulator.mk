@@ -39,11 +39,19 @@ PRODUCT_PRODUCT_PROPERTIES += \
     hwservicemanager.external.displays=1,400,600,120,0 \
     persist.service.bootanim.displays=8140900251843329 \
 
+ifeq (true,$(USE_GOOGLE_CAR_APEX))
 ifeq (true,$(ENABLE_CLUSTER_OS_DOUBLE))
-DEVICE_PACKAGE_OVERLAYS += device/generic/car/emulator/cluster/osdouble_overlay
+PRODUCT_PACKAGES += CarServiceOverlayEmulatorOsDoubleGoogle
 else
-DEVICE_PACKAGE_OVERLAYS += device/generic/car/emulator/cluster/overlay
+PRODUCT_PACKAGES += CarServiceOverlayEmulatorGoogle
 endif  # ENABLE_CLUSTER_OS_DOUBLE
+else
+ifeq (true,$(ENABLE_CLUSTER_OS_DOUBLE))
+PRODUCT_PACKAGES += CarServiceOverlayEmulatorOsDouble
+else
+PRODUCT_PACKAGES += CarServiceOverlayEmulator
+endif  # ENABLE_CLUSTER_OS_DOUBLE
+endif # USE_GOOGLE_CAR_APEX
 endif  # BUILD_EMULATOR_CLUSTER_DISPLAY
 
 PRODUCT_PRODUCT_PROPERTIES += \
