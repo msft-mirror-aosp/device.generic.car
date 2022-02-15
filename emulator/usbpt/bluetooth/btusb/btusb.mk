@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2021 The Android Open Source Project
+# Copyright (C) 2019 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,7 +13,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Allow sepolicies to be excluded in GSI targets.
+ifeq ($(DO_NOT_INCLUDE_BT_SEPOLICY),)
+BOARD_SEPOLICY_DIRS += \
+    device/generic/car/emulator/usbpt/bluetooth/btusb/sepolicy
+endif
+
 # USB Passthru
-PRODUCT_PACKAGES += usb_modeswitch \
-                    rtl8821c_fw.bin.car \
+PRODUCT_PACKAGES += rtl8821c_fw.bin.car \
                     rtl8821c_config.bin.car
