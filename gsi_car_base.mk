@@ -45,6 +45,7 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/bin/carpowerpolicyd \
     system/bin/carwatchdogd \
     system/bin/com.android.car.procfsinspector \
+    system/bin/curl \
     system/bin/vehicle_binding_util \
     system/etc/apns-conf.xml \
     system/etc/canbus_config.pb \
