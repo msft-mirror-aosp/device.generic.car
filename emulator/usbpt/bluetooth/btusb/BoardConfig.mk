@@ -1,5 +1,4 @@
-#
-# Copyright (C) 2019 The Android Open Source Project
+# Copyright (C) 2022 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,11 +11,6 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+#
 
-# Enable Bluetooth passthrough support
-$(call inherit-product, device/generic/car/emulator/bluetooth/btlinux-service.mk)
-# Add RTL BT dongle related packages
-$(call inherit-product, device/generic/car/emulator/rtl_bt/rtl_bt.mk)
-# Required for USB passthrough
-PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.usb.host.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.usb.host.xml
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/generic/car/emulator/usbpt/bluetooth/btusb/hal
