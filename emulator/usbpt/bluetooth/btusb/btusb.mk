@@ -22,12 +22,3 @@ endif
 # USB Passthru
 PRODUCT_PACKAGES += rtl8821c_fw.bin.car \
                     rtl8821c_config.bin.car
-
-PRODUCT_COPY_FILES += \
-    device/generic/car/emulator/usbpt/bluetooth/btusb/init.btusb.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.btusb.rc \
-
-$(OUT_DIR)/target/product/emulator_car_x86_64/obj/lib_vendor/x86_64/vendor_btusb.ko:
-	cp kernel/prebuilts/common-modules/virtual-device/5.10/x86-64/btusb.ko $@
-
-$(OUT_DIR)/target/product/emulator_car_x86_64/obj/lib_vendor/arm64/vendor_btusb.ko:
-	cp kernel/prebuilts/common-modules/virtual-device/5.10/arm64/btusb.ko $@
