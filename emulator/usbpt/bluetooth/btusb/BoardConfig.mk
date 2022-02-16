@@ -14,5 +14,3 @@
 #
 
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/generic/car/emulator/usbpt/bluetooth/btusb/hal
-
-BOARD_VENDOR_KERNEL_MODULES += $(PRODUCT_OUT)/obj/lib_vendor/$(TARGET_ARCH)/vendor_btusb.ko
