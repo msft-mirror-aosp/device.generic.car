@@ -14,6 +14,14 @@
 # limitations under the License.
 #
 
-PRODUCT_PACKAGES += usbip_service
-BOARD_SEPOLICY_DIRS += device/generic/car/emulator/usbip-service/sepolicy
+# CAN bus HAL
+PRODUCT_PACKAGES += android.hardware.automotive.can@1.0-service
+PRODUCT_PACKAGES += canhalconfigurator
+PRODUCT_COPY_FILES += device/generic/car/emulator/usbpt/protocan/canbus_config.pb:system/etc/canbus_config.pb
+PRODUCT_PACKAGES_DEBUG += canhalctrl \
+    canhaldump \
+    canhalsend
 
+PRODUCT_PACKAGES += android.device.generic.car.emulator@1.0-protocanbus-service
+BOARD_SEPOLICY_DIRS += device/generic/car/emulator/usbpt/protocan/protocanbus/sepolicy
+DEVICE_MANIFEST_FILE += device/generic/car/emulator/usbpt/protocan/manifest.protocan.xml
