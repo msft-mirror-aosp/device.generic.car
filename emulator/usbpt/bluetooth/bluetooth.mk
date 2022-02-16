@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2021 The Android Open Source Project
+# Copyright (C) 2019 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -19,14 +19,13 @@
 PRODUCT_PACKAGES += \
     android.hardware.bluetooth@1.1-service.btlinux \
 
-# Allow sepolicies to be excluded in GSI targets.
-ifeq ($(DO_NOT_INCLUDE_BT_SEPOLICY),)
-BOARD_SEPOLICY_DIRS += \
-    device/generic/car/emulator/bluetooth/sepolicy
-endif
-
 PRODUCT_COPY_FILES += \
-    device/generic/car/emulator/bluetooth/vendor.qemu.preferred.bt.service.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/vendor.qemu.preferred.bt.service.rc \
+    device/generic/car/emulator/usbpt/bluetooth/vendor.qemu.preferred.bt.service.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/vendor.qemu.preferred.bt.service.rc \
 
 PRODUCT_SYSTEM_PROPERTIES += \
     persist.bluetooth.enablenewavrcp=false \
+
+# USB Passthru
+PRODUCT_PACKAGES += usb_modeswitch
+
+$(call inherit-product, device/generic/car/emulator/usbpt/bluetooth/btusb/btusb.mk)
