@@ -23,6 +23,8 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     root/init.bootstat.rc \
     root/init.car.rc \
     system/apex/com.android.car.framework.apex \
+    system/app/Bluetooth/Bluetooth.apk \
+    system/app/Bluetooth/lib/arm64/libbluetooth_jni.so \
     system/app/CarFrameworkPackageStubs/CarFrameworkPackageStubs.apk \
     system/app/CarHTMLViewer/CarHTMLViewer.apk \
     system/app/CarLatinIME/CarLatinIME.apk \
@@ -100,6 +102,7 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/lib64/android.hardware.automotive.evs@1.1.so \
     system/lib64/android.hardware.automotive.vehicle@2.0.so \
     system/lib64/android.os.statsbootstrap_aidl-cpp.so \
+    system/lib64/libbluetooth_jni.so \
     system/lib64/libstatsbootstrap.so \
     system/lib64/libstatslog_evs.so \
     system/lib64/libsuspend.so \
