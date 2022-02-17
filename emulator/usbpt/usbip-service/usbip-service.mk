@@ -1,4 +1,5 @@
-# Copyright (C) 2020 The Android Open Source Project
+#
+# Copyright (C) 2021 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,12 +14,6 @@
 # limitations under the License.
 #
 
-# Use generic_x86_64 BoardConfig as base
-include build/make/target/board/emulator_x86_64/BoardConfig.mk
-include device/generic/car/emulator/usbpt/BoardConfig.mk
-
-# Override BOARD_SUPER_PARTITION_SIZE to inclease the mounted system partition.
-BOARD_SUPER_PARTITION_SIZE := 5856296960
-
-BOARD_EMULATOR_DYNAMIC_PARTITIONS_SIZE = 3489660928
+PRODUCT_PACKAGES += usbip_service
+BOARD_SEPOLICY_DIRS += device/generic/car/emulator/usbpt/usbip-service/sepolicy
 
