@@ -25,6 +25,7 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/apex/com.android.car.framework.apex \
     system/app/Bluetooth/Bluetooth.apk \
     system/app/Bluetooth/lib/arm64/libbluetooth_jni.so \
+    system/app/Bluetooth/lib/x86_64/libbluetooth_jni.so \
     system/app/CarFrameworkPackageStubs/CarFrameworkPackageStubs.apk \
     system/app/CarHTMLViewer/CarHTMLViewer.apk \
     system/app/CarLatinIME/CarLatinIME.apk \
