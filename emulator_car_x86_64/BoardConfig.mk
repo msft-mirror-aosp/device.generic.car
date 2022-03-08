@@ -1,4 +1,3 @@
-#
 # Copyright (C) 2020 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,9 +13,13 @@
 # limitations under the License.
 #
 
-# This is a wrapper board for AAOS 64bit only emulators
-# Use generic_64bitonly_x86_64 BoardConfig as base
-include build/make/target/board/generic_64bitonly_x86_64/BoardConfig.mk
+# Use generic_x86_64 BoardConfig as base
+include build/make/target/board/emulator_x86_64/BoardConfig.mk
 
-# Override BOARD_SUPER_PARTITION_SIZE to increase the mounted system partition.
+# Override BOARD_SUPER_PARTITION_SIZE to inclease the mounted system partition.
 BOARD_SUPER_PARTITION_SIZE := 5856296960
+
+BOARD_EMULATOR_DYNAMIC_PARTITIONS_SIZE = 3489660928
+
+BOARD_HAVE_BLUETOOTH := true
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/generic/car/emulator/bluetooth/hal
