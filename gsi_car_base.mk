@@ -47,6 +47,7 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/bin/carwatchdogd \
     system/bin/com.android.car.procfsinspector \
     system/bin/curl \
+    system/bin/evsmanagerd \
     system/bin/vehicle_binding_util \
     system/etc/apns-conf.xml \
     system/etc/canbus_config.pb \
@@ -56,6 +57,7 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/etc/init/carpowerpolicyd.rc \
     system/etc/init/carwatchdogd.rc \
     system/etc/init/com.android.car.procfsinspector.rc \
+    system/etc/init/evsmanagerd.rc \
     system/etc/init/init.bootstat.car.rc \
     system/etc/init/init.car.rc \
     system/etc/init/vehicle_binding_util.rc \
@@ -87,6 +89,7 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/etc/vintf/manifest/carpowerpolicyd.xml \
     system/etc/vintf/manifest/carwatchdogd.xml \
     system/etc/vintf/manifest/manifest_android.automotive.evs.manager@1.1.xml \
+    system/etc/vintf/manifest/manifest_evsmanagerd.xml \
     system/framework/android.car.jar \
     system/framework/android.car.builtin.jar \
     system/framework/car-frameworks-service.jar \
@@ -102,11 +105,13 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/lib64/android.hardware.automotive.can@1.0.so \
     system/lib64/android.hardware.automotive.evs@1.0.so \
     system/lib64/android.hardware.automotive.evs@1.1.so \
+    system/lib64/android.hardware.automotive.evs-V1-ndk.so \
     system/lib64/android.hardware.automotive.vehicle@2.0.so \
     system/lib64/android.os.statsbootstrap_aidl-cpp.so \
     system/lib64/libbluetooth_jni.so \
     system/lib64/libstatsbootstrap.so \
     system/lib64/libstatslog_evs.so \
+    system/lib64/libstatslog_evsmanagerd.so \
     system/lib64/libsuspend.so \
     system/lib64/libwatchdog_binder_mediator.so \
     system/lib64/libwatchdog_package_info_resolver.so \
