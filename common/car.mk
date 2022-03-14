@@ -15,9 +15,9 @@
 #
 
 # Auto modules
-# TODO: Add broadcastradio@.2.0 back once it's stable b/145694104
 PRODUCT_PACKAGES += \
     android.hardware.automotive.vehicle@2.0-emulator-service \
+    android.hardware.broadcastradio@2.0-service \
     android.hardware.audio.service-caremu
 
 # Emulator configuration
