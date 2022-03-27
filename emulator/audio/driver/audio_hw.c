@@ -88,6 +88,7 @@ static const char * const AUDIO_ZONE_KEYWORD = "_audio_zone_";
 static pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
 
 #define SIZE_OF_PARSE_BUFFER 32
+#define SIZE_OF_THREAD_NAME_BUFFER 16
 
 static int adev_get_mic_mute(const struct audio_hw_device *dev, bool *state);
 
@@ -163,6 +164,11 @@ void set_device_address_is_muted(const char *device_address, bool is_muted){
     pthread_mutex_unlock(&out->lock);
 }
 
+static void set_shortened_thread_name(pthread_t thread, const char *name) {
+    char shortenedName[SIZE_OF_THREAD_NAME_BUFFER];
+    strncpy(shortenedName, name, SIZE_OF_THREAD_NAME_BUFFER);
+    pthread_setname_np(thread, shortenedName);
+}
 
 static struct pcm_config pcm_config_out = {
     .channels = 2,
@@ -505,6 +511,8 @@ static ssize_t out_write(struct audio_stream_out *stream, const void *buffer, si
     ALOGV("%s: to device %s", __func__, out->bus_address);
     const size_t frame_size = audio_stream_out_frame_size(stream);
     const size_t frames =  bytes / frame_size;
+
+    set_shortened_thread_name(pthread_self(), __func__);
 
     pthread_mutex_lock(&out->lock);
 
@@ -1003,6 +1011,8 @@ static ssize_t in_read(struct audio_stream_in *stream, void *buffer, size_t byte
     bool mic_mute = false;
     size_t read_bytes = 0;
 
+    set_shortened_thread_name(pthread_self(), __func__);
+
     adev_get_mic_mute(&adev->device, &mic_mute);
     pthread_mutex_lock(&in->lock);
 
@@ -1184,34 +1194,35 @@ static int adev_open_output_stream(struct audio_hw_device *dev,
         out->worker_standby = true;
         out->worker_exit = false;
         pthread_create(&out->worker_thread, NULL, out_write_worker, out);
-    }
+        set_shortened_thread_name(out->worker_thread, address);
 
-    out->enabled_channels = BOTH_CHANNELS;
-    // For targets where output streams are closed regularly, currently ducked/muted addresses
-    // should be tracked so that the address of new streams can be checked to determine the
-    // default state
-    out->is_ducked = 0;
-    out->is_muted = 0;
-    if (address) {
-        out->bus_address = calloc(strlen(address) + 1, sizeof(char));
-        strncpy(out->bus_address, address, strlen(address));
-        hashmapPut(adev->out_bus_stream_map, out->bus_address, out);
-        /* TODO: read struct audio_gain from audio_policy_configuration */
-        out->gain_stage = (struct audio_gain) {
-            .min_value = -3200,
-            .max_value = 600,
-            .step_value = 100,
-        };
-        out->amplitude_ratio = 1.0;
-        if (property_get_bool(PROP_KEY_SIMULATE_MULTI_ZONE_AUDIO, false)) {
-            out->enabled_channels = strstr(out->bus_address, AUDIO_ZONE_KEYWORD)
-                ? RIGHT_CHANNEL: LEFT_CHANNEL;
-            ALOGD("%s Routing %s to %s channel", __func__,
-             out->bus_address, out->enabled_channels == RIGHT_CHANNEL ? "Right" : "Left");
+        out->enabled_channels = BOTH_CHANNELS;
+        // For targets where output streams are closed regularly, currently ducked/muted addresses
+        // should be tracked so that the address of new streams can be checked to determine the
+        // default state
+        out->is_ducked = 0;
+        out->is_muted = 0;
+        if (address) {
+            out->bus_address = calloc(strlen(address) + 1, sizeof(char));
+            strncpy(out->bus_address, address, strlen(address));
+            hashmapPut(adev->out_bus_stream_map, out->bus_address, out);
+            /* TODO: read struct audio_gain from audio_policy_configuration */
+            out->gain_stage = (struct audio_gain) {
+                .min_value = -3200,
+                .max_value = 600,
+                .step_value = 100,
+            };
+            out->amplitude_ratio = 1.0;
+            if (property_get_bool(PROP_KEY_SIMULATE_MULTI_ZONE_AUDIO, false)) {
+                out->enabled_channels = strstr(out->bus_address, AUDIO_ZONE_KEYWORD)
+                    ? RIGHT_CHANNEL: LEFT_CHANNEL;
+                ALOGD("%s Routing %s to %s channel", __func__,
+                 out->bus_address, out->enabled_channels == RIGHT_CHANNEL ? "Right" : "Left");
+            }
         }
+        *stream_out = &out->stream;
+        ALOGD("%s bus: %s", __func__, out->bus_address);
     }
-    *stream_out = &out->stream;
-    ALOGD("%s bus: %s", __func__, out->bus_address);
 
 error:
     return ret;
@@ -1430,6 +1441,7 @@ static int adev_open_input_stream(struct audio_hw_device *dev,
         in->worker_standby = true;
         in->worker_exit = false;
         pthread_create(&in->worker_thread, NULL, in_read_worker, in);
+        set_shortened_thread_name(in->worker_thread, address ? address : "mic");
     }
 
     if (address) {
