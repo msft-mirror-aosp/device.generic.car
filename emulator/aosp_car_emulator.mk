@@ -25,8 +25,8 @@ $(call inherit-product, device/generic/car/common/car.mk)
 # This overrides device/generic/car/common/car.mk
 $(call inherit-product, device/generic/car/emulator/audio/car_emulator_audio.mk)
 $(call inherit-product, device/generic/car/emulator/rotary/car_rotary.mk)
-# Enables USB and BT-USB passthrough
-$(call inherit-product, device/generic/car/emulator/btusb-passthrough/btusb.mk)
+# Enables USB related passthrough
+$(call inherit-product, device/generic/car/emulator/usbpt/car_usbpt.mk)
 
 ifeq (true,$(BUILD_EMULATOR_CLUSTER_DISPLAY))
 PRODUCT_COPY_FILES += \
@@ -35,7 +35,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PRODUCT_PROPERTIES += \
     hwservicemanager.external.displays=1,400,600,120,0 \
     persist.service.bootanim.displays=8140900251843329 \
-    ro.carwatchdog.vhal_healthcheck.interval=10 \
 
 ifeq (true,$(ENABLE_CLUSTER_OS_DOUBLE))
 DEVICE_PACKAGE_OVERLAYS += device/generic/car/emulator/cluster/osdouble_overlay
@@ -43,3 +42,6 @@ else
 DEVICE_PACKAGE_OVERLAYS += device/generic/car/emulator/cluster/overlay
 endif  # ENABLE_CLUSTER_OS_DOUBLE
 endif  # BUILD_EMULATOR_CLUSTER_DISPLAY
+
+PRODUCT_PRODUCT_PROPERTIES += \
+    ro.carwatchdog.vhal_healthcheck.interval=10 \
