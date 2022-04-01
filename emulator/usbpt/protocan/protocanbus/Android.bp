@@ -36,7 +36,6 @@ cc_binary {
     include_dirs: ["frameworks/native/include"],
     shared_libs: [
         "android.hardware.automotive.can@1.0",
-        "android.hardware.automotive.vehicle@2.0",
         "device.generic.car.emulator-aidl-V1-ndk",
         "libbinder_ndk",
         "libhidlbase",
@@ -44,6 +43,9 @@ cc_binary {
     ],
     whole_static_libs: [
         "libprotocan",
+    ],
+    static_libs: [
+        "libmath",
     ],
 
     vintf_fragments: ["manifest_android.device.generic.car.emulator@1.0-protocanbus.xml"]
