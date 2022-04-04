@@ -16,7 +16,7 @@
 
 # Auto modules
 PRODUCT_PACKAGES += \
-    android.hardware.automotive.vehicle@2.0-emulator-service \
+    android.hardware.automotive.vehicle@V1-emulator-service \
     android.hardware.broadcastradio@2.0-service \
     android.hardware.audio.service-caremu
 
