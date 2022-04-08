@@ -20,6 +20,10 @@ PRODUCT_PACKAGES += \
     android.hardware.broadcastradio@2.0-service \
     android.hardware.audio.service-caremu
 
+# Runtime Resource Overlay for Connectivity
+PRODUCT_PACKAGES += \
+    CarConnectivityOverlay
+
 # Emulator configuration
 PRODUCT_COPY_FILES += \
     device/generic/car/common/config.ini:config.ini
