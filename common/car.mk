@@ -97,4 +97,3 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_release.mk)
 endif
 
 $(call inherit-product, packages/services/Car/car_product/build/car.mk)
-$(call inherit-product, packages/apps/Car/Templates/CarTemplatesHost.mk)
