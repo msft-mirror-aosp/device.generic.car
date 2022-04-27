@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2021 The Android Open Source Project
+// Copyright (C) 2022 The Android Open-Source Project
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -12,17 +12,15 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+//
 
 package {
     default_applicable_licenses: ["device_generic_car_license"],
 }
 
-// See: http://go/android-license-faq
-license {
-    name: "device_generic_car_license",
-    visibility: [":__subpackages__"],
-    license_kinds: [
-        "SPDX-license-identifier-Apache-2.0",
-    ],
-    license_text: ["LICENSE"],
+runtime_resource_overlay {
+    name: "CarConnectivityOverlay",
+    resource_dirs: ["res"],
+    product_specific: true,
+    sdk_version: "current",
 }
