@@ -12,6 +12,24 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+package {
+    default_applicable_licenses: [
+        "device_generic_car_emulator_usb_modeswitch_license",
+    ],
+}
+
+// See: http://go/android-license-faq
+license {
+    name: "device_generic_car_emulator_usb_modeswitch_license",
+    visibility: [":__subpackages__"],
+    license_kinds: [
+        "SPDX-license-identifier-GPL-2.0+",
+    ],
+    license_text: [
+        "LICENSE",
+    ],
+}
+
 cc_binary {
     name: "usb_modeswitch",
     srcs: [
