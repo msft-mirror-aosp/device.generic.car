@@ -25,7 +25,4 @@
     <!-- AAOS doesn't support fingerprint and face -->
     <string-array name="config_biometric_sensors" translatable="false" >
     </string-array>
-    <string-array translatable="false" name="config_ethernet_interfaces">
-        <item>eth0;11,12,14;;</item>
-    </string-array>
 </resources>
