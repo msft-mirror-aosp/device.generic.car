@@ -7,7 +7,8 @@
 #include <VehicleUtils.h>
 #include <VehicleHalTypes.h>
 
-#include <android/hardware/automotive/vehicle/2.0/types.h>
+#include <aidl/android/hardware/automotive/vehicle/VehicleDisplay.h>
+#include <aidl/android/hardware/automotive/vehicle/VehicleHwKeyInputAction.h>
 #include <android-base/logging.h>
 #include <android/keycodes.h>
 #include <libprotocan/MessageDef.h>
@@ -23,6 +24,8 @@ using can::V1_0::ICanBus;
 using protocan::MessageDef;
 using protocan::Signal;
 using ::aidl::android::hardware::automotive::vehicle::VehicleArea;
+using ::aidl::android::hardware::automotive::vehicle::VehicleDisplay;
+using ::aidl::android::hardware::automotive::vehicle::VehicleHwKeyInputAction;
 using ::aidl::android::hardware::automotive::vehicle::VehiclePropertyStatus;
 using ::aidl::android::hardware::automotive::vehicle::VehicleProperty;
 
