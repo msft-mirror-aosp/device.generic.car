@@ -20,6 +20,10 @@ PRODUCT_PACKAGES += \
     android.hardware.broadcastradio@2.0-service \
     android.hardware.audio.service-caremu
 
+# Runtime Resource Overlay for Connectivity
+PRODUCT_PACKAGES += \
+    CarConnectivityOverlay
+
 # Emulator configuration
 PRODUCT_COPY_FILES += \
     device/generic/car/common/config.ini:config.ini
@@ -93,4 +97,3 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_release.mk)
 endif
 
 $(call inherit-product, packages/services/Car/car_product/build/car.mk)
-$(call inherit-product, packages/apps/Car/Templates/CarTemplatesHost.mk)
