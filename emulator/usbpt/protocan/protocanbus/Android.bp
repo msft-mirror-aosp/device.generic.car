@@ -2,6 +2,15 @@
 // Copyright (C) 2021 Google Inc. All Rights Reserved.
 //
 
+package {
+    // See: http://go/android-license-faq
+    // A large-scale-change added 'default_applicable_licenses' to import
+    // all of the 'license_kinds' from "device_generic_car_license"
+    // to get the below license kinds:
+    //   SPDX-license-identifier-Apache-2.0
+    default_applicable_licenses: ["device_generic_car_license"],
+}
+
 cc_defaults {
     name: "android.device.generic.car.emulator@1.0-protocanbus-defaults",
     cpp_std: "experimental",
@@ -36,7 +45,6 @@ cc_binary {
     include_dirs: ["frameworks/native/include"],
     shared_libs: [
         "android.hardware.automotive.can@1.0",
-        "android.hardware.automotive.vehicle@2.0",
         "device.generic.car.emulator-aidl-V1-ndk",
         "libbinder_ndk",
         "libhidlbase",
@@ -44,6 +52,9 @@ cc_binary {
     ],
     whole_static_libs: [
         "libprotocan",
+    ],
+    static_libs: [
+        "libmath",
     ],
 
     vintf_fragments: ["manifest_android.device.generic.car.emulator@1.0-protocanbus.xml"]
