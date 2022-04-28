@@ -12,12 +12,17 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 buses: [
- {
+  {
     name: "BCAN"
     virtual { ifname: "vcan0" }
     bitrate: 125000
- },
- {
+  },
+  {
+    name: "CCAN"
+    virtual { ifname: "vcan0" }
+    bitrate: 250000
+  },
+  {
     name: "aae"
     native { ifname: "can0" }
     bitrate: 250000
