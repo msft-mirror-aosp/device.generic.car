@@ -31,8 +31,9 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/app/CarLatinIME/CarLatinIME.apk \
     system/app/CarMapsPlaceholder/CarMapsPlaceholder.apk \
     system/app/CarPermissionControllerRRO/CarPermissionControllerRRO.apk \
-    system/app/RotaryIME/RotaryIME.apk \
     system/app/CarRotaryImeRRO/CarRotaryImeRRO.apk \
+    system/app/HideCameraApps/HideCameraApps.apk \
+    system/app/RotaryIME/RotaryIME.apk \
     system/app/RotaryPlayground/RotaryPlayground.apk \
     system/app/SampleCustomInputService/SampleCustomInputService.apk \
     system/app/SampleRearViewCamera/SampleRearViewCamera.apk \
