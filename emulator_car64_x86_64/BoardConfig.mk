@@ -1,5 +1,4 @@
-#
-# Copyright (C) 2019 The Android Open Source Project
+# Copyright (C) 2022 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,12 +11,14 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+#
 
-# Allow sepolicies to be excluded in GSI targets.
-ifeq ($(DO_NOT_INCLUDE_BT_SEPOLICY),)
-BOARD_SEPOLICY_DIRS += \
-    device/generic/car/emulator/usbpt/bluetooth/btusb/sepolicy
-endif
+# Use emulator64_x86_64_arm64 BoardConfig as base
+include device/generic/goldfish/emulator64_x86_64/BoardConfig.mk
+include device/generic/car/emulator/usbpt/BoardConfig.mk
 
-PRODUCT_COPY_FILES += \
-    device/generic/car/emulator/usbpt/bluetooth/btusb/init.btusb.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.btusb.rc \
+# Override BOARD_SUPER_PARTITION_SIZE to inclease the mounted system partition.
+BOARD_SUPER_PARTITION_SIZE := 5856296960
+
+BOARD_EMULATOR_DYNAMIC_PARTITIONS_SIZE = 3489660928
+
