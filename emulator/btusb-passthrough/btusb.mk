@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2020 The Android Open Source Project
+# Copyright (C) 2019 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,11 +12,11 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#
 
-# This is a wrapper board for AAOS 64bit only emulators
-# Use generic_64bitonly_x86_64 BoardConfig as base
-include build/make/target/board/generic_64bitonly_x86_64/BoardConfig.mk
+# Enable Bluetooth passthrough support
+$(call inherit-product, device/generic/car/emulator/bluetooth/btlinux-service.mk)
 
-# Override BOARD_SUPER_PARTITION_SIZE to increase the mounted system partition.
-BOARD_SUPER_PARTITION_SIZE := 5856296960
+PRODUCT_PACKAGES += usb_modeswitch \
+
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.usb.host.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.usb.host.xml

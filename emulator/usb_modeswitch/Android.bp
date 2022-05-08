@@ -1,5 +1,4 @@
-//
-// Copyright (C) 2021 The Android Open Source Project
+// Copyright (C) 2020 The Android Open Source Project
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -14,15 +13,35 @@
 // limitations under the License.
 
 package {
-    default_applicable_licenses: ["device_generic_car_license"],
+    default_applicable_licenses: [
+        "device_generic_car_emulator_usb_modeswitch_license",
+    ],
 }
 
 // See: http://go/android-license-faq
 license {
-    name: "device_generic_car_license",
+    name: "device_generic_car_emulator_usb_modeswitch_license",
     visibility: [":__subpackages__"],
     license_kinds: [
-        "SPDX-license-identifier-Apache-2.0",
+        "SPDX-license-identifier-GPL-2.0+",
     ],
-    license_text: ["LICENSE"],
+    license_text: [
+        "LICENSE",
+    ],
+}
+
+cc_binary {
+    name: "usb_modeswitch",
+    srcs: [
+        "usb_modeswitch.c",
+    ],
+    shared_libs: [
+        "libusb",
+    ],
+    cflags: [
+        "-Wno-self-assign",
+        "-Wno-unused-parameter",
+        "-Wno-sometimes-uninitialized",
+    ],
+    vendor: true
 }

@@ -15,10 +15,14 @@
 #
 
 # Auto modules
-# TODO: Add broadcastradio@.2.0 back once it's stable b/145694104
 PRODUCT_PACKAGES += \
     android.hardware.automotive.vehicle@2.0-service \
+    android.hardware.broadcastradio@2.0-service \
     android.hardware.audio.service-caremu
+
+# Runtime Resource Overlay for Connectivity
+PRODUCT_PACKAGES += \
+    CarConnectivityOverlay
 
 # Emulator configuration
 PRODUCT_COPY_FILES += \
