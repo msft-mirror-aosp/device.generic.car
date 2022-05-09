@@ -140,7 +140,7 @@ void EmulatedVehicleHardware::startVehicleBuses() {
 }
 
 ::ndk::ScopedAStatus EmulatedVehicleHardware::VehicleBusCallback::onNewPropValues(
-     const std::vector<AidlVehiclePropValue>& aidlPropValues) {
+        const std::vector<AidlVehiclePropValue>& aidlPropValues) {
     for (const auto& aidlPropValue : aidlPropValues) {
         if (auto result = mVehicleHardware->setValue(aidlPropValue); !result.ok()) {
             ALOGE("Failed to set value, error: %s", getErrorMsg(result).c_str());
@@ -156,11 +156,13 @@ void EmulatedVehicleHardware::stopVehicleBuses() {
     }
 }
 
-std::vector<VehiclePropValuePool::RecyclableType> EmulatedVehicleHardware::getAllProperties() const {
+std::vector<VehiclePropValuePool::RecyclableType> EmulatedVehicleHardware::getAllProperties()
+        const {
     return mServerSidePropStore->readAllValues();
 }
 
-Result<const VehiclePropConfig*> EmulatedVehicleHardware::getPropConfig(int32_t propId) const {
+EmulatedVehicleHardware::ConfigResultType EmulatedVehicleHardware::getPropConfig(int32_t propId)
+        const {
     return mServerSidePropStore->getConfig(propId);
 }
 
