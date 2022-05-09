@@ -25,13 +25,15 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/apex/com.android.car.framework.apex \
     system/app/Bluetooth/Bluetooth.apk \
     system/app/Bluetooth/lib/arm64/libbluetooth_jni.so \
+    system/app/Bluetooth/lib/x86_64/libbluetooth_jni.so \
     system/app/CarFrameworkPackageStubs/CarFrameworkPackageStubs.apk \
     system/app/CarHTMLViewer/CarHTMLViewer.apk \
     system/app/CarLatinIME/CarLatinIME.apk \
     system/app/CarMapsPlaceholder/CarMapsPlaceholder.apk \
     system/app/CarPermissionControllerRRO/CarPermissionControllerRRO.apk \
-    system/app/RotaryIME/RotaryIME.apk \
     system/app/CarRotaryImeRRO/CarRotaryImeRRO.apk \
+    system/app/HideCameraApps/HideCameraApps.apk \
+    system/app/RotaryIME/RotaryIME.apk \
     system/app/RotaryPlayground/RotaryPlayground.apk \
     system/app/SampleCustomInputService/SampleCustomInputService.apk \
     system/app/SampleRearViewCamera/SampleRearViewCamera.apk \
@@ -46,6 +48,7 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/bin/carwatchdogd \
     system/bin/com.android.car.procfsinspector \
     system/bin/curl \
+    system/bin/evsmanagerd \
     system/bin/vehicle_binding_util \
     system/etc/apns-conf.xml \
     system/etc/canbus_config.pb \
@@ -55,6 +58,7 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/etc/init/carpowerpolicyd.rc \
     system/etc/init/carwatchdogd.rc \
     system/etc/init/com.android.car.procfsinspector.rc \
+    system/etc/init/evsmanagerd.rc \
     system/etc/init/init.bootstat.car.rc \
     system/etc/init/init.car.rc \
     system/etc/init/vehicle_binding_util.rc \
@@ -66,6 +70,7 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/etc/permissions/car-frameworks-service.xml \
     system/etc/permissions/com.android.car.activityresolver.xml \
     system/etc/permissions/com.android.car.bugreport.xml \
+    system/etc/permissions/com.android.car.cartelemetryapp.xml \
     system/etc/permissions/com.android.car.carlauncher.xml \
     system/etc/permissions/com.android.car.cluster.home.xml \
     system/etc/permissions/com.android.car.dialer.xml \
@@ -82,10 +87,12 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/etc/permissions/com.google.android.car.garagemode.testapp.xml \
     system/etc/permissions/com.google.android.car.kitchensink.xml \
     system/etc/permissions/com.google.android.car.networking.preferenceupdater.xml \
+    system/etc/permissions/com.google.android.car.networking.railway.xml \
     system/etc/sysconfig/preinstalled-packages-product-car-base.xml \
     system/etc/vintf/manifest/carpowerpolicyd.xml \
     system/etc/vintf/manifest/carwatchdogd.xml \
     system/etc/vintf/manifest/manifest_android.automotive.evs.manager@1.1.xml \
+    system/etc/vintf/manifest/manifest_evsmanagerd.xml \
     system/framework/android.car.jar \
     system/framework/android.car.builtin.jar \
     system/framework/car-frameworks-service.jar \
@@ -101,11 +108,13 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/lib64/android.hardware.automotive.can@1.0.so \
     system/lib64/android.hardware.automotive.evs@1.0.so \
     system/lib64/android.hardware.automotive.evs@1.1.so \
+    system/lib64/android.hardware.automotive.evs-V1-ndk.so \
     system/lib64/android.hardware.automotive.vehicle@2.0.so \
     system/lib64/android.os.statsbootstrap_aidl-cpp.so \
     system/lib64/libbluetooth_jni.so \
     system/lib64/libstatsbootstrap.so \
     system/lib64/libstatslog_evs.so \
+    system/lib64/libstatslog_evsmanagerd.so \
     system/lib64/libsuspend.so \
     system/lib64/libwatchdog_binder_mediator.so \
     system/lib64/libwatchdog_package_info_resolver.so \
@@ -127,6 +136,7 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/priv-app/CarService/lib/x86_64/libcarservicejni.so \
     system/priv-app/CarSettings/CarSettings.apk \
     system/priv-app/CarShell/CarShell.apk \
+    system/priv-app/CarTelemetryApp/CarTelemetryApp.apk \
     system/priv-app/CarUsbHandler/CarUsbHandler.apk \
     system/priv-app/ClusterHomeSample/ClusterHomeSample.apk \
     system/priv-app/DefaultStorageMonitoringCompanionApp/DefaultStorageMonitoringCompanionApp.apk \
