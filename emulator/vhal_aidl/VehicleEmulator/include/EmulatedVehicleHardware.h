@@ -22,6 +22,7 @@
 
 #include <CommConn.h>
 #include <FakeVehicleHardware.h>
+#include <VehicleUtils.h>
 
 namespace android {
 namespace hardware {
@@ -34,9 +35,10 @@ class VehicleEmulatorTest;
 
 class EmulatedVehicleHardware final : public FakeVehicleHardware {
   public:
-    using AidlVehiclePropValue = ::aidl::android::hardware::automotive::vehicle::VehiclePropValue;
-    using IVehicleBus = ::aidl::device::generic::car::emulator::IVehicleBus;
-    using BnVehicleBusCallback = ::aidl::device::generic::car::emulator::BnVehicleBusCallback;
+    using AidlVehiclePropValue = aidl::android::hardware::automotive::vehicle::VehiclePropValue;
+    using IVehicleBus = aidl::device::generic::car::emulator::IVehicleBus;
+    using BnVehicleBusCallback = aidl::device::generic::car::emulator::BnVehicleBusCallback;
+    using ConfigResultType = android::base::Result<const aidl::android::hardware::automotive::vehicle::VehiclePropConfig*, VhalError>;
 
     EmulatedVehicleHardware();
 
@@ -49,8 +51,7 @@ class EmulatedVehicleHardware final : public FakeVehicleHardware {
 
     std::vector<VehiclePropValuePool::RecyclableType> getAllProperties() const;
 
-    base::Result<const aidl::android::hardware::automotive::vehicle::VehiclePropConfig*>
-            getPropConfig(int32_t propId) const;
+    ConfigResultType getPropConfig(int32_t propId) const;
 
   private:
     friend class VehicleEmulator;
