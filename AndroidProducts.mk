@@ -19,13 +19,21 @@ PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/aosp_car_arm.mk \
     $(LOCAL_DIR)/aosp_car_x86.mk \
     $(LOCAL_DIR)/aosp_car_x86_64.mk \
+    $(LOCAL_DIR)/car_ui_portrait.mk \
     $(LOCAL_DIR)/car_x86_64.mk \
+    $(LOCAL_DIR)/gsi_car_arm64.mk \
+    $(LOCAL_DIR)/gsi_car_x86_64.mk \
+
 
 COMMON_LUNCH_CHOICES := \
     aosp_car_arm-userdebug \
     aosp_car_arm64-userdebug \
     aosp_car_x86-userdebug \
     aosp_car_x86_64-userdebug \
+    car_ui_portrait-userdebug \
     car_x86_64-userdebug \
+    gsi_car_arm64-userdebug \
+    gsi_car_x86_64-userdebug \
+
 
 EMULATOR_VENDOR_NO_SOUND_TRIGGER := false
