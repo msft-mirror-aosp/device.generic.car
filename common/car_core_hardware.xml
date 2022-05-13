@@ -40,6 +40,9 @@
      <!-- Notably bluetooth is added to avoid crashing. It does not work in the emulator. -->
     <feature name="android.hardware.bluetooth" />
 
+    <!-- Indicate support for the Android security model per the CDD. -->
+    <feature name="android.hardware.security.model.compatible" />
+
     <!-- basic system services -->
     <feature name="android.software.connectionservice" />
     <feature name="android.software.voice_recognizers" notLowRam="true" />
