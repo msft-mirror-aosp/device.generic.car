@@ -38,12 +38,11 @@ PRODUCT_PRODUCT_PROPERTIES += \
 
 ifeq (true,$(ENABLE_CLUSTER_OS_DOUBLE))
 PRODUCT_PACKAGES += CarServiceOverlayEmulatorOsDouble
-GOOGLE_CAR_SERVICE_OVERLAY += CarServiceOverlayEmulatorOsDoubleGoogle
 else
 PRODUCT_PACKAGES += CarServiceOverlayEmulator
-GOOGLE_CAR_SERVICE_OVERLAY += CarServiceOverlayEmulatorGoogle
 endif  # ENABLE_CLUSTER_OS_DOUBLE
 endif  # BUILD_EMULATOR_CLUSTER_DISPLAY
 
 PRODUCT_PRODUCT_PROPERTIES += \
     ro.carwatchdog.vhal_healthcheck.interval=10 \
+    ro.carwatchdog.client_healthcheck.interval=20 \
