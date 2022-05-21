@@ -25,10 +25,3 @@ runtime_resource_overlay {
     sdk_version: "current",
     product_specific: true
 }
-
-override_runtime_resource_overlay {
-    name: "CarServiceOverlayEmulatorGoogle",
-    base: "CarServiceOverlayEmulator",
-    package_name: "com.google.android.car.resources.emulator",
-    target_package_name: "com.google.android.car.updatable",
-}
