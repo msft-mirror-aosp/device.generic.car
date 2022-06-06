@@ -45,7 +45,7 @@ cc_binary {
     include_dirs: ["frameworks/native/include"],
     shared_libs: [
         "android.hardware.automotive.can@1.0",
-        "device.generic.car.emulator-aidl-V1-ndk",
+        "device.generic.car.emulator-aidl-V2-ndk",
         "libbinder_ndk",
         "libhidlbase",
         "libcutils",

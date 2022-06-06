@@ -14,7 +14,7 @@ aidl_interface {
     vendor_available: true,
     srcs: ["device/generic/car/emulator/*.aidl"],
     imports: [
-        "android.hardware.automotive.vehicle",
+        "android.hardware.automotive.vehicle-V2",
     ],
     stability: "vintf",
     backend: {
