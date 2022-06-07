@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2021 The Android Open Source Project
+# Copyright (C) 2021 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,8 +12,8 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+#
 
-# USB Passthru
-PRODUCT_PACKAGES += usb_modeswitch \
-                    rtl8821c_fw.bin.car \
-                    rtl8821c_config.bin.car
+PRODUCT_PACKAGES += usbip_service
+BOARD_SEPOLICY_DIRS += device/generic/car/emulator/usbpt/usbip-service/sepolicy
+
