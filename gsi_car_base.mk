@@ -31,8 +31,9 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/app/CarLatinIME/CarLatinIME.apk \
     system/app/CarMapsPlaceholder/CarMapsPlaceholder.apk \
     system/app/CarPermissionControllerRRO/CarPermissionControllerRRO.apk \
-    system/app/RotaryIME/RotaryIME.apk \
     system/app/CarRotaryImeRRO/CarRotaryImeRRO.apk \
+    system/app/HideCameraApps/HideCameraApps.apk \
+    system/app/RotaryIME/RotaryIME.apk \
     system/app/RotaryPlayground/RotaryPlayground.apk \
     system/app/SampleCustomInputService/SampleCustomInputService.apk \
     system/app/SampleRearViewCamera/SampleRearViewCamera.apk \
@@ -86,6 +87,7 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/etc/permissions/com.google.android.car.garagemode.testapp.xml \
     system/etc/permissions/com.google.android.car.kitchensink.xml \
     system/etc/permissions/com.google.android.car.networking.preferenceupdater.xml \
+    system/etc/permissions/com.google.android.car.networking.railway.xml \
     system/etc/sysconfig/preinstalled-packages-product-car-base.xml \
     system/etc/vintf/manifest/carpowerpolicyd.xml \
     system/etc/vintf/manifest/carwatchdogd.xml \
@@ -145,6 +147,7 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/priv-app/GarageModeTestApp/GarageModeTestApp.apk \
     system/priv-app/LocalMediaPlayer/LocalMediaPlayer.apk \
     system/priv-app/NetworkPreferenceApp/NetworkPreferenceApp.apk \
+    system/priv-app/RailwayReferenceApp/RailwayReferenceApp.apk \
     system/lib64/libcarservicejni.so \
     system/bin/android.automotive.telemetryd@1.0 \
     system/etc/init/android.automotive.telemetryd@1.0.rc \
