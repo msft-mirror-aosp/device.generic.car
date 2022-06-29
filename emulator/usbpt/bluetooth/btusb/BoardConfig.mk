@@ -1,4 +1,4 @@
-# Copyright (C) 2020 The Android Open Source Project
+# Copyright (C) 2022 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,12 +13,12 @@
 # limitations under the License.
 #
 
-# Use generic_x86_64 BoardConfig as base
-include build/make/target/board/emulator_x86_64/BoardConfig.mk
-include device/generic/car/emulator/usbpt/BoardConfig.mk
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/generic/car/emulator/usbpt/bluetooth/btusb/hal
 
-# Override BOARD_SUPER_PARTITION_SIZE to inclease the mounted system partition.
-BOARD_SUPER_PARTITION_SIZE := 5856296960
+TARGET_KERNEL_USE ?= 5.10
 
-BOARD_EMULATOR_DYNAMIC_PARTITIONS_SIZE = 3489660928
-
+ifeq ($(TARGET_ARCH),x86_64)
+BOARD_VENDOR_KERNEL_MODULES += kernel/prebuilts/common-modules/virtual-device/$(TARGET_KERNEL_USE)/x86-64/btusb.ko
+else ifeq ($(TARGET_ARCH),arm64)
+BOARD_VENDOR_KERNEL_MODULES += kernel/prebuilts/common-modules/virtual-device/$(TARGET_KERNEL_USE)/arm64/btusb.ko
+endif
