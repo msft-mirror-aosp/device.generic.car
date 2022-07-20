@@ -51,6 +51,7 @@ class PipeComm : public CommConn {
 
    private:
     int mPipeFd;
+    std::mutex mPipeWriteLock;
 };
 
 }  // impl

@@ -80,6 +80,8 @@ std::vector<uint8_t> PipeComm::read() {
 int PipeComm::write(const std::vector<uint8_t>& data) {
     int retVal = 0;
 
+    std::lock_guard<std::mutex> lock(mPipeWriteLock);
+
     if (mPipeFd != -1) {
         retVal = qemud_channel_send(mPipeFd, data.data(), data.size());
     }
