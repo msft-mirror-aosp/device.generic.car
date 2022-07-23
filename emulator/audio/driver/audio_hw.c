@@ -1193,8 +1193,6 @@ static int adev_open_output_stream(struct audio_hw_device *dev,
         pthread_cond_init(&out->worker_wake, NULL);
         out->worker_standby = true;
         out->worker_exit = false;
-        pthread_create(&out->worker_thread, NULL, out_write_worker, out);
-        set_shortened_thread_name(out->worker_thread, address);
 
         out->enabled_channels = BOTH_CHANNELS;
         // For targets where output streams are closed regularly, currently ducked/muted addresses
@@ -1220,6 +1218,8 @@ static int adev_open_output_stream(struct audio_hw_device *dev,
                  out->bus_address, out->enabled_channels == RIGHT_CHANNEL ? "Right" : "Left");
             }
         }
+        pthread_create(&out->worker_thread, NULL, out_write_worker, out);
+        set_shortened_thread_name(out->worker_thread, address);
         *stream_out = &out->stream;
         ALOGD("%s bus: %s", __func__, out->bus_address);
     }
