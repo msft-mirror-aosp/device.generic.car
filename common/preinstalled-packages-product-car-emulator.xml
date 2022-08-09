@@ -88,9 +88,6 @@
     <install-in-user-type package="com.android.car.datacenter">
         <install-in user-type="FULL" />
     </install-in-user-type>
-    <install-in-user-type package="com.android.car.dialer">
-        <install-in user-type="FULL" />
-    </install-in-user-type>
     <install-in-user-type package="com.android.car.goldilocks">
         <install-in user-type="FULL" />
     </install-in-user-type>
