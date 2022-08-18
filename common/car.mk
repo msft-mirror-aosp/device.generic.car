@@ -24,9 +24,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     CarConnectivityOverlay
 
+ifeq ($(EMULATOR_DYNAMIC_MULTIDISPLAY_CONFIG),false)
 # Emulator configuration
 PRODUCT_COPY_FILES += \
     device/generic/car/common/config.ini:config.ini
+endif # EMULATOR_DYNAMIC_MULTIDISPLAY_CONFIG
 
 # Car init.rc
 PRODUCT_COPY_FILES += \
