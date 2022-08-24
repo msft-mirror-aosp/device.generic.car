@@ -81,6 +81,7 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/etc/permissions/com.android.car.rotary.xml \
     system/etc/permissions/com.android.car.settings.xml \
     system/etc/permissions/com.android.car.shell.xml \
+    system/etc/permissions/com.android.car.test.one.hotworddetectionservice.xml \
     system/etc/permissions/com.android.car.xml \
     system/etc/permissions/com.google.android.car.adaslocation.xml \
     system/etc/permissions/com.google.android.car.defaultstoragemonitoringcompanionapp.xml \
@@ -125,6 +126,7 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/priv-app/BugReportApp/BugReportApp.apk \
     system/priv-app/CarActivityResolver/CarActivityResolver.apk \
     system/priv-app/CarDialerApp/CarDialerApp.apk \
+    system/priv-app/CarHotwordDetectionServiceOne/CarHotwordDetectionServiceOne.apk \
     system/priv-app/CarLauncher/CarLauncher.apk \
     system/priv-app/CarManagedProvisioning/CarManagedProvisioning.apk \
     system/priv-app/CarMediaApp/CarMediaApp.apk \
