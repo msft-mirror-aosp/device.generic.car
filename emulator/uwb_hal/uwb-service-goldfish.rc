@@ -1,0 +1,8 @@
+service vendor.uwb_hal_goldfish /vendor/bin/hw/android.hardware.uwb-goldfish-service
+    class hal
+    user uwb
+    group system inet root uwb
+    capabilities NET_ADMIN NET_RAW
+
+on property:vendor.qemu.preferred.uwb.service=*
+    restart vendor.uwb_hal_goldfish
