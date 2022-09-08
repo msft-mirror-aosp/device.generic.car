@@ -90,6 +90,7 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/etc/permissions/com.google.android.car.networking.railway.xml \
     system/etc/sysconfig/preinstalled-packages-product-car-base.xml \
     system/etc/sysconfig/preinstalled-packages-com.android.car.dialer.xml \
+    system/etc/sysconfig/preinstalled-packages-com.android.car.messenger.xml \
     system/etc/vintf/manifest/carpowerpolicyd.xml \
     system/etc/vintf/manifest/carwatchdogd.xml \
     system/etc/vintf/manifest/manifest_android.automotive.evs.manager@1.1.xml \
