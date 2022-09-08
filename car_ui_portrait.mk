@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+BUILD_EMULATOR_CLUSTER_DISPLAY := false
+
 PRODUCT_COPY_FILES += \
     packages/services/Car/car_product/car_ui_portrait/car_ui_portrait.ini:config.ini \
     packages/services/Car/car_product/car_ui_portrait/bootanimation/bootanimation.zip:system/media/bootanimation.zip
