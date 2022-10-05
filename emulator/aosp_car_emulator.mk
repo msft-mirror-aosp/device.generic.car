@@ -45,20 +45,15 @@ CUSTOMIZE_EVS_SERVICE_PARAMETER := true
 endif  # ENABLE_MOCK_EVSHAL
 $(call inherit-product, device/generic/car/emulator/evs/evs.mk)
 
+ifeq ($(EMULATOR_DYNAMIC_MULTIDISPLAY_CONFIG),true)
+# This section configures multi-display without hardcoding the
+# displays on hwservicemanager.
+$(call inherit-product, device/generic/car/emulator/multi-display-emulator/multidisplay-emulator.mk)
+else # EMULATOR_DYNAMIC_MULTIDISPLAY_CONFIG
 ifeq (true,$(BUILD_EMULATOR_CLUSTER_DISPLAY))
-PRODUCT_COPY_FILES += \
-    device/generic/car/emulator/cluster/display_settings.xml:system/etc/display_settings.xml \
-
-PRODUCT_PRODUCT_PROPERTIES += \
-    hwservicemanager.external.displays=1,400,600,120,0 \
-    persist.service.bootanim.displays=8140900251843329 \
-
-ifeq (true,$(ENABLE_CLUSTER_OS_DOUBLE))
-PRODUCT_PACKAGES += CarServiceOverlayEmulatorOsDouble
-else
-PRODUCT_PACKAGES += CarServiceOverlayEmulator
-endif  # ENABLE_CLUSTER_OS_DOUBLE
-endif  # BUILD_EMULATOR_CLUSTER_DISPLAY
+$(call inherit-product, device/generic/car/emulator/cluster/cluster-hwservicemanager.mk)
+endif # BUILD_EMULATOR_CLUSTER_DISPLAY
+endif # EMULATOR_DYNAMIC_MULTIDISPLAY_CONFIG
 
 PRODUCT_PRODUCT_PROPERTIES += \
     ro.carwatchdog.vhal_healthcheck.interval=10 \
