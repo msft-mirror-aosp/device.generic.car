@@ -97,3 +97,6 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_release.mk)
 endif
 
 $(call inherit-product, packages/services/Car/car_product/build/car.mk)
+
+# TODO(b/253459812): find a better way to handle it.
+DEVICE_PRODUCT_COMPATIBILITY_MATRIX_FILE += device/generic/car/common/device_framework_matrix_product.xml
