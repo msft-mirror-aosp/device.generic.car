@@ -32,4 +32,11 @@
     <!-- Device does not support near ultrasound audio-->
     <bool name="config_supportMicNearUltrasound">false</bool>
     <bool name="config_supportSpeakerNearUltrasound">false</bool>
+
+    <!-- Controls if local secondary displays should be private or not. Value specified in the array
+         represents physical port address of each display and display in this list will be marked
+         as private. {@see android.view.Display#FLAG_PRIVATE} -->
+    <integer-array translatable="false" name="config_localPrivateDisplayPorts">
+        <item>1</item> <!-- ClusterDisplay -->
+    </integer-array>
 </resources>
