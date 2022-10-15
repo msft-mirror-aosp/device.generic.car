@@ -1003,12 +1003,19 @@ static bool is_tone_generator_device(struct generic_stream_in *in) {
         address_has_tone_keyword(in->bus_address));
 }
 
+static bool is_microphone_device(struct generic_stream_in *in) {
+    return in->device == AUDIO_DEVICE_IN_BACK_MIC ||
+        in->device == AUDIO_DEVICE_IN_BUILTIN_MIC;
+}
+
 static ssize_t in_read(struct audio_stream_in *stream, void *buffer, size_t bytes) {
     struct generic_stream_in *in = (struct generic_stream_in *)stream;
     struct generic_audio_device *adev = in->dev;
     const size_t frames =  bytes / audio_stream_in_frame_size(stream);
     int ret = 0;
+    bool read_mute = false;
     bool mic_mute = false;
+    bool is_tone_generator = false;
     size_t read_bytes = 0;
 
     set_shortened_thread_name(pthread_self(), __func__);
@@ -1020,8 +1027,13 @@ static ssize_t in_read(struct audio_stream_in *stream, void *buffer, size_t byte
         in->worker_standby = false;
     }
 
+    // Only mute read if mic is muted and device is mic.
+    // Other devices, e.g. FM_TUNER, are not muted by mic mute
+    read_mute = mic_mute && is_microphone_device(in);
+
+    is_tone_generator = is_tone_generator_device(in);
     // Tone generators fill the buffer via pseudo_pcm_read directly
-    if (!is_tone_generator_device(in)) {
+    if (!is_tone_generator) {
         pthread_cond_signal(&in->worker_wake);
     }
 
@@ -1058,7 +1070,7 @@ static ssize_t in_read(struct audio_stream_in *stream, void *buffer, size_t byte
     }
     in->standby_frames_read += frames;
 
-    if (is_tone_generator_device(in)) {
+    if (is_tone_generator) {
         int read_bytes = pseudo_pcm_read(buffer, bytes, &in->oscillator);
         read_frames = read_bytes / audio_stream_in_frame_size(stream);
     } else if (popcount(in->req_config.channel_mask) == 1 &&
@@ -1092,7 +1104,7 @@ static ssize_t in_read(struct audio_stream_in *stream, void *buffer, size_t byte
 exit:
     read_bytes = read_frames*audio_stream_in_frame_size(stream);
 
-    if (mic_mute) {
+    if (read_mute) {
         read_bytes = 0;
     }
 
