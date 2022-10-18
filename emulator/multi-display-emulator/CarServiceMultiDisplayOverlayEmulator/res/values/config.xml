@@ -34,7 +34,7 @@
     <!-- Assign displays to occupant zones.  -->
     <string-array translatable="false" name="config_occupant_display_mapping">
         <item>displayPort=0,displayType=MAIN,occupantZoneId=0</item>
-        <item>displayUniqueId=virtual:com.android.emulator.multidisplay:1234562,displayType=INSTRUMENT_CLUSTER,occupantZoneId=0</item>
+        <item>displayUniqueId=virtual:com.android.car.cluster.osdouble:ClusterDisplay,displayType=INSTRUMENT_CLUSTER,occupantZoneId=0</item>
         <item>displayUniqueId=virtual:com.android.emulator.multidisplay:1234563,displayType=MAIN,occupantZoneId=1</item>
         <item>displayUniqueId=virtual:com.android.emulator.multidisplay:1234564,displayType=MAIN,occupantZoneId=2</item>
         <item>displayUniqueId=virtual:com.android.emulator.multidisplay:1234565,displayType=MAIN,occupantZoneId=3</item>
@@ -45,4 +45,13 @@
          assignments. This feature is still experimental. -->
     <bool name="enableProfileUserAssignmentForMultiDisplay" translatable="false">true</bool>
 
+    <string-array translatable="false" name="config_allowed_optional_car_features">
+        <item>car_navigation_service</item>
+        <item>cluster_home_service</item>
+        <item>com.android.car.user.CarUserNoticeService</item>
+        <item>diagnostic</item>
+        <item>storage_monitoring</item>
+        <item>vehicle_map_service</item>
+        <item>car_telemetry_service</item>
+    </string-array>
 </resources>

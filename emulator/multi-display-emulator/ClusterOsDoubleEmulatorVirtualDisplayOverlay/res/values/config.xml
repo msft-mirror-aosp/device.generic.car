@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  ~ Copyright (C) 2022 The Android Open Source Project
+  ~ Copyright (C) 2021 The Android Open Source Project
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~ you may not use this file except in compliance with the License.
@@ -14,9 +14,8 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-<overlay>
-    <item target="array/config_occupant_zones" value="@array/config_occupant_zones" />
-    <item target="array/config_occupant_display_mapping" value="@array/config_occupant_display_mapping" />
-    <item target="bool/enableProfileUserAssignmentForMultiDisplay" value="@bool/enableProfileUserAssignmentForMultiDisplay" />
-    <item target="array/config_allowed_optional_car_features" value="@array/config_allowed_optional_car_features" />
-</overlay>
+
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- Specify the display unique id as added by qemu -->
+    <string name="config_clusterDisplayUniqueId">virtual:com.android.emulator.multidisplay:1234562</string>
+</resources>

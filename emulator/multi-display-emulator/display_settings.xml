@@ -23,6 +23,7 @@
 
     <!-- Display settings for cluster -->
     <display name="virtual:com.android.emulator.multidisplay:1234562"
+        shouldShowSystemDecors="false"
         forcedDensity="120"
         dontMoveToTop="true"/>
 

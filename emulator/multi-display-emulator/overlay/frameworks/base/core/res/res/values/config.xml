@@ -22,6 +22,13 @@
   See also packages/services/Car/service/res/values/config.xml
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <!-- Maximum number of users we allow to be running at a time -->
+    <integer name="config_multiuserMaxRunningUsers">5</integer>
+
+    <!-- True if the device supports system decorations on secondary displays. -->
+    <bool name="config_supportsSystemDecorsOnSecondaryDisplays">true</bool>
+
     <!-- This is the default launcher package with an activity to use on secondary displays that
          support system decorations.
          This launcher package must have an activity that supports multiple instances and has
@@ -32,8 +39,6 @@
     <!-- Whether the system enables per-display focus. If the system has the input method for each
          display, this value should be true. -->
     <bool name="config_perDisplayFocusEnabled">true</bool>
-    <!-- True if the device supports system decorations on secondary displays. -->
-    <bool name="config_supportsSystemDecorsOnSecondaryDisplays">true</bool>
 
     <!-- Whether to only install system packages on a user if they're allow-listed for that user
          type. These are flags and can be freely combined.
@@ -54,4 +59,9 @@
         Package allow-list disabled for testing profile user as default allow-list does not
         support PROFILE user. -->
     <integer name="config_userTypePackageWhitelistMode">2</integer>
+
+    <!-- Whether the device allows users to start in background on secondary displays.
+         Should be false for most devices, except automotive vehicle with passenger displays. -->
+    <bool name="config_multiuserUsersOnSecondaryDisplays">true</bool>
+
 </resources>
