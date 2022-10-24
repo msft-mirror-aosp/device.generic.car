@@ -48,7 +48,7 @@ $(call inherit-product, device/generic/car/emulator/evs/evs.mk)
 ifeq ($(EMULATOR_DYNAMIC_MULTIDISPLAY_CONFIG),true)
 # This section configures multi-display without hardcoding the
 # displays on hwservicemanager.
-$(call inherit-product, device/generic/car/emulator/multi-display-emulator/multidisplay-emulator.mk)
+$(call inherit-product, device/generic/car/emulator/multi-display-dynamic/multi-display-dynamic.mk)
 else # EMULATOR_DYNAMIC_MULTIDISPLAY_CONFIG
 ifeq (true,$(BUILD_EMULATOR_CLUSTER_DISPLAY))
 $(call inherit-product, device/generic/car/emulator/cluster/cluster-hwservicemanager.mk)

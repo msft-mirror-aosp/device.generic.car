@@ -17,13 +17,13 @@
 
 # Use the config.ini with the cluster display declared.
 PRODUCT_COPY_FILES += \
-    device/generic/car/emulator/multi-display-emulator/config.ini:config.ini
+    device/generic/car/emulator/multi-display-dynamic/config.ini:config.ini
 # Enable the displays UI in qemu.
 PRODUCT_SYSTEM_PROPERTIES += \
     ro.emulator.car.multidisplay=true
 # Must be before the emulator's vendor.mk.
 PRODUCT_COPY_FILES += \
-    device/generic/car/emulator/multi-display-emulator/display_settings.xml:$(TARGET_COPY_OUT_VENDOR)/etc/display_settings.xml
+    device/generic/car/emulator/multi-display-dynamic/display_settings.xml:$(TARGET_COPY_OUT_VENDOR)/etc/display_settings.xml
 # Keep the original audio configuration from the MD emulator.
 PRODUCT_COPY_FILES += \
     device/generic/car/emulator/multi-display/car_audio_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/car_audio_configuration.xml
@@ -44,4 +44,4 @@ PRODUCT_COPY_FILES += \
 
 # Selects the MultiDisplaySecondaryHomeTestLauncher as secondaryHome
 PRODUCT_PACKAGE_OVERLAYS += \
-    device/generic/car/emulator/multi-display-emulator/overlay
+    device/generic/car/emulator/multi-display-dynamic/overlay
