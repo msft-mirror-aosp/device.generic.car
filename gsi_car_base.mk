@@ -38,7 +38,6 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/app/SampleCustomInputService/SampleCustomInputService.apk \
     system/app/SampleRearViewCamera/SampleRearViewCamera.apk \
     system/app/SystemUpdater/SystemUpdater.apk \
-    system/bin/android.automotive.evs.manager@1.1 \
     system/bin/canhalconfigurator \
     system/bin/canhalctrl \
     system/bin/canhaldump \
@@ -61,6 +60,7 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/etc/init/evsmanagerd.rc \
     system/etc/init/init.bootstat.car.rc \
     system/etc/init/init.car.rc \
+    system/etc/init/init.evs.rc \
     system/etc/init/vehicle_binding_util.rc \
     system/etc/old-apns-conf.xml \
     system/etc/permissions/android.car.cluster.xml \

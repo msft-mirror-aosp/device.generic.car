@@ -37,9 +37,9 @@ $(call inherit-product, device/generic/car/emulator/usbpt/car_usbpt.mk)
 # app implementation.
 ENABLE_EVS_SERVICE ?= true
 ENABLE_MOCK_EVSHAL ?= true
-ENABLE_CAREVSSERVICE_SAMPLE ?= true
-ENABLE_SAMPLE_EVS_APP ?= true
-ENABLE_CARTELEMETRY_SERVICE ?= true
+ENABLE_CAREVSSERVICE_SAMPLE ?= false
+ENABLE_SAMPLE_EVS_APP ?= false
+ENABLE_CARTELEMETRY_SERVICE ?= false
 ifeq ($(ENABLE_MOCK_EVSHAL), true)
 CUSTOMIZE_EVS_SERVICE_PARAMETER := true
 endif  # ENABLE_MOCK_EVSHAL
