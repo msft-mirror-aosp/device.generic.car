@@ -28,6 +28,23 @@ $(call inherit-product, device/generic/car/emulator/rotary/car_rotary.mk)
 # Enables USB related passthrough
 $(call inherit-product, device/generic/car/emulator/usbpt/car_usbpt.mk)
 
+# EVS
+# By default, we enable EvsManager, a sample EVS app, and a mock EVS HAL implementation.
+# If you want to use your own EVS HAL implementation, please set ENABLE_MOCK_EVSHAL as false
+# and add your HAL implementation to the product.  Please also check init.evs.rc and see how
+# you can configure EvsManager to use your EVS HAL implementation.  Similarly, please set
+# ENABLE_SAMPLE_EVS_APP as false if you want to use your own EVS app configuration or own EVS
+# app implementation.
+ENABLE_EVS_SERVICE ?= true
+ENABLE_MOCK_EVSHAL ?= true
+ENABLE_CAREVSSERVICE_SAMPLE ?= false
+ENABLE_SAMPLE_EVS_APP ?= false
+ENABLE_CARTELEMETRY_SERVICE ?= false
+ifeq ($(ENABLE_MOCK_EVSHAL), true)
+CUSTOMIZE_EVS_SERVICE_PARAMETER := true
+endif  # ENABLE_MOCK_EVSHAL
+$(call inherit-product, device/generic/car/emulator/evs/evs.mk)
+
 ifeq (true,$(BUILD_EMULATOR_CLUSTER_DISPLAY))
 PRODUCT_COPY_FILES += \
     device/generic/car/emulator/cluster/display_settings.xml:system/etc/display_settings.xml \
