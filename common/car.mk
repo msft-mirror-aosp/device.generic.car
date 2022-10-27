@@ -18,7 +18,8 @@
 PRODUCT_PACKAGES += \
     android.hardware.automotive.vehicle@V1-emulator-service \
     android.hardware.broadcastradio@2.0-service \
-    android.hardware.audio.service-caremu
+    android.hardware.audio.service-caremu \
+    android.hardware.automotive.remoteaccess@V1-default-service
 
 # Runtime Resource Overlay for Connectivity
 PRODUCT_PACKAGES += \
