@@ -166,6 +166,9 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/bin/android.frameworks.automotive.display@1.0-service \
     system/etc/init/android.frameworks.automotive.display@1.0-service.rc \
     system/etc/vintf/manifest/manifest_android.frameworks.automotive.display@1.0.xml \
+    system/app/MultiDisplayTest/MultiDisplayTest.apk \
+    system/etc/permissions/com.android.car.multidisplay.xml \
+    system/priv-app/MultiDisplaySecondaryHomeTestLauncher/MultiDisplaySecondaryHomeTestLauncher.apk \
 
 PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += %.odex %.vdex %.art
 
