@@ -10,3 +10,6 @@ cursor.orientationAware = 1
 # This will indicate to input flinger than it should link this input device
 # with the virtual display.
 touch.displayId = local:4619827540095559171
+
+# Allow touches while the screen is off
+touch.enableForInactiveViewport = 1
