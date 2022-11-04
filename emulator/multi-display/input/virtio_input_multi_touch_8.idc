@@ -13,3 +13,6 @@ touch.displayId = local:4619827124781842690
 
 # Allow touches while the screen is off
 touch.enableForInactiveViewport = 1
+
+# Tap on the display will wake the device.
+touch.wake = 1
