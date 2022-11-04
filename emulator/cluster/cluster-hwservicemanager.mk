@@ -33,7 +33,7 @@ endif # EMULATOR_MULTIDISPLAY_BOOTANIM_CONFIG
 endif # EMULATOR_HW_MULTIDISPLAY_CONFIG
 
 ifeq (true,$(ENABLE_CLUSTER_OS_DOUBLE))
-PRODUCT_PACKAGES += CarServiceOverlayEmulatorOsDouble
+PRODUCT_PACKAGES += CarServiceOverlayEmulatorOsDouble ClusterOsDoubleEmulatorPhysicalDisplayOverlay
 else
 PRODUCT_PACKAGES += CarServiceOverlayEmulator
 endif  # ENABLE_CLUSTER_OS_DOUBLE
