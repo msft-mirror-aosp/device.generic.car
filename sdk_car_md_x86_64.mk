@@ -41,7 +41,7 @@ PRODUCT_PRODUCT_PROPERTIES += \
     persist.service.bootanim.displays=4619827551948147201,4619827124781842690,4619827540095559171
 
 PRODUCT_PACKAGES += ClusterHomeSample ClusterOsDouble
-PRODUCT_PACKAGES += CarServiceOverlayEmulatorOsDouble CarServiceOverlayMdEmulatorOsDouble ClusterOsDoubleEmulatorPhysicalDisplayOverlay
+PRODUCT_PACKAGES += CarServiceOverlayEmulatorOsDouble CarServiceOverlayMdEmulatorOsDouble
 
 # Enable MZ audio by default
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
