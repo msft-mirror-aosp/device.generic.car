@@ -35,6 +35,7 @@ $(call inherit-product, device/generic/car/emulator/usbpt/car_usbpt.mk)
 # you can configure EvsManager to use your EVS HAL implementation.  Similarly, please set
 # ENABLE_SAMPLE_EVS_APP as false if you want to use your own EVS app configuration or own EVS
 # app implementation.
+ENABLE_EVS_SAMPLE ?= false
 ENABLE_EVS_SERVICE ?= true
 ENABLE_MOCK_EVSHAL ?= true
 ENABLE_CAREVSSERVICE_SAMPLE ?= false
