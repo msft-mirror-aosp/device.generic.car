@@ -17,7 +17,20 @@
       "displayPort" : 1,
       "frontRange" : 100,
       "rearRange" : 100
+    },
+    {
+      "_comment": "Display2",
+      "displayPort" : 2,
+      "frontRange" : 100,
+      "rearRange" : 100
+    },
+    {
+      "_comment": "Display3",
+      "displayPort" : 3,
+      "frontRange" : 100,
+      "rearRange" : 100
     }
+
   ],
   "graphic" : {
     "frontPixel" : -20,
