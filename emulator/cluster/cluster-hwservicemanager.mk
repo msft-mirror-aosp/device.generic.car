@@ -23,7 +23,6 @@ PRODUCT_PRODUCT_PROPERTIES += \
     persist.service.bootanim.displays=8140900251843329
 else
 ifneq ($(EMULATOR_MULTIDISPLAY_BOOTANIM_CONFIG),)
-$(warning Setting displays to $(EMULATOR_MULTIDISPLAY_HW_CONFIG) and bootanims to $(EMULATOR_MULTIDISPLAY_BOOTANIM_CONFIG))
     PRODUCT_PRODUCT_PROPERTIES += \
         hwservicemanager.external.displays=$(EMULATOR_MULTIDISPLAY_HW_CONFIG) \
         persist.service.bootanim.displays=$(EMULATOR_MULTIDISPLAY_BOOTANIM_CONFIG)
@@ -33,7 +32,7 @@ endif # EMULATOR_MULTIDISPLAY_BOOTANIM_CONFIG
 endif # EMULATOR_HW_MULTIDISPLAY_CONFIG
 
 ifeq (true,$(ENABLE_CLUSTER_OS_DOUBLE))
-PRODUCT_PACKAGES += CarServiceOverlayEmulatorOsDouble ClusterOsDoubleEmulatorPhysicalDisplayOverlay
+PRODUCT_PACKAGES += ClusterHomeSampleOverlay CarServiceOverlayEmulatorOsDouble ClusterOsDoubleEmulatorPhysicalDisplayOverlay
 else
 PRODUCT_PACKAGES += CarServiceOverlayEmulator
 endif  # ENABLE_CLUSTER_OS_DOUBLE
