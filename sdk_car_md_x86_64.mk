@@ -34,13 +34,12 @@ PRODUCT_COPY_FILES += \
 
 # Use to disable cluster display definitions in aosp_car_emulator
 BUILD_EMULATOR_CLUSTER_DISPLAY := false
-# Disable dynamic multidisplay support in the base target.
-EMULATOR_DYNAMIC_MULTIDISPLAY_CONFIG := false
+
 PRODUCT_PRODUCT_PROPERTIES += \
     hwservicemanager.external.displays=1,400,600,120,0,2,800,600,120,0,3,800,600,120,0 \
     persist.service.bootanim.displays=4619827551948147201,4619827124781842690,4619827540095559171
 
-PRODUCT_PACKAGES += ClusterHomeSample ClusterOsDouble
+PRODUCT_PACKAGES += ClusterHomeSample ClusterOsDouble ClusterHomeSampleOverlay
 PRODUCT_PACKAGES += CarServiceOverlayEmulatorOsDouble CarServiceOverlayMdEmulatorOsDouble ClusterOsDoubleEmulatorPhysicalDisplayOverlay
 
 # Enable MZ audio by default
