@@ -13,7 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-$(call inherit-product, $(SRC_TARGET_DIR)/product/handheld_vendor.mk)
+$(call inherit-product, packages/services/Car/car_product/build/car_vendor.mk)
 
 # Need this for gles libraries to load properly
 # after moving to /vendor/lib/
