@@ -1,4 +1,5 @@
-# Copyright (C) 2022 The Android Open-Source Project
+#
+# Copyright (C) 2022 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,8 +13,5 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-on early-init
-    write /sys/module/firmware_class/parameters/path /vendor/firmware/
-
-on boot
-    exec u:r:vendor_modprobe:s0 -- /vendor/bin/modprobe -a -d /vendor/lib/modules btusb.ko
+PRODUCT_COPY_FILES += \
+    device/generic/car/emulator/usbpt/wifi/init.wifiusb.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.wifiusb.rc \
