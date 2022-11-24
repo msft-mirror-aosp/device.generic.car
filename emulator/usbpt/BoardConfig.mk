@@ -14,3 +14,4 @@
 #
 
 include device/generic/car/emulator/usbpt/bluetooth/BoardConfig.mk
+include device/generic/car/emulator/usbpt/wifi/BoardConfig.mk
