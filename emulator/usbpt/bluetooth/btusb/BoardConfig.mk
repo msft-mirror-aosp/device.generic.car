@@ -15,10 +15,7 @@
 
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/generic/car/emulator/usbpt/bluetooth/btusb/hal
 
-TARGET_KERNEL_USE ?= 5.10
+TARGET_KERNEL_USE ?= 5.15
 
-ifeq ($(TARGET_ARCH),x86_64)
-BOARD_VENDOR_KERNEL_MODULES += kernel/prebuilts/common-modules/virtual-device/$(TARGET_KERNEL_USE)/x86-64/btusb.ko
-else ifeq ($(TARGET_ARCH),arm64)
-BOARD_VENDOR_KERNEL_MODULES += kernel/prebuilts/common-modules/virtual-device/$(TARGET_KERNEL_USE)/arm64/btusb.ko
-endif
+BOARD_VENDOR_KERNEL_MODULES += \
+	$(KERNEL_MODULES_PATH)/btusb.ko
