@@ -13,8 +13,6 @@
 # limitations under the License.
 #
 
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/generic/car/emulator/usbpt/bluetooth/btusb/hal
-
 TARGET_KERNEL_USE ?= 5.15
 
 BOARD_VENDOR_KERNEL_MODULES += \

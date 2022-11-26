@@ -28,6 +28,8 @@ $(call inherit-product, device/generic/car/emulator/rotary/car_rotary.mk)
 # Enables USB related passthrough
 $(call inherit-product, device/generic/car/emulator/usbpt/car_usbpt.mk)
 
+TARGET_PRODUCT_PROP := device/generic/car/emulator/usbpt/bluetooth/bluetooth.prop
+
 # EVS
 # By default, we enable EvsManager, a sample EVS app, and a mock EVS HAL implementation.
 # If you want to use your own EVS HAL implementation, please set ENABLE_MOCK_EVSHAL as false
