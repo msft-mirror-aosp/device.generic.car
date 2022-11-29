@@ -13,22 +13,14 @@
 # limitations under the License.
 #
 
-ifeq ($(TARGET_ARCH),x86_64)
-BOARD_VENDOR_KERNEL_MODULES += kernel/prebuilts/common-modules/virtual-device/$(TARGET_KERNEL_USE)/x86-64/mt76x2u.ko
-BOARD_VENDOR_KERNEL_MODULES += kernel/prebuilts/common-modules/virtual-device/$(TARGET_KERNEL_USE)/x86-64/mt76x2-common.ko
-BOARD_VENDOR_KERNEL_MODULES += kernel/prebuilts/common-modules/virtual-device/$(TARGET_KERNEL_USE)/x86-64/mt76x0u.ko
-BOARD_VENDOR_KERNEL_MODULES += kernel/prebuilts/common-modules/virtual-device/$(TARGET_KERNEL_USE)/x86-64/mt76x02-usb.ko
-BOARD_VENDOR_KERNEL_MODULES += kernel/prebuilts/common-modules/virtual-device/$(TARGET_KERNEL_USE)/x86-64/mt76x0-common.ko
-BOARD_VENDOR_KERNEL_MODULES += kernel/prebuilts/common-modules/virtual-device/$(TARGET_KERNEL_USE)/x86-64/mt76x02-lib.ko
-BOARD_VENDOR_KERNEL_MODULES += kernel/prebuilts/common-modules/virtual-device/$(TARGET_KERNEL_USE)/x86-64/mt76-usb.ko
-BOARD_VENDOR_KERNEL_MODULES += kernel/prebuilts/common-modules/virtual-device/$(TARGET_KERNEL_USE)/x86-64/mt76.ko
-else ifeq ($(TARGET_ARCH),arm64)
-BOARD_VENDOR_KERNEL_MODULES += kernel/prebuilts/common-modules/virtual-device/$(TARGET_KERNEL_USE)/arm64/mt76x2u.ko
-BOARD_VENDOR_KERNEL_MODULES += kernel/prebuilts/common-modules/virtual-device/$(TARGET_KERNEL_USE)/arm64/mt76x2u-common.ko
-BOARD_VENDOR_KERNEL_MODULES += kernel/prebuilts/common-modules/virtual-device/$(TARGET_KERNEL_USE)/arm64/mt76x0u.ko
-BOARD_VENDOR_KERNEL_MODULES += kernel/prebuilts/common-modules/virtual-device/$(TARGET_KERNEL_USE)/arm64/mt76x02-usb.ko
-BOARD_VENDOR_KERNEL_MODULES += kernel/prebuilts/common-modules/virtual-device/$(TARGET_KERNEL_USE)/arm64/mt76x0-common.ko
-BOARD_VENDOR_KERNEL_MODULES += kernel/prebuilts/common-modules/virtual-device/$(TARGET_KERNEL_USE)/arm64/mt76x02-lib.ko
-BOARD_VENDOR_KERNEL_MODULES += kernel/prebuilts/common-modules/virtual-device/$(TARGET_KERNEL_USE)/arm64/mt76-usb.ko
-BOARD_VENDOR_KERNEL_MODULES += kernel/prebuilts/common-modules/virtual-device/$(TARGET_KERNEL_USE)/arm64/mt76.ko
-endif
+TARGET_KERNEL_USE ?= 5.15
+
+BOARD_VENDOR_KERNEL_MODULES += \
+	$(KERNEL_MODULES_PATH)/mt76x2u.ko \
+	$(KERNEL_MODULES_PATH)/mt76x2-common.ko \
+	$(KERNEL_MODULES_PATH)/mt76x0u.ko \
+	$(KERNEL_MODULES_PATH)/mt76x0-common.ko \
+	$(KERNEL_MODULES_PATH)/mt76x02-usb.ko \
+	$(KERNEL_MODULES_PATH)/mt76x02-lib.ko \
+	$(KERNEL_MODULES_PATH)/mt76-usb.ko \
+	$(KERNEL_MODULES_PATH)/mt76.ko
