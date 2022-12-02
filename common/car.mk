@@ -18,7 +18,8 @@
 PRODUCT_PACKAGES += \
     android.hardware.automotive.vehicle@V1-emulator-service \
     android.hardware.broadcastradio@2.0-service \
-    android.hardware.audio.service-caremu
+    android.hardware.audio.service-caremu \
+    android.hardware.automotive.remoteaccess@V1-default-service
 
 # Runtime Resource Overlay for Connectivity
 PRODUCT_PACKAGES += \
@@ -97,3 +98,6 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_release.mk)
 endif
 
 $(call inherit-product, packages/services/Car/car_product/build/car.mk)
+
+# TODO(b/253459812): find a better way to handle it.
+DEVICE_PRODUCT_COMPATIBILITY_MATRIX_FILE += device/generic/car/common/device_framework_matrix_product.xml
