@@ -28,6 +28,8 @@ $(call inherit-product, device/generic/car/emulator/rotary/car_rotary.mk)
 # Enables USB related passthrough
 $(call inherit-product, device/generic/car/emulator/usbpt/car_usbpt.mk)
 
+TARGET_PRODUCT_PROP := device/generic/car/emulator/usbpt/bluetooth/bluetooth.prop
+
 ifeq (true,$(BUILD_EMULATOR_CLUSTER_DISPLAY))
 PRODUCT_COPY_FILES += \
     device/generic/car/emulator/cluster/display_settings.xml:system/etc/display_settings.xml \
