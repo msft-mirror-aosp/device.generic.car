@@ -50,11 +50,11 @@
         occupant.
 
         Some examples are:
-        <item>displayPort=0,displayType=MAIN,occupantZoneId=0</item>
-        <item>displayPort=1,displayType=INSTRUMENT_CLUSTER,occupantZoneId=0</item>
-        <item>displayPort=2,displayType=MAIN,occupantZoneId=1</item>
-        <item>displayPort=3,displayType=MAIN,occupantZoneId=2</item>
-        <item>displayPort=4,displayType=MAIN,occupantZoneId=3</item>
+        <item>displayPort=0,displayType=MAIN,occupantZoneId=0,inputTypes=TOUCH_SCREEN|DPAD_KEYS|NAVIGATE_KEYS|ROTARY_NAVIGATION</item>
+        <item>displayPort=1,displayType=INSTRUMENT_CLUSTER,occupantZoneId=0,inputTypes=DPAD_KEYS</item>
+        <item>displayPort=2,displayType=MAIN,occupantZoneId=1,inputTypes=TOUCH_SCREEN</item>
+        <item>displayPort=3,displayType=MAIN,occupantZoneId=2,inputTypes=TOUCH_SCREEN</item>
+        <item>displayPort=4,displayType=MAIN,occupantZoneId=3,inputTypes=TOUCH_SCREEN</item>
 
         displayPort: Unique port id for the display.
         displayType: Display type for the display. Use * part from
@@ -62,13 +62,14 @@
                        etc.
         occupantZoneId: occupantZoneId specified from config_occupant_zones.
 
+        inputTypes: supported input types for the corresponding display.
     -->
     <string-array translatable="false" name="config_occupant_display_mapping">
-      <item>displayPort=0,displayType=MAIN,occupantZoneId=0</item>
-      <item>displayUniqueId=virtual:com.android.car.cluster.osdouble:ClusterDisplay,displayType=INSTRUMENT_CLUSTER,occupantZoneId=0</item>
-      <item>displayPort=2,displayType=MAIN,occupantZoneId=1</item>
-      <item>displayPort=3,displayType=MAIN,occupantZoneId=2</item>
-      <item>displayPort=4,displayType=MAIN,occupantZoneId=3</item>
+      <item>displayPort=0,displayType=MAIN,occupantZoneId=0,inputTypes=TOUCH_SCREEN|DPAD_KEYS|NAVIGATE_KEYS|ROTARY_NAVIGATION</item>
+      <item>displayUniqueId=virtual:com.android.car.cluster.osdouble:ClusterDisplay,displayType=INSTRUMENT_CLUSTER,occupantZoneId=0,inputTypes=DPAD_KEYS</item>
+      <item>displayPort=2,displayType=MAIN,occupantZoneId=1,inputTypes=TOUCH_SCREEN</item>
+      <item>displayPort=3,displayType=MAIN,occupantZoneId=2,inputTypes=TOUCH_SCREEN</item>
+      <item>displayPort=4,displayType=MAIN,occupantZoneId=3,inputTypes=TOUCH_SCREEN</item>
     </string-array>
 
     <!-- Enable profile user assignment per each CarOccupantZone for per display android user

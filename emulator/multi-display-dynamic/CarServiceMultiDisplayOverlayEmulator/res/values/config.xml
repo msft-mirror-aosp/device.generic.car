@@ -33,12 +33,12 @@
 
     <!-- Assign displays to occupant zones.  -->
     <string-array translatable="false" name="config_occupant_display_mapping">
-        <item>displayPort=0,displayType=MAIN,occupantZoneId=0</item>
-        <item>displayUniqueId=virtual:com.android.car.cluster.osdouble:ClusterDisplay,displayType=INSTRUMENT_CLUSTER,occupantZoneId=0</item>
-        <item>displayUniqueId=virtual:com.android.emulator.multidisplay:1234563,displayType=MAIN,occupantZoneId=1</item>
-        <item>displayUniqueId=virtual:com.android.emulator.multidisplay:1234564,displayType=MAIN,occupantZoneId=2</item>
-        <item>displayUniqueId=virtual:com.android.emulator.multidisplay:1234565,displayType=MAIN,occupantZoneId=3</item>
-        <item>displayUniqueId=virtual:com.android.emulator.multidisplay:1234566,displayType=MAIN,occupantZoneId=4</item>
+        <item>displayPort=0,displayType=MAIN,occupantZoneId=0,inputTypes=TOUCH_SCREEN|DPAD_KEYS|NAVIGATE_KEYS|ROTARY_NAVIGATION</item>
+        <item>displayUniqueId=virtual:com.android.car.cluster.osdouble:ClusterDisplay,displayType=INSTRUMENT_CLUSTER,occupantZoneId=0,inputTypes=DPAD_KEYS</item>
+        <item>displayUniqueId=virtual:com.android.emulator.multidisplay:1234563,displayType=MAIN,occupantZoneId=1,inputTypes=DPAD_KEYS</item>
+        <item>displayUniqueId=virtual:com.android.emulator.multidisplay:1234564,displayType=MAIN,occupantZoneId=2,inputTypes=DPAD_KEYS</item>
+        <item>displayUniqueId=virtual:com.android.emulator.multidisplay:1234565,displayType=MAIN,occupantZoneId=3,inputTypes=DPAD_KEYS</item>
+        <item>displayUniqueId=virtual:com.android.emulator.multidisplay:1234566,displayType=MAIN,occupantZoneId=4,inputTypes=DPAD_KEYS</item>
     </string-array>
 
     <!-- Enable profile user assignment per each CarOccupantZone for per display android user
