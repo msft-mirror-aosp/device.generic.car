@@ -26,9 +26,6 @@ PRODUCT_CHARACTERISTICS := emulator
 
 PRODUCT_FULL_TREBLE_OVERRIDE := true
 
-# Goldfish vendor partition configurations
-$(call inherit-product-if-exists, device/generic/goldfish/vendor.mk)
-
 # Enable Google-specific location features,
 # like NetworkLocationProvider and LocationCollector
 PRODUCT_VENDOR_PROPERTIES += \
@@ -138,3 +135,6 @@ ifeq (true,$(BUILD_EMULATOR_CLUSTER_DISPLAY))
 $(call inherit-product, device/generic/car/emulator/cluster/cluster-hwservicemanager.mk)
 endif # BUILD_EMULATOR_CLUSTER_DISPLAY
 endif # EMULATOR_DYNAMIC_MULTIDISPLAY_CONFIG
+
+# Goldfish vendor partition configurations
+$(call inherit-product-if-exists, device/generic/goldfish/vendor.mk)
