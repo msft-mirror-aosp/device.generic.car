@@ -68,8 +68,8 @@ static const char* PROP_KEY_OUT_PERIOD_COUNT[2] = {
     "ro.vendor.caremu.audiohal.out_period_count",
 };
 static const char* PROP_KEY_IN_PERIOD_MS[2] = {
-    "ro.boot.vendor.caremu.audiohal.out_period_count",
-    "ro.vendor.caremu.audiohal.out_period_count",
+    "ro.boot.vendor.caremu.audiohal.in_period_ms",
+    "ro.vendor.caremu.audiohal.in_period_ms",
 };
 static const char* PROP_KEY_IN_PERIOD_COUNT[2] = {
     "ro.boot.vendor.caremu.audiohal.in_period_count",
