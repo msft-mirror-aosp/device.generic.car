@@ -21,4 +21,5 @@
     <item target="array/config_allowed_optional_car_features" value="@array/config_allowed_optional_car_features" />
     <item target="bool/audioUseDynamicRouting" value="@bool/audioUseDynamicRouting" />
     <item target="bool/audioUseCarVolumeGroupMuting" value="@bool/audioUseCarVolumeGroupMuting" />
+    <item target="xml/car_ux_restrictions_map" value="@xml/car_ux_restrictions_map" />
 </overlay>
