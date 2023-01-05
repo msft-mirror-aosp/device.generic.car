@@ -54,4 +54,7 @@
         <item>vehicle_map_service</item>
         <item>car_telemetry_service</item>
     </string-array>
+
+    <bool name="audioUseDynamicRouting">true</bool>
+    <bool name="audioUseCarVolumeGroupMuting">true</bool>
 </resources>
