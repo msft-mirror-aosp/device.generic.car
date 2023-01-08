@@ -15,7 +15,7 @@
 
 # Add non-removable cluster by creating a display on hwservicemanager.
 PRODUCT_COPY_FILES += \
-    device/generic/car/emulator/cluster/display_settings.xml:system/etc/display_settings.xml \
+    device/generic/car/emulator/cluster/display_settings.xml:$(TARGET_COPY_OUT_VENDOR)/etc/display_settings.xml \
 
 ifeq ($(EMULATOR_MULTIDISPLAY_HW_CONFIG),)
 PRODUCT_PRODUCT_PROPERTIES += \
@@ -40,3 +40,4 @@ endif  # ENABLE_CLUSTER_OS_DOUBLE
 # Disable dynamic multidisplay for emulators with display added by
 # hwservicemanager.
 EMULATOR_DYNAMIC_MULTIDISPLAY_CONFIG := false
+
