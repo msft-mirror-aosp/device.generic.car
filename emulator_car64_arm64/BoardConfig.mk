@@ -15,8 +15,8 @@
 
 BOARD_DO_NOT_STRIP_VENDOR_MODULES := true
 
-# Use emulator64_x86_64_arm64 BoardConfig as base
-include device/generic/goldfish/emulator64_x86_64/BoardConfig.mk
+# Use emulator64_arm64 BoardConfig as base
+include device/generic/goldfish/emulator64_arm64/BoardConfig.mk
 include device/generic/car/emulator/usbpt/BoardConfig.mk
 
 # Override BOARD_SUPER_PARTITION_SIZE to inclease the mounted system partition.
