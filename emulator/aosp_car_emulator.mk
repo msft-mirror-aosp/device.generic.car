@@ -61,3 +61,10 @@ endif # EMULATOR_DYNAMIC_MULTIDISPLAY_CONFIG
 PRODUCT_PRODUCT_PROPERTIES += \
     ro.carwatchdog.vhal_healthcheck.interval=10 \
     ro.carwatchdog.client_healthcheck.interval=20 \
+
+# Drive Mode RROs
+PRODUCT_PACKAGES += \
+    DriveModeEcoRRO \
+    DriveModeSportRRO \
+    DriveModeOnRRO \
+
