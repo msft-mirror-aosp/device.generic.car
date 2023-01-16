@@ -77,6 +77,7 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/etc/permissions/com.android.car.hvac.xml \
     system/etc/permissions/com.android.car.media.xml \
     system/etc/permissions/com.android.car.messenger.xml \
+    system/etc/permissions/com.android.car.oemcarservice.testapp.xml \
     system/etc/permissions/com.android.car.radio.xml \
     system/etc/permissions/com.android.car.rotary.xml \
     system/etc/permissions/com.android.car.settings.xml \
@@ -123,6 +124,7 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/lib64/libwatchdog_perf_service.so \
     system/lib64/libwatchdog_process_service.so \
     system/media/bootanimation.zip \
+    system/priv-app/AdasLocationTestApp/AdasLocationTestApp.apk \
     system/priv-app/BugReportApp/BugReportApp.apk \
     system/priv-app/CarActivityResolver/CarActivityResolver.apk \
     system/priv-app/CarDialerApp/CarDialerApp.apk \
@@ -145,10 +147,10 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/priv-app/DirectRenderingCluster/DirectRenderingCluster.apk \
     system/priv-app/EmbeddedKitchenSinkApp/EmbeddedKitchenSinkApp.apk \
     system/priv-app/ExperimentalCarService/ExperimentalCarService.apk \
-    system/priv-app/AdasLocationTestApp/AdasLocationTestApp.apk \
     system/priv-app/GarageModeTestApp/GarageModeTestApp.apk \
     system/priv-app/LocalMediaPlayer/LocalMediaPlayer.apk \
     system/priv-app/NetworkPreferenceApp/NetworkPreferenceApp.apk \
+    system/priv-app/OemCarServiceTestApp/OemCarServiceTestApp.apk \
     system/priv-app/RailwayReferenceApp/RailwayReferenceApp.apk \
     system/priv-app/RotaryIME/RotaryIME.apk \
     system/priv-app/RotaryPlayground/RotaryPlayground.apk \
