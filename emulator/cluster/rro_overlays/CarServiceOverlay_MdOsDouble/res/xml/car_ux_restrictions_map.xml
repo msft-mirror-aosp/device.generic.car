@@ -43,7 +43,7 @@
         </DrivingState>
 
         <DrivingState state="moving">
-            <Restrictions requiresDistractionOptimization="true" uxr="no_dialpad|no_filtering|limit_string_length|no_keyboard|no_video|limit_content|no_setup|no_text_message"/>
+            <Restrictions requiresDistractionOptimization="false" uxr="baseline"/>
         </DrivingState>
 
     </RestrictionMapping>
