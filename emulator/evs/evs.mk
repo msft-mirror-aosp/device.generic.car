@@ -20,12 +20,12 @@ CUSTOMIZE_EVS_SERVICE_PARAMETER := true
 PRODUCT_PACKAGES += android.hardware.automotive.evs@1.1-service \
     android.frameworks.automotive.display@1.0-service
 PRODUCT_COPY_FILES += \
-    device/generic/car/emulator/evs/init.evs.rc:$(TARGET_COPY_OUT_SYSTEM)/etc/init/init.evs.rc
+    device/generic/car/emulator/evs/init.evs.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.evs.rc
 endif
 
 ifeq ($(ENABLE_SAMPLE_EVS_APP), true)
 PRODUCT_COPY_FILES += \
-    device/generic/car/emulator/evs/evs_app_config.json:$(TARGET_COPY_OUT_SYSTEM)/etc/automotive/evs/config_override.json
+    device/generic/car/emulator/evs/evs_app_config.json:$(TARGET_COPY_OUT_VENDOR)/etc/automotive/evs/config_override.json
 ifneq ($(ENABLE_EVS_SAMPLE), true)
 # We need to add evs_app package and its selinux policy if ENABLE_EVS_SAMPLE is not set as true.
 PRODUCT_PACKAGES += evs_app
