@@ -52,7 +52,7 @@ PRODUCT_PACKAGES += \
     MultiDisplaySecondaryHomeTestLauncher \
     MultiDisplayTest
 
-$(call inherit-product, device/generic/goldfish/car/sdk_car_x86_64.mk)
+$(call inherit-product, device/generic/car/sdk_car_x86_64.mk)
 
 PRODUCT_NAME := sdk_car_md_x86_64
 PRODUCT_DEVICE := emulator_car_x86_64
