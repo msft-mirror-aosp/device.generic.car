@@ -54,6 +54,10 @@ PRODUCT_PACKAGES += \
 
 $(call inherit-product, device/generic/car/sdk_car_x86_64.mk)
 
+# TODO(b/266978709): Set it to true after cleaning up the system partition
+# changes from this makefile
+PRODUCT_ENFORCE_ARTIFACT_PATH_REQUIREMENTS := false
+
 PRODUCT_NAME := sdk_car_md_x86_64
 PRODUCT_DEVICE := emulator_car_x86_64
 PRODUCT_BRAND := Android
