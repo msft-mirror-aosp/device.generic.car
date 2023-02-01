@@ -37,11 +37,12 @@ PRODUCT_PRODUCT_PROPERTIES += \
     persist.service.bootanim.displays=8140900251843329 \
 
 ifeq (true,$(ENABLE_CLUSTER_OS_DOUBLE))
-DEVICE_PACKAGE_OVERLAYS += device/generic/car/emulator/cluster/osdouble_overlay
+PRODUCT_PACKAGES += CarServiceOverlayEmulatorOsDouble
 else
-DEVICE_PACKAGE_OVERLAYS += device/generic/car/emulator/cluster/overlay
+PRODUCT_PACKAGES += CarServiceOverlayEmulator
 endif  # ENABLE_CLUSTER_OS_DOUBLE
 endif  # BUILD_EMULATOR_CLUSTER_DISPLAY
 
 PRODUCT_PRODUCT_PROPERTIES += \
     ro.carwatchdog.vhal_healthcheck.interval=10 \
+    ro.carwatchdog.client_healthcheck.interval=20 \

@@ -14,6 +14,7 @@
 # limitations under the License.
 
 $(call inherit-product, device/generic/car/emulator/usbpt/bluetooth/bluetooth.mk)
+$(call inherit-product, device/generic/car/emulator/usbpt/protocan/protocan.mk)
 $(call inherit-product, device/generic/car/emulator/usbpt/usbip-service/usbip-service.mk)
 
 # Required for USB passthrough
