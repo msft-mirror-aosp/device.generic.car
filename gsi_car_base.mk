@@ -38,7 +38,6 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/app/SampleCustomInputService/SampleCustomInputService.apk \
     system/app/SampleRearViewCamera/SampleRearViewCamera.apk \
     system/app/SystemUpdater/SystemUpdater.apk \
-    system/bin/android.automotive.evs.manager@1.1 \
     system/bin/canhalconfigurator \
     system/bin/canhalctrl \
     system/bin/canhaldump \
@@ -61,6 +60,7 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/etc/init/evsmanagerd.rc \
     system/etc/init/init.bootstat.car.rc \
     system/etc/init/init.car.rc \
+    system/etc/init/init.evs.rc \
     system/etc/init/vehicle_binding_util.rc \
     system/etc/old-apns-conf.xml \
     system/etc/permissions/android.car.cluster.xml \
@@ -77,10 +77,12 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/etc/permissions/com.android.car.hvac.xml \
     system/etc/permissions/com.android.car.media.xml \
     system/etc/permissions/com.android.car.messenger.xml \
+    system/etc/permissions/com.android.car.oemcarservice.testapp.xml \
     system/etc/permissions/com.android.car.radio.xml \
     system/etc/permissions/com.android.car.rotary.xml \
     system/etc/permissions/com.android.car.settings.xml \
     system/etc/permissions/com.android.car.shell.xml \
+    system/etc/permissions/com.android.car.test.one.hotworddetectionservice.xml \
     system/etc/permissions/com.android.car.xml \
     system/etc/permissions/com.google.android.car.adaslocation.xml \
     system/etc/permissions/com.google.android.car.defaultstoragemonitoringcompanionapp.xml \
@@ -89,6 +91,8 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/etc/permissions/com.google.android.car.networking.preferenceupdater.xml \
     system/etc/permissions/com.google.android.car.networking.railway.xml \
     system/etc/sysconfig/preinstalled-packages-product-car-base.xml \
+    system/etc/sysconfig/preinstalled-packages-com.android.car.dialer.xml \
+    system/etc/sysconfig/preinstalled-packages-com.android.car.messenger.xml \
     system/etc/vintf/manifest/carpowerpolicyd.xml \
     system/etc/vintf/manifest/carwatchdogd.xml \
     system/etc/vintf/manifest/manifest_android.automotive.evs.manager@1.1.xml \
@@ -121,10 +125,11 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/lib64/libwatchdog_perf_service.so \
     system/lib64/libwatchdog_process_service.so \
     system/media/bootanimation.zip \
+    system/priv-app/AdasLocationTestApp/AdasLocationTestApp.apk \
     system/priv-app/BugReportApp/BugReportApp.apk \
     system/priv-app/CarActivityResolver/CarActivityResolver.apk \
     system/priv-app/CarDialerApp/CarDialerApp.apk \
-    system/priv-app/CarHvacApp/CarHvacApp.apk \
+    system/priv-app/CarHotwordDetectionServiceOne/CarHotwordDetectionServiceOne.apk \
     system/priv-app/CarLauncher/CarLauncher.apk \
     system/priv-app/CarManagedProvisioning/CarManagedProvisioning.apk \
     system/priv-app/CarMediaApp/CarMediaApp.apk \
@@ -143,12 +148,16 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/priv-app/DirectRenderingCluster/DirectRenderingCluster.apk \
     system/priv-app/EmbeddedKitchenSinkApp/EmbeddedKitchenSinkApp.apk \
     system/priv-app/ExperimentalCarService/ExperimentalCarService.apk \
-    system/priv-app/AdasLocationTestApp/AdasLocationTestApp.apk \
     system/priv-app/GarageModeTestApp/GarageModeTestApp.apk \
     system/priv-app/LocalMediaPlayer/LocalMediaPlayer.apk \
     system/priv-app/NetworkPreferenceApp/NetworkPreferenceApp.apk \
+    system/priv-app/OemCarServiceTestApp/OemCarServiceTestApp.apk \
     system/priv-app/RailwayReferenceApp/RailwayReferenceApp.apk \
+    system/priv-app/RotaryIME/RotaryIME.apk \
+    system/priv-app/RotaryPlayground/RotaryPlayground.apk \
     system/lib64/libcarservicejni.so \
+    system/lib/libcarservicehelperjni.so \
+    system/lib64/libcarservicehelperjni.so \
     system/bin/android.automotive.telemetryd@1.0 \
     system/etc/init/android.automotive.telemetryd@1.0.rc \
     system/etc/vintf/manifest/android.automotive.telemetryd@1.0.xml \
@@ -161,6 +170,9 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/bin/android.frameworks.automotive.display@1.0-service \
     system/etc/init/android.frameworks.automotive.display@1.0-service.rc \
     system/etc/vintf/manifest/manifest_android.frameworks.automotive.display@1.0.xml \
+    system/app/MultiDisplayTest/MultiDisplayTest.apk \
+    system/etc/permissions/com.android.car.multidisplay.xml \
+    system/priv-app/MultiDisplaySecondaryHomeTestLauncher/MultiDisplaySecondaryHomeTestLauncher.apk \
 
 PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += %.odex %.vdex %.art
 
