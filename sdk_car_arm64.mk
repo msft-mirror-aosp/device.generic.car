@@ -15,8 +15,33 @@
 
 PRODUCT_PACKAGE_OVERLAYS := device/generic/car/common/overlay
 
-$(call inherit-product, device/generic/car/emulator/aosp_car_emulator.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/sdk_arm64.mk)
+QEMU_USE_SYSTEM_EXT_PARTITIONS := true
+PRODUCT_USE_DYNAMIC_PARTITIONS := true
+
+#
+# All components inherited here go to system image
+#
+$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
+$(call inherit-product, packages/services/Car/car_product/build/car_generic_system.mk)
+
+PRODUCT_ENFORCE_ARTIFACT_PATH_REQUIREMENTS := strict
+
+#
+# All components inherited here go to system_ext image
+#
+$(call inherit-product, packages/services/Car/car_product/build/car_system_ext.mk)
+
+#
+# All components inherited here go to product image
+#
+$(call inherit-product, device/generic/car/emulator/car_emulator_product.mk)
+
+#
+# All components inherited here go to vendor image
+#
+$(call inherit-product, device/generic/car/emulator/car_emulator_vendor.mk)
+$(call inherit-product-if-exists, device/generic/goldfish/arm64-vendor.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/board/emulator_arm64/device.mk)
 
 EMULATOR_VENDOR_NO_SOUND := true
 PRODUCT_NAME := sdk_car_arm64
