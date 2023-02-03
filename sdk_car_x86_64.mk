@@ -27,7 +27,7 @@ endif # EMULATOR_DYNAMIC_MULTIDISPLAY_CONFIG
 #
 # All components inherited here go to system image
 #
-$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit_only.mk)
 $(call inherit-product, packages/services/Car/car_product/build/car_generic_system.mk)
 
 PRODUCT_ENFORCE_ARTIFACT_PATH_REQUIREMENTS := strict
@@ -46,11 +46,11 @@ $(call inherit-product, device/generic/car/emulator/car_emulator_product.mk)
 # All components inherited here go to vendor image
 #
 $(call inherit-product, device/generic/car/emulator/car_emulator_vendor.mk)
-$(call inherit-product-if-exists, device/generic/goldfish/x86_64-vendor.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/board/emulator_x86_64/device.mk)
+$(call inherit-product, device/generic/goldfish/64bitonly/product/x86_64-vendor.mk)
+$(call inherit-product, device/generic/goldfish/emulator64_x86_64/device.mk)
 
 EMULATOR_VENDOR_NO_SOUND := true
 PRODUCT_NAME := sdk_car_x86_64
-PRODUCT_DEVICE := emulator_car_x86_64
+PRODUCT_DEVICE := emulator_car64_x86_64
 PRODUCT_BRAND := Android
 PRODUCT_MODEL := Car on x86_64 emulator
