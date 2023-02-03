@@ -59,6 +59,6 @@ $(call inherit-product, device/generic/car/sdk_car_x86_64.mk)
 PRODUCT_ENFORCE_ARTIFACT_PATH_REQUIREMENTS := false
 
 PRODUCT_NAME := sdk_car_md_x86_64
-PRODUCT_DEVICE := emulator_car_x86_64
+PRODUCT_DEVICE := emulator_car64_x86_64
 PRODUCT_BRAND := Android
 PRODUCT_MODEL := Car multi-display on x86_64 emulator
