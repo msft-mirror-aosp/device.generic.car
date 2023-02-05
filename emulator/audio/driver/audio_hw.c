@@ -298,7 +298,6 @@ static int out_dump(const struct audio_stream *stream, int fd) {
                 "\t\tenabled channels: %d\n"
                 "\t\tis ducked: %s\n"
                 "\t\tis muted: %s\n"
-                "\t\tis audio enabled: %s\n"
                 "\t\taudio dev: %p\n\n",
                 out->bus_address,
                 out_get_sample_rate(stream),
