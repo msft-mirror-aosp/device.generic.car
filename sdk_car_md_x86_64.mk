@@ -19,8 +19,9 @@ PRODUCT_COPY_FILES += \
     device/generic/car/emulator/multi-display/input/virtio_input_multi_touch_8.idc:$(TARGET_COPY_OUT_VENDOR)/usr/idc/virtio_input_multi_touch_8.idc \
     device/generic/car/emulator/multi-display/input/virtio_input_multi_touch_9.idc:$(TARGET_COPY_OUT_VENDOR)/usr/idc/virtio_input_multi_touch_9.idc
 
-# Overrides Goldfish's default display_settings.xml
+# Overrides Goldfish's default display settings
 PRODUCT_COPY_FILES += \
+    device/generic/car/emulator/multi-display/display_layout_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/displayconfig/display_layout_configuration.xml \
     device/generic/car/emulator/multi-display/display_settings.xml:$(TARGET_COPY_OUT_VENDOR)/etc/display_settings.xml
 
 PRODUCT_COPY_FILES += \
