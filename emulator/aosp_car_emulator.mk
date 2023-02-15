@@ -56,6 +56,8 @@ PRODUCT_PACKAGES += CarServiceOverlayEmulator
 endif  # ENABLE_CLUSTER_OS_DOUBLE
 endif  # BUILD_EMULATOR_CLUSTER_DISPLAY
 
+PRODUCT_PACKAGES += CarServiceOverlayEmulatorMedia
+
 PRODUCT_PRODUCT_PROPERTIES += \
     ro.carwatchdog.vhal_healthcheck.interval=10 \
     ro.carwatchdog.client_healthcheck.interval=20 \
