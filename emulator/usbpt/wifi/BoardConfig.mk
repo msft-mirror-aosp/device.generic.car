@@ -13,13 +13,14 @@
 # limitations under the License.
 #
 
-BOARD_DO_NOT_STRIP_VENDOR_MODULES := true
+TARGET_KERNEL_USE ?= 5.15
 
-# Use emulator64_x86_64_arm64 BoardConfig as base
-include device/generic/goldfish/emulator64_x86_64/BoardConfig.mk
-include device/generic/car/emulator/usbpt/BoardConfig.mk
-
-# Override BOARD_SUPER_PARTITION_SIZE to inclease the mounted system partition.
-BOARD_SUPER_PARTITION_SIZE := 5856296960
-
-BOARD_EMULATOR_DYNAMIC_PARTITIONS_SIZE = 3489660928
+BOARD_VENDOR_KERNEL_MODULES += \
+	$(KERNEL_MODULES_PATH)/mt76x2u.ko \
+	$(KERNEL_MODULES_PATH)/mt76x2-common.ko \
+	$(KERNEL_MODULES_PATH)/mt76x0u.ko \
+	$(KERNEL_MODULES_PATH)/mt76x0-common.ko \
+	$(KERNEL_MODULES_PATH)/mt76x02-usb.ko \
+	$(KERNEL_MODULES_PATH)/mt76x02-lib.ko \
+	$(KERNEL_MODULES_PATH)/mt76-usb.ko \
+	$(KERNEL_MODULES_PATH)/mt76.ko

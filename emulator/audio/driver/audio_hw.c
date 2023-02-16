@@ -55,10 +55,26 @@
 #define DEFAULT_IN_PERIOD_MS 15
 #define DEFAULT_IN_PERIOD_COUNT 4
 
-static const char* PROP_KEY_OUT_PERIOD_MS = "ro.vendor.caremu.audiohal.out_period_ms";
-static const char* PROP_KEY_OUT_PERIOD_COUNT = "ro.vendor.caremu.audiohal.out_period_count";
-static const char* PROP_KEY_IN_PERIOD_MS = "ro.vendor.caremu.audiohal.in_period_ms";
-static const char* PROP_KEY_IN_PERIOD_COUNT = "ro.vendor.caremu.audiohal.in_period_count";
+#ifndef ARRAY_SIZE
+#define ARRAY_SIZE(a) (sizeof(a) / sizeof((a)[0]))
+#endif
+
+static const char* PROP_KEY_OUT_PERIOD_MS[2] = {
+    "ro.boot.vendor.caremu.audiohal.out_period_ms",
+    "ro.vendor.caremu.audiohal.out_period_ms",
+};
+static const char* PROP_KEY_OUT_PERIOD_COUNT[2] = {
+    "ro.boot.vendor.caremu.audiohal.out_period_count",
+    "ro.vendor.caremu.audiohal.out_period_count",
+};
+static const char* PROP_KEY_IN_PERIOD_MS[2] = {
+    "ro.boot.vendor.caremu.audiohal.in_period_ms",
+    "ro.vendor.caremu.audiohal.in_period_ms",
+};
+static const char* PROP_KEY_IN_PERIOD_COUNT[2] = {
+    "ro.boot.vendor.caremu.audiohal.in_period_count",
+    "ro.vendor.caremu.audiohal.in_period_count",
+};
 
 #define PI 3.14159265
 #define TWO_PI  (2*PI)
@@ -92,10 +108,23 @@ static pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
 
 static int adev_get_mic_mute(const struct audio_hw_device *dev, bool *state);
 
+static int audio_get_property(const char** keys, size_t num_keys, int32_t default_value) {
+    static char prop_value[PROP_VALUE_MAX] = {0};
+    for (size_t i = 0; i < num_keys; ++i) {
+        if (property_get(keys[i], prop_value, NULL) > 0) {
+            return property_get_int32(keys[i], default_value);
+        }
+    }
+
+    return default_value;
+}
+
 static int get_out_period_ms() {
     static int out_period_ms = -1;
     if (out_period_ms == -1) {
-        out_period_ms = property_get_int32(PROP_KEY_OUT_PERIOD_MS, DEFAULT_OUT_PERIOD_MS);
+        out_period_ms = audio_get_property(PROP_KEY_OUT_PERIOD_MS,
+                                           ARRAY_SIZE(PROP_KEY_OUT_PERIOD_MS),
+                                           DEFAULT_OUT_PERIOD_MS);
     }
     return out_period_ms;
 }
@@ -103,7 +132,9 @@ static int get_out_period_ms() {
 static int get_out_period_count() {
     static int out_period_count = -1;
     if (out_period_count == -1) {
-        out_period_count = property_get_int32(PROP_KEY_OUT_PERIOD_COUNT, DEFAULT_OUT_PERIOD_COUNT);
+        out_period_count = audio_get_property(PROP_KEY_OUT_PERIOD_COUNT,
+                                              ARRAY_SIZE(PROP_KEY_OUT_PERIOD_COUNT),
+                                              DEFAULT_OUT_PERIOD_COUNT);
     }
     return out_period_count;
 }
@@ -111,7 +142,9 @@ static int get_out_period_count() {
 static int get_in_period_ms() {
     static int in_period_ms = -1;
     if (in_period_ms == -1) {
-        in_period_ms = property_get_int32(PROP_KEY_IN_PERIOD_MS, DEFAULT_IN_PERIOD_MS);
+        in_period_ms = audio_get_property(PROP_KEY_IN_PERIOD_MS,
+                                          ARRAY_SIZE(PROP_KEY_IN_PERIOD_MS),
+                                          DEFAULT_IN_PERIOD_MS);
     }
     return in_period_ms;
 }
@@ -119,7 +152,9 @@ static int get_in_period_ms() {
 static int get_in_period_count() {
     static int in_period_count = -1;
     if (in_period_count == -1) {
-        in_period_count = property_get_int32(PROP_KEY_IN_PERIOD_COUNT, DEFAULT_IN_PERIOD_COUNT);
+        in_period_count = audio_get_property(PROP_KEY_IN_PERIOD_COUNT,
+                                             ARRAY_SIZE(PROP_KEY_IN_PERIOD_COUNT),
+                                             DEFAULT_IN_PERIOD_COUNT);
     }
     return in_period_count;
 }
