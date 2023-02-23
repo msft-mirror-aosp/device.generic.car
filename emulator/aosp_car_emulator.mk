@@ -28,13 +28,26 @@ $(call inherit-product, device/generic/car/emulator/rotary/car_rotary.mk)
 # Enables USB related passthrough
 $(call inherit-product, device/generic/car/emulator/usbpt/car_usbpt.mk)
 
+TARGET_PRODUCT_PROP := device/generic/car/emulator/usbpt/bluetooth/bluetooth.prop
+
 ifeq (true,$(BUILD_EMULATOR_CLUSTER_DISPLAY))
 PRODUCT_COPY_FILES += \
     device/generic/car/emulator/cluster/display_settings.xml:system/etc/display_settings.xml \
 
+ifeq ($(EMULATOR_MULTIDISPLAY_HW_CONFIG),)
 PRODUCT_PRODUCT_PROPERTIES += \
     hwservicemanager.external.displays=1,400,600,120,0 \
-    persist.service.bootanim.displays=8140900251843329 \
+    persist.service.bootanim.displays=8140900251843329
+else
+ifneq ($(EMULATOR_MULTIDISPLAY_BOOTANIM_CONFIG),)
+$(warning Setting displays to $(EMULATOR_MULTIDISPLAY_HW_CONFIG) and bootanims to $(EMULATOR_MULTIDISPLAY_BOOTANIM_CONFIG))
+    PRODUCT_PRODUCT_PROPERTIES += \
+        hwservicemanager.external.displays=$(EMULATOR_MULTIDISPLAY_HW_CONFIG) \
+        persist.service.bootanim.displays=$(EMULATOR_MULTIDISPLAY_BOOTANIM_CONFIG)
+else #  EMULATOR_MULTIDISPLAY_BOOTANIM_CONFIG
+$(error EMULATOR_MULTIDISPLAY_BOOTANIM_CONFIG has to be defined when EMULATOR_MULTIDISPLAY_BOOTANIM_CONFIG is defined)
+endif # EMULATOR_MULTIDISPLAY_BOOTANIM_CONFIG
+endif # EMULATOR_HW_MULTIDISPLAY_CONFIG
 
 ifeq (true,$(ENABLE_CLUSTER_OS_DOUBLE))
 PRODUCT_PACKAGES += CarServiceOverlayEmulatorOsDouble
