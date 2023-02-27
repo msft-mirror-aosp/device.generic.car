@@ -59,6 +59,9 @@ $(call inherit-product, device/generic/car/sdk_car_x86_64.mk)
 # changes from this makefile
 PRODUCT_ENFORCE_ARTIFACT_PATH_REQUIREMENTS := false
 
+# enables the rro package for passenger(secondary) user.
+ENABLE_PASSENGER_SYSTEMUI_RRO := true
+
 PRODUCT_NAME := sdk_car_md_x86_64
 PRODUCT_DEVICE := emulator_car_x86_64
 PRODUCT_BRAND := Android
