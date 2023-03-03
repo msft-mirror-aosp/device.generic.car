@@ -70,3 +70,6 @@ PRODUCT_PACKAGES += \
     DriveModeSportRRO \
     DriveModeOnRRO \
 
+# Enable socket for qemu VHAL
+BOARD_SEPOLICY_DIRS += device/generic/car/emulator/sepolicy
+
