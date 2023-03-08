@@ -18,6 +18,12 @@ PRODUCT_PACKAGE_OVERLAYS := device/generic/car/common/overlay
 QEMU_USE_SYSTEM_EXT_PARTITIONS := true
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
+ifneq ($(EMULATOR_DYNAMIC_MULTIDISPLAY_CONFIG),true)
+# Emulator configuration
+PRODUCT_COPY_FILES += \
+    device/generic/car/common/config.ini:config.ini
+endif # EMULATOR_DYNAMIC_MULTIDISPLAY_CONFIG
+
 #
 # All components inherited here go to system image
 #

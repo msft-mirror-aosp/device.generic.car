@@ -58,6 +58,8 @@ $(call inherit-product, device/generic/car/emulator/cluster/cluster-hwserviceman
 endif # BUILD_EMULATOR_CLUSTER_DISPLAY
 endif # EMULATOR_DYNAMIC_MULTIDISPLAY_CONFIG
 
+PRODUCT_PACKAGES += CarServiceOverlayEmulatorMedia
+
 PRODUCT_PRODUCT_PROPERTIES += \
     ro.carwatchdog.vhal_healthcheck.interval=10 \
     ro.carwatchdog.client_healthcheck.interval=20 \
@@ -67,4 +69,7 @@ PRODUCT_PACKAGES += \
     DriveModeEcoRRO \
     DriveModeSportRRO \
     DriveModeOnRRO \
+
+# Enable socket for qemu VHAL
+BOARD_SEPOLICY_DIRS += device/generic/car/emulator/sepolicy
 
