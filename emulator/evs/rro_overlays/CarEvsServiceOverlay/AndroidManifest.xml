@@ -15,7 +15,7 @@
   ~ limitations under the License.
   -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.android.car.resources.vendor">
+          package="com.android.car.resources.carevsservice">
     <application android:hasCode="false"/>
     <overlay android:targetPackage="com.android.car.updatable"
              android:targetName="CarServiceCustomization"
