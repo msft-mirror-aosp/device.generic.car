@@ -74,6 +74,10 @@
                         <group>
                             <device address="bus100_audio_zone_1">
                                 <context context="music"/>
+                            </device>
+                        </group>
+                        <group>
+                            <device address="bus101_audio_zone_1">
                                 <context context="navigation"/>
                                 <context context="voice_command"/>
                                 <context context="call_ring"/>
@@ -92,8 +96,12 @@
                 <zoneConfig name="rear seat zone 1 config 1">
                     <volumeGroups>
                         <group>
-                            <device address="bus101_audio_zone_1">
+                            <device address="bus110_audio_zone_1">
                                 <context context="music"/>
+                            </device>
+                        </group>
+                        <group>
+                            <device address="bus111_audio_zone_1">
                                 <context context="navigation"/>
                                 <context context="voice_command"/>
                                 <context context="call_ring"/>
@@ -118,6 +126,10 @@
                         <group>
                             <device address="bus200_audio_zone_2">
                                 <context context="music"/>
+                            </device>
+                        </group>
+                        <group>
+                            <device address="bus201_audio_zone_2">
                                 <context context="navigation"/>
                                 <context context="voice_command"/>
                                 <context context="call_ring"/>
@@ -136,8 +148,12 @@
                 <zoneConfig name="rear seat zone 2 config 1">
                     <volumeGroups>
                         <group>
-                            <device address="bus201_audio_zone_2">
+                            <device address="bus210_audio_zone_2">
                                 <context context="music"/>
+                            </device>
+                        </group>
+                        <group>
+                            <device address="bus211_audio_zone_2">
                                 <context context="navigation"/>
                                 <context context="voice_command"/>
                                 <context context="call_ring"/>
