@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  ~ Copyright (C) 2022 The Android Open Source Project
+  ~ Copyright (C) 2023 The Android Open Source Project
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~ you may not use this file except in compliance with the License.
@@ -14,11 +14,10 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.android.car.resources.carevsservice">
-    <application android:hasCode="false"/>
-    <overlay android:targetPackage="com.android.car.updatable"
-             android:targetName="CarServiceCustomization"
-             android:resourcesMap="@xml/overlays"
-             android:isStatic="false" />
-</manifest>
+<overlay>
+    <item target="array/config_occupant_zones" value="@array/config_occupant_zones" />
+    <item target="array/config_occupant_display_mapping" value="@array/config_occupant_display_mapping" />
+    <item target="array/config_allowed_optional_car_features" value="@array/config_allowed_optional_car_features" />
+    <item target="bool/enableProfileUserAssignmentForMultiDisplay" value="@bool/enableProfileUserAssignmentForMultiDisplay" />
+    <item target="xml/car_ux_restrictions_map" value="@xml/car_ux_restrictions_map" />
+</overlay>

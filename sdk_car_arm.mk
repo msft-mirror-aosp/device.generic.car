@@ -1,4 +1,5 @@
-# Copyright (C) 2022 The Android Open Source Project
+#
+# Copyright (C) 2021 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -11,7 +12,14 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#
 
-#include device/generic/car/emulator/usbpt/bluetooth/BoardConfig.mk
-#include device/generic/car/emulator/usbpt/wifi/BoardConfig.mk
+PRODUCT_PACKAGE_OVERLAYS := device/generic/car/common/overlay
+
+$(call inherit-product, device/generic/car/emulator/aosp_car_emulator.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/sdk_phone_armv7.mk)
+
+EMULATOR_VENDOR_NO_SOUND := true
+PRODUCT_NAME := sdk_car_arm
+PRODUCT_DEVICE := emulator_arm
+PRODUCT_BRAND := Android
+PRODUCT_MODEL := Car on ARM emulator

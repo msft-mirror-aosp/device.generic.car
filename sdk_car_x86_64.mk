@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2021 The Android Open Source Project
+# Copyright (C) 2016 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,10 +14,15 @@
 # limitations under the License.
 
 PRODUCT_PACKAGE_OVERLAYS := device/generic/car/common/overlay
-EMULATOR_VENDOR_NO_SENSORS := true
-PRODUCT_USE_DYNAMIC_PARTITION_SIZE := true
-DO_NOT_INCLUDE_BT_SEPOLICY := true
-EMULATOR_VENDOR_NO_SOUND := true
+
+QEMU_USE_SYSTEM_EXT_PARTITIONS := true
+PRODUCT_USE_DYNAMIC_PARTITIONS := true
+
+ifneq ($(EMULATOR_DYNAMIC_MULTIDISPLAY_CONFIG),true)
+# Emulator configuration
+PRODUCT_COPY_FILES += \
+    device/generic/car/common/config.ini:config.ini
+endif # EMULATOR_DYNAMIC_MULTIDISPLAY_CONFIG
 
 #
 # All components inherited here go to system image
@@ -32,23 +37,20 @@ PRODUCT_ENFORCE_ARTIFACT_PATH_REQUIREMENTS := strict
 #
 $(call inherit-product, packages/services/Car/car_product/build/car_system_ext.mk)
 
-# Install a copy of the debug policy to the system_ext partition, and allow
-# init-second-stage to load debug policy from system_ext.
-# This option is only meant to be set by compliance GSI targets.
-PRODUCT_INSTALL_DEBUG_POLICY_TO_SYSTEM_EXT := true
-PRODUCT_PACKAGES += system_ext_userdebug_plat_sepolicy.cil
-
-# pKVM is required to support nested virtualization for CF. Ideally we should
-# move it out of /system. But it seems to be infeasible for now (b/207336449).
-$(call inherit-product, packages/modules/Virtualization/apex/product_packages.mk)
-
 #
 # All components inherited here go to product image
 #
-$(call inherit-product, packages/services/Car/car_product/build/car_product.mk)
+$(call inherit-product, device/generic/car/emulator/car_emulator_product.mk)
 
+#
+# All components inherited here go to vendor image
+#
+$(call inherit-product, device/generic/car/emulator/car_emulator_vendor.mk)
+$(call inherit-product-if-exists, device/generic/goldfish/x86_64-vendor.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/board/emulator_x86_64/device.mk)
+
+EMULATOR_VENDOR_NO_SOUND := true
+PRODUCT_NAME := sdk_car_x86_64
+PRODUCT_DEVICE := emulator_car_x86_64
 PRODUCT_BRAND := Android
-#
-# Special settings for GSI releasing
-#
-$(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_release.mk)
+PRODUCT_MODEL := Car on x86_64 emulator
