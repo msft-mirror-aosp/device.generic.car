@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2022 The Android Open Source Project
+# Copyright (C) 2023 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,13 +14,13 @@
 # limitations under the License.
 
 $(call inherit-product, device/generic/car/common/car_md.mk)
-$(call inherit-product, device/generic/car/sdk_car_x86_64.mk)
+$(call inherit-product, device/generic/car/sdk_car_arm64.mk)
 
 # TODO(b/266978709): Set it to true after cleaning up the system partition
 # changes from this makefile
 PRODUCT_ENFORCE_ARTIFACT_PATH_REQUIREMENTS := false
 
-PRODUCT_NAME := sdk_car_md_x86_64
-PRODUCT_DEVICE := emulator_car_x86_64
+PRODUCT_NAME := sdk_car_md_arm64
+PRODUCT_DEVICE := emulator_car_arm64
 PRODUCT_BRAND := Android
-PRODUCT_MODEL := Car multi-display on x86_64 emulator
+PRODUCT_MODEL := Car multi-display on arm64 emulator
