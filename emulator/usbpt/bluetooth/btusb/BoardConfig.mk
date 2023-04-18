@@ -12,8 +12,3 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-
-TARGET_KERNEL_USE ?= 5.15
-
-BOARD_VENDOR_KERNEL_MODULES += \
-	$(KERNEL_MODULES_PATH)/btusb.ko
