@@ -102,4 +102,56 @@
     <!-- Enable profile user assignment per each CarOccupantZone for per display android user
          assignments. This feature is still experimental. -->
     <bool name="enableProfileUserAssignmentForMultiDisplay" translatable="false">true</bool>
+
+    <!-- The services that need to be started earlier in the boot sequence and in particular order.
+         Every item in this array contains a flatten component name of a service that needs to be
+         started and a list of parameters after hashtag symbol. Here's the format:
+
+         <item>com.bar.foo/.Service#bind={bind|start|startForeground},user={all|system|foreground},
+         trigger={asap,userUnlocked}</item>
+
+         bind: bind - start service with Context#bindService
+               start - start service with Context#startService
+               startForeground - start service with Context#startForegroundService
+               If service was bound it will be restarted unless it is constantly crashing.
+               The default value is 'start'
+         user: all - the service will be bound/started for system and all foreground users
+               system - the service will be started/bound only for system user (u0)
+               foreground - the service will be bound/started only for foreground users
+               backgroundVisible - the service will be bound/started only for background users that
+                      are visible.
+               The default value is 'all'
+         trigger: indicates when the service needs to be started/bound
+               asap - the service might be bound when user is not fully loaded, be careful with
+                      this value, the service also needs to have directBootAware flag set to true
+               userUnlocked - start service when user unlocked the device
+               The default value is 'userUnlocked'
+
+         If the service bound/started for foreground user it will be unbound/stopped when user
+         is no longer foreground.
+     -->
+    <string-array translatable="false" name="config_earlyStartupServices">
+    <item>com.android.car.messenger/.MessengerService#bind=startForeground,user=foreground,trigger=userUnlocked</item>
+        <item>com.google.android.companiondevicesupport/com.google.android.connecteddevice.service.ConnectedDeviceService#bind=bind,user=system,trigger=asap</item>
+        <item>com.google.android.companiondevicesupport/com.google.android.connecteddevice.service.ConnectedDeviceFgUserService#bind=bind,user=foreground,trigger=asap</item>
+        <!-- Starting Android Auto receiver service earlier for wireless projection. -->
+        <item>com.google.android.embedded.projection/com.google.android.apps.auto.aareceiver.service.PersistentService#bind=bind,user=foreground,trigger=userUnlocked</item>
+
+        <!-- eGMM Vehicle Map Service Provider -->
+        <item>com.google.android.apps.maps/com.google.android.apps.geo.autograph.vms.platform.car.CarVmsPublisherClientService#bind=bind,user=foreground,trigger=userUnlocked</item>
+
+        <!-- OEM Custom Input Reference Service -->
+        <item>com.android.car.custominput.sample/.SampleCustomInputService#bind=bind,user=foreground,trigger=userUnlocked</item>
+
+        <!-- Car Telemetry Collector Service -->
+        <item>com.android.car.cartelemetryapp/.CarMetricsCollectorService#bind=bind,user=system,trigger=asap</item>
+
+        <!-- GSR Failover service to facilitate the publishing of speed limit information when eGMM is unable to do so -->
+        <item>com.google.android.apps.geo.automotive.adas/.failover.FailoverControllerService#bind=bind,user=foreground,trigger=userUnlocked</item>
+
+        <!-- The service responsible for starting/stopping the Cast receiver. -->
+        <item>com.android.car.castreceiver/.AutomotiveCastReceiverService#bind=bind,user=foreground,trigger=userUnlocked</item>
+        <!-- Early start service for Multi-display Control Center app -->
+        <item>com.android.car.multidisplay.controlcenter/com.android.car.multidisplay.controlcenter.service.ControlCenterService#bind=bind,user=backgroundVisible,trigger=userPostUnlocked</item>
+    </string-array>
 </resources>
