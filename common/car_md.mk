@@ -35,15 +35,14 @@ PRODUCT_PACKAGE_OVERLAYS += \
 PRODUCT_COPY_FILES += \
     device/generic/car/emulator/multi-display/car_audio_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/car_audio_configuration.xml
 
-# Use to disable cluster display definitions in aosp_car_emulator
-BUILD_EMULATOR_CLUSTER_DISPLAY := false
+EMULATOR_DYNAMIC_MULTIDISPLAY_CONFIG := false
+BUILD_EMULATOR_CLUSTER_DISPLAY := true
+# Set up additional displays
+EMULATOR_MULTIDISPLAY_HW_CONFIG := 1,968,792,160,0,2,1408,792,160,0,3,1408,792,160,0
+EMULATOR_MULTIDISPLAY_BOOTANIM_CONFIG := 4619827551948147201,4619827124781842690,4619827540095559171
+ENABLE_CLUSTER_OS_DOUBLE:=true
 
-PRODUCT_PRODUCT_PROPERTIES += \
-    hwservicemanager.external.displays=1,968,792,160,0,2,1408,792,160,0,3,1408,792,160,0 \
-    persist.service.bootanim.displays=4619827551948147201,4619827124781842690,4619827540095559171
-
-PRODUCT_PACKAGES += ClusterHomeSample ClusterOsDouble ClusterHomeSampleOverlay
-PRODUCT_PACKAGES += CarServiceOverlayEmulatorOsDouble CarServiceOverlayMdEmulatorOsDouble ClusterOsDoubleEmulatorPhysicalDisplayOverlay
+PRODUCT_PACKAGES += CarServiceOverlayMdEmulatorOsDouble
 
 # Enable MZ audio by default
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
