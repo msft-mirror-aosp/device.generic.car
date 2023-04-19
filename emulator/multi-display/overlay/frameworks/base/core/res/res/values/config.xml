@@ -23,7 +23,7 @@
     <bool name="config_perDisplayFocusEnabled">true</bool>
 
     <!--  Maximum number of supported users -->
-    <integer name="config_multiuserMaximumUsers">5</integer>
+    <integer name="config_multiuserMaximumUsers">10</integer>
 
     <!-- Maximum number of users we allow to be running at a time -->
     <integer name="config_multiuserMaxRunningUsers">5</integer>
@@ -62,5 +62,7 @@
 
     <!-- Enable multi-user IME sessions -->
     <string translatable="false" name="config_deviceSpecificInputMethodManagerService">com.android.server.inputmethod.InputMethodManagerServiceProxy$Lifecycle</string>
+    <!-- Disable hidding the NavBars (CarSystemBars), as a workaround for b/259604616 -->
+    <bool name="config_hideNavBarForKeyboard">false</bool>
 
 </resources>
