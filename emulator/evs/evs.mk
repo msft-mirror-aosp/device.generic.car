@@ -18,8 +18,14 @@ PRODUCT_PACKAGES += CarEvsServiceOverlay
 ifeq ($(ENABLE_MOCK_EVSHAL), true)
 CUSTOMIZE_EVS_SERVICE_PARAMETER := true
 PRODUCT_PACKAGES += \
-    android.hardware.automotive.evs-aidl-default-service \
-    cardisplayproxyd
+    android.hardware.automotive.evs-aidl-default-service
+
+# TODO(b/277389752): Below line should be removed when AAOS baseline is fully supported.
+PRODUCT_PACKAGES += cardisplayproxyd
+
+# EVS HAL implementation for the emulators requires AIDL version of the automotive display
+# service implementation.
+USE_AIDL_DISPLAY_SERVICE := true
 
 PRODUCT_COPY_FILES += \
     device/generic/car/emulator/evs/init.evs.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.evs.rc
