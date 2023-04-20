@@ -46,7 +46,7 @@ PRODUCT_PACKAGES += CarServiceOverlayMdEmulatorOsDouble
 
 # Enable MZ audio by default
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
-    ro.aae.simulateMultiZoneAudio=true \
+    ro.vendor.simulateMultiZoneAudio=true \
     persist.sys.max_profiles=5 \
     com.android.car.internal.debug.num_auto_populated_users=1
 
