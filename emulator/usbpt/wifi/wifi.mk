@@ -1,3 +1,4 @@
+#
 # Copyright (C) 2022 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -11,15 +12,6 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#
 
-BOARD_DO_NOT_STRIP_VENDOR_MODULES := true
-
-# Use emulator64_x86_64_arm64 BoardConfig as base
-include device/generic/goldfish/emulator64_x86_64/BoardConfig.mk
-include device/generic/car/emulator/usbpt/BoardConfig.mk
-
-# Override BOARD_SUPER_PARTITION_SIZE to inclease the mounted system partition.
-BOARD_SUPER_PARTITION_SIZE := 5856296960
-
-BOARD_EMULATOR_DYNAMIC_PARTITIONS_SIZE = 3489660928
+PRODUCT_COPY_FILES += \
+    device/generic/car/emulator/usbpt/wifi/init.wifiusb.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.wifiusb.rc \
