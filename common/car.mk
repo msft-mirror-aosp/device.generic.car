@@ -96,13 +96,6 @@ PRODUCT_COPY_FILES += \
 # Additional selinux policy
 BOARD_SEPOLICY_DIRS += device/generic/car/common/sepolicy
 
-#
-# Special settings for GSI releasing
-#
-ifneq (,$(filter aosp_car_x86_64 aosp_car_arm64,$(TARGET_PRODUCT)))
-$(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_release.mk)
-endif
-
 $(call inherit-product, packages/services/Car/car_product/build/car.mk)
 
 # TODO(b/253459812): find a better way to handle it.
