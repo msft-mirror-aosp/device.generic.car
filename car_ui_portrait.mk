@@ -50,7 +50,7 @@ DEVICE_PACKAGE_OVERLAYS += device/generic/car/car_x86_64/overlay
 
 EMULATOR_VENDOR_NO_SOUND := true
 PRODUCT_NAME := car_ui_portrait
-PRODUCT_DEVICE := generic_car_x86_64
+PRODUCT_DEVICE := emulator_car64_x86_64
 PRODUCT_BRAND := Android
 PRODUCT_MODEL := CarUiPortrait on x86_64 emulator
 PRODUCT_SDK_ADDON_NAME := car_ui_portrait
