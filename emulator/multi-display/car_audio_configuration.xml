@@ -22,10 +22,13 @@
   in the car environment.
 -->
 <carAudioConfiguration version="3">
+    <mirroringDevices>
+        <mirroringDevice address="bus1000_mirror_device"/>
+    </mirroringDevices>
     <zones>
         <zone name="primary zone" isPrimary="true" occupantZoneId="0">
             <zoneConfigs>
-                <zoneConfig name="primary zone config 0" isDefault="true">
+                <zoneConfig name="primary zone config" isDefault="true">
                     <volumeGroups>
                         <group>
                             <device address="bus0_media_out">
@@ -73,7 +76,7 @@
         </zone>
         <zone name="front passenger zone 1" audioZoneId="1" occupantZoneId="1">
             <zoneConfigs>
-                <zoneConfig name="rear seat zone 1 config 0" isDefault="true">
+                <zoneConfig name="front passenger zone 1 config 0" isDefault="true">
                     <volumeGroups>
                         <group>
                             <device address="bus100_audio_zone_1">
@@ -97,7 +100,7 @@
                         </group>
                     </volumeGroups>
                 </zoneConfig>
-                <zoneConfig name="rear seat zone 1 config 1">
+                <zoneConfig name="front passenger zone 1 config 1">
                     <volumeGroups>
                         <group>
                             <device address="bus110_audio_zone_1">
@@ -126,7 +129,7 @@
                 <inputDevice address="input_bus_tone_zone_1"/>
             </inputDevices>
         </zone>
-        <zone name="rear seat zone 2"  audioZoneId="2" occupantZoneId="2">
+        <zone name="rear seat zone 2"  audioZoneId="2"  occupantZoneId="2">
             <zoneConfigs>
                 <zoneConfig name="rear seat zone 2 config 0" isDefault="true">
                     <volumeGroups>

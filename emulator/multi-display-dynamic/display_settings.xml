@@ -24,31 +24,31 @@
     <!-- Display settings for cluster -->
     <display name="virtual:com.android.emulator.multidisplay:1234562"
         shouldShowSystemDecors="false"
-        forcedDensity="120"
+        forcedDensity="160"
         dontMoveToTop="true"/>
 
     <!-- Display settings for 2nd Home -->
     <display name="virtual:com.android.emulator.multidisplay:1234563"
         shouldShowSystemDecors="true"
         shouldShowIme="true"
-        forcedDensity="120" />
+        forcedDensity="160" />
 
     <!-- Display settings for 3rd Home -->
     <display name="virtual:com.android.emulator.multidisplay:1234564"
         shouldShowSystemDecors="true"
         shouldShowIme="true"
-        forcedDensity="120" />
+        forcedDensity="160" />
 
     <!-- Display settings for 4th Home -->
     <display name="virtual:com.android.emulator.multidisplay:1234565"
         shouldShowSystemDecors="true"
         shouldShowIme="true"
-        forcedDensity="120" />
+        forcedDensity="160" />
 
     <!-- Display settings for 5th Home -->
     <display name="virtual:com.android.emulator.multidisplay:1234565"
         shouldShowSystemDecors="true"
         shouldShowIme="true"
-        forcedDensity="120" />
+        forcedDensity="160" />
 
 </display-settings>
