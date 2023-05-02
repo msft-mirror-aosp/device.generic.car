@@ -40,9 +40,8 @@
     -->
     <string-array translatable="false" name="config_occupant_zones">
         <item>occupantZoneId=0,occupantType=DRIVER,seatRow=1,seatSide=driver</item>
-        <item>occupantZoneId=1,occupantType=FRONT_PASSENGER,seatRow=1,seatSide=oppositeDriver</item>
-        <item>occupantZoneId=2,occupantType=REAR_PASSENGER,seatRow=2,seatSide=left</item>
-        <item>occupantZoneId=3,occupantType=REAR_PASSENGER,seatRow=2,seatSide=right</item>
+        <item>occupantZoneId=1,occupantType=REAR_PASSENGER,seatRow=2,seatSide=left</item>
+        <item>occupantZoneId=2,occupantType=REAR_PASSENGER,seatRow=2,seatSide=right</item>
     </string-array>
 
     <!--
@@ -66,10 +65,8 @@
     -->
     <string-array translatable="false" name="config_occupant_display_mapping">
       <item>displayPort=0,displayType=MAIN,occupantZoneId=0,inputTypes=TOUCH_SCREEN|DPAD_KEYS|NAVIGATE_KEYS|ROTARY_NAVIGATION</item>
-      <item>displayUniqueId=virtual:com.android.car.cluster.osdouble:ClusterDisplay,displayType=INSTRUMENT_CLUSTER,occupantZoneId=0,inputTypes=DPAD_KEYS</item>
       <item>displayPort=2,displayType=MAIN,occupantZoneId=1,inputTypes=TOUCH_SCREEN</item>
       <item>displayPort=3,displayType=MAIN,occupantZoneId=2,inputTypes=TOUCH_SCREEN</item>
-      <item>displayPort=4,displayType=MAIN,occupantZoneId=3,inputTypes=TOUCH_SCREEN</item>
     </string-array>
 
     <!--
