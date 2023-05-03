@@ -8,6 +8,10 @@
       <address>4619827259835644672</address>
     </display>
 
+    <display enabled="true" defaultDisplay="false">
+      <address>4619827551948147201</address>
+    </display>
+
     <display enabled="true" defaultDisplay="false" displayGroup="passenger_display1">
       <address>4619827124781842690</address>
     </display>
@@ -16,8 +20,5 @@
       <address>4619827540095559171</address>
     </display>
 
-    <display enabled="true" defaultDisplay="false">
-      <address>4619827551948147201</address>
-    </display>
   </layout>
 </layouts>
