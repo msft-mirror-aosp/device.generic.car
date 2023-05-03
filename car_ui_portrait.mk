@@ -24,16 +24,17 @@ $(call inherit-product, device/generic/goldfish/soong_namespaces.mk)
 PRODUCT_PACKAGE_OVERLAYS := \
     device/generic/car/common/overlay
 
-# only log privapp-permissions allow list
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.control_privapp_permissions=log
-
 # Disable the Setup Wizard. This overrides the setting in gms.mk
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     ro.setupwizard.mode=DISABLED
 
 $(call inherit-product, device/generic/car/emulator/aosp_car_emulator.mk)
+
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_x86_64.mk)
+$(call inherit-product, device/generic/goldfish/64bitonly/product/x86_64-vendor.mk)
+$(call inherit-product, device/generic/goldfish/64bitonly/product/emulator64_vendor.mk)
+$(call inherit-product, device/generic/goldfish/emulator64_x86_64/device.mk)
+
 $(call inherit-product, packages/services/Car/car_product/car_ui_portrait/apps/car_ui_portrait_apps.mk)
 $(call inherit-product, packages/services/Car/car_product/car_ui_portrait/rro/car_ui_portrait_rro.mk)
 $(call inherit-product, packages/services/Car/car_product/car_ui_portrait/emu/car_ui_portrait_emu.mk)
