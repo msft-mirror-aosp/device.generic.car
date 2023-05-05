@@ -19,6 +19,10 @@ $(call inherit-product, device/generic/car/emulator/aosp_car_emulator.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_x86_64.mk)
 $(call inherit-product, device/generic/car/emulator/audio/car_emulator_audio.mk)
 
+$(call inherit-product, device/generic/goldfish/64bitonly/product/x86_64-vendor.mk)
+$(call inherit-product, device/generic/goldfish/64bitonly/product/emulator64_vendor.mk)
+$(call inherit-product, device/generic/goldfish/emulator64_x86_64/device.mk)
+
 PRODUCT_SDK_ADDON_NAME := car_emu_x86_64
 
 # Extra files needed by the addon.
