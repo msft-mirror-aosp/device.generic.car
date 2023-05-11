@@ -63,21 +63,6 @@
 
     </RestrictionMapping>
 
-    <RestrictionMapping physicalPort="4">
-        <DrivingState state="parked">
-            <Restrictions requiresDistractionOptimization="false" uxr="baseline"/>
-        </DrivingState>
-
-        <DrivingState state="idling">
-            <Restrictions requiresDistractionOptimization="false" uxr="baseline"/>
-        </DrivingState>
-
-        <DrivingState state="moving">
-            <Restrictions requiresDistractionOptimization="false" uxr="baseline"/>
-        </DrivingState>
-
-    </RestrictionMapping>
-
     <!-- Configure restriction parameters here-->
     <RestrictionParameters>
         <!-- Parameters to express displayed String related restrictions -->
