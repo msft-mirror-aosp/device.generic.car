@@ -12,15 +12,3 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-
-TARGET_KERNEL_USE ?= 5.15
-
-BOARD_VENDOR_KERNEL_MODULES += \
-	$(KERNEL_MODULES_PATH)/mt76x2u.ko \
-	$(KERNEL_MODULES_PATH)/mt76x2-common.ko \
-	$(KERNEL_MODULES_PATH)/mt76x0u.ko \
-	$(KERNEL_MODULES_PATH)/mt76x0-common.ko \
-	$(KERNEL_MODULES_PATH)/mt76x02-usb.ko \
-	$(KERNEL_MODULES_PATH)/mt76x02-lib.ko \
-	$(KERNEL_MODULES_PATH)/mt76-usb.ko \
-	$(KERNEL_MODULES_PATH)/mt76.ko
