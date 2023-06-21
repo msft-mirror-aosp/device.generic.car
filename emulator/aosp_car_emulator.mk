@@ -21,6 +21,8 @@ ifeq (,$(ENABLE_REAR_VIEW_CAMERA_SAMPLE))
 ENABLE_REAR_VIEW_CAMERA_SAMPLE:=true
 endif
 
+PRODUCT_PACKAGE_OVERLAYS := device/generic/car/emulator/overlay
+
 $(call inherit-product, device/generic/car/common/car.mk)
 # This overrides device/generic/car/common/car.mk
 $(call inherit-product, device/generic/car/emulator/audio/car_emulator_audio.mk)
@@ -55,6 +57,8 @@ else
 PRODUCT_PACKAGES += CarServiceOverlayEmulator
 endif  # ENABLE_CLUSTER_OS_DOUBLE
 endif  # BUILD_EMULATOR_CLUSTER_DISPLAY
+
+PRODUCT_PACKAGES += CarServiceOverlayEmulatorMedia
 
 PRODUCT_PRODUCT_PROPERTIES += \
     ro.carwatchdog.vhal_healthcheck.interval=10 \
