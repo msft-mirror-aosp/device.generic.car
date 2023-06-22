@@ -29,6 +29,8 @@ $(call inherit-product, device/generic/car/emulator/audio/car_emulator_audio.mk)
 $(call inherit-product, device/generic/car/emulator/rotary/car_rotary.mk)
 # Enables USB related passthrough
 $(call inherit-product, device/generic/car/emulator/usbpt/car_usbpt.mk)
+# Enable simulated UWB.
+$(call inherit-product, device/generic/car/emulator/uwb_hal/uwb-goldfish.mk)
 
 TARGET_PRODUCT_PROP := device/generic/car/emulator/usbpt/bluetooth/bluetooth.prop
 
