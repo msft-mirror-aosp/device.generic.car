@@ -1,0 +1,20 @@
+type hal_uwb_vendor_goldfish, domain;
+type hal_uwb_vendor_goldfish_exec, vendor_file_type, exec_type, file_type;
+init_daemon_domain(hal_uwb_vendor_goldfish)
+
+#============= hal_uwb_vendor_goldfish ==============
+allow hal_uwb_vendor_goldfish fwmarkd_socket:sock_file write;
+# TODO: The next line conflicts with a neverallow declaration.
+# allow hal_uwb_vendor_goldfish hal_uwb_service:service_manager add;
+allow hal_uwb_vendor_goldfish netd:unix_stream_socket connectto;
+allow hal_uwb_vendor_goldfish port:tcp_socket name_connect;
+allow hal_uwb_vendor_goldfish self:tcp_socket { connect create getopt read write };
+allow hal_uwb_vendor_goldfish servicemanager:binder { call transfer };
+allow hal_uwb_vendor_goldfish system_server:binder { call transfer };
+
+#============= netd ==============
+allow netd hal_uwb_vendor_goldfish:fd use;
+allow netd hal_uwb_vendor_goldfish:tcp_socket { getopt read setopt write };
+
+#============= system_server ==============
+allow system_server hal_uwb_vendor_goldfish:binder { call transfer };
