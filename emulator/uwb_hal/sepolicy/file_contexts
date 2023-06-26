@@ -1,0 +1,2 @@
+# UWB Goldfish HAL
+/vendor/bin/hw/android\.hardware\.uwb-goldfish-service u:object_r:hal_uwb_vendor_goldfish_exec:s0
