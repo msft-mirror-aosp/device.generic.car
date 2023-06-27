@@ -48,20 +48,13 @@ ifeq (,$(ENABLE_REAR_VIEW_CAMERA_SAMPLE))
 ENABLE_REAR_VIEW_CAMERA_SAMPLE := true
 endif
 
-PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.uwb.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.uwb.xml
 # Auto modules
 PRODUCT_PACKAGES += \
     android.hardware.automotive.vehicle@V1-emulator-service \
     android.hardware.broadcastradio-service.default \
     android.hardware.audio.service-caremu \
     android.hardware.automotive.remoteaccess@V1-default-service \
-    android.hardware.automotive.ivn@V1-default-service \
-    android.hardware.uwb-goldfish-service \
-    ServiceUwbResources \
-    com.google.android.uwb \
-    android.hardware.uwb \
-    com.android.uwb \
+    android.hardware.automotive.ivn@V1-default-service
 
 # Copy car_core_hardware and overwrite handheld_core_hardware.xml with a disable config.
 # Overwrite goldfish related xml with a disable config.

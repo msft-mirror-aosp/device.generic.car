@@ -1,3 +1,0 @@
-vendor.qemu.preferred.uwb.service u:object_r:vendor_qemu_prop:s0
-vendor.qemu.preferred.uwb.service.ip u:object_r:vendor_qemu_prop:s0
-vendor.qemu.preferred.uwb.service.port u:object_r:vendor_qemu_prop:s0
