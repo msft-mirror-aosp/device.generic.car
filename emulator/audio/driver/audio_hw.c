@@ -1018,7 +1018,7 @@ static void *in_read_worker(void *args) {
         pthread_mutex_unlock(&in->lock);
 
         if (frames_written != buffer_frames) {
-            ALOGW("in_read_worker only could write %zu / %zu frames",
+            ALOGV("in_read_worker only could write %zu / %zu frames",
                     frames_written, buffer_frames);
         }
     }

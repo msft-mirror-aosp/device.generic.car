@@ -88,7 +88,7 @@ size_t audio_vbuffer_write(audio_vbuffer_t *audio_vbuffer, const void *buffer,
     } else if (audio_vbuffer->head < audio_vbuffer->tail) {
       frames = MIN(frame_count, audio_vbuffer->tail - (audio_vbuffer->head));
     } else {
-      ALOGD("%s audio_vbuffer is full", __func__);
+      ALOGV("%s audio_vbuffer is full", __func__);
       break;
     }
     memcpy(
