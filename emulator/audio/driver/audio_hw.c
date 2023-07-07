@@ -91,7 +91,7 @@ static const char* PROP_KEY_IN_PERIOD_COUNT[2] = {
 
 #define _bool_str(x) ((x)?"true":"false")
 
-static const char * const PROP_KEY_SIMULATE_MULTI_ZONE_AUDIO = "ro.aae.simulateMultiZoneAudio";
+static const char * const PROP_KEY_SIMULATE_MULTI_ZONE_AUDIO = "ro.vendor.caremu.audiohal.simulateMultiZoneAudio";
 static const char * const AAE_PARAMETER_KEY_FOR_SELECTED_ZONE = "com.android.car.emulator.selected_zone";
 #define PRIMARY_ZONE_ID 0
 #define INVALID_ZONE_ID -1

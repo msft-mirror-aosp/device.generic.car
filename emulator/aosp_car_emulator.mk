@@ -21,6 +21,8 @@ ifeq (,$(ENABLE_REAR_VIEW_CAMERA_SAMPLE))
 ENABLE_REAR_VIEW_CAMERA_SAMPLE:=true
 endif
 
+PRODUCT_PACKAGE_OVERLAYS := device/generic/car/emulator/overlay
+
 $(call inherit-product, device/generic/car/common/car.mk)
 # This overrides device/generic/car/common/car.mk
 $(call inherit-product, device/generic/car/emulator/audio/car_emulator_audio.mk)
@@ -69,4 +71,7 @@ PRODUCT_PACKAGES += \
     DriveModeEcoRRO \
     DriveModeSportRRO \
     DriveModeOnRRO \
+
+# Enable socket for qemu VHAL
+BOARD_SEPOLICY_DIRS += device/generic/car/emulator/sepolicy
 
