@@ -131,7 +131,6 @@
          is no longer foreground.
      -->
     <string-array translatable="false" name="config_earlyStartupServices">
-    <item>com.android.car.messenger/.MessengerService#bind=startForeground,user=foreground,trigger=userUnlocked</item>
         <item>com.google.android.companiondevicesupport/com.google.android.connecteddevice.service.ConnectedDeviceService#bind=bind,user=system,trigger=asap</item>
         <item>com.google.android.companiondevicesupport/com.google.android.connecteddevice.service.ConnectedDeviceFgUserService#bind=bind,user=foreground,trigger=asap</item>
         <!-- Starting Android Auto receiver service earlier for wireless projection. -->
