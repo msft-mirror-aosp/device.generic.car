@@ -33,7 +33,7 @@ PRODUCT_COPY_FILES += \
     packages/services/Car/car_product/car_ui_portrait/bootanimation/bootanimation.zip:system/media/bootanimation.zip
 
 $(call inherit-product, device/generic/car/emulator/aosp_car_emulator.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/sdk_x86_64.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/sdk_phone_x86_64.mk)
 
 PRODUCT_NAME := sdk_car_portrait_x86_64
 PRODUCT_MODEL := CarUiPortrait on x86_64 emulator
