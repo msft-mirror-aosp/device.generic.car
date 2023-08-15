@@ -21,6 +21,7 @@ PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/gsi_car_x86_64.mk \
     $(LOCAL_DIR)/sdk_car_arm64.mk \
     $(LOCAL_DIR)/sdk_car_arm.mk \
+    $(LOCAL_DIR)/sdk_car_md_arm64.mk \
     $(LOCAL_DIR)/sdk_car_md_x86_64.mk \
     $(LOCAL_DIR)/sdk_car_portrait_x86_64.mk \
     $(LOCAL_DIR)/sdk_car_x86.mk \

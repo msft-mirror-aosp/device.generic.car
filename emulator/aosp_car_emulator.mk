@@ -32,37 +32,45 @@ $(call inherit-product, device/generic/car/emulator/usbpt/car_usbpt.mk)
 
 TARGET_PRODUCT_PROP := device/generic/car/emulator/usbpt/bluetooth/bluetooth.prop
 
+# EVS
+# By default, we enable EvsManager, a sample EVS app, and a mock EVS HAL implementation.
+# If you want to use your own EVS HAL implementation, please set ENABLE_MOCK_EVSHAL as false
+# and add your HAL implementation to the product.  Please also check init.evs.rc and see how
+# you can configure EvsManager to use your EVS HAL implementation.  Similarly, please set
+# ENABLE_SAMPLE_EVS_APP as false if you want to use your own EVS app configuration or own EVS
+# app implementation.
+ENABLE_EVS_SAMPLE ?= false
+ENABLE_EVS_SERVICE ?= true
+ENABLE_MOCK_EVSHAL ?= true
+ENABLE_CAREVSSERVICE_SAMPLE ?= false
+ENABLE_SAMPLE_EVS_APP ?= false
+ENABLE_CARTELEMETRY_SERVICE ?= false
+ifeq ($(ENABLE_MOCK_EVSHAL), true)
+CUSTOMIZE_EVS_SERVICE_PARAMETER := true
+endif  # ENABLE_MOCK_EVSHAL
+$(call inherit-product, device/generic/car/emulator/evs/evs.mk)
+
+ifeq ($(EMULATOR_DYNAMIC_MULTIDISPLAY_CONFIG),true)
+# This section configures multi-display without hardcoding the
+# displays on hwservicemanager.
+$(call inherit-product, device/generic/car/emulator/multi-display-dynamic/multi-display-dynamic.mk)
+else # EMULATOR_DYNAMIC_MULTIDISPLAY_CONFIG
 ifeq (true,$(BUILD_EMULATOR_CLUSTER_DISPLAY))
-PRODUCT_COPY_FILES += \
-    device/generic/car/emulator/cluster/display_settings.xml:system/etc/display_settings.xml \
-
-ifeq ($(EMULATOR_MULTIDISPLAY_HW_CONFIG),)
-PRODUCT_PRODUCT_PROPERTIES += \
-    hwservicemanager.external.displays=1,400,600,120,0 \
-    persist.service.bootanim.displays=8140900251843329
-else
-ifneq ($(EMULATOR_MULTIDISPLAY_BOOTANIM_CONFIG),)
-$(warning Setting displays to $(EMULATOR_MULTIDISPLAY_HW_CONFIG) and bootanims to $(EMULATOR_MULTIDISPLAY_BOOTANIM_CONFIG))
-    PRODUCT_PRODUCT_PROPERTIES += \
-        hwservicemanager.external.displays=$(EMULATOR_MULTIDISPLAY_HW_CONFIG) \
-        persist.service.bootanim.displays=$(EMULATOR_MULTIDISPLAY_BOOTANIM_CONFIG)
-else #  EMULATOR_MULTIDISPLAY_BOOTANIM_CONFIG
-$(error EMULATOR_MULTIDISPLAY_BOOTANIM_CONFIG has to be defined when EMULATOR_MULTIDISPLAY_BOOTANIM_CONFIG is defined)
-endif # EMULATOR_MULTIDISPLAY_BOOTANIM_CONFIG
-endif # EMULATOR_HW_MULTIDISPLAY_CONFIG
-
-ifeq (true,$(ENABLE_CLUSTER_OS_DOUBLE))
-PRODUCT_PACKAGES += CarServiceOverlayEmulatorOsDouble
-else
-PRODUCT_PACKAGES += CarServiceOverlayEmulator
-endif  # ENABLE_CLUSTER_OS_DOUBLE
-endif  # BUILD_EMULATOR_CLUSTER_DISPLAY
+$(call inherit-product, device/generic/car/emulator/cluster/cluster-hwservicemanager.mk)
+endif # BUILD_EMULATOR_CLUSTER_DISPLAY
+endif # EMULATOR_DYNAMIC_MULTIDISPLAY_CONFIG
 
 PRODUCT_PACKAGES += CarServiceOverlayEmulatorMedia
 
 PRODUCT_PRODUCT_PROPERTIES += \
     ro.carwatchdog.vhal_healthcheck.interval=10 \
     ro.carwatchdog.client_healthcheck.interval=20 \
+
+# Drive Mode RROs
+PRODUCT_PACKAGES += \
+    DriveModeEcoRRO \
+    DriveModeSportRRO \
+    DriveModeOnRRO \
 
 # Enable socket for qemu VHAL
 BOARD_SEPOLICY_DIRS += device/generic/car/emulator/sepolicy

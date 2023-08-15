@@ -17,17 +17,20 @@
 # Auto modules
 PRODUCT_PACKAGES += \
     android.hardware.automotive.vehicle@V1-emulator-service \
-    android.hardware.broadcastradio@2.0-service \
+    android.hardware.broadcastradio-service.default \
     android.hardware.audio.service-caremu \
-    android.hardware.automotive.remoteaccess@V1-default-service
+    android.hardware.automotive.remoteaccess@V1-default-service \
+    android.hardware.automotive.ivn@V1-default-service
 
 # Runtime Resource Overlay for Connectivity
 PRODUCT_PACKAGES += \
     CarConnectivityOverlay
 
+ifneq ($(EMULATOR_DYNAMIC_MULTIDISPLAY_CONFIG),true)
 # Emulator configuration
 PRODUCT_COPY_FILES += \
     device/generic/car/common/config.ini:config.ini
+endif # EMULATOR_DYNAMIC_MULTIDISPLAY_CONFIG
 
 # Car init.rc
 PRODUCT_COPY_FILES += \
