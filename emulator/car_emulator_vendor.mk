@@ -53,7 +53,7 @@ PRODUCT_PACKAGES += \
     android.hardware.automotive.vehicle@V3-emulator-service \
     android.hardware.broadcastradio-service.default \
     android.hardware.audio.service-caremu \
-    android.hardware.automotive.remoteaccess@V1-default-service \
+    android.hardware.automotive.remoteaccess@V2-default-service \
     android.hardware.automotive.ivn@V1-default-service
 
 # Copy car_core_hardware and overwrite handheld_core_hardware.xml with a disable config.
