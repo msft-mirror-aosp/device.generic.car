@@ -50,7 +50,7 @@ endif
 
 # Auto modules
 PRODUCT_PACKAGES += \
-    android.hardware.automotive.vehicle@V1-emulator-service \
+    android.hardware.automotive.vehicle@V3-emulator-service \
     android.hardware.broadcastradio-service.default \
     android.hardware.audio.service-caremu \
     android.hardware.automotive.remoteaccess@V1-default-service \
@@ -141,5 +141,17 @@ $(call inherit-product, device/generic/car/emulator/cluster/cluster-hwserviceman
 endif # BUILD_EMULATOR_CLUSTER_DISPLAY
 endif # EMULATOR_DYNAMIC_MULTIDISPLAY_CONFIG
 
+# Should use car bluetooth.prop.
+# This replaces value from device/generic/goldfish/64bitonly/product/vendor.mk below
+ifeq (,$(ENABLE_CAR_USB_PASSTHROUGH))
+ENABLE_CAR_USB_PASSTHROUGH := false
+endif
+ifeq (true,$(ENABLE_CAR_USB_PASSTHROUGH))
+TARGET_PRODUCT_PROP := device/generic/car/emulator/usbpt/bluetooth/bluetooth.prop
+endif
+
 # Goldfish vendor partition configurations
 $(call inherit-product-if-exists, device/generic/goldfish/64bitonly/product/vendor.mk)
+
+# Enable socket for qemu VHAL
+BOARD_SEPOLICY_DIRS += device/generic/car/emulator/sepolicy
