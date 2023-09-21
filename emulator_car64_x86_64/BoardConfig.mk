@@ -17,8 +17,8 @@
 include device/generic/goldfish/emulator64_x86_64/BoardConfig.mk
 include device/generic/car/emulator/usbpt/BoardConfig.mk
 
-# Override BOARD_SUPER_PARTITION_SIZE to inclease the mounted system partition.
+# Override BOARD_SUPER_PARTITION_SIZE to increase the mounted system partition.
 BOARD_SUPER_PARTITION_SIZE := 5856296960
 
-# 3.8G
+# 3.6G
 BOARD_EMULATOR_DYNAMIC_PARTITIONS_SIZE = 3800000000
