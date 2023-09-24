@@ -42,12 +42,15 @@ using ::android::base::Result;
 using ::android::hardware::automotive::vehicle::V2_0::impl::MessageSender;
 
 EmulatedVehicleHardware::EmulatedVehicleHardware() {
-    mInQemu = isInQemu();
-    ALOGD("mInQemu=%s", mInQemu ? "true" : "false");
+    Init();
+}
 
-    mVehicleBusCallback = ::ndk::SharedRefBase::make<VehicleBusCallback>(this);
-    mEmulator = std::make_unique<VehicleEmulator>(this);
-    startVehicleBuses();
+EmulatedVehicleHardware::EmulatedVehicleHardware(
+    std::string_view default_config_dir, std::string_view override_config_dir,
+    bool force_override)
+    : FakeVehicleHardware(std::string(default_config_dir),
+                          std::string(override_config_dir), force_override) {
+  Init();
 }
 
 EmulatedVehicleHardware::EmulatedVehicleHardware(
@@ -65,6 +68,15 @@ VehicleEmulator* EmulatedVehicleHardware::getEmulator() {
 EmulatedVehicleHardware::~EmulatedVehicleHardware() {
     mEmulator.reset();
     stopVehicleBuses();
+}
+
+void EmulatedVehicleHardware::Init() {
+    mInQemu = isInQemu();
+    ALOGD("mInQemu=%s", mInQemu ? "true" : "false");
+
+    mVehicleBusCallback = ::ndk::SharedRefBase::make<VehicleBusCallback>(this);
+    mEmulator = std::make_unique<VehicleEmulator>(this);
+    startVehicleBuses();
 }
 
 StatusCode EmulatedVehicleHardware::setValues(
