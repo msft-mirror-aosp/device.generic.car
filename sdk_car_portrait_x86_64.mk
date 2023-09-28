@@ -45,3 +45,6 @@ $(call inherit-product, packages/services/Car/car_product/car_ui_portrait/rro/ca
 
 # Use the default goldfish audio implementation
 EMULATOR_VENDOR_NO_SOUND := true
+
+PRODUCT_COPY_FILES += \
+    packages/services/Car/car_product/car_ui_portrait/car_ui_portrait_hardware.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/car_ui_portrait_hardware.xml
