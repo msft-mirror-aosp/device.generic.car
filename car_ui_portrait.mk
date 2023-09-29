@@ -58,3 +58,6 @@ PRODUCT_SDK_ADDON_NAME := car_ui_portrait
 
 PRODUCT_SDK_ADDON_SYS_IMG_SOURCE_PROP := \
     device/generic/car/car_x86_64/source.properties
+
+PRODUCT_COPY_FILES += \
+    packages/services/Car/car_product/car_ui_portrait/car_ui_portrait_hardware.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/car_ui_portrait_hardware.xml
