@@ -29,6 +29,8 @@
     <integer-array name="config_availableColorModes">
         <item>0</item> <!-- COLOR_MODE_NATURAL -->
     </integer-array>
+    <!-- The dreams feature (screensavers) is not supported in android auto -->
+    <bool name="config_dreamsSupported">false</bool>
     <!-- Device does not support near ultrasound audio-->
     <bool name="config_supportMicNearUltrasound">false</bool>
     <bool name="config_supportSpeakerNearUltrasound">false</bool>
