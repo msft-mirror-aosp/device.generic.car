@@ -33,7 +33,7 @@ namespace fake {
 class VehicleEmulator;
 class VehicleEmulatorTest;
 
-class EmulatedVehicleHardware final : public FakeVehicleHardware {
+class EmulatedVehicleHardware : public FakeVehicleHardware {
   public:
     using AidlVehiclePropValue = aidl::android::hardware::automotive::vehicle::VehiclePropValue;
     using IVehicleBus = aidl::device::generic::car::emulator::IVehicleBus;
@@ -41,6 +41,9 @@ class EmulatedVehicleHardware final : public FakeVehicleHardware {
     using ConfigResultType = android::base::Result<const aidl::android::hardware::automotive::vehicle::VehiclePropConfig*, VhalError>;
 
     EmulatedVehicleHardware();
+    EmulatedVehicleHardware(std::string_view default_config_dir,
+                            std::string_view override_config_dir,
+                            bool force_override);
 
     ~EmulatedVehicleHardware();
 
@@ -77,6 +80,7 @@ class EmulatedVehicleHardware final : public FakeVehicleHardware {
 
     // determine if it's running inside Android Emulator
     static bool isInQemu();
+    void Init();
     void startVehicleBuses();
     void stopVehicleBuses();
 

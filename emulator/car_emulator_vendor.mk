@@ -39,9 +39,13 @@ PRODUCT_VENDOR_PROPERTIES += \
 PRODUCT_VENDOR_PROPERTIES += \
     ro.carwatchdog.client_healthcheck.interval=20 \
     ro.carwatchdog.vhal_healthcheck.interval=10 \
+    ro.surface_flinger.has_wide_color_display=false \
+    ro.surface_flinger.has_HDR_display=false \
+    ro.surface_flinger.protected_contents=false \
+    ro.surface_flinger.use_color_management=false
 
 ifeq (,$(ENABLE_REAR_VIEW_CAMERA_SAMPLE))
-ENABLE_REAR_VIEW_CAMERA_SAMPLE:=true
+ENABLE_REAR_VIEW_CAMERA_SAMPLE := true
 endif
 
 # Auto modules
@@ -137,5 +141,17 @@ $(call inherit-product, device/generic/car/emulator/cluster/cluster-hwserviceman
 endif # BUILD_EMULATOR_CLUSTER_DISPLAY
 endif # EMULATOR_DYNAMIC_MULTIDISPLAY_CONFIG
 
+# Should use car bluetooth.prop.
+# This replaces value from device/generic/goldfish/64bitonly/product/vendor.mk below
+ifeq (,$(ENABLE_CAR_USB_PASSTHROUGH))
+ENABLE_CAR_USB_PASSTHROUGH := false
+endif
+ifeq (true,$(ENABLE_CAR_USB_PASSTHROUGH))
+TARGET_PRODUCT_PROP := device/generic/car/emulator/usbpt/bluetooth/bluetooth.prop
+endif
+
 # Goldfish vendor partition configurations
-$(call inherit-product-if-exists, device/generic/goldfish/vendor.mk)
+$(call inherit-product-if-exists, device/generic/goldfish/64bitonly/product/vendor.mk)
+
+# Enable socket for qemu VHAL
+BOARD_SEPOLICY_DIRS += device/generic/car/emulator/sepolicy

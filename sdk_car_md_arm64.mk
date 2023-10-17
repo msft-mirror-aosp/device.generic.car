@@ -24,3 +24,5 @@ PRODUCT_NAME := sdk_car_md_arm64
 PRODUCT_DEVICE := emulator_car64_arm64
 PRODUCT_BRAND := Android
 PRODUCT_MODEL := Car multi-display on arm64 emulator
+
+$(warning ${PRODUCT_NAME} is for development purposes only.)
