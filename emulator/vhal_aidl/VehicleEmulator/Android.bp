@@ -38,7 +38,7 @@ cc_library {
         "libutils",
         "libprotobuf-cpp-lite",
         "libbinder_ndk",
-        "device.generic.car.emulator-aidl-V2-ndk",
+        "device.generic.car.emulator-aidl-V1-ndk",
     ],
     local_include_dirs: ["include"],
     export_include_dirs: ["include"],
