@@ -26,13 +26,13 @@ PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/sdk_car_x86_64.mk \
 
 COMMON_LUNCH_CHOICES := \
-    car_ui_portrait-userdebug \
-    car_x86_64-userdebug \
-    gsi_car_arm64-userdebug \
-    gsi_car_x86_64-userdebug \
-    sdk_car_arm64-userdebug \
-    sdk_car_md_x86_64-userdebug \
-    sdk_car_portrait_x86_64-userdebug \
-    sdk_car_x86_64-userdebug \
+    car_ui_portrait-trunk_staging-userdebug \
+    car_x86_64-trunk_staging-userdebug \
+    gsi_car_arm64-trunk_staging-userdebug \
+    gsi_car_x86_64-trunk_staging-userdebug \
+    sdk_car_arm64-trunk_staging-userdebug \
+    sdk_car_md_x86_64-trunk_staging-userdebug \
+    sdk_car_portrait_x86_64-trunk_staging-userdebug \
+    sdk_car_x86_64-trunk_staging-userdebug \
 
 EMULATOR_VENDOR_NO_SOUND_TRIGGER := false
