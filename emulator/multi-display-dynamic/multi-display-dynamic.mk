@@ -29,7 +29,7 @@ PRODUCT_COPY_FILES += \
     device/generic/car/emulator/multi-display/car_audio_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/car_audio_configuration.xml
 
 # support packages for multi-display
-$(call inherit-product, $(SRC_TARGET_DIR)/product/emulator_system.mk)
+$(call inherit-product, device/generic/goldfish/product/multidisplay.mk)
 PRODUCT_PACKAGES += \
     MultiDisplaySecondaryHomeTestLauncher \
     MultiDisplayTest \
