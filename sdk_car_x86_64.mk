@@ -47,7 +47,6 @@ $(call inherit-product, device/generic/car/emulator/car_emulator_product.mk)
 #
 $(call inherit-product, device/generic/car/emulator/car_emulator_vendor.mk)
 $(call inherit-product, device/generic/goldfish/64bitonly/product/x86_64-vendor.mk)
-$(call inherit-product, device/generic/goldfish/emu64x/device.mk)
 
 EMULATOR_VENDOR_NO_SOUND := true
 PRODUCT_NAME := sdk_car_x86_64
