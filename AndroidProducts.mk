@@ -15,8 +15,6 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/car_ui_portrait.mk \
-    $(LOCAL_DIR)/car_x86_64.mk \
     $(LOCAL_DIR)/gsi_car_arm64.mk \
     $(LOCAL_DIR)/gsi_car_x86_64.mk \
     $(LOCAL_DIR)/sdk_car_arm64.mk \
@@ -26,8 +24,6 @@ PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/sdk_car_x86_64.mk \
 
 COMMON_LUNCH_CHOICES := \
-    car_ui_portrait-trunk_staging-userdebug \
-    car_x86_64-trunk_staging-userdebug \
     gsi_car_arm64-trunk_staging-userdebug \
     gsi_car_x86_64-trunk_staging-userdebug \
     sdk_car_arm64-trunk_staging-userdebug \
