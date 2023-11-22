@@ -14,7 +14,7 @@
 #
 
 # Use emulator64_x86_64_arm64 BoardConfig as base
-include device/generic/goldfish/emu64x/BoardConfig.mk
+include device/generic/goldfish/board/emu64x/BoardConfig.mk
 include device/generic/car/emulator/usbpt/BoardConfig.mk
 
 # Override BOARD_SUPER_PARTITION_SIZE to increase the mounted system partition.
