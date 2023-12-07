@@ -23,7 +23,7 @@ parts {
   }
 }
 layouts {
-  landscape {
+  portrait {
     width 1280
     height 1650
     part1 {
