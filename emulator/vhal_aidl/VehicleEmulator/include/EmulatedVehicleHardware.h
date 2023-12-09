@@ -38,7 +38,7 @@ class EmulatedVehicleHardware : public FakeVehicleHardware {
     using AidlVehiclePropValue = aidl::android::hardware::automotive::vehicle::VehiclePropValue;
     using IVehicleBus = aidl::device::generic::car::emulator::IVehicleBus;
     using BnVehicleBusCallback = aidl::device::generic::car::emulator::BnVehicleBusCallback;
-    using ConfigResultType = android::base::Result<const aidl::android::hardware::automotive::vehicle::VehiclePropConfig*, VhalError>;
+    using ConfigResultType = android::base::Result<aidl::android::hardware::automotive::vehicle::VehiclePropConfig, VhalError>;
 
     EmulatedVehicleHardware();
     EmulatedVehicleHardware(std::string_view default_config_dir,
