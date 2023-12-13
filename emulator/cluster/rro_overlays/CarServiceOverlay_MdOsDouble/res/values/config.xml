@@ -40,9 +40,9 @@
     -->
     <string-array translatable="false" name="config_occupant_zones">
         <item>occupantZoneId=0,occupantType=DRIVER,seatRow=1,seatSide=driver</item>
-        <item>occupantZoneId=1,occupantType=FRONT_PASSENGER,seatRow=1,seatSide=oppositeDriver</item>
-        <item>occupantZoneId=2,occupantType=REAR_PASSENGER,seatRow=2,seatSide=left</item>
-        <item>occupantZoneId=3,occupantType=REAR_PASSENGER,seatRow=2,seatSide=right</item>
+        <item>occupantZoneId=1,occupantType=REAR_PASSENGER,seatRow=2,seatSide=left</item>
+        <item>occupantZoneId=2,occupantType=REAR_PASSENGER,seatRow=2,seatSide=right</item>
+        <item>occupantZoneId=3,occupantType=FRONT_PASSENGER,seatRow=1,seatSide=oppositeDriver</item>
     </string-array>
 
     <!--
