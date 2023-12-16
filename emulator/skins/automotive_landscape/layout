@@ -1,4 +1,4 @@
-# Copyright (C) 2022 The Android Open Source Project
+# Copyright (C) 2023 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,13 +12,27 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-
-# Use emulator64_arm64 BoardConfig as base
-include device/generic/goldfish/board/emu64a/BoardConfig.mk
-include device/generic/car/emulator/usbpt/BoardConfig.mk
-
-# Override BOARD_SUPER_PARTITION_SIZE to increase the mounted system partition.
-BOARD_SUPER_PARTITION_SIZE := 5856296960
-
-# 3.6G
-BOARD_EMULATOR_DYNAMIC_PARTITIONS_SIZE = 3800000000
+parts {
+  device {
+    display {
+      width 1408
+      height 792
+    }
+  }
+  landscape {
+    background {
+      image back.png
+    }
+  }
+}
+layouts {
+  landscape {
+    width 1500
+    height 837
+    part1 {
+      name device
+      x 50
+      y 30
+    }
+  }
+}
