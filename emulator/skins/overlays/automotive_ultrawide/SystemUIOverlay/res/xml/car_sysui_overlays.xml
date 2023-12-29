@@ -64,4 +64,7 @@
     <item
         target="integer/config_showDisplayCompatToolbarOnSystemBar"
         value="@integer/config_showDisplayCompatToolbarOnSystemBar" />
+    <item
+        target="dimen/car_top_system_bar_right_padding"
+        value="@dimen/car_top_system_bar_right_padding"/>
 </overlay>
