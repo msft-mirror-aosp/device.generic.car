@@ -27,5 +27,6 @@ android_app {
     aaptflags: [
         "--no-resource-deduping",
         "--no-resource-removal",
-     ]
+    ],
+    system_ext_specific: true,
 }
