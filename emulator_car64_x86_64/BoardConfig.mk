@@ -20,5 +20,5 @@ include device/generic/car/emulator/usbpt/BoardConfig.mk
 # Override BOARD_SUPER_PARTITION_SIZE to increase the mounted system partition.
 BOARD_SUPER_PARTITION_SIZE := 5856296960
 
-# 3.6G
-BOARD_EMULATOR_DYNAMIC_PARTITIONS_SIZE = 3800000000
+# 4G (4 * 1024 * 1024 * 1024)
+BOARD_EMULATOR_DYNAMIC_PARTITIONS_SIZE = 4294967296
