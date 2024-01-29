@@ -61,8 +61,6 @@
     <!-- The config is enabled for the development purpose only. -->
     <bool name="config_multiuserVisibleBackgroundUsers">true</bool>
 
-    <!-- Enable multi-user IME sessions -->
-    <string translatable="false" name="config_deviceSpecificInputMethodManagerService">com.android.server.inputmethod.InputMethodManagerServiceProxy$Lifecycle</string>
     <!-- Disable hidding the NavBars (CarSystemBars), as a workaround for b/259604616 -->
     <bool name="config_hideNavBarForKeyboard">false</bool>
 
