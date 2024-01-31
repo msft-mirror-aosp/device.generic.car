@@ -33,7 +33,6 @@
     <feature name="android.hardware.audio.output" />
     <feature name="android.hardware.location" />
     <feature name="android.hardware.location.gps" />
-    <feature name="android.hardware.location.network" />
     <feature name="android.hardware.touchscreen" />
     <feature name="android.hardware.microphone" />
 
