@@ -142,7 +142,7 @@ endif # BUILD_EMULATOR_CLUSTER_DISPLAY
 endif # EMULATOR_DYNAMIC_MULTIDISPLAY_CONFIG
 
 # Should use car bluetooth.prop.
-# This replaces value from device/generic/goldfish/64bitonly/product/vendor.mk below
+# This replaces value from device/generic/goldfish/product/generic.mk below
 ifeq (,$(ENABLE_CAR_USB_PASSTHROUGH))
 ENABLE_CAR_USB_PASSTHROUGH := false
 endif
@@ -151,7 +151,7 @@ TARGET_PRODUCT_PROP := device/generic/car/emulator/usbpt/bluetooth/bluetooth.pro
 endif
 
 # Goldfish vendor partition configurations
-$(call inherit-product-if-exists, device/generic/goldfish/64bitonly/product/vendor.mk)
+$(call inherit-product, device/generic/goldfish/product/generic.mk)
 
 # Enable socket for qemu VHAL
 BOARD_SEPOLICY_DIRS += device/generic/car/emulator/sepolicy
