@@ -46,7 +46,7 @@ $(call inherit-product, device/generic/car/emulator/car_emulator_product.mk)
 # All components inherited here go to vendor image
 #
 $(call inherit-product, device/generic/car/emulator/car_emulator_vendor.mk)
-$(call inherit-product, device/generic/goldfish/64bitonly/product/arm64-vendor.mk)
+$(call inherit-product, device/generic/goldfish/board/emu64a/details.mk)
 
 EMULATOR_VENDOR_NO_SOUND := true
 PRODUCT_NAME := sdk_car_arm64
