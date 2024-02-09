@@ -168,5 +168,8 @@ PRODUCT_PACKAGE_OVERLAYS := device/generic/car/common/overlay
 EMULATOR_VENDOR_NO_SENSORS := true
 PRODUCT_USE_DYNAMIC_PARTITION_SIZE := true
 DO_NOT_INCLUDE_BT_SEPOLICY := true
+PRODUCT_PRODUCT_PROPERTIES += \
+    ro.carwatchdog.vhal_healthcheck.interval="" \
+    ro.carwatchdog.client_healthcheck.interval=""
 $(call inherit-product, device/generic/car/emulator/aosp_car_emulator.mk)
 EMULATOR_VENDOR_NO_SOUND := true
