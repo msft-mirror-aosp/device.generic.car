@@ -23,6 +23,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     device/generic/car/common/preinstalled-packages-product-car-emulator.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/sysconfig/preinstalled-packages-product-car-emulator.xml
 
+# This file is used by qemu to provide supported VHAL property list.
+PRODUCT_COPY_FILES += hardware/interfaces/automotive/vehicle/aidl/emu_metadata/android.hardware.automotive.vehicle-types-meta.json:android.hardware.automotive.vehicle-types-meta.json
+
 # TODO(b/253459812): find a better way to handle it.
 DEVICE_PRODUCT_COMPATIBILITY_MATRIX_FILE += \
     device/generic/car/common/device_framework_matrix_product.xml
