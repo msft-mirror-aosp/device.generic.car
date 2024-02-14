@@ -1,4 +1,5 @@
 package {
+    default_team: "trendy_team_pixel_system_sw_security",
     default_applicable_licenses: ["external_usbip-service_license"],
 }
 
@@ -32,7 +33,7 @@ cc_binary {
     init_rc: ["usbip-service.rc"],
     defaults: ["usbip_defaults"],
     srcs: [
-        "UsbIpService.cpp"
+        "UsbIpService.cpp",
     ],
     static_libs: [
         "usbip_utils",
@@ -43,7 +44,7 @@ cc_library {
     name: "usbip_utils",
     defaults: ["usbip_defaults"],
     srcs: [
-        "UsbIpUtils.cpp"
+        "UsbIpUtils.cpp",
     ],
     export_include_dirs: ["./"],
 }
