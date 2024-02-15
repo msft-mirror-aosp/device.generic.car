@@ -39,17 +39,21 @@ PRODUCT_VENDOR_PROPERTIES += \
 PRODUCT_VENDOR_PROPERTIES += \
     ro.carwatchdog.client_healthcheck.interval=20 \
     ro.carwatchdog.vhal_healthcheck.interval=10 \
+    ro.surface_flinger.has_wide_color_display=false \
+    ro.surface_flinger.has_HDR_display=false \
+    ro.surface_flinger.protected_contents=false \
+    ro.surface_flinger.use_color_management=false
 
 ifeq (,$(ENABLE_REAR_VIEW_CAMERA_SAMPLE))
-ENABLE_REAR_VIEW_CAMERA_SAMPLE:=true
+ENABLE_REAR_VIEW_CAMERA_SAMPLE := true
 endif
 
 # Auto modules
 PRODUCT_PACKAGES += \
-    android.hardware.automotive.vehicle@V1-emulator-service \
+    android.hardware.automotive.vehicle@V3-emulator-service \
     android.hardware.broadcastradio-service.default \
     android.hardware.audio.service-caremu \
-    android.hardware.automotive.remoteaccess@V1-default-service \
+    android.hardware.automotive.remoteaccess@V2-default-service \
     android.hardware.automotive.ivn@V1-default-service
 
 # Copy car_core_hardware and overwrite handheld_core_hardware.xml with a disable config.
@@ -137,5 +141,19 @@ $(call inherit-product, device/generic/car/emulator/cluster/cluster-hwserviceman
 endif # BUILD_EMULATOR_CLUSTER_DISPLAY
 endif # EMULATOR_DYNAMIC_MULTIDISPLAY_CONFIG
 
+# Should use car bluetooth.prop.
+# This replaces value from device/generic/goldfish/product/generic.mk below
+ifeq (,$(ENABLE_CAR_USB_PASSTHROUGH))
+ENABLE_CAR_USB_PASSTHROUGH := false
+endif
+ifeq (true,$(ENABLE_CAR_USB_PASSTHROUGH))
+TARGET_PRODUCT_PROP := device/generic/car/emulator/usbpt/bluetooth/bluetooth.prop
+endif
+
 # Goldfish vendor partition configurations
-$(call inherit-product-if-exists, device/generic/goldfish/vendor.mk)
+$(call inherit-product, device/generic/goldfish/product/generic.mk)
+
+# Enable socket for qemu VHAL
+BOARD_SEPOLICY_DIRS += device/generic/car/emulator/sepolicy
+
+$(call inherit-product-if-exists, device/generic/car/emulator/skins/overlays/car_emu_skin_overlays.mk)

@@ -74,4 +74,3 @@ PRODUCT_PACKAGES += \
 
 # Enable socket for qemu VHAL
 BOARD_SEPOLICY_DIRS += device/generic/car/emulator/sepolicy
-
