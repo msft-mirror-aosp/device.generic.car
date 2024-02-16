@@ -15,10 +15,12 @@
   -->
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.android.systemui.emulation.automotive_ultrawide">
-    <overlay
-        android:targetPackage="com.android.systemui"
-        android:isStatic="false"
-        android:resourcesMap="@xml/car_sysui_overlays"
-    />
+        package="com.android.internal.emulation.automotive_ultrawide_cutout"
+        android:versionCode="1"
+        android:versionName="1.0">
+    <overlay android:targetPackage="android"
+        android:category="com.android.internal.android.emulation"
+        android:priority="1"/>
+
+    <application android:label="@string/display_cutout_emulation_overlay" android:hasCode="false"/>
 </manifest>
