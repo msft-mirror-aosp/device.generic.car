@@ -20,11 +20,11 @@ skin.path=1408x792
 ; hw.initialOrientation = portrait
 ### automotive_large_portrait end
 
-### automotive_ultrawide start
-; skin.name = automotive_ultrawide
-; skin.path = <andorid_patch>/device/generic/car/emulator/skins/automotive_ultrawide
+### automotive_ultrawide_cutout start
+; skin.name = automotive_ultrawide_cutout
+; skin.path = <andorid_patch>/device/generic/car/emulator/skins/automotive_ultrawide_cutout
 ; hw.initialOrientation = landscape
-### automotive_ultrawide end
+### automotive_ultrawide_cutout end
 ```
 3. comment out the original skin
 ```
@@ -33,11 +33,11 @@ skin.path=1408x792
 ```
 4. Un-comment desiered skin
 ```
-### automotive_ultrawide start
- skin.name = automotive_ultrawide
- skin.path = <andorid_patch>/device/generic/car/emulator/skins/automotive_ultrawide
+### automotive_ultrawide_cutout start
+ skin.name = automotive_ultrawide_cutout
+ skin.path = <andorid_patch>/device/generic/car/emulator/skins/automotive_ultrawide_cutout
  hw.initialOrientation = landscape
-### automotive_ultrawide end
+### automotive_ultrawide_cutout end
 ```
 5. launch emulator again with wipe-data flag
 ```
