@@ -1,4 +1,5 @@
-// Copyright (C) 2024 The Android Open Source Project
+//
+// Copyright (C) 2023 The Android Open Source Project
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -11,16 +12,21 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+//
 
 package {
     default_applicable_licenses: ["Android-Apache-2.0"],
 }
 
-runtime_resource_overlay {
-    name: "AutomotiveUltrawideToolbarBase",
-    manifest: "AndroidManifest.xml",
+android_app {
+    name: "CarSystemUIEmulationutomotiveUltrawideCutoutOverlay",
     resource_dirs: ["res"],
-    static_libs: [
-        "car-resource-common",
+    certificate: "platform",
+    platform_apis: true,
+    manifest: "AndroidManifest.xml",
+    aaptflags: [
+        "--no-resource-deduping",
+        "--no-resource-removal",
     ],
+    system_ext_specific: true,
 }
