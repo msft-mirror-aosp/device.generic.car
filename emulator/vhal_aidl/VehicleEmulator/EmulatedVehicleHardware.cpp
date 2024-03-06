@@ -175,7 +175,7 @@ std::vector<VehiclePropValuePool::RecyclableType> EmulatedVehicleHardware::getAl
 
 EmulatedVehicleHardware::ConfigResultType EmulatedVehicleHardware::getPropConfig(int32_t propId)
         const {
-    return mServerSidePropStore->getConfig(propId);
+    return mServerSidePropStore->getPropConfig(propId);
 }
 
 bool EmulatedVehicleHardware::isInQemu() {
