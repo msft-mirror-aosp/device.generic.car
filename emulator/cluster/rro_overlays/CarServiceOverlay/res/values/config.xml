@@ -78,4 +78,5 @@
           mute. If this is set to true, car volume group muting is enabled and each individual
           volume group can be muted separately. -->
     <bool name="audioUseCarVolumeGroupMuting">true</bool>
+    <bool name="audioUseMinMaxActivationVolume">true</bool>
 </resources>
