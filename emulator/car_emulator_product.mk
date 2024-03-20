@@ -15,6 +15,11 @@
 
 $(call inherit-product, packages/services/Car/car_product/build/car_product.mk)
 
+# Install automotive specific battery health HAL
+PRODUCT_PACKAGES += \
+    android.hardware.health-service.automotive \
+    android.hardware.health-service.automotive_recovery \
+
 # Runtime Resource Overlay for Connectivity
 PRODUCT_PACKAGES += \
     CarConnectivityOverlay
