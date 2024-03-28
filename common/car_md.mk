@@ -26,9 +26,6 @@ PRODUCT_COPY_FILES += \
     device/generic/car/emulator/multi-display/display_layout_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/displayconfig/display_layout_configuration.xml \
     device/generic/car/emulator/multi-display/display_settings.xml:$(TARGET_COPY_OUT_VENDOR)/etc/display_settings.xml
 
-PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.software.managed_users.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.managed_users.xml
-
 PRODUCT_PACKAGE_OVERLAYS += \
     device/generic/car/emulator/multi-display/overlay
 
