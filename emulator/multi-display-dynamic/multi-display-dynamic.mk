@@ -39,9 +39,6 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += ClusterHomeSample ClusterOsDouble ClusterHomeSampleOverlay ClusterOsDoubleEmulatorVirtualDisplayOverlay
 
-PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.software.managed_users.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.managed_users.xml
-
 # Selects the MultiDisplaySecondaryHomeTestLauncher as secondaryHome
 PRODUCT_PACKAGE_OVERLAYS += \
     device/generic/car/emulator/multi-display-dynamic/overlay
