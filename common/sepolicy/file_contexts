@@ -1,2 +1,4 @@
 # Audio HAL
-/vendor/bin/hw/android\.hardware\.audio\.service-caremu u:object_r:hal_audio_caremu_exec:s0
+/vendor/bin/hw/android\.hardware\.audio\.service-caremu                 u:object_r:hal_audio_caremu_exec:s0
+# Battery Health HAL
+/vendor/bin/hw/android\.hardware\.health-service\.automotive            u:object_r:hal_health_default_exec:s0
