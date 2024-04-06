@@ -24,3 +24,12 @@ runtime_resource_overlay {
         "car-resource-common",
     ],
 }
+
+runtime_resource_overlay {
+    name: "AutomotiveUltrawideCutoutToolbarStaticBase",
+    manifest: "AndroidManifest-static.xml",
+    resource_dirs: ["res"],
+    static_libs: [
+        "car-resource-common",
+    ],
+}
