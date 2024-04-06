@@ -150,6 +150,9 @@ ifeq (true,$(ENABLE_CAR_USB_PASSTHROUGH))
 TARGET_PRODUCT_PROP := device/generic/car/emulator/usbpt/bluetooth/bluetooth.prop
 endif
 
+# Disable biometrics for AAOS emulators
+EMULATOR_VENDOR_NO_BIOMETRICS := true
+
 # Goldfish vendor partition configurations
 $(call inherit-product-if-exists, device/generic/goldfish/64bitonly/product/vendor.mk)
 
