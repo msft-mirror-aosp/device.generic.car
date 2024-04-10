@@ -18,15 +18,14 @@ package {
     default_applicable_licenses: ["Android-Apache-2.0"],
 }
 
-android_app {
+runtime_resource_overlay {
     name: "CarEmulationAutomotiveRoundOverlay",
     resource_dirs: ["res"],
-    certificate: "platform",
-    platform_apis: true,
     manifest: "AndroidManifest.xml",
-    aaptflags: [
-        "--no-resource-deduping",
-        "--no-resource-removal",
-    ],
-    system_ext_specific: true,
+}
+
+runtime_resource_overlay {
+    name: "CarEmulationAutomotiveRoundStaticOverlay",
+    resource_dirs: ["res"],
+    manifest: "AndroidManifest-static.xml",
 }
