@@ -109,6 +109,20 @@
 
     </RestrictionMapping>
 
+    <!-- Setting baseline restrictions for the private virtual display for display compatibility apps. -->
+    <RestrictionMapping occupantZoneId="0" displayType="10">
+        <DrivingState state="parked">
+            <Restrictions requiresDistractionOptimization="false" uxr="baseline"/>
+        </DrivingState>
+        <DrivingState state="idling">
+            <Restrictions requiresDistractionOptimization="true" uxr="no_video" mode="baseline"/>
+        </DrivingState>
+
+        <DrivingState state="moving">
+            <Restrictions requiresDistractionOptimization="true" uxr="no_dialpad|no_filtering|limit_string_length|no_keyboard|no_video|limit_content|no_setup|no_text_message"/>
+        </DrivingState>
+    </RestrictionMapping>
+
     <!-- Configure restriction parameters here-->
     <RestrictionParameters>
         <!-- Parameters to express displayed String related restrictions -->
