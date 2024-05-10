@@ -5,19 +5,19 @@
 
 <!-- Display settings for cluster -->
 <display name="port:1"
-    forcedDensity="120"
+    forcedDensity="160"
     dontMoveToTop="true"/>
 
 <!-- Display settings for 2nd Home -->
 <display name="port:2"
     shouldShowSystemDecors="true"
     shouldShowIme="true"
-    forcedDensity="120" />
+    forcedDensity="160" />
 
 <!-- Display settings for 3rd Home -->
 <display name="port:3"
     shouldShowSystemDecors="true"
     shouldShowIme="true"
-    forcedDensity="120" />
+    forcedDensity="160" />
 
 </display-settings>

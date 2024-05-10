@@ -26,10 +26,6 @@
         <install-in user-type="FULL" />
         <install-in user-type="SYSTEM" />
     </install-in-user-type>
-    <install-in-user-type package="com.android.car.hvac">
-        <install-in user-type="FULL" />
-        <install-in user-type="SYSTEM" />
-    </install-in-user-type>
     <install-in-user-type package="com.android.phone">
         <install-in user-type="FULL" />
         <install-in user-type="SYSTEM" />
@@ -38,17 +34,15 @@
         <install-in user-type="FULL" />
         <install-in user-type="SYSTEM" />
     </install-in-user-type>
+    <install-in-user-type package="com.android.car.settings">
+        <install-in user-type="FULL" />
+        <install-in user-type="SYSTEM" />
+    </install-in-user-type>
     <install-in-user-type package="com.android.traceur">
         <install-in user-type="FULL" />
         <install-in user-type="SYSTEM" />
     </install-in-user-type>
     <install-in-user-type package="com.android.localtransport">
-        <install-in user-type="FULL" />
-        <install-in user-type="SYSTEM" />
-    </install-in-user-type>
-
-    <!-- Android remote display which need to work for all users-->
-    <install-in-user-type package="com.android.car.acast.source">
         <install-in user-type="FULL" />
         <install-in user-type="SYSTEM" />
     </install-in-user-type>
@@ -91,17 +85,15 @@
         <install-in user-type="FULL" />
         <install-in user-type="SYSTEM" />
     </install-in-user-type>
+
+    <install-in-user-type package="com.android.emulator.multidisplay">
+        <install-in user-type="SYSTEM" />
+    </install-in-user-type>
 <!--
   Apps that do need to run on SYSTEM and evaluated by package owner.
   Here the apps will have FULL only.
 -->
-    <install-in-user-type package="com.android.car.datacenter">
-        <install-in user-type="FULL" />
-    </install-in-user-type>
     <install-in-user-type package="com.android.car.goldilocks">
-        <install-in user-type="FULL" />
-    </install-in-user-type>
-    <install-in-user-type package="com.android.car.settings">
         <install-in user-type="FULL" />
     </install-in-user-type>
     <install-in-user-type package="com.android.car.speedbump">
@@ -161,9 +153,6 @@
     <install-in-user-type package="com.android.musicfx">
         <install-in user-type="FULL" />
     </install-in-user-type>
-    <install-in-user-type package="com.android.car.datacenter">
-        <install-in user-type="FULL" />
-    </install-in-user-type>
     <install-in-user-type package="com.android.timezone.updater">
         <install-in user-type="FULL" />
     </install-in-user-type>
@@ -177,9 +166,6 @@
         <install-in user-type="FULL" />
     </install-in-user-type>
     <install-in-user-type package="com.android.safetyregulatoryinfo">
-        <install-in user-type="FULL" />
-    </install-in-user-type>
-    <install-in-user-type package="com.android.emulator.multidisplay">
         <install-in user-type="FULL" />
     </install-in-user-type>
     <install-in-user-type package="com.android.providers.partnerbookmarks">

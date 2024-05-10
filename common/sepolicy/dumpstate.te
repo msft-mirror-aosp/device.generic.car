@@ -1,7 +1,9 @@
-# Signal java processes to dump hal_vehicle_default, hal_audiocontrol_default
+# Signal java processes to dump HALs.
 allow dumpstate {
   hal_vehicle_default
   hal_audiocontrol_default
+  hal_ivn_default
+  hal_remoteaccess_default
 }:process signal;
 
 
@@ -15,3 +17,5 @@ dump_hal(hal_audiocontrol)
 dump_hal(hal_identity)
 dump_hal(hal_light)
 dump_hal(hal_power)
+dump_hal(hal_ivn)
+dump_hal(hal_remoteaccess)

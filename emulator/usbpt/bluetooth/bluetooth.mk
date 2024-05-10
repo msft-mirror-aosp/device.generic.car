@@ -17,11 +17,11 @@
 # -prop vendor.qemu.preferred.bt.service=passthrough
 
 PRODUCT_PACKAGES += \
-    android.hardware.bluetooth@1.1-service.btlinux \
+    android.hardware.bluetooth-service.default \
+    android.hardware.bluetooth.audio@2.2-impl \
 
 PRODUCT_COPY_FILES += \
     device/generic/car/emulator/usbpt/bluetooth/vendor.qemu.preferred.bt.service.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/vendor.qemu.preferred.bt.service.rc \
-    device/generic/car/emulator/usbpt/bluetooth/modules.blocklist:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/lib/modules/modules.blocklist \
 
 PRODUCT_SYSTEM_PROPERTIES += \
     persist.bluetooth.enablenewavrcp=false \

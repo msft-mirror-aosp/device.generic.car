@@ -15,11 +15,41 @@
 
 PRODUCT_PACKAGE_OVERLAYS := device/generic/car/common/overlay
 
-$(call inherit-product, device/generic/car/emulator/aosp_car_emulator.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/sdk_x86_64.mk)
+QEMU_USE_SYSTEM_EXT_PARTITIONS := true
+PRODUCT_USE_DYNAMIC_PARTITIONS := true
+
+ifneq ($(EMULATOR_DYNAMIC_MULTIDISPLAY_CONFIG),true)
+# Emulator configuration
+PRODUCT_COPY_FILES += \
+    device/generic/car/common/config.ini:config.ini
+endif # EMULATOR_DYNAMIC_MULTIDISPLAY_CONFIG
+
+#
+# All components inherited here go to system image
+#
+$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit_only.mk)
+$(call inherit-product, packages/services/Car/car_product/build/car_generic_system.mk)
+
+PRODUCT_ENFORCE_ARTIFACT_PATH_REQUIREMENTS := strict
+
+#
+# All components inherited here go to system_ext image
+#
+$(call inherit-product, packages/services/Car/car_product/build/car_system_ext.mk)
+
+#
+# All components inherited here go to product image
+#
+$(call inherit-product, device/generic/car/emulator/car_emulator_product.mk)
+
+#
+# All components inherited here go to vendor image
+#
+$(call inherit-product, device/generic/car/emulator/car_emulator_vendor.mk)
+$(call inherit-product, device/generic/goldfish/board/emu64x/details.mk)
 
 EMULATOR_VENDOR_NO_SOUND := true
 PRODUCT_NAME := sdk_car_x86_64
-PRODUCT_DEVICE := emulator_car_x86_64
+PRODUCT_DEVICE := emulator_car64_x86_64
 PRODUCT_BRAND := Android
 PRODUCT_MODEL := Car on x86_64 emulator

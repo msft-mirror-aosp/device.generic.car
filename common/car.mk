@@ -16,18 +16,21 @@
 
 # Auto modules
 PRODUCT_PACKAGES += \
-    android.hardware.automotive.vehicle@V1-emulator-service \
-    android.hardware.broadcastradio@2.0-service \
+    android.hardware.automotive.vehicle@V3-emulator-service \
+    android.hardware.broadcastradio-service.default \
     android.hardware.audio.service-caremu \
-    android.hardware.automotive.remoteaccess@V1-default-service
+    android.hardware.automotive.remoteaccess@V2-default-service \
+    android.hardware.automotive.ivn@V1-default-service
 
 # Runtime Resource Overlay for Connectivity
 PRODUCT_PACKAGES += \
     CarConnectivityOverlay
 
+ifneq ($(EMULATOR_DYNAMIC_MULTIDISPLAY_CONFIG),true)
 # Emulator configuration
 PRODUCT_COPY_FILES += \
     device/generic/car/common/config.ini:config.ini
+endif # EMULATOR_DYNAMIC_MULTIDISPLAY_CONFIG
 
 # Car init.rc
 PRODUCT_COPY_FILES += \
@@ -93,13 +96,6 @@ PRODUCT_COPY_FILES += \
 
 # Additional selinux policy
 BOARD_SEPOLICY_DIRS += device/generic/car/common/sepolicy
-
-#
-# Special settings for GSI releasing
-#
-ifneq (,$(filter aosp_car_x86_64 aosp_car_arm64,$(TARGET_PRODUCT)))
-$(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_release.mk)
-endif
 
 $(call inherit-product, packages/services/Car/car_product/build/car.mk)
 

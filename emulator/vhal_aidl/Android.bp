@@ -15,11 +15,12 @@
  */
 
 package {
+    default_team: "trendy_team_aaos_framework",
     default_applicable_licenses: ["Android-Apache-2.0"],
 }
 
 cc_binary {
-    name: "android.hardware.automotive.vehicle@V1-emulator-service",
+    name: "android.hardware.automotive.vehicle@V3-emulator-service",
     vendor: true,
     defaults: [
         "FakeVehicleHardwareDefaults",
