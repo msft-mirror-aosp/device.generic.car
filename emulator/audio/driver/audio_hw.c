@@ -1221,6 +1221,7 @@ static int adev_open_output_stream(struct audio_hw_device *dev,
     memcpy(&out->pcm_config, &pcm_config_out, sizeof(struct pcm_config));
     out->pcm_config.rate = config->sample_rate;
     out->pcm_config.period_size = out->pcm_config.rate * get_out_period_ms() / 1000;
+    out->pcm_config.start_threshold = out->pcm_config.period_count * out->pcm_config.period_size;
 
     out->standby = true;
     out->underrun_position = 0;
