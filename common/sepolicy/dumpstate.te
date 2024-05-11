@@ -4,6 +4,7 @@ allow dumpstate {
   hal_audiocontrol_default
   hal_ivn_default
   hal_remoteaccess_default
+  hal_can_socketcan
 }:process signal;
 
 
@@ -19,3 +20,7 @@ dump_hal(hal_light)
 dump_hal(hal_power)
 dump_hal(hal_ivn)
 dump_hal(hal_remoteaccess)
+
+# Allow dumpstate to talk to automotive_display_service over binder.
+binder_call(dumpstate, automotive_display_service_server)
+
