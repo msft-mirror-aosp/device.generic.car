@@ -78,7 +78,8 @@ PRODUCT_COPY_FILES += \
 
 # Enable landscape
 PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.screen.landscape.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.screen.landscape.xml
+    frameworks/native/data/etc/android.hardware.screen.landscape.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.screen.landscape.xml \
+    frameworks/native/data/etc/android.hardware.screen.portrait.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.screen.portrait.xml
 
 # Used to embed a map in an activity view
 PRODUCT_COPY_FILES += \
@@ -158,3 +159,5 @@ $(call inherit-product-if-exists, device/generic/goldfish/64bitonly/product/vend
 
 # Enable socket for qemu VHAL
 BOARD_SEPOLICY_DIRS += device/generic/car/emulator/sepolicy
+
+$(call inherit-product-if-exists, device/generic/car/emulator/skins/overlays/car_emu_skin_overlays.mk)
