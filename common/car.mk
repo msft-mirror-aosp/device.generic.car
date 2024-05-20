@@ -85,11 +85,6 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.sensor.accelerometer_limited_axes_uncalibrated.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.accelerometer_limited_axes_uncalibrated.xml \
     frameworks/native/data/etc/android.hardware.sensor.gyroscope_limited_axes_uncalibrated.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.gyroscope_limited_axes_uncalibrated.xml \
 
-# Copy APN configs
-PRODUCT_COPY_FILES += \
-    device/generic/goldfish/data/etc/apns-conf.xml:system/etc/apns-conf.xml \
-    device/sample/etc/old-apns-conf.xml:system/etc/old-apns-conf.xml
-
 # Whitelisted packages per user type
 PRODUCT_COPY_FILES += \
   device/generic/car/common/preinstalled-packages-product-car-emulator.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/sysconfig/preinstalled-packages-product-car-emulator.xml
