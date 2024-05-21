@@ -60,4 +60,5 @@
     <bool name="audioUseDynamicRouting">true</bool>
     <bool name="audioUseCarVolumeGroupMuting">true</bool>
     <bool name="audioUseMinMaxActivationVolume">true</bool>
+    <bool name="audioUseFadeManagerConfiguration">true</bool>
 </resources>
