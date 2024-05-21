@@ -25,6 +25,7 @@ cc_defaults {
 
     overrides: [
         "android.hardware.health-service.example",
+        "com.google.cf.health",
     ],
 
     vintf_fragments: ["android.hardware.health-service.automotive.xml"],
