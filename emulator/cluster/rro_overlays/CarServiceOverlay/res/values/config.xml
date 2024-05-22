@@ -79,4 +79,5 @@
           volume group can be muted separately. -->
     <bool name="audioUseCarVolumeGroupMuting">true</bool>
     <bool name="audioUseMinMaxActivationVolume">true</bool>
+    <bool name="audioUseFadeManagerConfiguration">true</bool>
 </resources>

@@ -76,6 +76,23 @@
                             </device>
                         </group>
                     </volumeGroups>
+                    <applyFadeConfigs>
+                        <fadeConfig name="relaxed fading" isDefault="true">
+                        </fadeConfig>
+                        <fadeConfig name="aggressive fading">
+                            <audioAttributes>
+                                <usage value="AUDIO_USAGE_VOICE_COMMUNICATION" />
+                                <usage value="AUDIO_USAGE_ANNOUNCEMENT" />
+                                <usage value="AUDIO_USAGE_VEHICLE_STATUS" />
+                                <usage value="AUDIO_USAGE_SAFETY" />
+                            </audioAttributes>
+                        </fadeConfig>
+                        <fadeConfig name="disabled fading">
+                            <audioAttributes>
+                                <usage value="AUDIO_USAGE_EMERGENCY" />
+                            </audioAttributes>
+                        </fadeConfig>
+                    </applyFadeConfigs>
                 </zoneConfig>
             </zoneConfigs>
         </zone>
@@ -104,6 +121,19 @@
                             </device>
                         </group>
                     </volumeGroups>
+                    <applyFadeConfigs>
+                        <fadeConfig name="aggressive fading" isDefault="true">
+                        </fadeConfig>
+                        <fadeConfig name="disabled fading">
+                            <audioAttributes>
+                                <usage value="AUDIO_USAGE_EMERGENCY" />
+                                <usage value="AUDIO_USAGE_VOICE_COMMUNICATION" />
+                                <usage value="AUDIO_USAGE_ANNOUNCEMENT" />
+                                <usage value="AUDIO_USAGE_VEHICLE_STATUS" />
+                                <usage value="AUDIO_USAGE_SAFETY" />
+                            </audioAttributes>
+                        </fadeConfig>
+                    </applyFadeConfigs>
                 </zoneConfig>
                 <zoneConfig name="rear seat zone 1 config 1">
                     <volumeGroups>
@@ -128,6 +158,19 @@
                             </device>
                         </group>
                     </volumeGroups>
+                    <applyFadeConfigs>
+                        <fadeConfig name="aggressive fading" isDefault="true">
+                        </fadeConfig>
+                        <fadeConfig name="disabled fading">
+                            <audioAttributes>
+                                <usage value="AUDIO_USAGE_EMERGENCY" />
+                                <usage value="AUDIO_USAGE_VOICE_COMMUNICATION" />
+                                <usage value="AUDIO_USAGE_ANNOUNCEMENT" />
+                                <usage value="AUDIO_USAGE_VEHICLE_STATUS" />
+                                <usage value="AUDIO_USAGE_SAFETY" />
+                            </audioAttributes>
+                        </fadeConfig>
+                    </applyFadeConfigs>
                 </zoneConfig>
             </zoneConfigs>
         </zone>
@@ -156,6 +199,19 @@
                             </device>
                         </group>
                     </volumeGroups>
+                    <applyFadeConfigs>
+                        <fadeConfig name="aggressive fading" isDefault="true">
+                        </fadeConfig>
+                        <fadeConfig name="disabled fading">
+                            <audioAttributes>
+                                <usage value="AUDIO_USAGE_EMERGENCY" />
+                                <usage value="AUDIO_USAGE_VOICE_COMMUNICATION" />
+                                <usage value="AUDIO_USAGE_ANNOUNCEMENT" />
+                                <usage value="AUDIO_USAGE_VEHICLE_STATUS" />
+                                <usage value="AUDIO_USAGE_SAFETY" />
+                            </audioAttributes>
+                        </fadeConfig>
+                    </applyFadeConfigs>
                 </zoneConfig>
                 <zoneConfig name="rear seat zone 2 config 1">
                     <volumeGroups>
@@ -180,6 +236,19 @@
                             </device>
                         </group>
                     </volumeGroups>
+                    <applyFadeConfigs>
+                        <fadeConfig name="aggressive fading" isDefault="true">
+                        </fadeConfig>
+                        <fadeConfig name="disabled fading">
+                            <audioAttributes>
+                                <usage value="AUDIO_USAGE_EMERGENCY" />
+                                <usage value="AUDIO_USAGE_VOICE_COMMUNICATION" />
+                                <usage value="AUDIO_USAGE_ANNOUNCEMENT" />
+                                <usage value="AUDIO_USAGE_VEHICLE_STATUS" />
+                                <usage value="AUDIO_USAGE_SAFETY" />
+                            </audioAttributes>
+                        </fadeConfig>
+                    </applyFadeConfigs>
                 </zoneConfig>
             </zoneConfigs>
         </zone>

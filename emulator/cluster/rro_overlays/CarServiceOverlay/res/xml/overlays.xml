@@ -20,4 +20,5 @@
     <item target="bool/audioUseDynamicRouting" value="@bool/audioUseDynamicRouting" />
     <item target="bool/audioUseCarVolumeGroupMuting" value="@bool/audioUseCarVolumeGroupMuting" />
     <item target="bool/audioUseMinMaxActivationVolume" value="@bool/audioUseMinMaxActivationVolume" />
+    <item target="bool/audioUseFadeManagerConfiguration" value="@bool/audioUseFadeManagerConfiguration" />
 </overlay>
