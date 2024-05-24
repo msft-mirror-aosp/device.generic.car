@@ -1,3 +1,4 @@
+#
 # Copyright (C) 2023 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -11,25 +12,12 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#
-parts {
-  device {
-    display {
-      width 1280
-      height 1606
-      x 0
-      y 0
-    }
-  }
-}
-layouts {
-  landscape {
-    width 1280
-    height 1650
-    part1 {
-      name device
-      x 0
-      y 0
-    }
-  }
-}
+
+
+# Overlays for skins
+PRODUCT_PACKAGES += \
+    CarEmulationAutomotiveRoundOverlay \
+    CarEmulationAutomotiveUltrawideCutoutOverlay \
+    CarSystemUIEmulationutomotiveLargePortraitOverlay \
+    CarSystemUIEmulationutomotiveRoundOverlay \
+    CarSystemUIEmulationutomotiveUltrawideCutoutOverlay
