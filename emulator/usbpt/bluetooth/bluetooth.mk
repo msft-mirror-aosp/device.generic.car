@@ -17,7 +17,7 @@
 # -prop vendor.qemu.preferred.bt.service=passthrough
 
 PRODUCT_PACKAGES += \
-    android.hardware.bluetooth@1.1-service.btlinux \
+    android.hardware.bluetooth-service.default \
     android.hardware.bluetooth.audio@2.2-impl \
 
 PRODUCT_COPY_FILES += \
