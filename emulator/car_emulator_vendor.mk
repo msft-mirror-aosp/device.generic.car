@@ -155,3 +155,5 @@ $(call inherit-product, device/generic/goldfish/product/generic.mk)
 
 # Enable socket for qemu VHAL
 BOARD_SEPOLICY_DIRS += device/generic/car/emulator/sepolicy
+
+$(call inherit-product-if-exists, device/generic/car/emulator/skins/overlays/car_emu_skin_overlays.mk)
