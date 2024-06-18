@@ -78,7 +78,8 @@ PRODUCT_COPY_FILES += \
 
 # Enable landscape
 PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.screen.landscape.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.screen.landscape.xml
+    frameworks/native/data/etc/android.hardware.screen.landscape.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.screen.landscape.xml \
+    frameworks/native/data/etc/android.hardware.screen.portrait.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.screen.portrait.xml
 
 # Used to embed a map in an activity view
 PRODUCT_COPY_FILES += \
@@ -149,6 +150,9 @@ endif
 ifeq (true,$(ENABLE_CAR_USB_PASSTHROUGH))
 TARGET_PRODUCT_PROP := device/generic/car/emulator/usbpt/bluetooth/bluetooth.prop
 endif
+
+# Disable biometrics for AAOS emulators
+EMULATOR_VENDOR_NO_BIOMETRICS := true
 
 # Goldfish vendor partition configurations
 $(call inherit-product, device/generic/goldfish/product/generic.mk)
