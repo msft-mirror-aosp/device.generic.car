@@ -20,5 +20,13 @@ $(call inherit-product, device/generic/car/emulator/usbpt/wifi/wifi.mk)
 
 # Required for USB passthrough
 PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.usb.host.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.usb.host.xml \
-    device/generic/car/emulator/usbpt/modules.blocklist:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/lib/modules/modules.blocklist \
+    device/generic/car/emulator/usbpt/modules.blocklist:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/lib/modules/modules.blocklist
+
+ifeq (,$(ENABLE_USB_HOST_MODE))
+ENABLE_USB_HOST_MODE := false
+endif
+
+ifeq (true,$(ENABLE_USB_HOST_MODE))
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.usb.host.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.usb.host.xml
+endif
