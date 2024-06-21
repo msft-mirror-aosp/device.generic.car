@@ -27,10 +27,17 @@ $(call inherit-product, device/generic/car/common/car.mk)
 # This overrides device/generic/car/common/car.mk
 $(call inherit-product, device/generic/car/emulator/audio/car_emulator_audio.mk)
 $(call inherit-product, device/generic/car/emulator/rotary/car_rotary.mk)
+
+ifeq (,$(ENABLE_CAR_USB_PASSTHROUGH))
+ENABLE_CAR_USB_PASSTHROUGH := false
+endif
+
+ifeq (true,$(ENABLE_CAR_USB_PASSTHROUGH))
 # Enables USB related passthrough
 $(call inherit-product, device/generic/car/emulator/usbpt/car_usbpt.mk)
 
 TARGET_PRODUCT_PROP := device/generic/car/emulator/usbpt/bluetooth/bluetooth.prop
+endif
 
 # EVS
 # By default, we enable EvsManager, a sample EVS app, and a mock EVS HAL implementation.
