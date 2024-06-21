@@ -147,9 +147,7 @@ endif # EMULATOR_DYNAMIC_MULTIDISPLAY_CONFIG
 ifeq (,$(ENABLE_CAR_USB_PASSTHROUGH))
 ENABLE_CAR_USB_PASSTHROUGH := false
 endif
-ifeq (true,$(ENABLE_CAR_USB_PASSTHROUGH))
-TARGET_PRODUCT_PROP := device/generic/car/emulator/usbpt/bluetooth/bluetooth.prop
-endif
+TARGET_PRODUCT_PROP := packages/services/Car/car_product/properties/bluetooth.prop
 
 # Disable biometrics for AAOS emulators
 EMULATOR_VENDOR_NO_BIOMETRICS := true
