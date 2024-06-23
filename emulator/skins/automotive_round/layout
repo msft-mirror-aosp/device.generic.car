@@ -15,19 +15,19 @@
 parts {
   device {
     display {
-      width 1080
-      height 600
+      width 1415
+      height 1414
     }
   }
 }
 layouts {
   landscape {
-    width 1150
-    height 645
+    width 1500
+    height 1500
     part1 {
       name device
-      x 50
-      y 30
+      x 43
+      y 43
     }
   }
 }
