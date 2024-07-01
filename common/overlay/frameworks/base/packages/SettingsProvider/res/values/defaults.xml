@@ -17,6 +17,5 @@
  */
 -->
 <resources>
-    <bool name="def_user_setup_complete">true</bool>
     <bool name="def_wifi_on">true</bool>
 </resources>
