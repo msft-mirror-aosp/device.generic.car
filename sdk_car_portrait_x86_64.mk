@@ -15,8 +15,8 @@
 
 # Car UI Portrait Emulator Target
 
-# Exclude AAE Car System UI
-DO_NOT_INCLUDE_AAE_CAR_SYSTEM_UI := true
+# Exclude GAS Car Launcher
+DO_NOT_INCLUDE_GAS_CAR_LAUNCHER := true
 
 # Exclude Car UI Reference Design
 DO_NOT_INCLUDE_CAR_UI_REFERENCE_DESIGN := true
