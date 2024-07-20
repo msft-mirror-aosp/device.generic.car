@@ -30,6 +30,8 @@ PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/sdk_car_portrait_x86_64.mk \
     $(LOCAL_DIR)/sdk_car_x86.mk \
     $(LOCAL_DIR)/sdk_car_x86_64.mk \
+    $(LOCAL_DIR)/sdk_car_dd_arm64.mk \
+    $(LOCAL_DIR)/sdk_car_dd_x86_64.mk \
 
 COMMON_LUNCH_CHOICES := \
     aosp_car_arm-userdebug \
@@ -46,5 +48,7 @@ COMMON_LUNCH_CHOICES := \
     sdk_car_portrait_x86_64-userdebug \
     sdk_car_x86-userdebug \
     sdk_car_x86_64-userdebug \
+    sdk_car_dd_arm64-userdebug \
+    sdk_car_dd_x86_64-userdebug \
 
 EMULATOR_VENDOR_NO_SOUND_TRIGGER := false

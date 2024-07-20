@@ -1,4 +1,5 @@
-# Copyright (C) 2020 The Android Open Source Project
+#
+# Copyright (C) 2024 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -11,22 +12,13 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#
 
-# Use generic_x86_64 BoardConfig as base
-include build/make/target/board/emulator_x86_64/BoardConfig.mk
+$(call inherit-product, device/generic/car/common/car_dd.mk)
+$(call inherit-product, device/generic/car/sdk_car_x86_64.mk)
 
-ifeq (,$(ENABLE_CAR_USB_PASSTHROUGH))
-ENABLE_CAR_USB_PASSTHROUGH := false
-endif
+PRODUCT_ENFORCE_ARTIFACT_PATH_REQUIREMENTS := strict
 
-ifeq (true,$(ENABLE_CAR_USB_PASSTHROUGH))
-include device/generic/car/emulator/usbpt/BoardConfig.mk
-endif
-
-# Override BOARD_SUPER_PARTITION_SIZE to inclease the mounted system partition.
-BOARD_SUPER_PARTITION_SIZE := 5856296960
-
-# 4G
-BOARD_EMULATOR_DYNAMIC_PARTITIONS_SIZE = 4294967296
-
+PRODUCT_NAME := sdk_car_dd_x86_64
+PRODUCT_DEVICE := emulator_car64_x86_64
+PRODUCT_BRAND := Android
+PRODUCT_MODEL := Car distant-display on x86_64 emulator

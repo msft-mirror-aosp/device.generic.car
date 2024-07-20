@@ -1,5 +1,8 @@
 <resources>
   <!-- The name of the package that will hold the dialer role by default. -->
   <string name="config_defaultDialer" translatable="false">com.android.car.dialer</string>
-</resources>
 
+  <!-- True if the device requires AppWidgetService even if it does not have
+     the PackageManager.FEATURE_APP_WIDGETS feature. -->
+  <bool name="config_enableAppWidgetService">true</bool>
+</resources>
