@@ -16,10 +16,10 @@
 
 # Auto modules
 PRODUCT_PACKAGES += \
-    android.hardware.automotive.vehicle@V1-emulator-service \
+    android.hardware.automotive.vehicle@V3-emulator-service \
     android.hardware.broadcastradio-service.default \
     android.hardware.audio.service-caremu \
-    android.hardware.automotive.remoteaccess@V1-default-service \
+    android.hardware.automotive.remoteaccess@V2-default-service \
     android.hardware.automotive.ivn@V1-default-service
 
 # Runtime Resource Overlay for Connectivity
@@ -84,11 +84,6 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.sensor.gyroscope_limited_axes.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.gyroscope_limited_axes.xml \
     frameworks/native/data/etc/android.hardware.sensor.accelerometer_limited_axes_uncalibrated.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.accelerometer_limited_axes_uncalibrated.xml \
     frameworks/native/data/etc/android.hardware.sensor.gyroscope_limited_axes_uncalibrated.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.gyroscope_limited_axes_uncalibrated.xml \
-
-# Copy APN configs
-PRODUCT_COPY_FILES += \
-    device/generic/goldfish/data/etc/apns-conf.xml:system/etc/apns-conf.xml \
-    device/sample/etc/old-apns-conf.xml:system/etc/old-apns-conf.xml
 
 # Whitelisted packages per user type
 PRODUCT_COPY_FILES += \
