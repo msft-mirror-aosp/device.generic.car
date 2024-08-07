@@ -31,7 +31,6 @@ PRODUCT_COPY_FILES += \
 # support packages for multi-display
 $(call inherit-product, device/generic/goldfish/product/multidisplay.mk)
 PRODUCT_PACKAGES += \
-
     MultiDisplayTest \
     SecondaryHomeApp \
     MultiDisplayProvider \
