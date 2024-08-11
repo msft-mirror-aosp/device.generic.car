@@ -46,7 +46,6 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     com.android.car.internal.debug.num_auto_populated_users=1
 
 PRODUCT_PACKAGES += \
-    MultiDisplaySecondaryHomeTestLauncher \
     MultiDisplayTest
 
 # enables the rro package for passenger(secondary) user.
