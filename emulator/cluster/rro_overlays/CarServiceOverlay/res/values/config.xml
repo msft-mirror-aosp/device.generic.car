@@ -80,4 +80,5 @@
     <bool name="audioUseCarVolumeGroupMuting">true</bool>
     <bool name="audioUseMinMaxActivationVolume">true</bool>
     <bool name="audioUseFadeManagerConfiguration">true</bool>
+    <bool name="audioUseCarVolumeGroupEvent">true</bool>
 </resources>
