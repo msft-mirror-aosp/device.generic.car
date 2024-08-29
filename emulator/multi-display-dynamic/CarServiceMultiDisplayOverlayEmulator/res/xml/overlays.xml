@@ -23,5 +23,6 @@
     <item target="bool/audioUseCarVolumeGroupMuting" value="@bool/audioUseCarVolumeGroupMuting" />
     <item target="bool/audioUseFadeManagerConfiguration" value="@bool/audioUseFadeManagerConfiguration" />
     <item target="bool/audioUseMinMaxActivationVolume" value="@bool/audioUseMinMaxActivationVolume" />
+    <item target="bool/audioUseCarVolumeGroupEvent" value="@bool/audioUseCarVolumeGroupEvent" />
     <item target="xml/car_ux_restrictions_map" value="@xml/car_ux_restrictions_map" />
 </overlay>
