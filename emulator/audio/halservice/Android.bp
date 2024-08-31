@@ -47,7 +47,7 @@ cc_binary {
         "android.hardware.audio@6.0",
         "android.hardware.audio.common@6.0",
         "android.hardware.audio.effect@6.0",
-        "android.hardware.automotive.audiocontrol-V1-ndk",
+        "android.hardware.automotive.audiocontrol-V3-ndk",
         "audiocontrol-caremu",
         "libbase",
         "libbinder",
@@ -69,7 +69,8 @@ cc_library {
 
     shared_libs: [
         "android.hardware.audio.common@7.0-enums",
-        "android.hardware.automotive.audiocontrol-V1-ndk",
+        "android.hardware.audio.common-V1-ndk",
+        "android.hardware.automotive.audiocontrol-V3-ndk",
         "libbase",
         "libbinder_ndk",
         "libcutils",
@@ -82,6 +83,6 @@ cc_library {
     ],
 
     include_dirs: [
-        "device/generic/car/emulator/audio/driver/include"
+        "device/generic/car/emulator/audio/driver/include",
     ],
 }
