@@ -28,7 +28,10 @@ cc_defaults {
 cc_binary {
     name: "android.device.generic.car.emulator@1.0-protocanbus-service",
     init_rc: ["android.device.generic.car.emulator@1.0-protocanbus-service.rc"],
-    defaults: ["android.device.generic.car.emulator@1.0-protocanbus-defaults"],
+    defaults: [
+        "android.device.generic.car.emulator@1.0-protocanbus-defaults",
+        "device.generic.car.emulator-aidl-latest-ndk-defaults",
+    ],
     vendor: true,
     relative_install_path: "hw",
     srcs: [
@@ -45,7 +48,6 @@ cc_binary {
     include_dirs: ["frameworks/native/include"],
     shared_libs: [
         "android.hardware.automotive.can@1.0",
-        "device.generic.car.emulator-aidl-V1-ndk",
         "libbinder_ndk",
         "libhidlbase",
         "libcutils",
