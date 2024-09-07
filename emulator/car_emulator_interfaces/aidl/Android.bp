@@ -13,6 +13,10 @@ aidl_interface {
     name: "device.generic.car.emulator-aidl",
     vendor_available: true,
     srcs: ["device/generic/car/emulator/*.aidl"],
+    imports: [
+        "android.hardware.automotive.vehicle-V3",
+        "android.hardware.automotive.vehicle.property-V4",
+    ],
     stability: "vintf",
     backend: {
         cpp: {
@@ -25,7 +29,6 @@ aidl_interface {
             enabled: true,
         },
     },
-    defaults: ["android.hardware.automotive.vehicle-latest-defaults"],
     versions_with_info: [
         {
             version: "1",
