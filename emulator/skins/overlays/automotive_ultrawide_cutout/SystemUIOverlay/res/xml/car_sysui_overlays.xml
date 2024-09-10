@@ -15,8 +15,8 @@
   -->
 <overlay>
     <item
-        target="layout/car_left_system_bar_default"
-        value="@layout/car_left_system_bar_default"/>
+        target="layout/car_left_system_bar"
+        value="@layout/car_left_system_bar"/>
 
     <item
         target="drawable/nav_bar_background"

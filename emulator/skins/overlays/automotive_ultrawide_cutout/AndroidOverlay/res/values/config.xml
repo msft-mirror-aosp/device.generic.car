@@ -30,4 +30,9 @@
          black in software (to avoid aliasing or emulate a cutout that is not physically existent).
      -->
     <bool name="config_fillMainBuiltInDisplayCutout">true</bool>
+
+    <string-array name="config_displayUniqueIdArray" translatable="false">
+        <item>"local:4619827259835644672"</item>
+        <item>"local:4619827551948147201"</item>
+    </string-array>
 </resources>
