@@ -40,10 +40,10 @@ cc_test {
         "libutils",
         "libprotobuf-cpp-lite",
         "libbinder_ndk",
-        "device.generic.car.emulator-aidl-V1-ndk",
     ],
     defaults: [
         "VehicleHalDefaults",
         "FakeVehicleHardwareDefaults",
+        "device.generic.car.emulator-aidl-latest-ndk-defaults",
     ],
 }

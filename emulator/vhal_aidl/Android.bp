@@ -26,6 +26,7 @@ cc_binary {
         "FakeVehicleHardwareDefaults",
         "VehicleHalDefaults",
         "android-automotive-large-parcelable-defaults",
+        "device.generic.car.emulator-aidl-latest-ndk-defaults",
     ],
     vintf_fragments: ["vhal-emulator-service.xml"],
     init_rc: ["vhal-emulator-service.rc"],
@@ -53,6 +54,5 @@ cc_binary {
         "libutils",
         "libprotobuf-cpp-lite",
         "libbinder_ndk",
-        "device.generic.car.emulator-aidl-V1-ndk",
     ],
 }
