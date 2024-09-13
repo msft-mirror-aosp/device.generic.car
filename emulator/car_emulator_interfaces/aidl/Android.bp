@@ -35,5 +35,11 @@ aidl_interface {
             ],
         },
     ],
+}
 
+cc_defaults {
+    name: "device.generic.car.emulator-aidl-latest-ndk-defaults",
+    shared_libs: [
+        "device.generic.car.emulator-aidl-V1-ndk",
+    ],
 }
