@@ -24,8 +24,6 @@ DEVICE_PACKAGE_OVERLAYS := device/generic/goldfish/overlay
 
 PRODUCT_CHARACTERISTICS := emulator
 
-PRODUCT_FULL_TREBLE_OVERRIDE := true
-
 # Enable Google-specific location features,
 # like NetworkLocationProvider and LocationCollector
 PRODUCT_VENDOR_PROPERTIES += \
