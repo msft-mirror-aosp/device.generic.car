@@ -22,13 +22,24 @@
     - Context to audio bus mappings (in each volume group)
   in the car environment.
 -->
-<carAudioConfiguration version="3">
+<carAudioConfiguration version="4">
+    <activationVolumeConfigs>
+        <activationVolumeConfig name="activation_volume_on_boot_config">
+            <activationVolumeConfigEntry maxActivationVolumePercentage="90" invocationType="onBoot" />
+        </activationVolumeConfig>
+        <activationVolumeConfig name="activation_volume_on_source_changed_config">
+            <activationVolumeConfigEntry minActivationVolumePercentage="20" maxActivationVolumePercentage="90" invocationType="onSourceChanged" />
+        </activationVolumeConfig>
+        <activationVolumeConfig name="activation_volume_on_playback_changed_config">
+            <activationVolumeConfigEntry minActivationVolumePercentage="20" maxActivationVolumePercentage="90" />
+        </activationVolumeConfig>
+    </activationVolumeConfigs>
     <zones>
         <zone name="primary zone" isPrimary="true" occupantZoneId="0">
             <zoneConfigs>
                 <zoneConfig name="primary zone config 0" isDefault="true">
                     <volumeGroups>
-                        <group>
+                        <group maxActivationVolumePercentage="90" activationConfig="activation_volume_on_boot_config">
                             <device address="bus0_media_out">
                                 <context context="music"/>
                                 <context context="announcement"/>
@@ -37,7 +48,7 @@
                                 <context context="notification"/>
                             </device>
                         </group>
-                        <group>
+                        <group minActivationVolumePercentage="20" activationConfig="activation_volume_on_source_changed_config">
                             <device address="bus1_navigation_out">
                                 <context context="navigation"/>
                             </device>
@@ -45,7 +56,7 @@
                                 <context context="voice_command"/>
                             </device>
                         </group>
-                        <group>
+                        <group minActivationVolumePercentage="20" activationConfig="activation_volume_on_playback_changed_config">
                             <device address="bus4_call_out">
                                 <context context="call"/>
                             </device>
@@ -53,7 +64,7 @@
                                 <context context="call_ring"/>
                             </device>
                         </group>
-                        <group>
+                        <group activationConfig="activation_volume_on_source_changed_config">
                             <device address="bus5_alarm_out">
                                 <context context="alarm"/>
                             </device>
@@ -65,6 +76,23 @@
                             </device>
                         </group>
                     </volumeGroups>
+                    <applyFadeConfigs>
+                        <fadeConfig name="relaxed fading" isDefault="true">
+                        </fadeConfig>
+                        <fadeConfig name="aggressive fading">
+                            <audioAttributes>
+                                <usage value="AUDIO_USAGE_VOICE_COMMUNICATION" />
+                                <usage value="AUDIO_USAGE_ANNOUNCEMENT" />
+                                <usage value="AUDIO_USAGE_VEHICLE_STATUS" />
+                                <usage value="AUDIO_USAGE_SAFETY" />
+                            </audioAttributes>
+                        </fadeConfig>
+                        <fadeConfig name="disabled fading">
+                            <audioAttributes>
+                                <usage value="AUDIO_USAGE_EMERGENCY" />
+                            </audioAttributes>
+                        </fadeConfig>
+                    </applyFadeConfigs>
                 </zoneConfig>
             </zoneConfigs>
         </zone>
@@ -93,6 +121,19 @@
                             </device>
                         </group>
                     </volumeGroups>
+                    <applyFadeConfigs>
+                        <fadeConfig name="aggressive fading" isDefault="true">
+                        </fadeConfig>
+                        <fadeConfig name="disabled fading">
+                            <audioAttributes>
+                                <usage value="AUDIO_USAGE_EMERGENCY" />
+                                <usage value="AUDIO_USAGE_VOICE_COMMUNICATION" />
+                                <usage value="AUDIO_USAGE_ANNOUNCEMENT" />
+                                <usage value="AUDIO_USAGE_VEHICLE_STATUS" />
+                                <usage value="AUDIO_USAGE_SAFETY" />
+                            </audioAttributes>
+                        </fadeConfig>
+                    </applyFadeConfigs>
                 </zoneConfig>
                 <zoneConfig name="rear seat zone 1 config 1">
                     <volumeGroups>
@@ -117,6 +158,19 @@
                             </device>
                         </group>
                     </volumeGroups>
+                    <applyFadeConfigs>
+                        <fadeConfig name="aggressive fading" isDefault="true">
+                        </fadeConfig>
+                        <fadeConfig name="disabled fading">
+                            <audioAttributes>
+                                <usage value="AUDIO_USAGE_EMERGENCY" />
+                                <usage value="AUDIO_USAGE_VOICE_COMMUNICATION" />
+                                <usage value="AUDIO_USAGE_ANNOUNCEMENT" />
+                                <usage value="AUDIO_USAGE_VEHICLE_STATUS" />
+                                <usage value="AUDIO_USAGE_SAFETY" />
+                            </audioAttributes>
+                        </fadeConfig>
+                    </applyFadeConfigs>
                 </zoneConfig>
             </zoneConfigs>
         </zone>
@@ -145,6 +199,19 @@
                             </device>
                         </group>
                     </volumeGroups>
+                    <applyFadeConfigs>
+                        <fadeConfig name="aggressive fading" isDefault="true">
+                        </fadeConfig>
+                        <fadeConfig name="disabled fading">
+                            <audioAttributes>
+                                <usage value="AUDIO_USAGE_EMERGENCY" />
+                                <usage value="AUDIO_USAGE_VOICE_COMMUNICATION" />
+                                <usage value="AUDIO_USAGE_ANNOUNCEMENT" />
+                                <usage value="AUDIO_USAGE_VEHICLE_STATUS" />
+                                <usage value="AUDIO_USAGE_SAFETY" />
+                            </audioAttributes>
+                        </fadeConfig>
+                    </applyFadeConfigs>
                 </zoneConfig>
                 <zoneConfig name="rear seat zone 2 config 1">
                     <volumeGroups>
@@ -169,6 +236,19 @@
                             </device>
                         </group>
                     </volumeGroups>
+                    <applyFadeConfigs>
+                        <fadeConfig name="aggressive fading" isDefault="true">
+                        </fadeConfig>
+                        <fadeConfig name="disabled fading">
+                            <audioAttributes>
+                                <usage value="AUDIO_USAGE_EMERGENCY" />
+                                <usage value="AUDIO_USAGE_VOICE_COMMUNICATION" />
+                                <usage value="AUDIO_USAGE_ANNOUNCEMENT" />
+                                <usage value="AUDIO_USAGE_VEHICLE_STATUS" />
+                                <usage value="AUDIO_USAGE_SAFETY" />
+                            </audioAttributes>
+                        </fadeConfig>
+                    </applyFadeConfigs>
                 </zoneConfig>
             </zoneConfigs>
         </zone>
