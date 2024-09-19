@@ -26,9 +26,6 @@
     <!-- Maximum number of users we allow to be running at a time -->
     <integer name="config_multiuserMaxRunningUsers">5</integer>
 
-    <!-- True if the device supports system decorations on secondary displays. -->
-    <bool name="config_supportsSystemDecorsOnSecondaryDisplays">true</bool>
-
     <!-- Whether the system enables per-display focus. If the system has the input method for each
          display, this value should be true. -->
     <bool name="config_perDisplayFocusEnabled">true</bool>
