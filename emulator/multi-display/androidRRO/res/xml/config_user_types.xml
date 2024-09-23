@@ -15,6 +15,9 @@
 -->
 
 <user-types>
+    <full-type name="android.os.usertype.full.SECONDARY" >
+        <default-restrictions />
+    </full-type>
     <full-type name="android.os.usertype.full.GUEST"
         max-allowed="3" >
         <default-restrictions no_factory_reset="true" no_remove_user="true"
@@ -23,6 +26,9 @@
     </full-type>
 
     <profile-type name="android.os.usertype.profile.CLONE"
+        enabled='0' >
+    </profile-type>
+    <profile-type name="android.os.usertype.profile.PRIVATE"
         enabled='0' >
     </profile-type>
 </user-types>
