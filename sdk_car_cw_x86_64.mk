@@ -35,7 +35,7 @@ $(call inherit-product, device/generic/car/sdk_car_x86_64.mk)
 # changes from this makefile
 PRODUCT_ENFORCE_ARTIFACT_PATH_REQUIREMENTS := false
 
-PRODUCT_NAME := sdk_car_portrait_x86_64
+PRODUCT_NAME := sdk_car_cw_x86_64
 PRODUCT_MODEL := CarUiPortrait on x86_64 emulator
 PRODUCT_CHARACTERISTICS := automotive
 PRODUCT_SDK_ADDON_NAME := sdk_car_portrait_x86_64
