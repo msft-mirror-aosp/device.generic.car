@@ -12,6 +12,7 @@ package {
 aidl_interface {
     name: "device.generic.car.emulator-aidl",
     vendor_available: true,
+    owner: "google",
     srcs: ["device/generic/car/emulator/*.aidl"],
     imports: [
         "android.hardware.automotive.vehicle-V3",
