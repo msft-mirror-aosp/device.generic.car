@@ -53,10 +53,9 @@ cc_test {
     name: "usbip_test",
     defaults: ["usbip_defaults"],
     srcs: ["UsbIpTest.cpp"],
-    test_suites: ["general-tests"],
 
     test_options: {
-        unit_test: false,
+        unit_test: true,
     },
     shared_libs: [
         "usbip_utils",
