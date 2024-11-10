@@ -1,8 +1,0 @@
-{
-  "presubmit": [
-    {
-      "name": "usbip_test",
-      "host": true
-    }
-  ]
-}
