@@ -36,6 +36,8 @@
 
 #include <stdio.h>
 
+#include <CarAudioConfigurationXmlConverter.h>
+
 namespace aidl {
 namespace android {
 namespace hardware {
@@ -48,6 +50,7 @@ using ::android::base::ParseBoolResult;
 using ::android::base::ParseInt;
 using ::std::shared_ptr;
 using ::std::string;
+using ::android::hardware::audiocontrol::internal::CarAudioConfigurationXmlConverter;
 
 namespace xsd {
 using namespace ::android::audio::policy::configuration::V7_0;
@@ -56,6 +59,10 @@ using namespace ::android::audio::policy::configuration::V7_0;
 namespace {
 const float kLowerBound = -1.0f;
 const float kUpperBound = 1.0f;
+
+const static std::string kAudioConfigFile = "/vendor/etc/car_audio_configuration.xml";
+const static std::string kFadeConfigFile = "/vendor/etc/car_audio_fade_configuration.xml";
+
 bool checkCallerHasWritePermissions(int fd) {
     // Double check that's only called by root - it should be be blocked at debug() level,
     // but it doesn't hurt to make sure...
@@ -75,6 +82,52 @@ bool safelyParseInt(string s, int* out) {
         return false;
     }
     return true;
+}
+
+std::string formatDump(const std::string& input) {
+    const char kSpacer = ' ';
+    std::string output;
+    int indentLevel = 0;
+    bool newLine = false;
+
+    for (char c : input) {
+        switch (c) {
+            case '{':
+                if (!newLine) {
+                    output += '\n';
+                }
+                newLine = true;
+                indentLevel++;
+                for (int i = 0; i < indentLevel; ++i) {
+                    output += kSpacer;
+                }
+                break;
+            case '}':
+                if (!newLine) {
+                    output += '\n';
+                }
+                newLine = true;
+                indentLevel--;
+                for (int i = 0; i < indentLevel; ++i) {
+                    output += kSpacer;
+                }
+                break;
+            case ',':
+                if (!newLine) {
+                    output += '\n';
+                }
+                newLine = true;
+                for (int i = 0; i < indentLevel; ++i) {
+                    output += kSpacer;
+                }
+                break;
+            default:
+                newLine = false;
+                output += c;
+        }
+    }
+
+    return output;
 }
 }  // namespace
 
@@ -178,6 +231,12 @@ static inline std::string toEnumString(const std::vector<aidl_enum_type>& in_val
                                return ls + (ls.empty() ? "" : ",") + toString(rs);
                            });
 }
+
+AudioControl::AudioControl() : AudioControl(kAudioConfigFile, kFadeConfigFile) {}
+
+AudioControl::AudioControl(const std::string& carAudioConfig, const std::string& audioFadeConfig)
+    : mCarAudioConfigurationConverter(std::make_shared<CarAudioConfigurationXmlConverter>(
+        carAudioConfig, audioFadeConfig)) {}
 
 ndk::ScopedAStatus AudioControl::registerFocusListener(
         const shared_ptr<IFocusListener>& in_listener) {
@@ -317,6 +376,53 @@ ndk::ScopedAStatus AudioControl::clearModuleChangeCallback() {
     return ndk::ScopedAStatus::ok();
 }
 
+ndk::ScopedAStatus AudioControl::getAudioDeviceConfiguration(
+        AudioDeviceConfiguration* audioDeviceConfig) {
+    if (!audioDeviceConfig) {
+        LOG(ERROR) << __func__ << "Audio device configuration must not be null";
+        return ndk::ScopedAStatus::fromStatus(STATUS_UNEXPECTED_NULL);
+    }
+    const auto& innerDeviceConfig = mCarAudioConfigurationConverter->getAudioDeviceConfiguration();
+    audioDeviceConfig->routingConfig = innerDeviceConfig.routingConfig;
+    audioDeviceConfig->useCoreAudioVolume = innerDeviceConfig.useCoreAudioVolume;
+    audioDeviceConfig->useCarVolumeGroupMuting = innerDeviceConfig.useCarVolumeGroupMuting;
+    audioDeviceConfig->useHalDuckingSignals = innerDeviceConfig.useHalDuckingSignals;
+    return ndk::ScopedAStatus::ok();
+}
+
+ndk::ScopedAStatus AudioControl::getOutputMirroringDevices(
+        std::vector<AudioPort>* mirroringDevices) {
+    if (!mirroringDevices) {
+        LOG(ERROR) << __func__ << "Mirroring devices must not be null";
+        return ndk::ScopedAStatus::fromStatus(STATUS_UNEXPECTED_NULL);
+    }
+    if (!mCarAudioConfigurationConverter->getErrors().empty()) {
+        std::string message = "Could not parse audio configuration file, error: "
+                + mCarAudioConfigurationConverter->getErrors();
+        return ndk::ScopedAStatus::fromExceptionCodeWithMessage(EX_SERVICE_SPECIFIC,
+            message.c_str());
+    }
+    const auto& innerDevice = mCarAudioConfigurationConverter->getOutputMirroringDevices();
+    mirroringDevices->insert(mirroringDevices->end(), innerDevice.begin(), innerDevice.end());
+    return ndk::ScopedAStatus::ok();
+}
+
+ndk::ScopedAStatus AudioControl::getCarAudioZones(std::vector<AudioZone>* audioZones) {
+    if (!audioZones) {
+        LOG(ERROR) << __func__ << "Audio zones must not be null";
+        return ndk::ScopedAStatus::fromStatus(STATUS_UNEXPECTED_NULL);
+    }
+    if (!mCarAudioConfigurationConverter->getErrors().empty()) {
+        std::string message = "Could not parse audio configuration file, error: "
+                + mCarAudioConfigurationConverter->getErrors();
+        return ndk::ScopedAStatus::fromExceptionCodeWithMessage(EX_SERVICE_SPECIFIC,
+            message.c_str());
+    }
+    const auto& innerZones = mCarAudioConfigurationConverter->getAudioZones();
+    audioZones->insert(audioZones->end(), innerZones.begin(), innerZones.end());
+    return ndk::ScopedAStatus::ok();
+}
+
 binder_status_t AudioControl::dump(int fd, const char** args, uint32_t numArgs) {
     if (numArgs == 0) {
         return dumpsys(fd);
@@ -354,6 +460,28 @@ binder_status_t AudioControl::dumpsys(int fd) {
     dprintf(fd, "AudioGainCallback %sregistered\n", (mAudioGainCallback == nullptr ? "NOT " : ""));
     dprintf(fd, "ModuleChangeCallback %sregistered\n",
             (mModuleChangeCallback == nullptr ? "NOT " : ""));
+
+    AudioDeviceConfiguration configuration;
+    ndk::ScopedAStatus status = getAudioDeviceConfiguration(&configuration);
+    if (status.isOk()) {
+        dprintf(fd, "AudioDeviceConfiguration: %s\n", configuration.toString().c_str());
+    } else {
+        dprintf(fd, "Failed to parse car audio configuration, error: %s\n", status.getMessage());
+    }
+    std::vector<AudioZone> audioZones;
+    if (getCarAudioZones(&audioZones).isOk()) {
+        dprintf(fd, "Audio zones count: %zu\n", audioZones.size());
+        for (const auto& zone : audioZones) {
+            dprintf(fd, "AudioZone: %s\n", formatDump(zone.toString()).c_str());
+        }
+    }
+    std::vector<AudioPort> mirroringDevices;
+    if (getOutputMirroringDevices(&mirroringDevices).isOk()) {
+        dprintf(fd, "Mirroring devices count: %zu\n", mirroringDevices.size());
+        for (const auto& device : mirroringDevices) {
+            dprintf(fd, "Mirroring device: %s\n", formatDump(device.toString()).c_str());
+        }
+    }
     return STATUS_OK;
 }
 
