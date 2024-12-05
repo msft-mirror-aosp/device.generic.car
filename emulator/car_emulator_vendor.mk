@@ -46,6 +46,10 @@ ifeq (,$(ENABLE_REAR_VIEW_CAMERA_SAMPLE))
 ENABLE_REAR_VIEW_CAMERA_SAMPLE := true
 endif
 
+# Goldfish emulator features
+PRODUCT_COPY_FILES += \
+    device/generic/car/emulator/data/etc/advancedFeatures.ini.car:advancedFeatures.ini
+
 # Auto modules
 PRODUCT_PACKAGES += \
     android.hardware.automotive.vehicle@V3-emulator-service \
