@@ -22,6 +22,9 @@ PRODUCT_PACKAGES += audio.primary.caremu
 PRODUCT_PACKAGES += \
     android.hardware.audio@6.0-impl:32
 
+# CarAudioService overlay
+PRODUCT_PACKAGES += CarAudioServiceOverlayEmulator
+
 PRODUCT_COPY_FILES += \
     device/generic/car/emulator/audio/android.hardware.audio.effects@6.0.xml:/vendor/etc/vintf/manifest/android.hardware.audio.effects@6.0.xml
 

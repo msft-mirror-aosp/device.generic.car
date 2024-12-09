@@ -23,6 +23,10 @@
   in the car environment.
 -->
 <carAudioConfiguration version="4">
+    <deviceConfigurations>
+        <deviceConfiguration name="useCarVolumeGroupMuting" value="true" />
+        <deviceConfiguration name="useHalDuckingSignals" value="true" />
+    </deviceConfigurations>
     <activationVolumeConfigs>
         <activationVolumeConfig name="activation_volume_on_boot_config">
             <activationVolumeConfigEntry maxActivationVolumePercentage="90" invocationType="onBoot" />
