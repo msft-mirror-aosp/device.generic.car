@@ -53,5 +53,3 @@ PRODUCT_NAME := sdk_car_arm64
 PRODUCT_DEVICE := emulator_car64_arm64
 PRODUCT_BRAND := Android
 PRODUCT_MODEL := Car on arm64 emulator
-AB_OTA_UPDATER := true
-
