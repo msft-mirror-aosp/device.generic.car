@@ -18,13 +18,7 @@ include device/generic/goldfish/board/emu64x/BoardConfig.mk
 include device/generic/car/emulator/usbpt/BoardConfig.mk
 
 # Override BOARD_SUPER_PARTITION_SIZE to increase the mounted system partition.
-ifeq (true,$(AB_OTA_UPDATER))
-# (BOARD_SUPER_PARTITION_SIZE / 2) > BOARD_EMULATOR_DYNAMIC_PARTITIONS_SIZE
-# 10G (10 * 1024 * 1024 * 1024)
-BOARD_SUPER_PARTITION_SIZE := 10737418240
-else
 BOARD_SUPER_PARTITION_SIZE := 5856296960
-endif
 
 # 4G (4 * 1024 * 1024 * 1024)
 BOARD_EMULATOR_DYNAMIC_PARTITIONS_SIZE = 4294967296
