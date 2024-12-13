@@ -26,9 +26,6 @@ PRODUCT_COPY_FILES += \
     device/generic/car/emulator/multi-display/display_layout_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/displayconfig/display_layout_configuration.xml \
     device/generic/car/emulator/multi-display/display_settings.xml:$(TARGET_COPY_OUT_VENDOR)/etc/display_settings.xml
 
-PRODUCT_PACKAGE_OVERLAYS += \
-    device/generic/car/emulator/multi-display/overlay
-
 PRODUCT_COPY_FILES += \
     device/generic/car/emulator/multi-display/car_audio_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/car_audio_configuration.xml
 
@@ -39,7 +36,8 @@ EMULATOR_MULTIDISPLAY_HW_CONFIG := 1,968,792,160,0,2,1408,792,160,0,3,1408,792,1
 EMULATOR_MULTIDISPLAY_BOOTANIM_CONFIG := 4619827551948147201,4619827124781842690,4619827540095559171
 ENABLE_CLUSTER_OS_DOUBLE:=true
 
-PRODUCT_PACKAGES += CarServiceOverlayMdEmulatorOsDouble
+PRODUCT_PACKAGES += CarServiceOverlayMdEmulatorOsDouble \
+    CarFrameworkResConfigMultiDisplayRRO
 
 # Enable MZ audio by default
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
@@ -48,7 +46,6 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     com.android.car.internal.debug.num_auto_populated_users=1
 
 PRODUCT_PACKAGES += \
-    MultiDisplaySecondaryHomeTestLauncher \
     MultiDisplayTest
 
 # enables the rro package for passenger(secondary) user.
