@@ -24,8 +24,6 @@ DEVICE_PACKAGE_OVERLAYS := device/generic/goldfish/overlay
 
 PRODUCT_CHARACTERISTICS := emulator
 
-PRODUCT_FULL_TREBLE_OVERRIDE := true
-
 # Enable Google-specific location features,
 # like NetworkLocationProvider and LocationCollector
 PRODUCT_VENDOR_PROPERTIES += \
@@ -48,6 +46,10 @@ ifeq (,$(ENABLE_REAR_VIEW_CAMERA_SAMPLE))
 ENABLE_REAR_VIEW_CAMERA_SAMPLE := true
 endif
 
+# Goldfish emulator features
+PRODUCT_COPY_FILES += \
+    device/generic/car/emulator/data/etc/advancedFeatures.ini.car:advancedFeatures.ini
+
 # Auto modules
 PRODUCT_PACKAGES += \
     android.hardware.automotive.vehicle@V3-emulator-service \
@@ -55,6 +57,9 @@ PRODUCT_PACKAGES += \
     android.hardware.audio.service-caremu \
     android.hardware.automotive.remoteaccess@V2-default-service \
     android.hardware.automotive.ivn@V1-default-service
+
+# Set car power policy daemon connect to VHAL timeout to 60s for emulator (default is 5s).
+PRODUCT_SYSTEM_PROPERTIES += cppd.connectvhal.Timeoutmillis=60000
 
 # Copy car_core_hardware and overwrite handheld_core_hardware.xml with a disable config.
 # Overwrite goldfish related xml with a disable config.
