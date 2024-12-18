@@ -22,6 +22,9 @@ PRODUCT_PACKAGES += audio.primary.caremu
 PRODUCT_PACKAGES += \
     android.hardware.audio@6.0-impl:32
 
+# CarAudioService overlay
+PRODUCT_PACKAGES += CarAudioServiceOverlayEmulator
+
 PRODUCT_COPY_FILES += \
     device/generic/car/emulator/audio/android.hardware.audio.effects@6.0.xml:/vendor/etc/vintf/manifest/android.hardware.audio.effects@6.0.xml
 
@@ -33,8 +36,9 @@ PRODUCT_COPY_FILES += \
     frameworks/av/services/audiopolicy/config/r_submix_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/r_submix_audio_policy_configuration.xml \
     frameworks/av/services/audiopolicy/config/audio_policy_volumes.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_volumes.xml \
     frameworks/av/services/audiopolicy/config/default_volume_tables.xml:$(TARGET_COPY_OUT_VENDOR)/etc/default_volume_tables.xml \
+    frameworks/av/media/libeffects/data/audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.xml \
     device/generic/car/emulator/audio/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration.xml \
     device/generic/car/emulator/audio/car_audio_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/car_audio_configuration.xml \
-    frameworks/av/media/libeffects/data/audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.xml \
+    device/generic/car/emulator/audio/car_audio_fade_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/car_audio_fade_configuration.xml
 
 DEVICE_PACKAGE_OVERLAYS += device/generic/car/emulator/audio/overlay
