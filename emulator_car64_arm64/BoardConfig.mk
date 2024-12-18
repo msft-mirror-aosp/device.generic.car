@@ -15,10 +15,17 @@
 
 # Use emulator64_arm64 BoardConfig as base
 include device/generic/goldfish/board/emu64a/BoardConfig.mk
+
+ifeq (,$(ENABLE_CAR_USB_PASSTHROUGH))
+ENABLE_CAR_USB_PASSTHROUGH := false
+endif
+
+ifeq (true,$(ENABLE_CAR_USB_PASSTHROUGH))
 include device/generic/car/emulator/usbpt/BoardConfig.mk
+endif
 
 # Override BOARD_SUPER_PARTITION_SIZE to increase the mounted system partition.
 BOARD_SUPER_PARTITION_SIZE := 5856296960
 
-# 4G (4 * 1024 * 1024 * 1024)
-BOARD_EMULATOR_DYNAMIC_PARTITIONS_SIZE = 4294967296
+# 5G (5 * 1024 * 1024 * 1024)
+BOARD_EMULATOR_DYNAMIC_PARTITIONS_SIZE = 5368709120
