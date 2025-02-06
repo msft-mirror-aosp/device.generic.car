@@ -22,6 +22,7 @@ PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/sdk_car_md_x86_64.mk \
     $(LOCAL_DIR)/sdk_car_cw_x86_64.mk \
     $(LOCAL_DIR)/sdk_car_x86_64.mk \
+    $(LOCAL_DIR)/sdk_car_dewd_x86_64.mk \
 
 COMMON_LUNCH_CHOICES := \
     gsi_car_arm64-trunk_staging-userdebug \
