@@ -152,6 +152,9 @@ endif
 # Disable biometrics for AAOS emulators
 EMULATOR_VENDOR_NO_BIOMETRICS := true
 
+# Disable UWB
+EMULATOR_VENDOR_NO_UWB := true
+
 # Goldfish vendor partition configurations
 $(call inherit-product, device/generic/goldfish/product/generic.mk)
 
