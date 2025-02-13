@@ -38,10 +38,6 @@ $(call inherit-product, packages/services/Car/car_product/build/car_system_ext.m
 PRODUCT_INSTALL_DEBUG_POLICY_TO_SYSTEM_EXT := true
 PRODUCT_PACKAGES += system_ext_userdebug_plat_sepolicy.cil
 
-# pKVM is required to support nested virtualization for CF. Ideally we should
-# move it out of /system. But it seems to be infeasible for now (b/207336449).
-$(call inherit-product, packages/modules/Virtualization/apex/product_packages.mk)
-
 #
 # All components inherited here go to product image
 #
