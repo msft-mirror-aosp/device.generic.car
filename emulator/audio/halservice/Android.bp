@@ -42,12 +42,14 @@ cc_binary {
         "-Wextra",
         "-Werror",
     ],
-
+    defaults: [
+        "latest_android_hardware_audio_common_ndk_shared",
+        "latest_android_hardware_automotive_audiocontrol_ndk_shared",
+    ],
     shared_libs: [
         "android.hardware.audio@6.0",
         "android.hardware.audio.common@6.0",
         "android.hardware.audio.effect@6.0",
-        "android.hardware.automotive.audiocontrol-V3-ndk",
         "audiocontrol-caremu",
         "libbase",
         "libbinder",
@@ -66,15 +68,21 @@ cc_library {
     name: "audiocontrol-caremu",
     vendor: true,
     vintf_fragments: ["audiocontrol-caremu.xml"],
-
+    defaults: [
+        "latest_android_hardware_audio_common_ndk_shared",
+        "latest_android_hardware_automotive_audiocontrol_ndk_shared",
+        "car.audio.configuration.xsd.default",
+        "car.fade.configuration.xsd.default",
+    ],
     shared_libs: [
         "android.hardware.audio.common@7.0-enums",
-        "android.hardware.audio.common-V1-ndk",
-        "android.hardware.automotive.audiocontrol-V3-ndk",
+        "android.hardware.audiocontrol.internal",
+        "libaudio_aidl_conversion_common_ndk",
         "libbase",
         "libbinder_ndk",
         "libcutils",
         "liblog",
+        "libxml2",
         "audio.primary.caremu",
     ],
 
