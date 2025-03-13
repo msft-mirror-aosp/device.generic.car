@@ -24,6 +24,10 @@ DEVICE_PACKAGE_OVERLAYS := device/generic/goldfish/overlay
 
 PRODUCT_CHARACTERISTICS := emulator
 
+# Provide our own manifest, device/generic/goldfish/manifest.xml is too new
+EMULATOR_VENDOR_NO_MANIFEST_FILE := true
+DEVICE_MANIFEST_FILE += device/generic/car/emulator/manifest.xml
+
 # Enable Google-specific location features,
 # like NetworkLocationProvider and LocationCollector
 PRODUCT_VENDOR_PROPERTIES += \
