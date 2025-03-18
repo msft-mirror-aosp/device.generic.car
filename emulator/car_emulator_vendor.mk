@@ -29,10 +29,6 @@ PRODUCT_CHARACTERISTICS := emulator
 PRODUCT_VENDOR_PROPERTIES += \
     ro.com.google.locationfeatures=1
 
-# Enable setupwizard
-PRODUCT_VENDOR_PROPERTIES += \
-    ro.setupwizard.mode?=OPTIONAL
-
 # More configurations
 PRODUCT_VENDOR_PROPERTIES += \
     ro.carwatchdog.client_healthcheck.interval=20 \
