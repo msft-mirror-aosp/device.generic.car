@@ -40,7 +40,9 @@ PRODUCT_ENFORCE_ARTIFACT_PATH_REQUIREMENTS := strict
 
 #
 # All components inherited here go to system_ext image
+# But CarProvision must be excluded
 #
+AOSP_CAR_EMULATOR := true
 $(call inherit-product, packages/services/Car/car_product/build/car_system_ext.mk)
 
 #
