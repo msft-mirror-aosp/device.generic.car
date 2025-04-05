@@ -26,9 +26,10 @@ DISABLE_CAR_PRODUCT_VISUAL_OVERLAY := true
 
 # Copy additional files
 PRODUCT_COPY_FILES += \
-    packages/services/Car/car_product/car_ui_portrait/car_ui_portrait.ini:config.ini \
+    packages/services/Car/car_product/dewd/config.ini:config.ini \
     packages/services/Car/car_product/car_ui_portrait/bootanimation/bootanimation.zip:system/media/bootanimation.zip
 
+$(call inherit-product, packages/services/Car/car_product/dewd/car_dewd_common.mk)
 $(call inherit-product, device/generic/car/sdk_car_x86_64.mk)
 
 # TODO(b/303863968): Set it to true after cleaning up the system partition
@@ -36,12 +37,6 @@ $(call inherit-product, device/generic/car/sdk_car_x86_64.mk)
 PRODUCT_ENFORCE_ARTIFACT_PATH_REQUIREMENTS := false
 
 PRODUCT_NAME := sdk_car_cw_x86_64
-PRODUCT_MODEL := CarUiPortrait on x86_64 emulator
+PRODUCT_MODEL := cw on x86_64 emulator
 PRODUCT_CHARACTERISTICS := automotive
-PRODUCT_SDK_ADDON_NAME := sdk_car_portrait_x86_64
-
-$(call inherit-product, packages/services/Car/car_product/car_ui_portrait/apps/car_ui_portrait_apps.mk)
-$(call inherit-product, packages/services/Car/car_product/car_ui_portrait/rro/car_ui_portrait_rro.mk)
-
-PRODUCT_COPY_FILES += \
-    packages/services/Car/car_product/car_ui_portrait/car_ui_portrait_hardware.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/car_ui_portrait_hardware.xml
+PRODUCT_SDK_ADDON_NAME := sdk_car_cw_x86_64
