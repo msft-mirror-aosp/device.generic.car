@@ -24,6 +24,9 @@ PRODUCT_COPY_FILES += \
     device/generic/car/common/config.ini:config.ini
 endif # EMULATOR_DYNAMIC_MULTIDISPLAY_CONFIG
 
+PRODUCT_SDK_ADDON_SYS_IMG_SOURCE_PROP := \
+    device/generic/car/emulator/car_source.prop_template
+
 #
 # All components inherited here go to system image
 #
