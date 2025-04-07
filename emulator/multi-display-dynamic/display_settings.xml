@@ -21,32 +21,41 @@
     <!-- Use unique local ids added by Goldfish -->
     <config identifier="0" />
 
+    <!-- Display settings for the driver display -->
+    <display name="local:4619827259835644672"
+        ignoreOrientationRequest="true"/>
+
     <!-- Display settings for cluster -->
     <display name="virtual:com.android.emulator.multidisplay:1234562"
+        ignoreOrientationRequest="true"
         shouldShowSystemDecors="false"
         forcedDensity="160"
         dontMoveToTop="true"/>
 
     <!-- Display settings for 2nd Home -->
     <display name="virtual:com.android.emulator.multidisplay:1234563"
+        ignoreOrientationRequest="true"
         shouldShowSystemDecors="true"
         shouldShowIme="true"
         forcedDensity="160" />
 
     <!-- Display settings for 3rd Home -->
     <display name="virtual:com.android.emulator.multidisplay:1234564"
+        ignoreOrientationRequest="true"
         shouldShowSystemDecors="true"
         shouldShowIme="true"
         forcedDensity="160" />
 
     <!-- Display settings for 4th Home -->
     <display name="virtual:com.android.emulator.multidisplay:1234565"
+        ignoreOrientationRequest="true"
         shouldShowSystemDecors="true"
         shouldShowIme="true"
         forcedDensity="160" />
 
     <!-- Display settings for 5th Home -->
     <display name="virtual:com.android.emulator.multidisplay:1234565"
+        ignoreOrientationRequest="true"
         shouldShowSystemDecors="true"
         shouldShowIme="true"
         forcedDensity="160" />
