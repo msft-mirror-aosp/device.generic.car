@@ -24,6 +24,12 @@ PRODUCT_COPY_FILES += \
     device/generic/car/common/config.ini:config.ini
 endif # EMULATOR_DYNAMIC_MULTIDISPLAY_CONFIG
 
+# Set the source property file for SDK car products
+ifneq (,$(filter sdk_car%, $(TARGET_PRODUCT)))
+PRODUCT_SDK_ADDON_SYS_IMG_SOURCE_PROP := \
+    device/generic/car/emulator/car_source.prop_template
+endif
+
 #
 # All components inherited here go to system image
 #
