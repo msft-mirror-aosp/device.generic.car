@@ -19,4 +19,3 @@ PRODUCT_PACKAGES += \
     CarRotaryController \
     RotaryPlayground \
     RotaryIME \
-    CarRotaryImeRRO \
