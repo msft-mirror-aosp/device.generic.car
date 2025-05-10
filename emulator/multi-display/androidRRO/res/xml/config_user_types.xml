@@ -15,7 +15,8 @@
 -->
 
 <user-types>
-    <full-type name="android.os.usertype.full.SECONDARY" >
+    <full-type name="android.os.usertype.full.SECONDARY"
+        max-allowed="9" >
         <default-restrictions />
     </full-type>
     <full-type name="android.os.usertype.full.GUEST"
