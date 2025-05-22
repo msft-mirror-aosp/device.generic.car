@@ -32,4 +32,8 @@ cc_library {
         "android.hardware.automotive.vehicle@2.0-libproto-native",
         "EmulatorCommConn",
     ],
+    cflags: select(soong_config_variable("qemu_debug", "socket_comm"), {
+        true: ["-DENABLE_EMULATOR_SOCKET_COMM"],
+        default: [],
+    }),
 }
