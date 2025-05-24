@@ -42,14 +42,17 @@ SocketComm::~SocketComm() {
 }
 
 void SocketComm::start() {
+#ifdef ENABLE_EMULATOR_SOCKET_COMM
     if (!listen()) {
         return;
     }
 
     mListenThread = std::make_unique<std::thread>(std::bind(&SocketComm::listenThread, this));
+#endif
 }
 
 void SocketComm::stop() {
+#ifdef ENABLE_EMULATOR_SOCKET_COMM
     if (mListenFd > 0) {
         ::close(mListenFd);
         if (mListenThread->joinable()) {
@@ -57,6 +60,7 @@ void SocketComm::stop() {
         }
         mListenFd = -1;
     }
+#endif
 }
 
 void SocketComm::sendMessage(vhal_proto::EmulatorMessage const& msg) {
