@@ -52,7 +52,7 @@ PRODUCT_COPY_FILES += \
 
 # Auto modules
 PRODUCT_PACKAGES += \
-    android.hardware.automotive.vehicle@V3-emulator-service \
+    android.hardware.automotive.vehicle@V4-emulator-service \
     android.hardware.broadcastradio-service.default \
     android.hardware.audio.service-caremu \
     android.hardware.automotive.remoteaccess@V2-default-service \
@@ -104,6 +104,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.sensor.gyroscope_limited_axes.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.gyroscope_limited_axes.xml \
     frameworks/native/data/etc/android.hardware.sensor.accelerometer_limited_axes_uncalibrated.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.accelerometer_limited_axes_uncalibrated.xml \
     frameworks/native/data/etc/android.hardware.sensor.gyroscope_limited_axes_uncalibrated.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.gyroscope_limited_axes_uncalibrated.xml \
+    frameworks/native/data/etc/android.hardware.sensor.heading.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.heading.xml \
 
 # Additional selinux policy
 BOARD_SEPOLICY_DIRS += device/generic/car/common/sepolicy

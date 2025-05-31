@@ -20,7 +20,7 @@ package {
 }
 
 cc_binary {
-    name: "android.hardware.automotive.vehicle@V3-emulator-service",
+    name: "android.hardware.automotive.vehicle@V4-emulator-service",
     vendor: true,
     defaults: [
         "FakeVehicleHardwareDefaults",
