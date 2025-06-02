@@ -1,4 +1,4 @@
-type usbip_service, domain;
+type usbip_service, domain, coredomain;
 type sysfs_usbip, sysfs_type, fs_type;
 type usbip_service_exec, exec_type, system_file_type, file_type;
 
