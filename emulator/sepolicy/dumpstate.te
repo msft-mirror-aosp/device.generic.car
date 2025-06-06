@@ -1,0 +1,2 @@
+# Allow dumpstate to signal processes to dump.
+allow dumpstate hal_can_socketcan:process signal;
