@@ -15,5 +15,5 @@
 #
 
 PRODUCT_PACKAGES += usbip_service
-BOARD_SEPOLICY_DIRS += device/generic/car/emulator/usbpt/usbip-service/sepolicy
+PRODUCT_PRIVATE_SEPOLICY_DIRS += device/generic/car/emulator/usbpt/usbip-service/sepolicy
 
