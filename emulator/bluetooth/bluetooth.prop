@@ -1,0 +1,7 @@
+# Emulator should reuse packages/services/Car/car_product/bluetooth.prop via
+# generic base makefiles (i.e. device/generic/car/common/car.mk). This
+# property file contains the additional changes we would like to place on top.
+
+# Use ?= operator so other's can override this if they choose. This value will
+# used only if no other value is provided
+bluetooth.device.default_name?=Car Emulator
