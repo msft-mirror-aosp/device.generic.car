@@ -143,14 +143,12 @@ $(call inherit-product, device/generic/car/emulator/cluster/cluster-hwserviceman
 endif # BUILD_EMULATOR_CLUSTER_DISPLAY
 endif # EMULATOR_DYNAMIC_MULTIDISPLAY_CONFIG
 
-# Should use car bluetooth.prop.
-# This replaces value from device/generic/goldfish/product/generic.mk below
-ifeq (,$(ENABLE_CAR_USB_PASSTHROUGH))
-ENABLE_CAR_USB_PASSTHROUGH := false
-endif
-ifeq (true,$(ENABLE_CAR_USB_PASSTHROUGH))
-TARGET_PRODUCT_PROP := device/generic/car/emulator/usbpt/bluetooth/bluetooth.prop
-endif
+# Do no use bluetooth.prop from device/generic/goldfish/product/generic.mk below
+# TARGET_PRODUCT_PROP must be set to *something* so that the check in goldfish's
+# generic.mk will skip over adding the phone-centric Bluetooth properties. Use
+# TARGET_SYSTEM_PROP instead if goldfish ever updates this check, as it would be
+# better to place this in system.prop instead
+TARGET_PRODUCT_PROP := device/generic/car/emulator/bluetooth/bluetooth.prop
 
 # Disable biometrics for AAOS emulators
 EMULATOR_VENDOR_NO_BIOMETRICS := true

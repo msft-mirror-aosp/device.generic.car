@@ -32,12 +32,14 @@ ifeq (,$(ENABLE_CAR_USB_PASSTHROUGH))
 ENABLE_CAR_USB_PASSTHROUGH := false
 endif
 
-ifeq (true,$(ENABLE_CAR_USB_PASSTHROUGH))
 # Enables USB related passthrough
+ifeq (true,$(ENABLE_CAR_USB_PASSTHROUGH))
 $(call inherit-product, device/generic/car/emulator/usbpt/car_usbpt.mk)
-
-TARGET_PRODUCT_PROP := device/generic/car/emulator/usbpt/bluetooth/bluetooth.prop
 endif
+
+# Bluetooth - Adds additional Bluetooth properties on top of those added in
+# device/generic/car/common/car.mk -> packages/services/Car/car_product/car.mk
+TARGET_PRODUCT_PROP := device/generic/car/emulator/bluetooth/bluetooth.prop
 
 # EVS
 # By default, we enable EvsManager, a sample EVS app, and a mock EVS HAL implementation.
