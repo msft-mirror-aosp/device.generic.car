@@ -55,9 +55,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     device/generic/car/common/android.hardware.disable.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/handheld_core_hardware.xml \
     device/generic/car/common/car_core_hardware.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/car_core_hardware.xml \
-    device/generic/car/common/android.hardware.disable.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.ar.xml \
-    device/generic/car/common/android.hardware.disable.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.autofocus.xml \
-    device/generic/car/common/android.hardware.disable.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.any.xml \
     device/generic/car/common/android.hardware.disable.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.fingerprint.xml \
     device/generic/car/common/android.hardware.disable.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.direct.xml \
 
@@ -143,8 +140,14 @@ endif
 # Disable biometrics for AAOS emulators
 EMULATOR_VENDOR_NO_BIOMETRICS := true
 
-# Disable camera for AAOS emulators
-EMULATOR_VENDOR_NO_CAMERA := true
+# Enable Camera for AAOS emulators unless explicitly disabled
+EMULATOR_VENDOR_NO_CAMERA ?= false
+ifeq (false,$(EMULATOR_VENDOR_NO_CAMERA))
+ENABLE_CAMERA_SERVICE := true
+
+PRODUCT_PACKAGES += \
+    android.hardware.camera.aaos_emulator_unavailable.xml
+endif
 
 # Disable UWB
 EMULATOR_VENDOR_NO_UWB := true
