@@ -156,9 +156,6 @@ EMULATOR_VENDOR_NO_BIOMETRICS := true
 EMULATOR_VENDOR_NO_CAMERA ?= false
 ifeq (false,$(EMULATOR_VENDOR_NO_CAMERA))
 ENABLE_CAMERA_SERVICE := true
-
-PRODUCT_PACKAGES += \
-    android.hardware.camera.aaos_emulator.xml
 endif
 
 # Goldfish vendor partition configurations
