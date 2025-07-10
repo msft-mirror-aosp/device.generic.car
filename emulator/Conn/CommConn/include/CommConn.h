@@ -17,6 +17,8 @@
 #ifndef ANDROID_EMULATORCOMMCONN_COMMCONN_H
 #define ANDROID_EMULATORCOMMCONN_COMMCONN_H
 
+#include <memory>
+#include <mutex>
 #include <string>
 #include <thread>
 #include <vector>

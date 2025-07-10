@@ -16,7 +16,7 @@
 
 #define LOG_TAG "CommConn"
 
-#include <thread>
+#include <functional>
 
 #include <log/log.h>
 
