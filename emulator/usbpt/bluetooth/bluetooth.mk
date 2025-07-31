@@ -23,9 +23,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     device/generic/car/emulator/usbpt/bluetooth/vendor.qemu.preferred.bt.service.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/vendor.qemu.preferred.bt.service.rc \
 
-PRODUCT_SYSTEM_PROPERTIES += \
-    persist.bluetooth.enablenewavrcp=false \
-
 # USB Passthru
 PRODUCT_PACKAGES += usb_modeswitch
 
