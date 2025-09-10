@@ -75,11 +75,5 @@ PRODUCT_PRODUCT_PROPERTIES += \
     ro.carwatchdog.vhal_healthcheck.interval=10 \
     ro.carwatchdog.client_healthcheck.interval=20 \
 
-# Drive Mode RROs
-PRODUCT_PACKAGES += \
-    DriveModeEcoRRO \
-    DriveModeSportRRO \
-    DriveModeOnRRO \
-
 # Enable socket for qemu VHAL
 BOARD_SEPOLICY_DIRS += device/generic/car/emulator/sepolicy
