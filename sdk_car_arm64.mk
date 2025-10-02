@@ -56,6 +56,11 @@ $(call inherit-product, device/generic/car/emulator/car_emulator_product.mk)
 $(call inherit-product, device/generic/car/emulator/car_emulator_vendor.mk)
 $(call inherit-product, device/generic/goldfish/board/emu64a/details.mk)
 
+#
+# Allow audio tracks and audio HAL streams to run in real time priority
+#
+PRODUCT_PRODUCT_PROPERTIES += ro.audio.track_realtime_priority=1
+
 EMULATOR_VENDOR_NO_SOUND := true
 PRODUCT_NAME := sdk_car_arm64
 PRODUCT_DEVICE := emulator_car64_arm64
