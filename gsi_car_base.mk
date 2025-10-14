@@ -19,6 +19,10 @@ PRODUCT_USE_DYNAMIC_PARTITION_SIZE := true
 DO_NOT_INCLUDE_BT_SEPOLICY := true
 EMULATOR_VENDOR_NO_SOUND := true
 PRODUCT_IS_AUTOMOTIVE := true
+
+HAS_SCALABLEUI := true
+GSI_SKIP_PROVISIONED := true
+
 #
 # All components inherited here go to system image
 #
