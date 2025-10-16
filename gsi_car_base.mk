@@ -47,8 +47,6 @@ $(call inherit-product, packages/modules/Virtualization/apex/product_packages.mk
 #
 $(call inherit-product, packages/services/Car/car_product/build/car_product.mk)
 
-$(call inherit-product, packages/services/Car/car_product/dewd/car_dewd_common.mk)
-
 PRODUCT_BRAND := Android
 #
 # Special settings for GSI releasing
