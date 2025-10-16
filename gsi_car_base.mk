@@ -19,6 +19,10 @@ PRODUCT_USE_DYNAMIC_PARTITION_SIZE := true
 DO_NOT_INCLUDE_BT_SEPOLICY := true
 EMULATOR_VENDOR_NO_SOUND := true
 PRODUCT_IS_AUTOMOTIVE := true
+
+HAS_SCALABLEUI := true
+GSI_SKIP_PROVISIONED := true
+
 #
 # All components inherited here go to system image
 #
@@ -46,8 +50,6 @@ $(call inherit-product, packages/modules/Virtualization/apex/product_packages.mk
 # All components inherited here go to product image
 #
 $(call inherit-product, packages/services/Car/car_product/build/car_product.mk)
-
-$(call inherit-product, packages/services/Car/car_product/dewd/car_dewd_common.mk)
 
 PRODUCT_BRAND := Android
 #
