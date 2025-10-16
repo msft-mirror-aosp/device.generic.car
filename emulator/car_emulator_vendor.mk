@@ -136,6 +136,11 @@ $(call inherit-product, device/generic/car/emulator/cluster/cluster-hwserviceman
 endif # BUILD_EMULATOR_CLUSTER_DISPLAY
 endif # EMULATOR_DYNAMIC_MULTIDISPLAY_CONFIG
 
+ifneq (,$(findstring car_cw_,$(TARGET_PRODUCT)))
+  PRODUCT_COPY_FILES += \
+      device/generic/car/emulator/coolwhip-display/display_settings.xml:$(TARGET_COPY_OUT_VENDOR)/etc/display_settings.xml
+endif
+
 # Do no use bluetooth.prop from device/generic/goldfish/product/generic.mk below
 # TARGET_PRODUCT_PROP must be set to *something* so that the check in goldfish's
 # generic.mk will skip over adding the phone-centric Bluetooth properties. Use
