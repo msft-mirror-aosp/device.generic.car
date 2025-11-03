@@ -51,10 +51,4 @@
     <!-- 1 immersive, hide both bars -->
     <!-- 2 immersive_with_nav, show nav bar and hide status bar -->
     <integer name="config_systemBarPersistency">2</integer>
-
-    <!-- Determines which system bar to use for display compat toolbar. -->
-    <!-- 0 disabled -->
-    <!-- 1 left -->
-    <!-- 2 right -->
-    <integer name="config_showDisplayCompatToolbarOnSystemBar">0</integer>
 </resources>

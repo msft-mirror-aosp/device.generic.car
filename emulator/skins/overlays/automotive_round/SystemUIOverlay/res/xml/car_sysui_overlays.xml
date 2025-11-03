@@ -41,8 +41,4 @@
     <item
         target="dimen/car_bottom_system_bar_height"
         value="@dimen/car_bottom_system_bar_height"/>
-
-    <item
-        target="integer/config_showDisplayCompatToolbarOnSystemBar"
-        value="@integer/config_showDisplayCompatToolbarOnSystemBar" />
 </overlay>
