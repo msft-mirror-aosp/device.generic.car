@@ -51,6 +51,13 @@
     <feature name="android.software.secure_lock_screen" />
     <feature name="android.software.input_methods" />
 
+    <!-- need for the messaging scenario with bluetooth connection -->
+    <feature name="android.hardware.telephony" />
+    <feature name="android.hardware.telephony.radio.access" />
+    <feature name="android.hardware.telephony.messaging" />
+    <feature name="android.hardware.telephony.subscription" />
+    <feature name="android.hardware.telephony.data" />
+
     <!-- devices with GPS must include android.hardware.location.gps.xml -->
     <!-- devices with an autofocus camera and/or flash must include either
          android.hardware.camera.autofocus.xml or
