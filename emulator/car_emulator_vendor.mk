@@ -96,6 +96,12 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.sensor.gyroscope_limited_axes_uncalibrated.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.gyroscope_limited_axes_uncalibrated.xml \
     frameworks/native/data/etc/android.hardware.sensor.heading.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.heading.xml \
 
+ifeq (true,$(ENABLE_EMULATOR_USB_HOST))
+# USB Host mode
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.usb.host.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.usb.host.xml
+endif
+
 # Additional selinux policy
 BOARD_SEPOLICY_DIRS += device/generic/car/common/sepolicy
 
