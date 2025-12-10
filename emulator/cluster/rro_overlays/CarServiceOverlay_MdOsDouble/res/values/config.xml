@@ -72,6 +72,15 @@
       <item>displayPort=4,displayType=MAIN,occupantZoneId=3,inputTypes=TOUCH_SCREEN</item>
     </string-array>
 
+    <!-- Mapping of occupant zone id to RRO package to apply to this user. When a user is started
+         and assigned to the occupant zone, the RRO package(s) will be enabled for that user.
+         Format: <OccupantZoneId>;<RRO package name> -->
+    <string-array name="config_occupantZoneIdToRROMap" translatable="false">
+        <item>1;com.android.systemui.md.passenger.car.rro</item>
+        <item>2;com.android.systemui.md.passenger.car.rro</item>
+        <item>3;com.android.systemui.md.passenger.car.rro</item>
+    </string-array>
+
     <!--
     Specifies optional features that can be enabled by this image. Note that vhal can disable
     them depending on product variation.
