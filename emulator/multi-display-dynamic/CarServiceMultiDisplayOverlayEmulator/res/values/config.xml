@@ -42,6 +42,16 @@
         <item>displayUniqueId=virtual:com.android.systemui:DisplayCompatDisplay,displayType=DISPLAY_COMPATIBILITY,occupantZoneId=0,inputTypes=TOUCH_SCREEN</item>
     </string-array>
 
+    <!-- Mapping of occupant zone id to RRO package to apply to this user. When a user is started
+         and assigned to the occupant zone, the RRO package(s) will be enabled for that user.
+         Format: <OccupantZoneId>;<RRO package name> -->
+    <string-array name="config_occupantZoneIdToRROMap" translatable="false">
+        <item>1;com.android.systemui.md.passenger.car.rro</item>
+        <item>2;com.android.systemui.md.passenger.car.rro</item>
+        <item>3;com.android.systemui.md.passenger.car.rro</item>
+        <item>4;com.android.systemui.md.passenger.car.rro</item>
+    </string-array>
+
     <!-- Enable profile user assignment per each CarOccupantZone for per display android user
          assignments. This feature is still experimental. -->
     <bool name="enableProfileUserAssignmentForMultiDisplay" translatable="false">true</bool>
