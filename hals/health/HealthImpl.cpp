@@ -46,6 +46,7 @@ class HealthImpl : public Health {
     ScopedAStatus getCapacity(int32_t* out) override;
     ScopedAStatus getChargeStatus(BatteryStatus* out) override;
     ScopedAStatus getEnergyCounterNwh(int64_t* out) override;
+    ScopedAStatus getBatteryHealthData(BatteryHealthData* out) override;
 
   protected:
     void UpdateHealthInfo(HealthInfo* health_info) override;
@@ -86,6 +87,14 @@ void HealthImpl::UpdateHealthInfo(HealthInfo* health_info) {
     health_info->batteryStatus = BatteryStatus::CHARGING;
     health_info->batteryLevel = 100;
     health_info->batteryChargeTimeToFullNowSeconds = 0;
+}
+
+ScopedAStatus HealthImpl::getBatteryHealthData(BatteryHealthData* out) {
+  out->batteryManufacturingDateSeconds = -1;
+  out->batteryFirstUsageSeconds = -1;
+  out->batteryStateOfHealth = -1;
+  out->batteryPartStatus = BatteryPartStatus::UNSUPPORTED;
+  return ScopedAStatus::ok();
 }
 }  // namespace aidl::android::hardware::health
 
