@@ -37,8 +37,6 @@ else
 PRODUCT_PACKAGES += CarServiceOverlayEmulator
 endif  # ENABLE_CLUSTER_OS_DOUBLE
 
-$(call inherit-product, device/generic/goldfish/product/multidisplay.mk)
-
 # Disable dynamic multidisplay for emulators with display added by
 # hwservicemanager.
 EMULATOR_DYNAMIC_MULTIDISPLAY_CONFIG := false
