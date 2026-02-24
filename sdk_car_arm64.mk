@@ -54,7 +54,11 @@ $(call inherit-product, device/generic/car/emulator/car_emulator_product.mk)
 # All components inherited here go to vendor image
 #
 $(call inherit-product, device/generic/car/emulator/car_emulator_vendor.mk)
+ifneq ($(filter %_16k, $(TARGET_PRODUCT)),)
+$(call inherit-product, device/generic/goldfish/board/emu64a16k/details.mk)
+else
 $(call inherit-product, device/generic/goldfish/board/emu64a/details.mk)
+endif
 
 #
 # Allow audio tracks and audio HAL streams to run in real time priority
