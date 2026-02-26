@@ -18,10 +18,12 @@ PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/gsi_car_arm64.mk \
     $(LOCAL_DIR)/gsi_car_x86_64.mk \
     $(LOCAL_DIR)/sdk_car_arm64.mk \
+    $(LOCAL_DIR)/sdk_car_arm64_16k.mk \
     $(LOCAL_DIR)/sdk_car_md_arm64.mk \
     $(LOCAL_DIR)/sdk_car_md_x86_64.mk \
     $(LOCAL_DIR)/sdk_car_cw_x86_64.mk \
     $(LOCAL_DIR)/sdk_car_x86_64.mk \
+    $(LOCAL_DIR)/sdk_car_x86_64_16k.mk \
     $(LOCAL_DIR)/sdk_car_dewd_x86_64.mk \
 
 COMMON_LUNCH_CHOICES := \

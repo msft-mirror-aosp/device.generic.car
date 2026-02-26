@@ -54,7 +54,11 @@ $(call inherit-product, device/generic/car/emulator/car_emulator_product.mk)
 # All components inherited here go to vendor image
 #
 $(call inherit-product, device/generic/car/emulator/car_emulator_vendor.mk)
+ifneq ($(filter %_16k, $(TARGET_PRODUCT)),)
+$(call inherit-product, device/generic/goldfish/board/emu64x16k/details.mk)
+else
 $(call inherit-product, device/generic/goldfish/board/emu64x/details.mk)
+endif
 
 #
 # Allow audio tracks and audio HAL streams to run in real time priority
@@ -67,4 +71,3 @@ PRODUCT_DEVICE := emulator_car64_x86_64
 PRODUCT_BRAND := Android
 PRODUCT_MODEL := Car on x86_64 emulator
 AB_OTA_UPDATER := true
-
