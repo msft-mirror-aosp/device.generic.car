@@ -30,26 +30,6 @@
          display, this value should be true. -->
     <bool name="config_perDisplayFocusEnabled">true</bool>
 
-    <!-- Whether to only install system packages on a user if they're allow-listed for that user
-         type. These are flags and can be freely combined.
-         0  - disable allow-list (install all system packages; no logging)
-         1  - enforce (only install system packages if they are allow-listed)
-         2  - log (log non-allow-listed packages)
-         4  - any package not mentioned in the allow-list file is implicitly allow-listed on all users
-         8  - same as 4, but just for the SYSTEM user
-         16 - ignore OTAs (don't install system packages during OTAs)
-         Common scenarios:
-          - to enable feature (fully enforced) for a complete allow-list: 1
-          - to enable feature for an incomplete allow-list (so use implicit allow-list mode): 5
-          - to enable feature but implicitly allow-list for SYSTEM user to ease local development: 9
-          - to disable feature completely if it had never been enabled: 16
-          - to henceforth disable feature and try to undo its previous effects: 0
-        Note: This list must be kept current with PACKAGE_WHITELIST_MODE_PROP in
-        frameworks/base/services/core/java/com/android/server/pm/UserSystemPackageInstaller.java
-        Package allow-list disabled for testing profile user as default allow-list does not
-        support PROFILE user. -->
-    <integer name="config_userTypePackageWhitelistMode">2</integer>
-
     <!-- Whether the device allows users to start in background visible on displays.
          Should be false for most devices, except automotive vehicle with passenger displays. -->
     <bool name="config_multiuserVisibleBackgroundUsers">true</bool>
