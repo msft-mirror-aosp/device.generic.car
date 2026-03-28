@@ -157,10 +157,26 @@ TARGET_PRODUCT_PROP := device/generic/car/emulator/bluetooth/bluetooth.prop
 # Disable biometrics for AAOS emulators
 EMULATOR_VENDOR_NO_BIOMETRICS := true
 
-# Enable Camera for AAOS emulators unless explicitly disabled
-EMULATOR_VENDOR_NO_CAMERA ?= false
-ifeq (false,$(EMULATOR_VENDOR_NO_CAMERA))
+# Enable EmulatedCamera for AAOS emulators
+EMULATOR_VENDOR_NO_CAMERA ?= true
+USE_EMULATED_CAMERA2_HAL_AUTO ?= true
+$(call add_soong_config_namespace,emulated_camera)
+$(call soong_config_set_bool,emulated_camera,use_emulated_camera2_hal_auto,$(USE_EMULATED_CAMERA2_HAL_AUTO))
+
+ifeq ($(USE_EMULATED_CAMERA2_HAL_AUTO), true)
 ENABLE_CAMERA_SERVICE := true
+
+PRODUCT_PACKAGES += com.google.emulated.camera.provider.hal
+
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.camera.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.xml \
+    device/generic/car/emulator/camera/ExampleSharedSessionConfiguration.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/shared_session_config.xml
+endif
+
+# Enable automotive-specific media profiles for AAOS emulators
+EMULATOR_VENDOR_NO_MEDIA_PROFILES ?= true
+ifeq ($(EMULATOR_VENDOR_NO_MEDIA_PROFILES), true)
+PRODUCT_COPY_FILES += device/generic/car/emulator/media/profiles.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles_V1_0.xml
 endif
 
 # Goldfish vendor partition configurations
